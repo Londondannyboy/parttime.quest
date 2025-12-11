@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { createDbQuery } from '@/lib/db'
 import { Badge } from '@/components/Badge'
+import { JobHeader } from '@/components/JobHeader'
 import ReactMarkdown from 'react-markdown'
 
 // Revalidate every hour for job details
@@ -86,36 +87,25 @@ export default async function JobDetailPage({ params }: PageProps) {
     return (
       <div className="min-h-screen bg-white">
         {/* Header */}
-        <div className="bg-gradient-to-r from-purple-50 to-purple-100 py-12">
+        <JobHeader
+          title={job.title}
+          company={job.company_name}
+          location={job.location}
+          isRemote={job.is_remote}
+          compensation={job.compensation}
+          seniority={job.seniority_level}
+          employmentType={job.employment_type}
+          postedDate={job.posted_date}
+        />
+
+        {/* Apply Button */}
+        <div className="bg-purple-50 border-b border-purple-100 py-4">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-              {job.title}
-            </h1>
-            <p className="text-xl text-gray-700 mb-4">{job.company_name}</p>
-            <div className="flex flex-wrap gap-3 mb-6">
-              {job.location && (
-                <Badge variant="gray">📍 {job.location}</Badge>
-              )}
-              {job.is_remote && (
-                <Badge variant="gray">🌍 Remote</Badge>
-              )}
-              {job.seniority_level && (
-                <Badge variant="gray">{job.seniority_level}</Badge>
-              )}
-              {job.employment_type && (
-                <Badge variant="gray">{job.employment_type}</Badge>
-              )}
-            </div>
-            {job.compensation && (
-              <p className="text-2xl font-bold text-purple-700 mb-6">
-                {job.compensation}
-              </p>
-            )}
             <a
               href={job.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-8 py-3 bg-purple-700 text-white rounded-lg hover:bg-purple-800 font-semibold"
+              className="inline-block px-8 py-3 bg-purple-700 text-white rounded-lg hover:bg-purple-800 font-semibold transition-colors"
             >
               Apply Now →
             </a>

@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { createDbQuery } from '@/lib/db'
 import { notFound } from 'next/navigation'
+import { ArticleBody } from '@/components/ArticleBody'
 
 // Revalidate every 4 hours for articles
 export const revalidate = 14400
@@ -104,9 +105,7 @@ export default async function ArticleDetailPage({ params }: PageProps) {
           )}
 
           {/* Article Body */}
-          <div className="prose prose-lg max-w-none mb-12 prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-xl prose-h3:font-semibold prose-h3:mt-6 prose-h3:mb-3 prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4 prose-ul:list-disc prose-ul:list-inside prose-ul:mb-4 prose-ol:list-decimal prose-ol:list-inside prose-ol:mb-4 prose-li:mb-2 prose-strong:font-bold prose-em:italic prose-code:bg-gray-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-blockquote:border-l-4 prose-blockquote:border-purple-300 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:my-4 prose-blockquote:text-gray-600">
-            <div dangerouslySetInnerHTML={{ __html: article.content }} />
-          </div>
+          <ArticleBody content={article.content} className="mb-12" />
 
           {/* Back Link */}
           <div className="pt-8 border-t">
