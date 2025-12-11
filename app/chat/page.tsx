@@ -1,0 +1,218 @@
+'use client'
+
+import { useState, useRef, useEffect } from 'react'
+import Link from 'next/link'
+import ReactMarkdown from 'react-markdown'
+
+interface Message {
+  role: 'user' | 'assistant'
+  content: string
+  sources?: { title: string; slug: string }[]
+}
+
+export default function ChatPage() {
+  // Auth state is handled at layout level - no need to check here
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      role: 'assistant',
+      content: "Hi! I'm your Fractional.Quest assistant. I can help you find information about fractional jobs, answer questions about our articles, and provide guidance on fractional executive careers. What would you like to know?",
+    },
+  ])
+  const [input, setInput] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const messagesEndRef = useRef<HTMLDivElement>(null)
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [messages])
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!input.trim() || isLoading) return
+
+    const userMessage = input.trim()
+    setInput('')
+    setMessages((prev) => [...prev, { role: 'user', content: userMessage }])
+    setIsLoading(true)
+
+    try {
+      // Call our chat API
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userMessage }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Chat request failed')
+      }
+
+      const data = await response.json()
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: 'assistant',
+          content: data.response,
+          sources: data.sources,
+        },
+      ])
+    } catch (error) {
+      console.error('Chat error:', error)
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: 'assistant',
+          content: "I'm sorry, I encountered an error. Please try again.",
+        },
+      ])
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const suggestedQuestions = [
+    "What is a fractional executive?",
+    "Show me articles about CFO jobs",
+    "What are typical day rates for fractional work?",
+    "How do I transition to fractional consulting?",
+  ]
+
+  return (
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      {/* Header */}
+      <div className="bg-purple-700 text-white py-8">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-3xl font-bold mb-2">Chat with Our Assistant</h1>
+          <p className="text-purple-100">
+            Ask questions about fractional jobs, get career advice, or explore our articles
+          </p>
+        </div>
+      </div>
+
+      {/* Sign In Banner - Always shown, auth state checked via Navigation */}
+      <div className="bg-yellow-50 border-b border-yellow-200 py-3">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <p className="text-yellow-800 text-sm">
+            <Link href="/handler/sign-in" className="font-medium underline hover:text-yellow-900">
+              Sign in
+            </Link>{' '}
+            to save your chat history and get personalized recommendations.
+          </p>
+        </div>
+      </div>
+
+      {/* Chat Container */}
+      <div className="flex-1 max-w-4xl mx-auto w-full px-4 py-6 flex flex-col">
+        {/* Messages */}
+        <div className="flex-1 overflow-y-auto mb-4 space-y-4">
+          {messages.map((message, index) => (
+            <div
+              key={index}
+              className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+            >
+              <div
+                className={`max-w-[85%] rounded-2xl px-4 py-3 ${
+                  message.role === 'user'
+                    ? 'bg-purple-700 text-white'
+                    : 'bg-white border border-gray-200 text-gray-800 shadow-sm'
+                }`}
+              >
+                {message.role === 'assistant' ? (
+                  <div className="prose prose-sm max-w-none prose-purple">
+                    <ReactMarkdown>{message.content}</ReactMarkdown>
+                  </div>
+                ) : (
+                  <p>{message.content}</p>
+                )}
+
+                {/* Source Articles */}
+                {message.sources && message.sources.length > 0 && (
+                  <div className="mt-3 pt-3 border-t border-gray-200">
+                    <p className="text-xs text-gray-500 font-medium mb-2">Related Articles:</p>
+                    <div className="space-y-1">
+                      {message.sources.map((source, idx) => (
+                        <Link
+                          key={idx}
+                          href={`/${source.slug}`}
+                          className="block text-sm text-purple-600 hover:text-purple-800 hover:underline"
+                        >
+                          {source.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+
+          {isLoading && (
+            <div className="flex justify-start">
+              <div className="bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-purple-700 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                  <div className="w-2 h-2 bg-purple-700 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                  <div className="w-2 h-2 bg-purple-700 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                </div>
+              </div>
+            </div>
+          )}
+
+          <div ref={messagesEndRef} />
+        </div>
+
+        {/* Suggested Questions */}
+        {messages.length <= 1 && (
+          <div className="mb-4">
+            <p className="text-xs text-gray-500 font-medium mb-2">Try asking:</p>
+            <div className="flex flex-wrap gap-2">
+              {suggestedQuestions.map((question, index) => (
+                <button
+                  key={index}
+                  onClick={() => setInput(question)}
+                  className="text-sm bg-white border border-gray-200 rounded-full px-4 py-2 text-gray-600 hover:bg-purple-50 hover:border-purple-200 hover:text-purple-700 transition-colors"
+                >
+                  {question}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Input Form */}
+        <form onSubmit={handleSubmit} className="flex gap-3">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Ask about fractional jobs, articles, or career advice..."
+            className="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            disabled={isLoading}
+          />
+          <button
+            type="submit"
+            disabled={isLoading || !input.trim()}
+            className="px-6 py-3 bg-purple-700 text-white rounded-xl font-medium hover:bg-purple-800 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+            </svg>
+          </button>
+        </form>
+
+        {/* Footer Note */}
+        <p className="text-xs text-gray-400 text-center mt-4">
+          Powered by AI. Responses may not always be accurate. For the latest job listings, visit our{' '}
+          <Link href="/fractionaljobsuk" className="text-purple-600 hover:underline">
+            jobs page
+          </Link>
+          .
+        </p>
+      </div>
+    </div>
+  )
+}

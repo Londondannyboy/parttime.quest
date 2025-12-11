@@ -23,7 +23,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/articles" className="text-sm text-gray-600 hover:text-purple-700">
+                <Link href="/fractional-jobs-articles" className="text-sm text-gray-600 hover:text-purple-700">
                   Resources
                 </Link>
               </li>
@@ -45,8 +45,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/articles" className="text-sm text-gray-600 hover:text-purple-700">
-                  Learn More
+                <Link href="/fractional-jobs-articles" className="text-sm text-gray-600 hover:text-purple-700">
+                  Career Guides & Articles
                 </Link>
               </li>
             </ul>

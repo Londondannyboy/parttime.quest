@@ -359,7 +359,7 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
                   Create Job Alert
                 </button>
               </Link>
-              <Link href="/articles">
+              <Link href="/fractional-jobs-articles">
                 <button className="px-8 py-3 border border-purple-700 text-purple-700 rounded-lg hover:bg-purple-50 font-semibold transition-colors">
                   Read Career Guides
                 </button>

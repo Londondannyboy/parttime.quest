@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Button } from "@/components/Button";
 import { createDbQuery } from "@/lib/db";
+import { FractionalCalculator } from "@/components/FractionalCalculator";
+import { JobCard } from "@/components/JobCard";
 
 // Revalidate homepage every hour
 export const revalidate = 3600
@@ -72,10 +73,76 @@ async function getJobStats() {
   }
 }
 
+async function getFeaturedJobs() {
+  try {
+    const sql = createDbQuery()
+    const jobs = await sql`
+      SELECT
+        id,
+        slug,
+        title,
+        company_name,
+        location,
+        is_remote,
+        workplace_type,
+        compensation,
+        role_category,
+        skills_required,
+        posted_date,
+        description_snippet
+      FROM jobs
+      WHERE is_active = true
+      ORDER BY posted_date DESC NULLS LAST
+      LIMIT 6
+    `
+    return jobs
+  } catch (error) {
+    console.error('Error fetching featured jobs:', error)
+    return []
+  }
+}
+
+async function getDetailedStats() {
+  try {
+    const sql = createDbQuery()
+    const [londonJobs, remoteJobs, avgRateResult] = await Promise.all([
+      sql`SELECT COUNT(*) as count FROM jobs WHERE is_active = true AND location ILIKE '%london%'`,
+      sql`SELECT COUNT(*) as count FROM jobs WHERE is_active = true AND (is_remote = true OR workplace_type = 'Remote')`,
+      sql`SELECT AVG(CAST(REGEXP_REPLACE(compensation, '[^0-9]', '', 'g') AS INTEGER)) as avg FROM jobs WHERE is_active = true AND compensation IS NOT NULL AND compensation ~ '^[£$]?[0-9]+'`
+    ])
+    return {
+      londonJobs: parseInt((londonJobs[0] as any)?.count || '0'),
+      remoteJobs: parseInt((remoteJobs[0] as any)?.count || '0'),
+      avgDayRate: Math.round(parseFloat((avgRateResult[0] as any)?.avg || '850'))
+    }
+  } catch (error) {
+    return { londonJobs: 85, remoteJobs: 60, avgDayRate: 950 }
+  }
+}
+
+async function getLatestArticles() {
+  try {
+    const sql = createDbQuery()
+    const articles = await sql`
+      SELECT slug, title, description, published_date
+      FROM articles
+      WHERE status = 'published' AND app = 'fractional'
+      ORDER BY published_date DESC
+      LIMIT 3
+    `
+    return articles
+  } catch (error) {
+    return []
+  }
+}
+
 export default async function Home() {
-  const [sections, totalJobs] = await Promise.all([
+  const [sections, totalJobs, featuredJobs, detailedStats, latestArticles] = await Promise.all([
     getHomepageContent(),
-    getJobStats()
+    getJobStats(),
+    getFeaturedJobs(),
+    getDetailedStats(),
+    getLatestArticles()
   ])
 
   // Extract sections by type
@@ -120,15 +187,17 @@ export default async function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <Link href="/fractional-jobs">
-                <Button size="lg" variant="primary" className="bg-white text-purple-900 hover:bg-purple-50">
-                  Browse {totalJobs}+ Jobs →
-                </Button>
+              <Link
+                href="/fractional-jobs"
+                className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-purple-900 hover:bg-purple-50 transition-all duration-200 min-h-14"
+              >
+                Browse {totalJobs}+ Jobs →
               </Link>
-              <Link href="/contact/companies">
-                <Button size="lg" variant="secondary" className="border-white text-white hover:bg-white/10">
-                  Post a Position
-                </Button>
+              <Link
+                href="/contact/companies"
+                className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg border-2 border-white text-white hover:bg-white/10 transition-all duration-200 min-h-14"
+              >
+                Post a Position
               </Link>
             </div>
 
@@ -151,6 +220,74 @@ export default async function Home() {
                 </svg>
                 UK-focused roles
               </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Bar */}
+      <section className="bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-4xl font-black text-purple-700">{totalJobs}+</div>
+              <div className="text-gray-600 font-medium">Fractional Jobs UK</div>
+            </div>
+            <div>
+              <div className="text-4xl font-black text-purple-700">{detailedStats.londonJobs}+</div>
+              <div className="text-gray-600 font-medium">London Opportunities</div>
+            </div>
+            <div>
+              <div className="text-4xl font-black text-purple-700">£{detailedStats.avgDayRate}</div>
+              <div className="text-gray-600 font-medium">Average Day Rate</div>
+            </div>
+            <div>
+              <div className="text-4xl font-black text-purple-700">{detailedStats.remoteJobs}+</div>
+              <div className="text-gray-600 font-medium">Remote Positions</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What Are Fractional Jobs? - SEO Content */}
+      <section className="py-20 md:py-28 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">What Are Fractional Jobs?</h2>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              Fractional jobs are part-time executive roles where experienced professionals work with companies for a fraction of the week. Instead of one full-time position, you work 1-3 days per week with multiple companies, delivering strategic impact while maintaining flexibility.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow">
+              <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                <span className="text-3xl">⏰</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Part-Time Leadership</h3>
+              <p className="text-gray-600">
+                Work 1-3 days per week per client. Maintain flexibility while delivering strategic impact. Fractional executives typically work with 2-4 companies simultaneously.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow">
+              <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                <span className="text-3xl">🏢</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Portfolio Career</h3>
+              <p className="text-gray-600">
+                Build a diverse portfolio working with multiple companies. Diversify your income streams and gain experience across different industries, stages, and challenges.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow">
+              <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                <span className="text-3xl">💼</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Executive Expertise</h3>
+              <p className="text-gray-600">
+                Companies get senior CFO, CMO, CTO, COO, and HR expertise without the cost of a full-time executive hire. Perfect for startups, scale-ups, and SMEs.
+              </p>
             </div>
           </div>
         </div>
@@ -301,25 +438,243 @@ export default async function Home() {
         </section>
       )}
 
+      {/* Calculator Section */}
+      <section className="py-20 md:py-28 bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-white mb-4">Calculate Your Earning Potential</h2>
+            <p className="text-xl text-purple-200">See how much you could earn as a fractional executive</p>
+          </div>
+          <FractionalCalculator />
+        </div>
+      </section>
+
+      {/* Featured Jobs Section */}
+      {featuredJobs.length > 0 && (
+        <section className="py-20 md:py-28 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Latest Fractional Opportunities</h2>
+              <p className="text-xl text-gray-600">Fresh roles added every 15 minutes</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              {(featuredJobs as any[]).map((job: any) => {
+                const postedDate = job.posted_date ? new Date(job.posted_date) : null
+                const postedDaysAgo = postedDate
+                  ? Math.floor((Date.now() - postedDate.getTime()) / (1000 * 60 * 60 * 24))
+                  : undefined
+
+                return (
+                  <Link key={job.id} href={`/fractional-job/${job.slug}`}>
+                    <JobCard
+                      title={job.title}
+                      company={job.company_name}
+                      location={job.location || 'Location TBD'}
+                      isRemote={job.is_remote || job.workplace_type === 'Remote'}
+                      compensation={job.compensation}
+                      roleCategory={job.role_category}
+                      skills={job.skills_required || []}
+                      postedDaysAgo={postedDaysAgo}
+                    />
+                  </Link>
+                )
+              })}
+            </div>
+            <div className="text-center">
+              <Link
+                href="/fractional-jobs"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-lg bg-purple-700 text-white hover:bg-purple-800 transition-all duration-200"
+              >
+                View All {totalJobs}+ Jobs →
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Latest Articles Section */}
+      {(latestArticles as any[]).length > 0 && (
+        <section className="py-20 md:py-28 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-end mb-12">
+              <div>
+                <h2 className="text-4xl font-bold text-gray-900 mb-4">Latest Fractional Career Guides</h2>
+                <p className="text-xl text-gray-600">Expert insights on building a successful fractional career</p>
+              </div>
+              <Link
+                href="/fractional-jobs-articles"
+                className="hidden md:inline-flex items-center text-purple-700 font-semibold hover:text-purple-900 transition-colors"
+              >
+                View all articles →
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {(latestArticles as any[]).map((article: any) => (
+                <Link key={article.slug} href={`/${article.slug}`} className="group">
+                  <article className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-200">
+                    <div className="h-48 bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center">
+                      <span className="text-6xl">📚</span>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-purple-700 transition-colors mb-3 line-clamp-2">
+                        {article.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm line-clamp-2">{article.description}</p>
+                    </div>
+                  </article>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-8 text-center md:hidden">
+              <Link
+                href="/fractional-jobs-articles"
+                className="inline-flex items-center text-purple-700 font-semibold hover:text-purple-900 transition-colors"
+              >
+                View all articles →
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* FAQ Section - SEO Rich */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+            <p className="text-xl text-gray-600">Everything you need to know about fractional executive careers in the UK</p>
+          </div>
+
+          <div className="space-y-6">
+            <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
+              <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
+                What is a fractional job?
+                <span className="text-purple-700 group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p className="mt-4 text-gray-600 leading-relaxed">
+                A fractional job is a part-time executive role where you work 1-3 days per week providing strategic leadership without full-time commitment. Fractional executives typically work with 2-4 companies simultaneously, offering their expertise as a Fractional CFO, CMO, CTO, COO, or HR Director. This model allows companies to access senior talent at a fraction of the cost of a full-time hire.
+              </p>
+            </details>
+
+            <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
+              <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
+                How much do fractional executives earn in the UK?
+                <span className="text-purple-700 group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p className="mt-4 text-gray-600 leading-relaxed">
+                Fractional executives in the UK typically earn £600-£1,500 per day depending on seniority and expertise. Many fractional executives earn £150,000-£300,000+ annually by working with 2-4 clients. Fractional CFOs and CTOs often command the highest rates, while the average day rate across all fractional roles is approximately £{detailedStats.avgDayRate}.
+              </p>
+            </details>
+
+            <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
+              <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
+                Do I need to be based in London for fractional work?
+                <span className="text-purple-700 group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p className="mt-4 text-gray-600 leading-relaxed">
+                No, while London has the most fractional opportunities ({detailedStats.londonJobs}+ roles currently), many fractional positions are remote or hybrid. Birmingham, Manchester, Edinburgh, and Bristol all have growing fractional markets. Currently, we have {detailedStats.remoteJobs}+ remote fractional positions available across the UK.
+              </p>
+            </details>
+
+            <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
+              <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
+                How many clients should a fractional executive work with?
+                <span className="text-purple-700 group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p className="mt-4 text-gray-600 leading-relaxed">
+                Most fractional executives work with 2-4 clients simultaneously to diversify income while maintaining quality delivery to each client. Working with fewer clients allows deeper engagement, while more clients provide income security. The ideal number depends on the complexity of each role and your personal working style.
+              </p>
+            </details>
+
+            <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
+              <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
+                What's the difference between fractional and interim roles?
+                <span className="text-purple-700 group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p className="mt-4 text-gray-600 leading-relaxed">
+                Interim roles are typically full-time positions for a fixed period (3-12 months) to cover gaps or manage transitions. Fractional roles are ongoing part-time positions where you work 1-3 days per week indefinitely. Fractional work offers more flexibility and the ability to work with multiple clients, while interim work provides deeper immersion in a single company.
+              </p>
+            </details>
+
+            <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
+              <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
+                What experience do I need for fractional executive roles?
+                <span className="text-purple-700 group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p className="mt-4 text-gray-600 leading-relaxed">
+                Most fractional executive positions require 10-20+ years of experience with a proven track record in senior leadership roles. Companies hiring fractional executives want someone who can hit the ground running and deliver strategic impact quickly. Experience in startups, scale-ups, or PE-backed companies is particularly valuable.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      {/* Internal Links Section - SEO */}
+      <section className="py-16 bg-gray-50 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Popular Fractional Executive Resources</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* By Role */}
+            <div>
+              <h3 className="font-bold text-gray-900 mb-4">Fractional Jobs by Role</h3>
+              <ul className="space-y-2 text-gray-600">
+                <li><Link href="/fractional-cfo-jobs-uk" className="hover:text-purple-700 transition-colors">Fractional CFO Jobs UK</Link></li>
+                <li><Link href="/fractional-cmo-jobs-uk" className="hover:text-purple-700 transition-colors">Fractional CMO Jobs UK</Link></li>
+                <li><Link href="/fractional-cto-jobs-uk" className="hover:text-purple-700 transition-colors">Fractional CTO Jobs UK</Link></li>
+                <li><Link href="/fractional-coo-jobs-uk" className="hover:text-purple-700 transition-colors">Fractional COO Jobs UK</Link></li>
+                <li><Link href="/fractional-hr-jobs-uk" className="hover:text-purple-700 transition-colors">Fractional HR Jobs UK</Link></li>
+              </ul>
+            </div>
+
+            {/* By Location */}
+            <div>
+              <h3 className="font-bold text-gray-900 mb-4">Fractional Jobs by Location</h3>
+              <ul className="space-y-2 text-gray-600">
+                <li><Link href="/fractional-jobs-london" className="hover:text-purple-700 transition-colors">Fractional Jobs London</Link></li>
+                <li><Link href="/fractional-jobs-manchester" className="hover:text-purple-700 transition-colors">Fractional Jobs Manchester</Link></li>
+                <li><Link href="/fractional-jobs-birmingham" className="hover:text-purple-700 transition-colors">Fractional Jobs Birmingham</Link></li>
+                <li><Link href="/fractional-jobs-edinburgh" className="hover:text-purple-700 transition-colors">Fractional Jobs Edinburgh</Link></li>
+                <li><Link href="/remote-fractional-jobs" className="hover:text-purple-700 transition-colors">Remote Fractional Jobs</Link></li>
+              </ul>
+            </div>
+
+            {/* Guides */}
+            <div>
+              <h3 className="font-bold text-gray-900 mb-4">Fractional Executive Guides</h3>
+              <ul className="space-y-2 text-gray-600">
+                <li><Link href="/how-to-become-a-fractional-executive" className="hover:text-purple-700 transition-colors">How to Become a Fractional Executive</Link></li>
+                <li><Link href="/fractional-executive-salary-uk" className="hover:text-purple-700 transition-colors">Fractional Executive Salary UK</Link></li>
+                <li><Link href="/what-is-fractional-work" className="hover:text-purple-700 transition-colors">What is Fractional Work?</Link></li>
+                <li><Link href="/fractional-vs-interim" className="hover:text-purple-700 transition-colors">Fractional vs Interim Roles</Link></li>
+                <li><Link href="/fractional-jobs-articles" className="hover:text-purple-700 transition-colors">All Fractional Career Guides</Link></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA Section */}
       <section className="py-20 md:py-28 bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to find your next executive?
+            Ready to Start Your Fractional Career?
           </h2>
           <p className="text-xl text-purple-100 mb-10">
-            Browse {totalJobs}+ verified fractional positions or post your job today
+            Browse {totalJobs}+ fractional executive opportunities across the UK today
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/fractional-jobs">
-              <Button size="lg" className="bg-white text-purple-900 hover:bg-purple-50 px-8">
-                Browse All Jobs
-              </Button>
+            <Link
+              href="/fractional-jobs"
+              className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-purple-900 hover:bg-purple-50 transition-all duration-200"
+            >
+              Find Your Perfect Role →
             </Link>
-            <Link href="/articles">
-              <Button size="lg" variant="secondary" className="border-white text-white hover:bg-white/10 px-8">
-                Read Career Guides
-              </Button>
+            <Link
+              href="/fractional-jobs-articles"
+              className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg border-2 border-white text-white hover:bg-white hover:text-purple-900 transition-all duration-200"
+            >
+              Read Career Guides
             </Link>
           </div>
         </div>

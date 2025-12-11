@@ -1,5 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import { Button } from './Button'
+import { AuthButtons } from './AuthButtons'
 
 export function Navigation() {
   return (
@@ -16,8 +19,14 @@ export function Navigation() {
           <Link href="/fractionaljobsuk" className="text-gray-600 hover:text-purple-700 font-medium transition-colors">
             Jobs
           </Link>
-          <Link href="/articles" className="text-gray-600 hover:text-purple-700 font-medium transition-colors">
+          <Link href="/fractional-jobs-articles" className="text-gray-600 hover:text-purple-700 font-medium transition-colors">
             Articles
+          </Link>
+          <Link href="/voice" className="text-gray-600 hover:text-purple-700 font-medium transition-colors">
+            Voice
+          </Link>
+          <Link href="/chat" className="text-gray-600 hover:text-purple-700 font-medium transition-colors">
+            Chat
           </Link>
           <Link href="/contact" className="text-gray-600 hover:text-purple-700 font-medium transition-colors">
             Contact
@@ -25,11 +34,7 @@ export function Navigation() {
         </div>
 
         <div className="flex items-center gap-3">
-          <Link href="/profile">
-            <Button variant="ghost" size="sm">
-              Sign In
-            </Button>
-          </Link>
+          <AuthButtons />
           <Button size="sm">
             Post Job
           </Button>

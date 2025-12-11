@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 
-// Redirect old /articles path to new /fractional-jobs-articles path
+// Redirect /articles to the SEO-optimized /fractional-jobs-articles
 export default function ArticlesRedirect() {
   redirect('/fractional-jobs-articles')
 }
