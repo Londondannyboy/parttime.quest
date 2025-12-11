@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { sql } from '@neondatabase/serverless'
+import { sql } from '@/lib/db'
 
 export const revalidate = 3600 // Revalidate every hour
 

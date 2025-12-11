@@ -1,10 +1,10 @@
-import { sql } from '@neondatabase/serverless'
+import { neon } from '@neondatabase/serverless'
 
 if (!process.env.DATABASE_URL) {
   throw new Error('DATABASE_URL environment variable is required')
 }
 
-export { sql }
+export const sql = neon(process.env.DATABASE_URL)
 
 // Query helpers
 export async function queryJobs(filters: {

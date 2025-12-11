@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { sql } from '@neondatabase/serverless'
+import { sql } from '@/lib/db'
 import { Button } from '@/components/Button'
 import { Badge } from '@/components/Badge'
 
