@@ -22,6 +22,9 @@ export function Navigation() {
           <Link href="/fractional-jobs-articles" className="text-gray-600 hover:text-purple-700 font-medium transition-colors">
             Articles
           </Link>
+          <Link href="/top-fractional-recruitment-agencies-best-fractional-recruitment-agency-fractional-recruiter" className="text-gray-600 hover:text-purple-700 font-medium transition-colors">
+            Agencies
+          </Link>
           <Link href="/voice" className="text-gray-600 hover:text-purple-700 font-medium transition-colors">
             Voice
           </Link>

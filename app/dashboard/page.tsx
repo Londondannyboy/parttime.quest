@@ -7,234 +7,239 @@ import { HumeWidget } from '@/components/HumeWidget'
 
 export default function DashboardPage() {
   const user = useUser({ or: 'redirect' })
-  const [activeTab, setActiveTab] = useState('overview')
+  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [activeView, setActiveView] = useState<'home' | 'voice' | 'jobs' | 'articles'>('home')
 
   if (!user) return null
 
   const firstName = user.displayName?.split(' ')[0] || 'there'
 
   return (
-    <div className="min-h-screen bg-gray-950 flex">
+    <div className="min-h-screen bg-gray-50 flex">
       {/* Sidebar */}
-      <aside className="w-64 bg-gray-900 border-r border-gray-800 flex flex-col">
+      <aside className={`${sidebarOpen ? 'w-72' : 'w-20'} bg-white border-r border-gray-200 flex flex-col transition-all duration-300 shadow-sm`}>
         {/* Logo */}
-        <div className="p-6 border-b border-gray-800">
+        <div className="p-5 border-b border-gray-100">
           <Link href="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+            <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl flex items-center justify-center flex-shrink-0">
               <span className="text-white font-bold text-lg">F</span>
             </div>
-            <div>
-              <span className="text-white font-bold">Fractional</span>
-              <span className="text-purple-400">.Quest</span>
-            </div>
+            {sidebarOpen && (
+              <div>
+                <span className="text-gray-900 font-bold">Fractional</span>
+                <span className="text-purple-600">.Quest</span>
+              </div>
+            )}
           </Link>
         </div>
 
+        {/* Main CTA - Speak with Fractional */}
+        <div className="p-4">
+          <button
+            onClick={() => setActiveView('voice')}
+            className={`w-full py-4 px-5 rounded-xl font-semibold text-base transition-all flex items-center gap-3 ${
+              activeView === 'voice'
+                ? 'bg-purple-600 text-white shadow-lg shadow-purple-200'
+                : 'bg-purple-50 text-purple-700 hover:bg-purple-100'
+            }`}
+          >
+            <PhoneIcon />
+            {sidebarOpen && <span>Speak with Fractional</span>}
+          </button>
+        </div>
+
         {/* Navigation */}
-        <nav className="flex-1 p-4 space-y-1">
-          <NavItem
+        <nav className="flex-1 px-3 py-2 space-y-1">
+          <SidebarItem
             icon={<HomeIcon />}
-            label="Overview"
-            active={activeTab === 'overview'}
-            onClick={() => setActiveTab('overview')}
+            label="Repo"
+            active={activeView === 'home'}
+            onClick={() => setActiveView('home')}
+            collapsed={!sidebarOpen}
           />
-          <NavItem
+          <SidebarItem
             icon={<BriefcaseIcon />}
             label="Jobs"
-            href="/fractionaljobsuk"
+            active={activeView === 'jobs'}
+            onClick={() => setActiveView('jobs')}
+            collapsed={!sidebarOpen}
           />
-          <NavItem
-            icon={<ChatIcon />}
-            label="AI Assistant"
-            active={activeTab === 'assistant'}
-            onClick={() => setActiveTab('assistant')}
-          />
-          <NavItem
+          <SidebarItem
             icon={<ArticleIcon />}
             label="Articles"
-            href="/fractional-jobs-articles"
+            active={activeView === 'articles'}
+            onClick={() => setActiveView('articles')}
+            collapsed={!sidebarOpen}
           />
-          <NavItem
-            icon={<BookmarkIcon />}
-            label="Saved Jobs"
-            active={activeTab === 'saved'}
-            onClick={() => setActiveTab('saved')}
-            badge="Coming Soon"
-          />
-          <NavItem
-            icon={<BellIcon />}
-            label="Alerts"
-            active={activeTab === 'alerts'}
-            onClick={() => setActiveTab('alerts')}
-            badge="Coming Soon"
+          <SidebarItem
+            icon={<ChatIcon />}
+            label="Chat"
+            href="/chat"
+            collapsed={!sidebarOpen}
           />
         </nav>
 
-        {/* User Profile */}
-        <div className="p-4 border-t border-gray-800">
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-800/50">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+        {/* User Section */}
+        <div className="p-4 border-t border-gray-100">
+          <div className={`flex items-center gap-3 p-3 rounded-xl bg-gray-50 ${sidebarOpen ? '' : 'justify-center'}`}>
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center flex-shrink-0">
               <span className="text-white font-semibold">
                 {user.displayName?.charAt(0).toUpperCase() || 'U'}
               </span>
             </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-white text-sm font-medium truncate">
-                {user.displayName || 'User'}
-              </p>
-              <p className="text-gray-400 text-xs truncate">{user.primaryEmail}</p>
-            </div>
-            <Link href="/handler/account-settings" className="text-gray-400 hover:text-white">
-              <SettingsIcon />
-            </Link>
+            {sidebarOpen && (
+              <div className="flex-1 min-w-0">
+                <p className="text-gray-900 text-sm font-medium truncate">
+                  {user.displayName || 'User'}
+                </p>
+                <p className="text-gray-500 text-xs truncate">{user.primaryEmail}</p>
+              </div>
+            )}
+            {sidebarOpen && (
+              <Link href="/handler/account-settings" className="text-gray-400 hover:text-gray-600">
+                <SettingsIcon />
+              </Link>
+            )}
           </div>
         </div>
+
+        {/* Collapse Toggle */}
+        <button
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          className="p-4 border-t border-gray-100 text-gray-400 hover:text-gray-600 hover:bg-gray-50 transition-colors"
+        >
+          {sidebarOpen ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+        </button>
       </aside>
 
       {/* Main Content */}
       <main className="flex-1 overflow-auto">
-        {activeTab === 'overview' && <OverviewTab firstName={firstName} />}
-        {activeTab === 'assistant' && <AssistantTab />}
-        {activeTab === 'saved' && <ComingSoonTab title="Saved Jobs" />}
-        {activeTab === 'alerts' && <ComingSoonTab title="Job Alerts" />}
+        {activeView === 'home' && <HomeView firstName={firstName} onSpeakClick={() => setActiveView('voice')} />}
+        {activeView === 'voice' && <VoiceView userName={user.displayName || undefined} />}
+        {activeView === 'jobs' && <JobsView />}
+        {activeView === 'articles' && <ArticlesView />}
       </main>
     </div>
   )
 }
 
-function OverviewTab({ firstName }: { firstName: string }) {
+function HomeView({ firstName, onSpeakClick }: { firstName: string; onSpeakClick: () => void }) {
   return (
-    <div className="p-8">
+    <div className="p-8 max-w-5xl mx-auto">
       {/* Welcome Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white mb-2">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">
           Welcome back, {firstName}
         </h1>
-        <p className="text-gray-400">
-          Here's what's happening with your fractional career journey
+        <p className="text-gray-600">
+          Ready to find your next fractional role?
         </p>
       </div>
 
-      {/* Trinity Section - 3 Key Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      {/* Main CTA Card */}
+      <div className="bg-gradient-to-br from-purple-600 to-purple-700 rounded-2xl p-8 mb-8 text-white">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-2xl font-bold mb-2">Talk to our AI Assistant</h2>
+            <p className="text-purple-100 mb-4">
+              Get personalized job recommendations and career advice through a natural conversation.
+            </p>
+            <button
+              onClick={onSpeakClick}
+              className="bg-white text-purple-700 px-6 py-3 rounded-xl font-semibold hover:bg-purple-50 transition-colors inline-flex items-center gap-2"
+            >
+              <PhoneIcon />
+              Speak with Fractional
+            </button>
+          </div>
+          <div className="hidden md:block">
+            <div className="w-32 h-32 bg-white/10 rounded-full flex items-center justify-center">
+              <MicIcon className="w-16 h-16 text-white/80" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Stats Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <StatCard
-          icon={<BriefcaseIcon />}
           label="Active Jobs"
           value="500+"
-          change="+12 this week"
-          color="purple"
+          subtitle="UK market"
+          icon={<BriefcaseIcon />}
         />
         <StatCard
-          icon={<LocationIcon />}
           label="London Roles"
           value="85+"
-          change="Top market"
-          color="pink"
+          subtitle="Top market"
+          icon={<LocationIcon />}
         />
         <StatCard
-          icon={<CurrencyIcon />}
           label="Avg Day Rate"
           value="£950"
-          change="UK market"
-          color="blue"
+          subtitle="2025 rates"
+          icon={<CurrencyIcon />}
         />
       </div>
 
-      {/* Quick Actions */}
-      <div className="mb-8">
-        <h2 className="text-xl font-semibold text-white mb-4">Quick Actions</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <QuickAction
-            href="/fractionaljobsuk"
-            icon={<SearchIcon />}
-            title="Browse Jobs"
-            description="Find your next role"
-          />
-          <QuickAction
-            href="/chat"
-            icon={<ChatIcon />}
-            title="AI Chat"
-            description="Get career advice"
-          />
-          <QuickAction
-            href="/voice"
-            icon={<MicIcon />}
-            title="Voice Assistant"
-            description="Talk to our AI"
-          />
-          <QuickAction
-            href="/fractional-jobs-articles"
-            icon={<ArticleIcon />}
-            title="Read Articles"
-            description="Industry insights"
-          />
-        </div>
-      </div>
-
-      {/* Featured Roles */}
-      <div className="mb-8">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-semibold text-white">Popular Roles</h2>
-          <Link href="/fractionaljobsuk" className="text-purple-400 hover:text-purple-300 text-sm">
-            View all →
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <RoleCard title="Fractional CFO" count="120+ jobs" rate="£900-1,500/day" href="/fractional-cfo-jobs-uk" />
-          <RoleCard title="Fractional CMO" count="85+ jobs" rate="£850-1,400/day" href="/fractional-cmo-jobs-uk" />
-          <RoleCard title="Fractional CTO" count="95+ jobs" rate="£950-1,600/day" href="/fractional-cto-jobs-uk" />
-          <RoleCard title="Fractional COO" count="70+ jobs" rate="£900-1,400/day" href="/fractional-coo-jobs-uk" />
-        </div>
-      </div>
-
-      {/* Latest Articles */}
-      <div>
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-semibold text-white">Latest Insights</h2>
-          <Link href="/fractional-jobs-articles" className="text-purple-400 hover:text-purple-300 text-sm">
-            View all →
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <ArticleCard
-            title="How to Become a Fractional Executive"
-            description="Your complete guide to transitioning to fractional work"
-            href="/how-to-become-a-fractional-executive"
-          />
-          <ArticleCard
-            title="Fractional Jobs London"
-            description="The UK's hottest market for fractional talent"
-            href="/fractional-jobs-london"
-          />
-          <ArticleCard
-            title="Day Rate Guide 2025"
-            description="What fractional executives earn in the UK"
-            href="/fractional-jobs-salary-guide"
-          />
-        </div>
+      {/* Quick Links */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <QuickLink
+          href="/fractionaljobsuk"
+          title="Browse All Jobs"
+          description="Search 500+ fractional executive positions"
+          icon={<SearchIcon />}
+        />
+        <QuickLink
+          href="/fractional-jobs-articles"
+          title="Career Guides"
+          description="Expert advice on fractional careers"
+          icon={<ArticleIcon />}
+        />
+        <QuickLink
+          href="/fractional-cfo-jobs-uk"
+          title="CFO Roles"
+          description="120+ fractional CFO opportunities"
+          icon={<BriefcaseIcon />}
+        />
+        <QuickLink
+          href="/fractional-jobs-london"
+          title="London Jobs"
+          description="Roles in the UK's top market"
+          icon={<LocationIcon />}
+        />
       </div>
     </div>
   )
 }
 
-function AssistantTab() {
+function VoiceView({ userName }: { userName?: string }) {
   return (
-    <div className="p-8 h-full flex flex-col">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold text-white mb-2">AI Assistant</h1>
-        <p className="text-gray-400">
-          Talk to our AI about fractional jobs, day rates, and career advice
-        </p>
-      </div>
-
-      <div className="flex-1 flex flex-col items-center justify-center bg-gray-900/50 rounded-2xl border border-gray-800 p-8">
-        <HumeWidget variant="hero" />
-        <div className="mt-8 text-center max-w-md">
-          <p className="text-gray-400 text-sm mb-4">
-            As a signed-in user, you have unlimited access to our AI assistant.
-            Ask about jobs, day rates, or career transitions.
+    <div className="h-full flex flex-col items-center justify-center p-8 bg-gradient-to-b from-gray-50 to-white">
+      <div className="max-w-xl w-full text-center">
+        <div className="mb-8">
+          <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <MicIcon className="w-10 h-10 text-purple-600" />
+          </div>
+          <h1 className="text-3xl font-bold text-gray-900 mb-3">
+            Speak with Fractional
+          </h1>
+          <p className="text-gray-600 text-lg">
+            Have a natural conversation about fractional jobs, day rates, and career transitions.
           </p>
-          <Link href="/chat" className="text-purple-400 hover:text-purple-300 text-sm">
+        </div>
+
+        {/* Hume Voice Widget */}
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 mb-6">
+          <HumeWidget variant="hero" userName={userName} isAuthenticated={true} darkMode={false} />
+        </div>
+
+        <p className="text-gray-500 text-sm">
+          As a signed-in user, you have unlimited access to our AI assistant.
+        </p>
+
+        <div className="mt-6">
+          <Link href="/chat" className="text-purple-600 hover:text-purple-700 font-medium">
             Prefer text? Try our chat →
           </Link>
         </div>
@@ -243,52 +248,104 @@ function AssistantTab() {
   )
 }
 
-function ComingSoonTab({ title }: { title: string }) {
+function JobsView() {
+  const roles = [
+    { title: 'Fractional CFO', count: '120+', href: '/fractional-cfo-jobs-uk', rate: '£900-1,500/day' },
+    { title: 'Fractional CMO', count: '85+', href: '/fractional-cmo-jobs-uk', rate: '£850-1,400/day' },
+    { title: 'Fractional CTO', count: '95+', href: '/fractional-cto-jobs-uk', rate: '£950-1,600/day' },
+    { title: 'Fractional COO', count: '70+', href: '/fractional-coo-jobs-uk', rate: '£900-1,400/day' },
+    { title: 'Fractional CHRO', count: '45+', href: '/fractional-chro-jobs-uk', rate: '£800-1,200/day' },
+    { title: 'All Roles', count: '500+', href: '/fractionaljobsuk', rate: 'View all' },
+  ]
+
   return (
-    <div className="p-8 h-full flex flex-col items-center justify-center">
-      <div className="w-20 h-20 rounded-full bg-gray-800 flex items-center justify-center mb-6">
-        <svg className="w-10 h-10 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-        </svg>
+    <div className="p-8 max-w-5xl mx-auto">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Browse Jobs</h1>
+        <p className="text-gray-600">Find your next fractional executive role</p>
       </div>
-      <h2 className="text-2xl font-bold text-white mb-2">{title}</h2>
-      <p className="text-gray-400 text-center max-w-md mb-6">
-        This feature is coming soon. We're building tools to help you track and manage your fractional career.
-      </p>
-      <Link
-        href="/fractionaljobsuk"
-        className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-medium transition-colors"
-      >
-        Browse Jobs Instead
-      </Link>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {roles.map((role) => (
+          <Link
+            key={role.href}
+            href={role.href}
+            className="bg-white rounded-xl border border-gray-200 p-5 hover:border-purple-300 hover:shadow-md transition-all group"
+          >
+            <div className="flex justify-between items-start">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 group-hover:text-purple-700 transition-colors">
+                  {role.title}
+                </h3>
+                <p className="text-gray-500 text-sm mt-1">{role.count} jobs available</p>
+              </div>
+              <span className="text-purple-600 font-medium text-sm bg-purple-50 px-3 py-1 rounded-full">
+                {role.rate}
+              </span>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   )
 }
 
-// Component helpers
-function NavItem({ icon, label, active, onClick, href, badge }: {
+function ArticlesView() {
+  const articles = [
+    { title: 'How to Become a Fractional Executive', href: '/how-to-become-a-fractional-executive', category: 'Guide' },
+    { title: 'Fractional Jobs London', href: '/fractional-jobs-london', category: 'Market' },
+    { title: 'Day Rate Guide 2025', href: '/fractional-jobs-salary-guide', category: 'Salary' },
+    { title: 'Fractional Jobs Remote', href: '/fractional-jobs-remote', category: 'Remote' },
+    { title: 'What is a Fractional Executive?', href: '/what-is-fractional-executive', category: 'Intro' },
+    { title: 'All Articles', href: '/fractional-jobs-articles', category: 'View All' },
+  ]
+
+  return (
+    <div className="p-8 max-w-5xl mx-auto">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Articles & Guides</h1>
+        <p className="text-gray-600">Expert insights on fractional careers</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {articles.map((article) => (
+          <Link
+            key={article.href}
+            href={article.href}
+            className="bg-white rounded-xl border border-gray-200 p-5 hover:border-purple-300 hover:shadow-md transition-all group"
+          >
+            <span className="text-xs font-medium text-purple-600 bg-purple-50 px-2 py-1 rounded-full">
+              {article.category}
+            </span>
+            <h3 className="text-lg font-semibold text-gray-900 mt-3 group-hover:text-purple-700 transition-colors">
+              {article.title}
+            </h3>
+          </Link>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// Components
+function SidebarItem({ icon, label, active, onClick, href, collapsed }: {
   icon: React.ReactNode
   label: string
   active?: boolean
   onClick?: () => void
   href?: string
-  badge?: string
+  collapsed?: boolean
 }) {
-  const className = `flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${
+  const className = `flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
     active
-      ? 'bg-purple-600/20 text-purple-400'
-      : 'text-gray-400 hover:text-white hover:bg-gray-800'
-  }`
+      ? 'bg-purple-50 text-purple-700 font-medium'
+      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+  } ${collapsed ? 'justify-center' : ''}`
 
   const content = (
     <>
       {icon}
-      <span className="flex-1">{label}</span>
-      {badge && (
-        <span className="text-xs bg-gray-700 text-gray-300 px-2 py-0.5 rounded-full">
-          {badge}
-        </span>
-      )}
+      {!collapsed && <span>{label}</span>}
     </>
   )
 
@@ -299,85 +356,44 @@ function NavItem({ icon, label, active, onClick, href, badge }: {
   return <button onClick={onClick} className={`w-full ${className}`}>{content}</button>
 }
 
-function StatCard({ icon, label, value, change, color }: {
-  icon: React.ReactNode
+function StatCard({ label, value, subtitle, icon }: {
   label: string
   value: string
-  change: string
-  color: 'purple' | 'pink' | 'blue'
+  subtitle: string
+  icon: React.ReactNode
 }) {
-  const colors = {
-    purple: 'from-purple-500 to-purple-600',
-    pink: 'from-pink-500 to-pink-600',
-    blue: 'from-blue-500 to-blue-600',
-  }
-
   return (
-    <div className="bg-gray-900 rounded-2xl border border-gray-800 p-6">
-      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${colors[color]} flex items-center justify-center mb-4`}>
-        <span className="text-white">{icon}</span>
+    <div className="bg-white rounded-xl border border-gray-200 p-5">
+      <div className="flex items-center gap-3 mb-3">
+        <div className="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center">
+          {icon}
+        </div>
+        <span className="text-gray-500 text-sm">{label}</span>
       </div>
-      <p className="text-gray-400 text-sm mb-1">{label}</p>
-      <p className="text-3xl font-bold text-white mb-1">{value}</p>
-      <p className="text-green-400 text-sm">{change}</p>
+      <p className="text-2xl font-bold text-gray-900">{value}</p>
+      <p className="text-gray-500 text-sm">{subtitle}</p>
     </div>
   )
 }
 
-function QuickAction({ href, icon, title, description }: {
+function QuickLink({ href, title, description, icon }: {
   href: string
+  title: string
+  description: string
   icon: React.ReactNode
-  title: string
-  description: string
 }) {
   return (
     <Link
       href={href}
-      className="bg-gray-900 rounded-xl border border-gray-800 p-4 hover:border-purple-500/50 hover:bg-gray-800/50 transition-all group"
+      className="bg-white rounded-xl border border-gray-200 p-5 hover:border-purple-300 hover:shadow-md transition-all group flex items-start gap-4"
     >
-      <div className="w-10 h-10 rounded-lg bg-gray-800 group-hover:bg-purple-600/20 flex items-center justify-center mb-3 transition-colors">
-        <span className="text-gray-400 group-hover:text-purple-400">{icon}</span>
+      <div className="w-10 h-10 rounded-lg bg-gray-100 group-hover:bg-purple-50 text-gray-600 group-hover:text-purple-600 flex items-center justify-center transition-colors flex-shrink-0">
+        {icon}
       </div>
-      <h3 className="text-white font-medium mb-1">{title}</h3>
-      <p className="text-gray-500 text-sm">{description}</p>
-    </Link>
-  )
-}
-
-function RoleCard({ title, count, rate, href }: {
-  title: string
-  count: string
-  rate: string
-  href: string
-}) {
-  return (
-    <Link
-      href={href}
-      className="bg-gray-900 rounded-xl border border-gray-800 p-4 hover:border-purple-500/50 transition-all flex items-center justify-between"
-    >
       <div>
-        <h3 className="text-white font-medium">{title}</h3>
-        <p className="text-gray-500 text-sm">{count}</p>
+        <h3 className="font-semibold text-gray-900 group-hover:text-purple-700 transition-colors">{title}</h3>
+        <p className="text-gray-500 text-sm mt-1">{description}</p>
       </div>
-      <div className="text-right">
-        <p className="text-purple-400 font-medium">{rate}</p>
-      </div>
-    </Link>
-  )
-}
-
-function ArticleCard({ title, description, href }: {
-  title: string
-  description: string
-  href: string
-}) {
-  return (
-    <Link
-      href={href}
-      className="bg-gray-900 rounded-xl border border-gray-800 p-4 hover:border-purple-500/50 transition-all"
-    >
-      <h3 className="text-white font-medium mb-2 line-clamp-2">{title}</h3>
-      <p className="text-gray-500 text-sm line-clamp-2">{description}</p>
     </Link>
   )
 }
@@ -411,22 +427,6 @@ function ArticleIcon() {
   return (
     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-    </svg>
-  )
-}
-
-function BookmarkIcon() {
-  return (
-    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-    </svg>
-  )
-}
-
-function BellIcon() {
-  return (
-    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
     </svg>
   )
 }
@@ -465,10 +465,34 @@ function SearchIcon() {
   )
 }
 
-function MicIcon() {
+function MicIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+    </svg>
+  )
+}
+
+function PhoneIcon() {
   return (
     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+    </svg>
+  )
+}
+
+function ChevronLeftIcon() {
+  return (
+    <svg className="w-5 h-5 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
+    </svg>
+  )
+}
+
+function ChevronRightIcon() {
+  return (
+    <svg className="w-5 h-5 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
     </svg>
   )
 }
