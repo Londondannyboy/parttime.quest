@@ -2,6 +2,7 @@ import Link from "next/link";
 import { createDbQuery } from "@/lib/db";
 import { FractionalCalculator } from "@/components/FractionalCalculator";
 import { JobCard } from "@/components/JobCard";
+import { HumeWidget } from "@/components/HumeWidget";
 
 // Revalidate homepage every hour
 export const revalidate = 3600
@@ -186,7 +187,7 @@ export default async function Home() {
               Build your dream team without long-term commitments.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Link
                 href="/fractional-jobs"
                 className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-purple-900 hover:bg-purple-50 transition-all duration-200 min-h-14"
@@ -199,6 +200,12 @@ export default async function Home() {
               >
                 Post a Position
               </Link>
+            </div>
+
+            {/* Voice Assistant */}
+            <div className="mb-8">
+              <p className="text-purple-200 text-sm mb-4">or ask our AI assistant</p>
+              <HumeWidget variant="hero" />
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-6 text-purple-200 text-sm">

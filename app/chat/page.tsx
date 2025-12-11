@@ -4,6 +4,22 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 
+const MAX_FREE_MESSAGES = 3
+const STORAGE_KEY = 'fractional_chat_uses'
+
+function getChatUsageCount(): number {
+  if (typeof window === 'undefined') return 0
+  const stored = localStorage.getItem(STORAGE_KEY)
+  return stored ? parseInt(stored, 10) : 0
+}
+
+function incrementChatUsage(): number {
+  const current = getChatUsageCount()
+  const newCount = current + 1
+  localStorage.setItem(STORAGE_KEY, newCount.toString())
+  return newCount
+}
+
 interface Message {
   role: 'user' | 'assistant'
   content: string
@@ -11,7 +27,6 @@ interface Message {
 }
 
 export default function ChatPage() {
-  // Auth state is handled at layout level - no need to check here
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
@@ -20,7 +35,14 @@ export default function ChatPage() {
   ])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [usageCount, setUsageCount] = useState(0)
+  const [isClient, setIsClient] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    setIsClient(true)
+    setUsageCount(getChatUsageCount())
+  }, [])
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -34,10 +56,28 @@ export default function ChatPage() {
     e.preventDefault()
     if (!input.trim() || isLoading) return
 
+    // Check usage limit
+    if (usageCount >= MAX_FREE_MESSAGES) {
+      setMessages((prev) => [
+        ...prev,
+        { role: 'user', content: input.trim() },
+        {
+          role: 'assistant',
+          content: "You've reached your free message limit. Sign in for unlimited access to our chat assistant!",
+        },
+      ])
+      setInput('')
+      return
+    }
+
     const userMessage = input.trim()
     setInput('')
     setMessages((prev) => [...prev, { role: 'user', content: userMessage }])
     setIsLoading(true)
+
+    // Increment usage
+    const newCount = incrementChatUsage()
+    setUsageCount(newCount)
 
     try {
       // Call our chat API
@@ -73,6 +113,8 @@ export default function ChatPage() {
       setIsLoading(false)
     }
   }
+
+  const remainingUses = Math.max(0, MAX_FREE_MESSAGES - usageCount)
 
   const suggestedQuestions = [
     "What is a fractional executive?",
@@ -204,14 +246,30 @@ export default function ChatPage() {
           </button>
         </form>
 
-        {/* Footer Note */}
-        <p className="text-xs text-gray-400 text-center mt-4">
-          Powered by AI. Responses may not always be accurate. For the latest job listings, visit our{' '}
-          <Link href="/fractionaljobsuk" className="text-purple-600 hover:underline">
-            jobs page
-          </Link>
-          .
-        </p>
+        {/* Usage Counter & Footer */}
+        <div className="text-center mt-4 space-y-2">
+          {isClient && remainingUses > 0 && (
+            <p className="text-xs text-purple-600 font-medium">
+              {remainingUses} free {remainingUses === 1 ? 'message' : 'messages'} remaining
+            </p>
+          )}
+          {isClient && remainingUses === 0 && (
+            <p className="text-xs text-orange-600 font-medium">
+              Free trial ended.{' '}
+              <Link href="/handler/sign-in" className="underline hover:text-orange-800">
+                Sign in
+              </Link>{' '}
+              for unlimited access.
+            </p>
+          )}
+          <p className="text-xs text-gray-400">
+            Powered by AI. For job listings, visit our{' '}
+            <Link href="/fractionaljobsuk" className="text-purple-600 hover:underline">
+              jobs page
+            </Link>
+            .
+          </p>
+        </div>
       </div>
     </div>
   )
