@@ -49,7 +49,16 @@ const nextConfig: NextConfig = {
 
   // Optimize CSS and package imports for modern browsers
   experimental: {
-    optimizePackageImports: ["@tailwindcss/typography", "react-markdown"],
+    // Tree-shake heavy packages more aggressively
+    optimizePackageImports: [
+      "@tailwindcss/typography",
+      "react-markdown",
+      "@humeai/voice-react",
+      "@mux/mux-player-react",
+      "@stackframe/stack",
+      "@neondatabase/serverless",
+      "zod",
+    ],
     // Inline critical CSS to eliminate render-blocking requests
     optimizeCss: true,
   },
