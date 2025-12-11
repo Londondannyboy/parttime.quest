@@ -1,15 +1,12 @@
-'use client'
+import { redirect } from 'next/navigation'
 
-import { useUser, UserButton } from '@stackframe/stack'
-import Link from 'next/link'
-
+// Profile redirects to dashboard
 export default function ProfilePage() {
-  const user = useUser({ or: 'redirect' })
+  redirect('/dashboard')
+}
 
-  if (!user) {
-    return null // Will redirect to sign-in
-  }
-
+function OldProfilePage() {
+  // Keep old code as reference but unused
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
