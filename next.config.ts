@@ -3,27 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
-      // SEO-optimized URL redirects
-      {
-        source: "/london",
-        destination: "/fractionaljobsuk?location=London",
-        permanent: true,
-      },
-      {
-        source: "/jobs",
-        destination: "/fractionaljobsuk",
-        permanent: true,
-      },
-      {
-        source: "/executive-jobs",
-        destination: "/fractionaljobsuk",
-        permanent: true,
-      },
-      {
-        source: "/remote-jobs",
-        destination: "/fractionaljobsuk?remote=true",
-        permanent: true,
-      },
+      // Trinity Option B: No legacy redirects needed
+      // All traffic goes to /discover for Trinity conversation
     ];
   },
 
