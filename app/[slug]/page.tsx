@@ -6,36 +6,13 @@ import { notFound } from 'next/navigation'
 // Revalidate every 4 hours for articles
 export const revalidate = 14400
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  try {
-    const sql = createDbQuery()
-    const articles = await sql`
-      SELECT title, meta_description, excerpt
-      FROM articles
-      WHERE slug = ${params.slug}
-        AND status = 'published'
-        AND app = 'fractional'
-      LIMIT 1
-    `
-
-    if (articles.length === 0) {
-      return { title: 'Not Found' }
-    }
-
-    const article = articles[0] as any
-    return {
-      title: `${article.title} | Fractional.Quest`,
-      description: article.meta_description || article.excerpt || 'Read this article on Fractional.Quest',
-    }
-  } catch {
-    return { title: 'Article | Fractional.Quest' }
-  }
+interface PageProps {
+  params: Promise<{ slug: string }>
 }
 
-export default async function ArticleDetailPage({ params }: { params: { slug: string } }) {
+async function getArticle(slug: string) {
   try {
     const sql = createDbQuery()
-
     const articles = await sql`
       SELECT
         id,
@@ -48,17 +25,39 @@ export default async function ArticleDetailPage({ params }: { params: { slug: st
         published_at,
         word_count
       FROM articles
-      WHERE slug = ${params.slug}
+      WHERE slug = ${slug}
         AND status = 'published'
         AND app = 'fractional'
       LIMIT 1
     `
+    return articles[0] || null
+  } catch (error) {
+    console.error('Error fetching article:', error)
+    return null
+  }
+}
 
-    if (articles.length === 0) {
-      notFound()
-    }
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params
+  const article = await getArticle(slug)
 
-    const article = articles[0] as any
+  if (!article) {
+    return { title: 'Article Not Found | Fractional.Quest' }
+  }
+
+  return {
+    title: `${article.title} | Fractional.Quest`,
+    description: article.meta_description || article.excerpt || 'Read this article on Fractional.Quest',
+  }
+}
+
+export default async function ArticleDetailPage({ params }: PageProps) {
+  const { slug } = await params
+  const article = await getArticle(slug)
+
+  if (!article) {
+    notFound()
+  }
 
     return (
       <article className="min-h-screen bg-white">
@@ -121,8 +120,4 @@ export default async function ArticleDetailPage({ params }: { params: { slug: st
         </div>
       </article>
     )
-  } catch (error) {
-    console.error('Error fetching article:', error)
-    notFound()
-  }
 }
