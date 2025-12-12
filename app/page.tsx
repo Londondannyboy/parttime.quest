@@ -272,20 +272,21 @@ export default async function Home() {
               {/* Left: Main content */}
               <div className="max-w-2xl">
                 <div className="bg-black/40 backdrop-blur-md rounded-2xl p-6 md:p-10 border border-white/10">
-                  <div className="flex items-center gap-3 mb-6">
-                    <img
-                      src="/logo.svg"
-                      alt="Fractional Jobs UK - Find fractional executive roles"
-                      className="w-10 h-10"
-                    />
-                    <span className="bg-white/10 backdrop-blur text-white/90 px-4 py-1.5 rounded-full text-xs font-medium uppercase tracking-wider">
-                      Beta Launch — December 2025
-                    </span>
-                  </div>
+                  <span className="inline-block bg-white/10 backdrop-blur text-white/90 px-4 py-1.5 rounded-full text-xs font-medium uppercase tracking-wider mb-6">
+                    Beta Launch — December 2025
+                  </span>
 
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-[1.1]">
                     Fractional Jobs UK
                   </h1>
+
+                  {/* Hidden image for SEO - contains keyword in alt text */}
+                  <img
+                    src="/logo.svg"
+                    alt="Fractional jobs UK platform for executive roles"
+                    className="sr-only"
+                    aria-hidden="true"
+                  />
 
                   <p className="text-lg text-white/70 mb-8 leading-relaxed">
                     Find fractional CFO, CTO, CMO and executive roles across the UK.

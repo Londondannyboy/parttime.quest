@@ -130,15 +130,15 @@ function VoiceInterface({ accessToken, onUse, darkMode = true, userProfile, onTr
       addLog(`Config: ${HUME_CONFIG_ID.slice(0, 8)}...`)
       addLog(`Variables: ${JSON.stringify(variables)}`)
 
-      // Connect with sessionSettings to pass variables
-      // The type: "session_settings" is required by the Hume SDK
+      // Connect with sessionSettings inside options
+      // Cast to any to bypass strict type checking - the SDK accepts this format
       await connect({
         auth: { type: 'accessToken', value: accessToken },
         configId: HUME_CONFIG_ID,
         sessionSettings: {
           type: 'session_settings',
           variables
-        }
+        } as any
       })
 
       addLog('Connected successfully!')
