@@ -78,20 +78,20 @@ class StructuredJob(BaseModel):
         IMPORTANT - Internal Linking for SEO:
         Naturally weave 2-4 internal links into the prose using markdown format.
 
-        KEYWORD CLUSTERS (variations all link to same URL):
-        - CFO cluster → /fractional-jobs?role=CFO
+        KEYWORD CLUSTERS (each links to a DIFFERENT dedicated page):
+        - CFO cluster → /fractional-cfo-jobs-uk
           Link text variations: "fractional CFO", "fractional CFO jobs", "CFO roles",
           "part-time CFO", "fractional finance director", "CFO opportunities"
 
-        - CMO cluster → /fractional-jobs?role=CMO
+        - CMO cluster → /fractional-cmo-jobs-uk
           Link text variations: "fractional CMO", "fractional CMO jobs", "CMO roles",
           "part-time CMO", "fractional marketing director", "CMO opportunities"
 
-        - CTO cluster → /fractional-jobs?role=CTO
+        - CTO cluster → /fractional-cto-jobs-uk
           Link text variations: "fractional CTO", "fractional CTO jobs", "CTO roles",
           "part-time CTO", "fractional tech director", "CTO opportunities"
 
-        - COO cluster → /fractional-jobs?role=COO
+        - COO cluster → /fractional-coo-jobs-uk
           Link text variations: "fractional COO", "fractional COO jobs", "COO roles",
           "part-time COO", "fractional operations director", "COO opportunities"
 
@@ -189,17 +189,17 @@ Your role is to transform raw job postings into beautifully crafted, editorially
 The opportunity_description MUST include 2-4 internal links for SEO strength.
 Use markdown: [link text](url)
 
-Available URLs (use each URL ONLY ONCE per job description):
-- /fractional-jobs?role=CFO (fractional CFO, CFO jobs, part-time CFO, finance director)
-- /fractional-jobs?role=CMO (fractional CMO, CMO jobs, marketing director)
-- /fractional-jobs?role=CTO (fractional CTO, CTO jobs, tech director)
-- /fractional-jobs?role=COO (fractional COO, COO jobs, operations director)
+Available DEDICATED PAGES (each is a truly different page - use each ONLY ONCE):
+- /fractional-cfo-jobs-uk (fractional CFO, CFO jobs, part-time CFO, finance director)
+- /fractional-cmo-jobs-uk (fractional CMO, CMO jobs, marketing director)
+- /fractional-cto-jobs-uk (fractional CTO, CTO jobs, tech director)
+- /fractional-coo-jobs-uk (fractional COO, COO jobs, operations director)
 - /fractional-jobs (fractional jobs, fractional roles, portfolio career, part-time executive)
 
 CRITICAL RULES:
 1. NEVER link to the same URL twice - Google penalizes duplicate internal links
-2. Use 2-4 DIFFERENT URLs per description
-3. Prioritize the role-specific URL matching the job category
+2. Use 2-4 DIFFERENT dedicated pages per description
+3. Prioritize the role-specific page matching the job category
 4. Vary anchor text naturally
 
 Remember: You're not just extracting data - you're crafting content that represents our brand.

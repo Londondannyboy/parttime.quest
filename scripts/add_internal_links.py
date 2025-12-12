@@ -25,29 +25,27 @@ class LinkedDescription(BaseModel):
     """Job description with internal links added"""
 
     updated_description: str = Field(description="""
-        The job description with 2-4 internal SEO links added naturally.
+        The job description with 2-4 internal SEO links to DIFFERENT dedicated pages.
 
-        AVAILABLE URLs (use each URL ONLY ONCE - Google penalizes duplicate links!):
-        - /fractional-jobs?role=CFO (for CFO, finance director, finance leadership mentions)
-        - /fractional-jobs?role=CMO (for CMO, marketing director mentions)
-        - /fractional-jobs?role=CTO (for CTO, tech director mentions)
-        - /fractional-jobs?role=COO (for COO, operations director mentions)
+        AVAILABLE DEDICATED PAGES (each is a truly different page - use each ONLY ONCE):
+        - /fractional-cfo-jobs-uk (for CFO, finance director, finance leadership mentions)
+        - /fractional-cmo-jobs-uk (for CMO, marketing director mentions)
+        - /fractional-cto-jobs-uk (for CTO, tech director mentions)
+        - /fractional-coo-jobs-uk (for COO, operations director mentions)
         - /fractional-jobs (for generic: fractional jobs, portfolio career, fractional executive)
 
         CRITICAL RULES:
-        1. NEVER link to the same URL twice in one description!
-           BAD: [fractional opportunities](/fractional-jobs)...[portfolio career](/fractional-jobs)
-           GOOD: [fractional CFO](/fractional-jobs?role=CFO)...[portfolio career](/fractional-jobs)
-        2. Use 2-4 DIFFERENT URLs per description
-        3. Prioritize the role-specific URL matching the job category
-        4. Links must read smoothly - preserve editorial flow
-        5. Use markdown format: [anchor text](url)
-        6. Remove any existing duplicate links and replace with varied URLs
-        7. Keep all existing content and formatting intact
+        1. NEVER link to the same page twice!
+        2. Use DEDICATED PAGES not query parameters (e.g., /fractional-cfo-jobs-uk NOT /fractional-jobs?role=CFO)
+        3. Replace any existing ?role= parameter links with dedicated page URLs
+        4. Use 2-4 DIFFERENT dedicated pages per description
+        5. Prioritize the role-specific page matching the job category
+        6. Links must read smoothly - preserve editorial flow
+        7. Use markdown format: [anchor text](url)
 
         Example transformation:
         Before: "This fractional CFO opportunity offers strategic impact for finance leaders seeking portfolio careers."
-        After: "This [fractional CFO](/fractional-jobs?role=CFO) opportunity offers strategic impact for finance leaders seeking [portfolio careers](/fractional-jobs)."
+        After: "This [fractional CFO](/fractional-cfo-jobs-uk) opportunity offers strategic impact for finance leaders seeking [portfolio careers](/fractional-jobs)."
     """)
 
     links_added: int = Field(description="Number of internal links added (should be 2-4)")
@@ -75,25 +73,25 @@ agent = Agent(
     output_type=LinkedDescription,
     system_prompt="""You are an SEO specialist adding internal links to job descriptions.
 
-Your task: Add 2-4 internal links using DIFFERENT URLs - Google penalizes duplicate links!
+Your task: Add 2-4 internal links to DIFFERENT dedicated pages - Google penalizes duplicate links!
 
-AVAILABLE URLs (use each ONLY ONCE per description):
-- /fractional-jobs?role=CFO (CFO, finance director, finance leadership)
-- /fractional-jobs?role=CMO (CMO, marketing director, marketing leadership)
-- /fractional-jobs?role=CTO (CTO, tech director, technology leadership)
-- /fractional-jobs?role=COO (COO, operations director, operations leadership)
+AVAILABLE DEDICATED PAGES (each is a truly different page - use each ONLY ONCE):
+- /fractional-cfo-jobs-uk (CFO, finance director, finance leadership)
+- /fractional-cmo-jobs-uk (CMO, marketing director, marketing leadership)
+- /fractional-cto-jobs-uk (CTO, tech director, technology leadership)
+- /fractional-coo-jobs-uk (COO, operations director, operations leadership)
 - /fractional-jobs (generic: fractional jobs, portfolio career, fractional executive)
 
 CRITICAL RULES:
 1. NEVER use the same URL twice - each link must go to a DIFFERENT page!
-2. Preserve ALL existing text - only add markdown link syntax around phrases
-3. If existing links have duplicate URLs, replace them with varied URLs
-4. Prioritize the role-specific URL matching the job's category
+2. These are DIFFERENT pages, not the same page with parameters
+3. Replace any existing /fractional-jobs?role=X links with the dedicated page URLs
+4. Prioritize the role-specific page matching the job's category
 5. Links must feel natural and editorial
-6. Use 2-4 different URLs total
+6. Use 2-4 different pages total
 
-BAD (duplicate): [fractional opportunities](/fractional-jobs)...[portfolio career](/fractional-jobs)
-GOOD (varied): [fractional CFO](/fractional-jobs?role=CFO)...[portfolio career](/fractional-jobs)
+BAD: [fractional CFO](/fractional-jobs?role=CFO) - uses query parameter
+GOOD: [fractional CFO](/fractional-cfo-jobs-uk) - uses dedicated page
 """
 )
 
