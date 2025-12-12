@@ -8,36 +8,52 @@ interface JobBodyProps {
 }
 
 /**
- * JobBody - Renders AI-written job descriptions
+ * JobBody - Renders AI-written job descriptions with optimal readability
  *
- * Since Pydantic AI now writes properly formatted prose,
- * we render it simply with proper paragraph handling.
+ * Based on readability best practices:
+ * - 2-3 sentences per paragraph max
+ * - Clear visual spacing between paragraphs
+ * - Sentences under 17 words for 75%+ comprehension
  */
 export function JobBody({ content, className = '' }: JobBodyProps) {
   if (!content) return null
 
-  // Split on double newlines (paragraph breaks) or treat as single flowing text
-  const paragraphs = content
+  // First, handle explicit paragraph breaks
+  const explicitParagraphs = content
     .split(/\n\n+/)
     .map(p => p.replace(/\n/g, ' ').trim())
     .filter(p => p.length > 0)
 
-  // If no paragraph breaks, render as single block of flowing prose
-  if (paragraphs.length <= 1) {
-    return (
-      <div className={`prose prose-lg max-w-none ${className}`}>
-        <p className="text-lg text-gray-700 leading-8">
-          {content}
-        </p>
-      </div>
-    )
+  // Then split long paragraphs into 2-3 sentence chunks for readability
+  const readableParagraphs: string[] = []
+
+  for (const para of explicitParagraphs) {
+    // Split on sentence endings followed by space and capital letter
+    const sentences = para
+      .split(/(?<=[.!?])\s+(?=[A-Z])/)
+      .filter(s => s.trim().length > 0)
+
+    // Group into chunks of 2-3 sentences
+    for (let i = 0; i < sentences.length; i += 2) {
+      const chunk = sentences.slice(i, i + 3).join(' ')
+      if (chunk.trim()) {
+        readableParagraphs.push(chunk.trim())
+      }
+    }
   }
 
-  // Render multiple paragraphs
+  // If we couldn't parse sentences, just show the content
+  if (readableParagraphs.length === 0) {
+    readableParagraphs.push(content)
+  }
+
   return (
     <div className={`space-y-6 ${className}`}>
-      {paragraphs.map((para, idx) => (
-        <p key={idx} className="text-lg text-gray-700 leading-8">
+      {readableParagraphs.map((para, idx) => (
+        <p
+          key={idx}
+          className="text-lg text-gray-700 leading-8"
+        >
           {para}
         </p>
       ))}
