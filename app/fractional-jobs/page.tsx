@@ -10,11 +10,12 @@ import { JobsGraph } from '@/components/JobsGraph'
 export const revalidate = 900
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs UK - Executive & Specialist Roles',
-  description: 'Browse fractional executive positions in the UK. Find CFO, CMO, CTO, and specialist roles.',
+  title: 'Fractional Jobs UK 2025 - Browse Executive & Part-Time C-Suite Roles',
+  description: 'Browse 500+ fractional jobs in the UK. Find fractional CFO, CMO, CTO roles paying £600-£1,500/day. Part-time executive positions updated daily.',
+  keywords: 'fractional jobs, fractional jobs uk, fractional executive jobs, part time executive jobs, fractional cfo jobs, fractional cmo jobs',
   openGraph: {
-    title: 'Fractional Jobs UK - Executive & Specialist Roles',
-    description: 'Browse fractional executive positions in the UK. Find CFO, CMO, CTO, and specialist roles.',
+    title: 'Fractional Jobs UK - Browse Executive & Part-Time C-Suite Roles',
+    description: 'Browse 500+ fractional jobs in the UK. Find fractional CFO, CMO, CTO roles paying £600-£1,500/day.',
     type: 'website',
   },
 }
@@ -262,11 +263,19 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
             <h1 className="text-4xl md:text-5xl font-black text-white mb-4">
               Fractional Jobs UK
             </h1>
+            {/* SEO image with keyword alt text */}
+            <img
+              src="/logo.svg"
+              alt="Fractional Jobs UK - Browse executive and part-time C-suite positions"
+              className="hidden"
+              width={1}
+              height={1}
+            />
             <p className="text-xl text-purple-100 mb-2">
-              Executive & Specialist Roles
+              Browse {total}+ fractional executive jobs across the UK
             </p>
             <p className="text-purple-200">
-              {total}+ opportunities • Updated every 15 minutes
+              CFO, CMO, CTO & specialist roles • £600-£1,500/day • Updated every 15 minutes
             </p>
           </div>
         </section>
@@ -393,11 +402,73 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* SEO Content Section */}
         <section className="py-16 bg-white border-t">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              Browse Fractional Jobs by Role
+            </h2>
+            <p className="text-gray-700 mb-8">
+              Fractional jobs offer experienced executives the opportunity to work with multiple companies on a part-time basis.
+              Whether you're seeking fractional CFO jobs, fractional CMO positions, or other C-suite roles, our job board
+              features hundreds of opportunities across the UK. Day rates typically range from £600-£1,500 depending on
+              seniority and specialisation.
+            </p>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+              <Link href="/part-time-cfo" className="p-4 bg-emerald-50 rounded-lg hover:bg-emerald-100 transition-colors">
+                <h3 className="font-bold text-gray-900 mb-1">Part-Time CFO Jobs</h3>
+                <p className="text-gray-600 text-sm">Finance leadership roles</p>
+              </Link>
+              <Link href="/part-time-cmo" className="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+                <h3 className="font-bold text-gray-900 mb-1">Part-Time CMO Jobs</h3>
+                <p className="text-gray-600 text-sm">Marketing leadership roles</p>
+              </Link>
+              <Link href="/fractional-cfo-salary" className="p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                <h3 className="font-bold text-gray-900 mb-1">CFO Salary Guide</h3>
+                <p className="text-gray-600 text-sm">Day rates & earnings</p>
+              </Link>
+              <Link href="/fractional-cmo-salary" className="p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                <h3 className="font-bold text-gray-900 mb-1">CMO Salary Guide</h3>
+                <p className="text-gray-600 text-sm">Day rates & earnings</p>
+              </Link>
+            </div>
+
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              Fractional Jobs by Location
+            </h2>
+            <p className="text-gray-700 mb-6">
+              Find fractional executive jobs across the UK's major business hubs. London dominates the fractional job market
+              with 60% of all roles, but Manchester, Birmingham, Edinburgh and Bristol all have growing fractional communities.
+            </p>
+            <div className="flex flex-wrap gap-3 mb-12">
+              <Link href="/fractional-jobs-london" className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full hover:bg-purple-200 font-medium">
+                Fractional Jobs London
+              </Link>
+              <Link href="/fractional-jobs-manchester" className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full hover:bg-purple-200 font-medium">
+                Fractional Jobs Manchester
+              </Link>
+              <Link href="/fractional-jobs-birmingham" className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full hover:bg-purple-200 font-medium">
+                Fractional Jobs Birmingham
+              </Link>
+              <Link href="/fractional-jobs-edinburgh" className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full hover:bg-purple-200 font-medium">
+                Fractional Jobs Edinburgh
+              </Link>
+              <Link href="/fractional-jobs-bristol" className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full hover:bg-purple-200 font-medium">
+                Fractional Jobs Bristol
+              </Link>
+              <Link href="/fractional-jobs-leeds" className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full hover:bg-purple-200 font-medium">
+                Fractional Jobs Leeds
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-16 bg-gray-50 border-t">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Can't find the right role?
+              Can't find the right fractional job?
             </h2>
             <p className="text-lg text-gray-600 mb-8">
               Get notified when new fractional positions match your profile

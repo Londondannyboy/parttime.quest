@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { UserGraph } from './UserGraph'
 
 interface Skill {
@@ -13,6 +13,20 @@ interface Skill {
   confirmed: boolean
   confidence: number
 }
+
+// Skill categories for the dropdown
+const SKILL_CATEGORIES = [
+  'technical',
+  'leadership',
+  'strategy',
+  'business',
+  'domain',
+  'communication',
+  'other',
+]
+
+// Common proficiency levels
+const PROFICIENCY_LEVELS = ['beginner', 'intermediate', 'advanced', 'expert']
 
 interface Experience {
   id: number
@@ -73,11 +87,18 @@ export function RepoDisplay({ userId, refreshTrigger }: RepoDisplayProps) {
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState<'skills' | 'experience' | 'preferences'>('skills')
 
-  useEffect(() => {
-    fetchRepo()
-  }, [userId, refreshTrigger])
+  // Skill management state
+  const [showAddSkill, setShowAddSkill] = useState(false)
+  const [addingSkill, setAddingSkill] = useState(false)
+  const [removingSkillId, setRemovingSkillId] = useState<number | null>(null)
+  const [newSkill, setNewSkill] = useState({
+    name: '',
+    category: 'technical',
+    yearsExperience: '',
+    proficiency: 'advanced',
+  })
 
-  const fetchRepo = async () => {
+  const fetchRepo = useCallback(async () => {
     try {
       const res = await fetch(`/api/repo?userId=${userId}`)
       if (res.ok) {
@@ -88,6 +109,81 @@ export function RepoDisplay({ userId, refreshTrigger }: RepoDisplayProps) {
       console.error('Error fetching repo:', error)
     }
     setLoading(false)
+  }, [userId])
+
+  useEffect(() => {
+    fetchRepo()
+  }, [fetchRepo, refreshTrigger])
+
+  const handleAddSkill = async () => {
+    if (!newSkill.name.trim()) return
+
+    setAddingSkill(true)
+    try {
+      const res = await fetch('/api/repo/skills', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId,
+          skillName: newSkill.name.trim(),
+          category: newSkill.category,
+          yearsExperience: newSkill.yearsExperience ? parseInt(newSkill.yearsExperience) : null,
+          proficiency: newSkill.proficiency,
+        }),
+      })
+
+      if (res.ok) {
+        const data = await res.json()
+        // Add the new skill to the repo state
+        setRepo(prev => prev ? {
+          ...prev,
+          skills: [...prev.skills, data.skill],
+          stats: {
+            ...prev.stats,
+            totalSkills: prev.stats.totalSkills + 1,
+            confirmedSkills: prev.stats.confirmedSkills + 1,
+          },
+        } : null)
+
+        // Reset form
+        setNewSkill({ name: '', category: 'technical', yearsExperience: '', proficiency: 'advanced' })
+        setShowAddSkill(false)
+      } else {
+        const error = await res.json()
+        alert(error.error || 'Failed to add skill')
+      }
+    } catch (error) {
+      console.error('Error adding skill:', error)
+      alert('Failed to add skill')
+    }
+    setAddingSkill(false)
+  }
+
+  const handleRemoveSkill = async (skillId: number) => {
+    setRemovingSkillId(skillId)
+    try {
+      const res = await fetch('/api/repo/skills', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId, userSkillId: skillId }),
+      })
+
+      if (res.ok) {
+        // Remove skill from repo state
+        setRepo(prev => prev ? {
+          ...prev,
+          skills: prev.skills.filter(s => s.id !== skillId),
+          stats: {
+            ...prev.stats,
+            totalSkills: prev.stats.totalSkills - 1,
+            confirmedSkills: Math.max(0, prev.stats.confirmedSkills - 1),
+          },
+        } : null)
+      }
+    } catch (error) {
+      console.error('Error removing skill:', error)
+    }
+    setRemovingSkillId(null)
   }
 
   if (loading) {
