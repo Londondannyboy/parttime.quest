@@ -60,7 +60,19 @@ export function Navigation() {
           </div>
 
           {/* Right side */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Jobs link - always visible, prominent on mobile */}
+            <Link
+              href="/fractional-jobs"
+              className={`md:hidden px-3 py-2 rounded-lg font-semibold text-sm transition-colors ${
+                isActive('/fractional-jobs')
+                  ? 'bg-purple-100 text-purple-800'
+                  : 'text-purple-700 hover:bg-purple-50'
+              }`}
+            >
+              Jobs
+            </Link>
+
             <AuthButtons />
             <Link
               href="/handler/sign-up"
