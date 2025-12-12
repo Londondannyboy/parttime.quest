@@ -170,35 +170,87 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily',
       priority: 0.8,
     },
+    // Role-specific job pages (high priority SEO pages)
+    {
+      url: `${baseUrl}/fractional-cfo-jobs-uk`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/fractional-cmo-jobs-uk`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/fractional-cto-jobs-uk`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/fractional-coo-jobs-uk`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    // Part-time guides
+    {
+      url: `${baseUrl}/part-time-cfo`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/part-time-cmo`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    // Salary guides
+    {
+      url: `${baseUrl}/fractional-cfo-salary`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/fractional-cmo-salary`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    // Short URL redirects (keep for backlinks)
     {
       url: `${baseUrl}/cfo`,
       lastModified: new Date(),
       changeFrequency: 'daily',
-      priority: 0.8,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/cto`,
       lastModified: new Date(),
       changeFrequency: 'daily',
-      priority: 0.8,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/cmo`,
       lastModified: new Date(),
       changeFrequency: 'daily',
-      priority: 0.8,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/coo`,
       lastModified: new Date(),
       changeFrequency: 'daily',
-      priority: 0.8,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/hr`,
       lastModified: new Date(),
       changeFrequency: 'daily',
-      priority: 0.8,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/guide`,
