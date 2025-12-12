@@ -23,46 +23,28 @@ export interface HumeMessage {
   }
 }
 
-// Fresh minimal implementation based on official Hume example
+// Fixed implementation - passes ALL variables at connect time
 function VoiceChat({
   accessToken,
   userName,
   isAuthenticated,
+  userProfile,
   onTranscript
 }: {
   accessToken: string
   userName?: string
   isAuthenticated: boolean
+  userProfile?: UserProfile | null
   onTranscript?: (transcript: string, allMessages: HumeMessage[]) => void
 }) {
-  const { connect, disconnect, status, messages, sendSessionSettings } = useVoice()
+  const { connect, disconnect, status, messages } = useVoice()
   const [isPending, setIsPending] = useState(false)
   const [logs, setLogs] = useState<string[]>([])
-  const sentSettings = useRef(false)
 
   const log = (msg: string) => {
     console.log('[Hume]', msg)
     setLogs(prev => [...prev.slice(-14), `${new Date().toLocaleTimeString()} ${msg}`])
   }
-
-  // Watch for chat_metadata then send variables
-  useEffect(() => {
-    if (sentSettings.current) return
-    if (status.value !== 'connected') return
-
-    const hasMeta = messages.some((m: any) => m.type === 'chat_metadata')
-    if (hasMeta && userName) {
-      log(`Sending vars: first_name=${userName}`)
-      sendSessionSettings({
-        type: 'session_settings',
-        variables: {
-          first_name: userName,
-          is_authenticated: 'true'
-        }
-      } as any)
-      sentSettings.current = true
-    }
-  }, [messages, status.value, userName, sendSessionSettings])
 
   // Forward transcripts
   useEffect(() => {
@@ -76,25 +58,40 @@ function VoiceChat({
 
   const handleConnect = useCallback(async () => {
     setIsPending(true)
-    sentSettings.current = false
-    log('Connecting...')
+    log('Connecting with variables...')
+
+    // Build ALL 6 variables that the Quest prompt expects
+    const sessionSettings = {
+      type: 'session_settings' as const,
+      variables: {
+        first_name: userName || '',
+        is_authenticated: isAuthenticated ? 'true' : 'false',
+        current_country: userProfile?.current_country || '',
+        interests: userProfile?.interests?.join(', ') || '',
+        timeline: userProfile?.timeline || '',
+        budget: userProfile?.budget || ''
+      }
+    }
+
+    log(`Variables: first_name=${userName}, auth=${isAuthenticated}`)
 
     try {
+      // Pass variables AT CONNECT TIME - this is the fix!
       await connect({
         auth: { type: 'accessToken', value: accessToken },
-        configId: CONFIG_ID
+        configId: CONFIG_ID,
+        sessionSettings
       })
       log('Connected!')
     } catch (e: any) {
       log(`Error: ${e.message || e}`)
     }
     setIsPending(false)
-  }, [connect, accessToken])
+  }, [connect, accessToken, userName, isAuthenticated, userProfile])
 
   const handleDisconnect = useCallback(() => {
     log('Disconnecting...')
     disconnect()
-    sentSettings.current = false
   }, [disconnect])
 
   const isConnected = status.value === 'connected'
@@ -228,6 +225,7 @@ export function HumeWidget({
         accessToken={accessToken}
         userName={displayName}
         isAuthenticated={isAuthenticated}
+        userProfile={userProfile}
         onTranscript={onTranscript}
       />
     </VoiceProvider>

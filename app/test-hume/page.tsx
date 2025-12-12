@@ -1,17 +1,38 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { VoiceProvider, useVoice } from '@humeai/voice-react'
 
 const CONFIG_ID = 'd57ceb71-4cf5-47e9-87cd-6052445a031c'
+
+// ALL 6 variables that the Quest prompt expects
+interface TestVariables {
+  first_name: string
+  is_authenticated: string
+  current_country: string
+  interests: string
+  timeline: string
+  budget: string
+}
 
 function VoiceTest() {
   const { connect, disconnect, status, messages, sendSessionSettings, isMuted, mute, unmute } = useVoice()
   const [token, setToken] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [logs, setLogs] = useState<string[]>([])
-  const [userName, setUserName] = useState('Dan')
   const [micPermission, setMicPermission] = useState<string>('unknown')
+  const connectionTime = useRef<number>(0)
+  const firstMessageTime = useRef<number>(0)
+
+  // Test variables - ALL 6 that the prompt expects
+  const [testVars, setTestVars] = useState<TestVariables>({
+    first_name: 'Dan',
+    is_authenticated: 'true',
+    current_country: 'United Kingdom',
+    interests: 'CFO, CTO',
+    timeline: 'Within 3 months',
+    budget: '£1000-1500/day'
+  })
 
   const log = (msg: string) => {
     console.log(msg)
@@ -48,10 +69,18 @@ function VoiceTest() {
       })
   }, [])
 
-  // Log all incoming messages to catch warnings
+  // Log all incoming messages to catch warnings and track timing
   useEffect(() => {
     if (messages.length > 0) {
       const lastMsg = messages[messages.length - 1] as any
+
+      // Track first message timing (for race condition analysis)
+      if (messages.length === 1 && connectionTime.current > 0) {
+        firstMessageTime.current = Date.now()
+        const delay = firstMessageTime.current - connectionTime.current
+        log(`⏱️ First message received ${delay}ms after connect()`)
+      }
+
       if (lastMsg.type === 'error' || lastMsg.type === 'warning' || lastMsg.code) {
         log(`⚠️ MESSAGE: type=${lastMsg.type}, code=${lastMsg.code || 'n/a'}`)
       }
@@ -59,61 +88,62 @@ function VoiceTest() {
       if (lastMsg.type === 'chat_metadata') {
         log(`📋 chat_metadata received: ${JSON.stringify(lastMsg).slice(0, 100)}...`)
       }
+      // Log assistant messages to see if name is used
+      if (lastMsg.type === 'assistant_message' && lastMsg.message?.content) {
+        const content = lastMsg.message.content
+        const hasName = content.toLowerCase().includes(testVars.first_name.toLowerCase())
+        log(`🤖 Assistant: "${content.slice(0, 80)}..." ${hasName ? '✅ HAS NAME' : '❌ NO NAME'}`)
+      }
     }
-  }, [messages])
+  }, [messages, testVars.first_name])
 
-  // Method 1: Connect WITHOUT sessionSettings (this worked before)
+  // Method 1: Connect WITHOUT sessionSettings (baseline test)
   const handleConnectBasic = async () => {
     if (!token) {
       log('❌ No token available')
       return
     }
 
-    log('🔄 METHOD 1: Connecting WITHOUT sessionSettings...')
+    log('🔄 METHOD 1: Connecting WITHOUT sessionSettings (baseline)...')
     log(`Config ID: ${CONFIG_ID}`)
+    connectionTime.current = Date.now()
 
     try {
       await connect({
         auth: { type: 'accessToken', value: token },
         configId: CONFIG_ID
       })
-      log('✅ Connected successfully (basic)!')
+      log('✅ Connected! Greeting should use raw {{first_name}} placeholder')
     } catch (err: any) {
       log('❌ Connect error: ' + (err?.message || JSON.stringify(err)))
       setError(err?.message || String(err))
     }
   }
 
-  // Method 2: Connect WITH variables (EXACT format from working relocation app)
-  const handleConnectWithVars = async () => {
+  // Method 2: Connect WITH ALL 6 variables at connect time (THE FIX!)
+  const handleConnectWithAllVars = async () => {
     if (!token) {
       log('❌ No token available')
       return
     }
 
-    // Variables to match system prompt placeholders
-    // Try BOTH 'name' (Hume example) and 'first_name' (your config)
-    const variables: Record<string, string> = {
-      is_authenticated: 'true',
-      first_name: userName,
-      name: userName,
-      current_country: 'United Kingdom'
-    }
-
-    // Filter out empty values
-    const filteredVariables = Object.fromEntries(
-      Object.entries(variables).filter(([, v]) => v !== undefined && v !== '')
-    ) as Record<string, string>
-
-    // Build sessionSettings - type IS required by Hume SDK (use 'as const')
+    // ALL 6 variables that the Quest prompt expects
     const sessionSettings = {
       type: 'session_settings' as const,
-      variables: filteredVariables,
+      variables: {
+        first_name: testVars.first_name,
+        is_authenticated: testVars.is_authenticated,
+        current_country: testVars.current_country,
+        interests: testVars.interests,
+        timeline: testVars.timeline,
+        budget: testVars.budget
+      }
     }
 
-    log('🔄 METHOD 2: Connecting (relocation app format)...')
+    log('🔄 METHOD 2: Connecting WITH ALL 6 VARIABLES at connect time...')
     log(`Config ID: ${CONFIG_ID}`)
-    log(`SessionSettings: ${JSON.stringify(sessionSettings)}`)
+    log(`Variables: ${JSON.stringify(sessionSettings.variables)}`)
+    connectionTime.current = Date.now()
 
     try {
       await connect({
@@ -121,63 +151,86 @@ function VoiceTest() {
         configId: CONFIG_ID,
         sessionSettings,
       })
-      log('✅ Connected successfully!')
+      log('✅ Connected with variables! Greeting should say "Hey Dan!"')
     } catch (err: any) {
       log('❌ Connect error: ' + (err?.message || JSON.stringify(err)))
       setError(err?.message || String(err))
     }
   }
 
-  // Method 3: Connect, wait for chat_metadata, THEN send session_settings
+  // Method 3: Connect, wait for chat_metadata, THEN send (race condition test)
   const handleConnectThenSend = async () => {
     if (!token) {
       log('❌ No token available')
       return
     }
 
-    log('🔄 METHOD 3: Connect, wait for chat_metadata, then send variables...')
+    log('🔄 METHOD 3: Connect first, THEN send variables (race condition test)...')
     log(`Config ID: ${CONFIG_ID}`)
-    log(`User name: ${userName}`)
+    log(`This tests if sending after connect is too late...`)
+    connectionTime.current = Date.now()
 
     try {
       await connect({
         auth: { type: 'accessToken', value: token },
         configId: CONFIG_ID
       })
-      log('✅ Connected! Waiting for chat_metadata message...')
+      log('✅ Connected! Now waiting 500ms then sending variables...')
 
-      // Wait for chat_metadata (first message after connection)
-      // Poll the messages array for up to 3 seconds
-      let foundMetadata = false
-      for (let i = 0; i < 30; i++) {
-        await new Promise(resolve => setTimeout(resolve, 100))
-        const hasMetadata = messages.some((m: any) => m.type === 'chat_metadata')
-        if (hasMetadata) {
-          foundMetadata = true
-          log('✅ Received chat_metadata!')
-          break
-        }
-      }
+      // Wait a bit to simulate the delay
+      await new Promise(resolve => setTimeout(resolve, 500))
 
-      if (!foundMetadata) {
-        log('⚠️ No chat_metadata received, sending anyway...')
-      }
-
-      // Send session_settings message with EXPLICIT type field
-      // This is the exact format from Hume docs
+      // Send ALL 6 variables
       const settings = {
         type: 'session_settings' as const,
         variables: {
-          first_name: userName,
-          is_authenticated: 'true',
-          current_country: 'United Kingdom'
+          first_name: testVars.first_name,
+          is_authenticated: testVars.is_authenticated,
+          current_country: testVars.current_country,
+          interests: testVars.interests,
+          timeline: testVars.timeline,
+          budget: testVars.budget
         }
       }
-      log(`Sending: ${JSON.stringify(settings)}`)
-
-      // Note: sendSessionSettings might strip the type, so log what we're sending
+      log(`Sending post-connect: ${JSON.stringify(settings.variables)}`)
       sendSessionSettings(settings as any)
-      log('✅ Session settings sent! Check for W0106 warning...')
+      log('✅ Variables sent AFTER connect - greeting probably already spoken without name!')
+    } catch (err: any) {
+      log('❌ Connect error: ' + (err?.message || JSON.stringify(err)))
+      setError(err?.message || String(err))
+    }
+  }
+
+  // Method 4: Test with is_authenticated = false (unauthenticated flow)
+  const handleConnectUnauthenticated = async () => {
+    if (!token) {
+      log('❌ No token available')
+      return
+    }
+
+    const sessionSettings = {
+      type: 'session_settings' as const,
+      variables: {
+        first_name: '',
+        is_authenticated: 'false',
+        current_country: '',
+        interests: '',
+        timeline: '',
+        budget: ''
+      }
+    }
+
+    log('🔄 METHOD 4: Connecting as UNAUTHENTICATED user...')
+    log(`Variables: ${JSON.stringify(sessionSettings.variables)}`)
+    connectionTime.current = Date.now()
+
+    try {
+      await connect({
+        auth: { type: 'accessToken', value: token },
+        configId: CONFIG_ID,
+        sessionSettings,
+      })
+      log('✅ Connected! Should get generic greeting for unauthenticated user')
     } catch (err: any) {
       log('❌ Connect error: ' + (err?.message || JSON.stringify(err)))
       setError(err?.message || String(err))
@@ -211,53 +264,118 @@ function VoiceTest() {
           {error && <p className="text-red-400 mt-2">Error: {error}</p>}
         </div>
 
-        {/* User Name Input */}
+        {/* Test Variables Input - ALL 6 */}
         <div className="bg-gray-800 rounded-lg p-4 mb-4">
-          <label className="block text-sm mb-2">Test User Name:</label>
-          <input
-            type="text"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-            className="bg-gray-700 px-3 py-2 rounded text-white w-48"
-          />
+          <h2 className="font-semibold mb-3 text-yellow-400">Test Variables (All 6 for Quest prompt)</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
+            <div>
+              <label className="block text-gray-400 mb-1">first_name</label>
+              <input
+                type="text"
+                value={testVars.first_name}
+                onChange={(e) => setTestVars(v => ({ ...v, first_name: e.target.value }))}
+                className="bg-gray-700 px-3 py-2 rounded text-white w-full"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-400 mb-1">is_authenticated</label>
+              <select
+                value={testVars.is_authenticated}
+                onChange={(e) => setTestVars(v => ({ ...v, is_authenticated: e.target.value }))}
+                className="bg-gray-700 px-3 py-2 rounded text-white w-full"
+              >
+                <option value="true">true</option>
+                <option value="false">false</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-gray-400 mb-1">current_country</label>
+              <input
+                type="text"
+                value={testVars.current_country}
+                onChange={(e) => setTestVars(v => ({ ...v, current_country: e.target.value }))}
+                className="bg-gray-700 px-3 py-2 rounded text-white w-full"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-400 mb-1">interests</label>
+              <input
+                type="text"
+                value={testVars.interests}
+                onChange={(e) => setTestVars(v => ({ ...v, interests: e.target.value }))}
+                className="bg-gray-700 px-3 py-2 rounded text-white w-full"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-400 mb-1">timeline</label>
+              <input
+                type="text"
+                value={testVars.timeline}
+                onChange={(e) => setTestVars(v => ({ ...v, timeline: e.target.value }))}
+                className="bg-gray-700 px-3 py-2 rounded text-white w-full"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-400 mb-1">budget</label>
+              <input
+                type="text"
+                value={testVars.budget}
+                onChange={(e) => setTestVars(v => ({ ...v, budget: e.target.value }))}
+                className="bg-gray-700 px-3 py-2 rounded text-white w-full"
+              />
+            </div>
+          </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          <button
-            onClick={handleConnectBasic}
-            disabled={!token || status.value === 'connected'}
-            className="px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50 hover:bg-blue-700"
-          >
-            1. Connect (No Vars)
-          </button>
-          <button
-            onClick={handleConnectWithVars}
-            disabled={!token || status.value === 'connected'}
-            className="px-4 py-2 bg-purple-600 text-white rounded disabled:opacity-50 hover:bg-purple-700"
-          >
-            2. Connect (With Vars)
-          </button>
-          <button
-            onClick={handleConnectThenSend}
-            disabled={!token || status.value === 'connected'}
-            className="px-4 py-2 bg-green-600 text-white rounded disabled:opacity-50 hover:bg-green-700"
-          >
-            3. Connect Then Send Vars
-          </button>
-          <button
-            onClick={handleDisconnect}
-            disabled={status.value !== 'connected'}
-            className="px-4 py-2 bg-red-600 text-white rounded disabled:opacity-50 hover:bg-red-700"
-          >
-            Disconnect
-          </button>
-          <button
-            onClick={clearLogs}
-            className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700"
-          >
-            Clear Logs
-          </button>
+        <div className="bg-gray-800 rounded-lg p-4 mb-4">
+          <h2 className="font-semibold mb-3 text-yellow-400">Test Methods</h2>
+          <div className="flex flex-wrap gap-2">
+            <button
+              onClick={handleConnectBasic}
+              disabled={!token || status.value === 'connected'}
+              className="px-4 py-2 bg-gray-600 text-white rounded disabled:opacity-50 hover:bg-gray-700 text-sm"
+            >
+              1. No Vars (baseline)
+            </button>
+            <button
+              onClick={handleConnectWithAllVars}
+              disabled={!token || status.value === 'connected'}
+              className="px-4 py-2 bg-green-600 text-white rounded disabled:opacity-50 hover:bg-green-700 text-sm font-bold"
+            >
+              2. ALL 6 Vars at Connect ⭐
+            </button>
+            <button
+              onClick={handleConnectThenSend}
+              disabled={!token || status.value === 'connected'}
+              className="px-4 py-2 bg-orange-600 text-white rounded disabled:opacity-50 hover:bg-orange-700 text-sm"
+            >
+              3. Send AFTER Connect
+            </button>
+            <button
+              onClick={handleConnectUnauthenticated}
+              disabled={!token || status.value === 'connected'}
+              className="px-4 py-2 bg-purple-600 text-white rounded disabled:opacity-50 hover:bg-purple-700 text-sm"
+            >
+              4. Unauthenticated
+            </button>
+            <button
+              onClick={handleDisconnect}
+              disabled={status.value !== 'connected'}
+              className="px-4 py-2 bg-red-600 text-white rounded disabled:opacity-50 hover:bg-red-700 text-sm"
+            >
+              Disconnect
+            </button>
+            <button
+              onClick={clearLogs}
+              className="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-600 text-sm"
+            >
+              Clear Logs
+            </button>
+          </div>
+          <p className="text-xs text-gray-500 mt-2">
+            Method 2 (green) is the FIX - passes all variables at connect time so greeting can use them.
+          </p>
         </div>
 
         {/* Logs Panel - FULL WIDTH */}

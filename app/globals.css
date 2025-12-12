@@ -6,9 +6,6 @@
    "Condé Nast Meets Bloomberg"
    =========================================== */
 
-/* Google Fonts - Playfair Display for editorial headers */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
-
 :root {
   /* Core Colors - White-first palette */
   --background: #ffffff;
