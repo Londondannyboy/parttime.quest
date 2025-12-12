@@ -153,8 +153,16 @@ export default async function LondonPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs in<br /><span className="text-purple-300">London</span>
+            Fractional Jobs London
           </h1>
+          {/* SEO image with keyword alt text */}
+          <img
+            src="/images/fractional-jobs-london.svg"
+            alt="Fractional Jobs London - Executive recruitment opportunities in the City, Shoreditch and Canary Wharf"
+            className="hidden"
+            width={1}
+            height={1}
+          />
           <p className="max-w-2xl text-xl text-purple-100 mb-10 leading-relaxed">
             {stats.totalLondon}+ fractional executive opportunities across London. £800-£1,500 daily rates. Work with startups and scale-ups in the City, Shoreditch, Canary Wharf and beyond.
           </p>
@@ -203,8 +211,8 @@ export default async function LondonPage() {
       <section className="py-20 md:py-28 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Jobs by London Area</h2>
-            <p className="text-xl text-gray-600">From the City to Shoreditch - find fractional roles in London's top business districts</p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Fractional Jobs London by Area</h2>
+            <p className="text-xl text-gray-600">From the City to Shoreditch - find fractional jobs in London's top business districts</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -232,8 +240,8 @@ export default async function LondonPage() {
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Top London Roles</h2>
-            <p className="text-xl text-gray-600">Executive positions by function in the London market</p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Top Fractional Jobs London Roles</h2>
+            <p className="text-xl text-gray-600">Executive fractional jobs in the London market by function</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
