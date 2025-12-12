@@ -4,6 +4,7 @@ import { Suspense } from 'react'
 import { createDbQuery } from '@/lib/db'
 import { JobCard } from '@/components/JobCard'
 import { JobFilters } from '@/components/JobFilters'
+import { JobsGraph } from '@/components/JobsGraph'
 
 // Revalidate every 15 minutes for jobs
 export const revalidate = 900
@@ -370,6 +371,25 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
                 )}
               </>
             )}
+          </div>
+        </section>
+
+        {/* Jobs Knowledge Graph Section */}
+        <section className="py-12 bg-gray-50">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Jobs Knowledge Graph</h2>
+              <p className="text-gray-600">
+                Visualize relationships between jobs, skills, and companies
+              </p>
+            </div>
+            <Suspense fallback={
+              <div className="bg-white rounded-xl border border-gray-200 p-6 flex items-center justify-center h-[450px]">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600" />
+              </div>
+            }>
+              <JobsGraph roleFilter={roleFilter} limit={15} />
+            </Suspense>
           </div>
         </section>
 

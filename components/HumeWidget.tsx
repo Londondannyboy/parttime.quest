@@ -6,7 +6,9 @@ import Link from 'next/link'
 
 const MAX_FREE_USES = 3
 const STORAGE_KEY = 'fractional_hume_uses'
-const HUME_CONFIG_ID = 'd57ceb71-4cf5-47e9-87cd-6052445a031c'
+// Use the same properly configured EVI config for both auth and unauth
+// The system prompt handles both flows via {{is_authenticated}} variable
+const HUME_CONFIG_ID = process.env.NEXT_PUBLIC_HUME_CONFIG_ID || 'd57ceb71-4cf5-47e9-87cd-6052445a031c'
 
 function getUsageCount(): number {
   if (typeof window === 'undefined') return 0
@@ -49,10 +51,15 @@ export interface HumeMessage {
 }
 
 function VoiceInterface({ accessToken, onUse, darkMode = true, userProfile, onTranscript, isAuthenticated = false }: VoiceInterfaceProps) {
-  const { connect, disconnect, status, messages } = useVoice()
+  const { connect, disconnect, status, messages, mute, unmute, isMuted } = useVoice()
   const [isConnecting, setIsConnecting] = useState(false)
   const [hasConnectedOnce, setHasConnectedOnce] = useState(false)
   const [lastProcessedIndex, setLastProcessedIndex] = useState(0)
+
+  // Handle stop - disconnect from Hume
+  const handleStop = useCallback(() => {
+    disconnect()
+  }, [disconnect])
 
   // Watch for new user messages and trigger extraction
   useEffect(() => {
@@ -91,6 +98,7 @@ function VoiceInterface({ accessToken, onUse, darkMode = true, userProfile, onTr
     setIsConnecting(true)
     try {
       // Build variables for Hume config
+      // These must match the {{variable_name}} placeholders in the Hume system prompt
       const variables: Record<string, string> = {
         // Always pass auth status - critical for flow branching
         is_authenticated: isAuthenticated ? 'true' : 'false'
@@ -109,34 +117,30 @@ function VoiceInterface({ accessToken, onUse, darkMode = true, userProfile, onTr
         }
       }
 
+      // Debug: Log what we're sending to Hume
+      console.log('Connecting to Hume with variables:', variables)
+      console.log('Config ID:', HUME_CONFIG_ID)
+
       // Connect with config ID and variables
-      const connectOptions: Parameters<typeof connect>[0] = {
+      // Note: Cast to any to bypass strict typing as Hume SDK types may be incomplete
+      await connect({
         auth: { type: 'accessToken', value: accessToken },
         configId: HUME_CONFIG_ID,
-      }
-
-      // Only add sessionSettings if we have variables
-      if (Object.keys(variables).length > 0) {
-        (connectOptions as Record<string, unknown>).sessionSettings = {
+        sessionSettings: {
+          type: 'session_settings',
           variables
         }
-      }
-
-      await connect(connectOptions)
+      } as Parameters<typeof connect>[0])
 
       if (!hasConnectedOnce) {
         onUse()
         setHasConnectedOnce(true)
       }
     } catch (error) {
-      console.error('Failed to connect:', error)
+      console.error('Failed to connect to Hume:', error)
     }
     setIsConnecting(false)
   }, [connect, accessToken, onUse, hasConnectedOnce, userProfile, isAuthenticated])
-
-  const handleDisconnect = useCallback(() => {
-    disconnect()
-  }, [disconnect])
 
   const isConnected = status.value === 'connected'
 
@@ -146,35 +150,50 @@ function VoiceInterface({ accessToken, onUse, darkMode = true, userProfile, onTr
 
   return (
     <div className="flex flex-col items-center gap-4">
-      {/* Voice Button */}
-      <button
-        onClick={isConnected ? handleDisconnect : handleConnect}
-        disabled={isConnecting}
-        className={`w-20 h-20 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg ${
-          isConnected
-            ? 'bg-red-500 hover:bg-red-600 animate-pulse'
-            : isConnecting
-            ? 'bg-gray-400 cursor-not-allowed'
-            : 'bg-white hover:bg-purple-50 border-2 border-purple-200'
-        }`}
-      >
-        {isConnecting ? (
-          <div className="w-6 h-6 border-3 border-purple-700 border-t-transparent rounded-full animate-spin" />
-        ) : isConnected ? (
-          <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
-          </svg>
-        ) : (
-          <svg className="w-8 h-8 text-purple-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-          </svg>
+      {/* Voice Button + Stop Button */}
+      <div className="flex items-center gap-4">
+        {/* Main Voice Button */}
+        <button
+          onClick={isConnected ? handleStop : handleConnect}
+          disabled={isConnecting}
+          className={`w-20 h-20 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg ${
+            isConnected
+              ? 'bg-green-500 hover:bg-green-600 animate-pulse'
+              : isConnecting
+              ? 'bg-gray-400 cursor-not-allowed'
+              : 'bg-white hover:bg-purple-50 border-2 border-purple-200'
+          }`}
+        >
+          {isConnecting ? (
+            <div className="w-6 h-6 border-3 border-purple-700 border-t-transparent rounded-full animate-spin" />
+          ) : isConnected ? (
+            <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+            </svg>
+          ) : (
+            <svg className="w-8 h-8 text-purple-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+            </svg>
+          )}
+        </button>
+
+        {/* Separate Stop Button - visible when connected */}
+        {isConnected && (
+          <button
+            onClick={handleStop}
+            className="w-14 h-14 rounded-full flex items-center justify-center bg-red-500 hover:bg-red-600 transition-colors shadow-lg"
+            title="Stop conversation"
+          >
+            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <rect x="6" y="6" width="12" height="12" rx="1" />
+            </svg>
+          </button>
         )}
-      </button>
+      </div>
 
       {/* Status */}
       <p className={`text-sm font-medium ${isConnected ? textPrimary : textMuted}`}>
-        {isConnecting ? 'Connecting...' : isConnected ? 'Listening... tap to stop' : 'Tap to talk'}
+        {isConnecting ? 'Connecting...' : isConnected ? 'Speaking with Quest' : 'Tap to talk'}
       </p>
 
       {/* Last message */}

@@ -5,7 +5,9 @@ import Link from 'next/link'
 import { useState, useCallback, useRef, useEffect } from 'react'
 import { HumeWidget, HumeMessage } from '@/components/HumeWidget'
 import { ExtractionPanel } from '@/components/ExtractionPanel'
+import { JobsPanel } from '@/components/JobsPanel'
 import { RepoDisplay } from '@/components/RepoDisplay'
+import { SkillGraph } from '@/components/SkillGraph'
 import { ExtractionResult } from '@/lib/extraction-types'
 
 export default function DashboardPage() {
@@ -205,6 +207,7 @@ function VoiceView({ userName, userId, onRepoUpdate }: {
   const [isExtracting, setIsExtracting] = useState(false)
   const [liveExtraction, setLiveExtraction] = useState<ExtractionResult | null>(null)
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null)
+  const [rightPanelTab, setRightPanelTab] = useState<'extraction' | 'jobs'>('extraction')
   const extractionTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const lastTranscriptRef = useRef<string>('')
 
@@ -225,8 +228,24 @@ function VoiceView({ userName, userId, onRepoUpdate }: {
     fetchProfile()
   }, [])
 
-  // Handle transcript from Hume - debounced extraction
-  const handleTranscript = useCallback(async (transcript: string, _allMessages: HumeMessage[]) => {
+  // Handle transcript from Hume - debounced extraction + UI triggers
+  const handleTranscript = useCallback(async (transcript: string, allMessages: HumeMessage[]) => {
+    // Check if assistant is talking about jobs - trigger UI switch
+    const lastMessage = allMessages[allMessages.length - 1]
+    if (lastMessage?.type === 'assistant_message') {
+      const content = (lastMessage.message?.content || '').toLowerCase()
+      // If Quest mentions jobs/roles/positions, switch to jobs tab
+      if (
+        content.includes('show you') ||
+        content.includes('here are') ||
+        content.includes('found') && (content.includes('job') || content.includes('role') || content.includes('position')) ||
+        content.includes('let me display') ||
+        content.includes('take a look at') && content.includes('job')
+      ) {
+        setRightPanelTab('jobs')
+      }
+    }
+
     // Skip if transcript hasn't changed significantly
     if (transcript === lastTranscriptRef.current) return
     lastTranscriptRef.current = transcript
@@ -327,14 +346,45 @@ function VoiceView({ userName, userId, onRepoUpdate }: {
         </div>
       </div>
 
-      {/* Extraction Panel */}
-      <div className="w-96 border-l border-gray-200 bg-white">
-        <ExtractionPanel
-          userId={userId}
-          liveExtraction={liveExtraction}
-          isExtracting={isExtracting}
-          onRefresh={onRepoUpdate}
-        />
+      {/* Right Panel with Tabs */}
+      <div className="w-96 border-l border-gray-200 bg-white flex flex-col">
+        {/* Panel Tabs */}
+        <div className="flex border-b border-gray-200">
+          <button
+            onClick={() => setRightPanelTab('extraction')}
+            className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${
+              rightPanelTab === 'extraction'
+                ? 'text-purple-700 border-b-2 border-purple-700 bg-purple-50'
+                : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+            }`}
+          >
+            Build Repo
+          </button>
+          <button
+            onClick={() => setRightPanelTab('jobs')}
+            className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${
+              rightPanelTab === 'jobs'
+                ? 'text-purple-700 border-b-2 border-purple-700 bg-purple-50'
+                : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+            }`}
+          >
+            Jobs
+          </button>
+        </div>
+
+        {/* Panel Content */}
+        <div className="flex-1 overflow-hidden">
+          {rightPanelTab === 'extraction' ? (
+            <ExtractionPanel
+              userId={userId}
+              liveExtraction={liveExtraction}
+              isExtracting={isExtracting}
+              onRefresh={onRepoUpdate}
+            />
+          ) : (
+            <JobsPanel />
+          )}
+        </div>
       </div>
     </div>
   )

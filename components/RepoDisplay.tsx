@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { UserGraph } from './UserGraph'
 
 interface Skill {
   id: number
@@ -194,18 +195,8 @@ export function RepoDisplay({ userId, refreshTrigger }: RepoDisplayProps) {
             ))
           )}
 
-          {/* Skill Graph Placeholder */}
-          <div className="bg-gray-50 rounded-xl p-6 border border-dashed border-gray-300">
-            <div className="text-center">
-              <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                </svg>
-              </div>
-              <p className="text-gray-500 text-sm font-medium">Skill Relationship Graph</p>
-              <p className="text-gray-400 text-xs mt-1">Coming soon - visualize how your skills connect</p>
-            </div>
-          </div>
+          {/* User Knowledge Graph */}
+          <UserGraph userId={userId} refreshTrigger={refreshTrigger} />
         </div>
       )}
 
