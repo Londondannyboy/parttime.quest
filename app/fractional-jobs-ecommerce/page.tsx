@@ -78,7 +78,7 @@ export default async function EcommercePage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs in<br /><span className="text-orange-300">E-commerce</span>
+            Fractional Jobs Ecommerce
           </h1>
           <p className="max-w-2xl text-xl text-orange-100 mb-10 leading-relaxed">
             {stats.totalEcommerce}+ fractional executive opportunities in online retail, DTC brands, and marketplaces. £600-£1,100 daily rates. Help brands scale from startup to £50m+ revenue.

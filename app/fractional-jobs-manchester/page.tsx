@@ -100,8 +100,9 @@ export default async function ManchesterPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs in<br /><span className="text-purple-300">Manchester</span>
+            Fractional Jobs Manchester
           </h1>
+          <img src="/logo.svg" alt="Fractional Jobs Manchester - Executive roles in the North West" className="hidden" width={1} height={1} />
           <p className="max-w-2xl text-xl text-purple-100 mb-10 leading-relaxed">
             {stats.total}+ fractional executive opportunities across Manchester and the North West. £700-£1,200 daily rates. The UK's fastest-growing tech hub outside London.
           </p>
@@ -144,7 +145,7 @@ export default async function ManchesterPage() {
       <section className="py-20 md:py-28 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Jobs Across Greater Manchester</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Fractional Jobs Manchester by Area</h2>
             <p className="text-xl text-gray-600">Find fractional roles from the City to MediaCity</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -82,7 +82,7 @@ export default async function CardiffPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs in<br /><span className="text-green-300">Cardiff</span>
+            Fractional Jobs Cardiff
           </h1>
           <p className="max-w-2xl text-xl text-green-100 mb-10 leading-relaxed">
             {stats.totalCardiff}+ fractional executive opportunities in the Welsh capital. £500-£900 daily rates. Work with Europe's fastest-growing fintech cluster.

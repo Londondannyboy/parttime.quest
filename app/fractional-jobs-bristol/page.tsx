@@ -100,8 +100,9 @@ export default async function BristolPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs in<br /><span className="text-purple-300">Bristol</span>
+            Fractional Jobs Bristol
           </h1>
+          <img src="/logo.svg" alt="Fractional Jobs Bristol - Executive roles in the South West" className="hidden" width={1} height={1} />
           <p className="max-w-2xl text-xl text-purple-100 mb-10 leading-relaxed">
             {stats.total}+ fractional executive opportunities across Bristol and the South West. £650-£1,100 daily rates. Aerospace, tech, and creative sectors thriving.
           </p>

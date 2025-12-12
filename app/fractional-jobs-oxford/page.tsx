@@ -82,7 +82,7 @@ export default async function OxfordPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs in<br /><span className="text-indigo-300">Oxford</span>
+            Fractional Jobs Oxford
           </h1>
           <p className="max-w-2xl text-xl text-indigo-100 mb-10 leading-relaxed">
             {stats.totalOxford}+ fractional executive opportunities in the Oxford cluster. £700-£1,100 daily rates. Work with world-changing life sciences and deep tech companies.

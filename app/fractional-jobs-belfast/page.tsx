@@ -82,7 +82,7 @@ export default async function BelfastPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs in<br /><span className="text-emerald-300">Belfast</span>
+            Fractional Jobs Belfast
           </h1>
           <p className="max-w-2xl text-xl text-emerald-100 mb-10 leading-relaxed">
             {stats.totalBelfast}+ fractional executive opportunities in Northern Ireland. £500-£900 daily rates. Work with Europe's leading cyber security cluster.

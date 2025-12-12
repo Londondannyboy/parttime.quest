@@ -82,7 +82,7 @@ export default async function CambridgePage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs in<br /><span className="text-cyan-300">Cambridge</span>
+            Fractional Jobs Cambridge
           </h1>
           <p className="max-w-2xl text-xl text-cyan-100 mb-10 leading-relaxed">
             {stats.totalCambridge}+ fractional executive opportunities in Silicon Fen. £700-£1,200 daily rates. Work with world-leading deep tech, biotech, and AI companies.

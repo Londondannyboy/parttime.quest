@@ -144,7 +144,7 @@ export default async function LiverpoolPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs in<br /><span className="text-red-300">Liverpool</span>
+            Fractional Jobs Liverpool
           </h1>
           <p className="max-w-2xl text-xl text-red-100 mb-10 leading-relaxed">
             {stats.totalLiverpool}+ fractional executive opportunities in the Liverpool City Region. £550-£1,000 daily rates. Work with innovative digital, creative, and life sciences companies.

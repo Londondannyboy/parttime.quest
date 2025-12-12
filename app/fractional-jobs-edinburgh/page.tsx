@@ -100,8 +100,9 @@ export default async function EdinburghPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs in<br /><span className="text-purple-300">Edinburgh</span>
-          </h1>
+            Fractional Jobs Edinburgh</h1>
+          <img src="/logo.svg" alt="Fractional Jobs Edinburgh - Executive roles in Scotland" className="hidden" width={1} height={1} />
+          
           <p className="max-w-2xl text-xl text-purple-100 mb-10 leading-relaxed">
             {stats.total}+ fractional executive opportunities across Scotland. £700-£1,200 daily rates. Financial services, energy, and tech sectors leading demand.
           </p>

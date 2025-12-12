@@ -101,7 +101,7 @@ export default async function NewcastlePage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs in<br /><span className="text-slate-300">Newcastle</span>
+            Fractional Jobs Newcastle
           </h1>
           <p className="max-w-2xl text-xl text-slate-100 mb-10 leading-relaxed">
             {stats.totalNewcastle}+ fractional executive opportunities in the North East. £500-£950 daily rates. Work with innovative tech, gaming, and life sciences companies.

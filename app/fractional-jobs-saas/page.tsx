@@ -78,7 +78,7 @@ export default async function SaasPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs in<br /><span className="text-violet-300">SaaS</span>
+            Fractional Jobs SaaS
           </h1>
           <p className="max-w-2xl text-xl text-violet-100 mb-10 leading-relaxed">
             {stats.totalSaas}+ fractional executive opportunities in B2B software and cloud platforms. £700-£1,300 daily rates. Work with the UK's fastest-growing subscription businesses.

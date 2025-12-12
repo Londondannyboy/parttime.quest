@@ -144,7 +144,7 @@ export default async function GlasgowPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs in<br /><span className="text-blue-300">Glasgow</span>
+            Fractional Jobs Glasgow
           </h1>
           <p className="max-w-2xl text-xl text-blue-100 mb-10 leading-relaxed">
             {stats.totalGlasgow}+ fractional executive opportunities in Scotland's largest city. £600-£1,200 daily rates. Work with innovative tech, life sciences, and financial services companies.

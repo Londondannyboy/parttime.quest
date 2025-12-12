@@ -100,8 +100,9 @@ export default async function LeedsPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs in<br /><span className="text-purple-300">Leeds</span>
-          </h1>
+            Fractional Jobs Leeds</h1>
+          <img src="/logo.svg" alt="Fractional Jobs Leeds - Executive roles in Yorkshire" className="hidden" width={1} height={1} />
+          
           <p className="max-w-2xl text-xl text-purple-100 mb-10 leading-relaxed">
             {stats.total}+ fractional executive opportunities across Leeds and Yorkshire. £600-£1,000 daily rates. The North's fastest-growing fractional market.
           </p>

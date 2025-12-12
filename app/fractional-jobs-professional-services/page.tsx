@@ -78,7 +78,7 @@ export default async function ProfessionalServicesPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs in<br /><span className="text-gray-300">Professional Services</span>
+            Fractional Jobs Professional Services
           </h1>
           <p className="max-w-2xl text-xl text-gray-100 mb-10 leading-relaxed">
             {stats.totalPS}+ fractional executive opportunities in consulting, legal, and advisory firms. £600-£1,100 daily rates. Help professional services firms digitize and scale.

@@ -85,7 +85,7 @@ export default async function HealthcarePage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs in<br /><span className="text-teal-300">Healthcare</span>
+            Fractional Jobs Healthcare
           </h1>
           <p className="max-w-2xl text-xl text-teal-100 mb-10 leading-relaxed">
             {stats.totalHealthcare}+ fractional executive opportunities in HealthTech, MedTech, and Life Sciences. £700-£1,300 daily rates. The UK's fastest-growing sector for fractional leadership.
