@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useUser } from '@stackframe/stack'
 import { VoiceProvider, useVoice } from '@humeai/voice-react'
 import Link from 'next/link'
@@ -41,10 +41,23 @@ function VoiceInterface({ token, userId, profile }: { token: string; userId?: st
   const isConnected = status.value === 'connected'
   const isConnecting = status.value === 'connecting'
 
-  // Filter to user and assistant messages
-  const conversationMessages = messages.filter(
-    (m: any) => m.type === 'user_message' || m.type === 'assistant_message'
-  )
+  // Debug: log all messages to understand structure
+  useEffect(() => {
+    if (messages.length > 0) {
+      console.log('[Hume Messages]', messages.map((m: any) => ({
+        type: m.type,
+        content: m.message?.content?.slice(0, 50),
+        role: m.message?.role
+      })))
+    }
+  }, [messages])
+
+  // Filter to user and assistant messages that have content
+  const conversationMessages = messages.filter((m: any) => {
+    if (m.type === 'assistant_message' && m.message?.content) return true
+    if (m.type === 'user_message' && m.message?.content) return true
+    return false
+  })
 
   return (
     <div className="flex-1 flex flex-col">
@@ -93,25 +106,31 @@ function VoiceInterface({ token, userId, profile }: { token: string; userId?: st
 
       {/* Conversation Panel */}
       {conversationMessages.length > 0 && (
-        <div className="border-t border-gray-200 bg-white p-6 max-h-80 overflow-y-auto">
-          <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">Conversation</h3>
+        <div className="border-t border-gray-200 bg-white p-6 max-h-96 overflow-y-auto">
+          <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">
+            Conversation ({conversationMessages.length} messages)
+          </h3>
           <div className="space-y-4">
-            {conversationMessages.map((msg: any, i: number) => (
-              <div
-                key={i}
-                className={`flex ${msg.type === 'user_message' ? 'justify-end' : 'justify-start'}`}
-              >
+            {conversationMessages.map((msg: any, i: number) => {
+              const isUser = msg.type === 'user_message'
+              const content = msg.message?.content || ''
+              return (
                 <div
-                  className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-                    msg.type === 'user_message'
-                      ? 'bg-purple-600 text-white'
-                      : 'bg-gray-100 text-gray-800'
-                  }`}
+                  key={i}
+                  className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}
                 >
-                  <p className="text-sm">{msg.message?.content}</p>
+                  <div
+                    className={`max-w-[85%] rounded-2xl px-4 py-3 ${
+                      isUser
+                        ? 'bg-purple-600 text-white'
+                        : 'bg-gray-100 text-gray-800'
+                    }`}
+                  >
+                    <p className="text-sm whitespace-pre-wrap">{content}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       )}
