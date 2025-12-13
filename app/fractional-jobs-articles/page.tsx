@@ -1,8 +1,10 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import { Suspense } from 'react'
 import { createDbQuery } from '@/lib/db'
 import { ArticleCard } from '@/components/ArticleCard'
 import { VideoHeroBackground } from '@/components/VideoHeroBackground'
+import { JobsCalendarHeatmap } from '@/components/JobsCalendarHeatmap'
 
 export const revalidate = 14400 // Revalidate every 4 hours
 
@@ -147,6 +149,27 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                 </Link>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Job Posting Activity Calendar */}
+        <section className="py-16 bg-gray-950">
+          <div className="max-w-5xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-8">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2 block">Market Activity</span>
+              <h2 className="text-2xl md:text-3xl font-black text-white">Job Posting Trends</h2>
+              <p className="text-gray-400 mt-2 text-sm">When fractional jobs are posted throughout the year</p>
+            </div>
+            <Suspense fallback={
+              <div className="flex items-center justify-center h-48 bg-gray-900 rounded-xl">
+                <div className="text-center">
+                  <div className="w-8 h-8 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin mx-auto mb-3" />
+                  <p className="text-blue-300 text-xs">Loading calendar...</p>
+                </div>
+              </div>
+            }>
+              <JobsCalendarHeatmap height="280px" />
+            </Suspense>
           </div>
         </section>
 

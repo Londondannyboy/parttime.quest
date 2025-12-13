@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import { Suspense } from 'react'
+import { RateDistribution } from '@/components/RateDistribution'
 
 export const metadata: Metadata = {
   title: 'Fractional CMO Salary UK 2025 - Day Rates, Annual Earnings & Pay Guide',
@@ -68,6 +70,24 @@ export default function FractionalCmoSalaryPage() {
               <div className="text-gray-600">Days Per Client</div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Live Rate Distribution from Jobs */}
+      <section className="py-12 bg-gray-950">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-8">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-purple-400 mb-2 block">Live Market Data</span>
+            <h2 className="text-2xl md:text-3xl font-black text-white">CMO Day Rate Distribution</h2>
+            <p className="text-gray-400 mt-2 text-sm">From current job listings</p>
+          </div>
+          <Suspense fallback={
+            <div className="flex items-center justify-center h-64 bg-gray-900 rounded-xl">
+              <div className="w-8 h-8 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin" />
+            </div>
+          }>
+            <RateDistribution height="400px" roleFilter="CMO" />
+          </Suspense>
         </div>
       </section>
 

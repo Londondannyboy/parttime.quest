@@ -8,6 +8,7 @@ import { VideoHeroBackground } from "@/components/VideoHeroBackground";
 import { AnimatedStats } from "@/components/AnimatedStats";
 import { LatestNews } from "@/components/RoleNews";
 import { JobsGraph3D } from "@/components/JobsGraph3D";
+import { JobsGlobe } from "@/components/JobsGlobe";
 
 // Mux video playback ID for the hero background
 // Woman walking - professional executive theme
@@ -357,6 +358,18 @@ export default async function Home() {
               <span className="text-sm text-gray-500">Operations Leadership</span>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Jobs Globe - Interactive 3D Map */}
+      <section className="py-20 md:py-28 bg-gray-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-indigo-400 mb-2 block">Explore Opportunities</span>
+            <h2 className="text-4xl font-bold text-white mb-4">Fractional Jobs Across the UK</h2>
+            <p className="text-xl text-gray-400">Click a location to discover roles near you</p>
+          </div>
+          <JobsGlobe height="550px" focusCity="london" />
         </div>
       </section>
 

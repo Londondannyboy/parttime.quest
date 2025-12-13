@@ -5,6 +5,8 @@ import { createDbQuery } from '@/lib/db'
 import { JobCard } from '@/components/JobCard'
 import { JobFilters } from '@/components/JobFilters'
 import { JobsGraph3D } from '@/components/JobsGraph3D'
+import { JobsSunburst } from '@/components/JobsSunburst'
+import { SkillsRadar } from '@/components/SkillsRadar'
 import { VideoHeroBackground } from '@/components/VideoHeroBackground'
 
 // Same video as homepage
@@ -256,6 +258,42 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
                 </p>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Sunburst Role Explorer - Top Visual */}
+        <section className="py-16 bg-gray-950">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400 mb-2 block">Explore Hierarchy</span>
+              <h2 className="text-3xl md:text-4xl font-black text-white">Role Explorer</h2>
+              <p className="text-gray-400 mt-2">Click to drill down through roles, companies, and jobs</p>
+            </div>
+            <Suspense fallback={
+              <div className="flex items-center justify-center h-96 bg-gray-900 rounded-xl">
+                <div className="w-12 h-12 border-4 border-amber-500/30 border-t-amber-500 rounded-full animate-spin" />
+              </div>
+            }>
+              <JobsSunburst height="500px" />
+            </Suspense>
+          </div>
+        </section>
+
+        {/* Skills Radar - Role Comparison */}
+        <section className="py-16 bg-gray-900">
+          <div className="max-w-5xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-purple-400 mb-2 block">Skills Analysis</span>
+              <h2 className="text-3xl md:text-4xl font-black text-white">Compare Role Skills</h2>
+              <p className="text-gray-400 mt-2">See which skills matter most across C-suite roles</p>
+            </div>
+            <Suspense fallback={
+              <div className="flex items-center justify-center h-96 bg-gray-950 rounded-xl">
+                <div className="w-12 h-12 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin" />
+              </div>
+            }>
+              <SkillsRadar height="500px" />
+            </Suspense>
           </div>
         </section>
 
