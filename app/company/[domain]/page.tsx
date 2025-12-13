@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { createDbQuery } from '@/lib/db'
 import { JobCard } from '@/components/JobCard'
+import { CompanyLogoLarge } from '@/components/CompanyLogo'
 
 export const revalidate = 3600 // Revalidate every hour
 
@@ -80,9 +81,6 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
     notFound()
   }
 
-  const brandfetchClientId = process.env.NEXT_PUBLIC_BRANDFETCH_CLIENT_ID
-  const logoUrl = `https://cdn.brandfetch.io/${domain}/w/400/h/400?c=${brandfetchClientId}`
-
   return (
     <div className="min-h-screen bg-white">
       {/* Company Header */}
@@ -97,26 +95,10 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
 
           <div className="flex items-center gap-6">
             {/* Company Logo */}
-            <div className="flex-shrink-0 w-24 h-24 rounded-xl overflow-hidden bg-white border-4 border-white/20 shadow-xl">
-              <img
-                src={logoUrl}
-                alt={`${company.name} logo`}
-                className="w-full h-full object-contain p-2"
-                onError={(e) => {
-                  const target = e.currentTarget
-                  target.style.display = 'none'
-                  const fallback = target.nextElementSibling as HTMLElement
-                  if (fallback) fallback.style.display = 'flex'
-                }}
-              />
-              <div
-                className="w-full h-full bg-gradient-to-br from-purple-500 to-purple-700 items-center justify-center hidden"
-              >
-                <span className="text-4xl font-bold text-white">
-                  {company.name.charAt(0).toUpperCase()}
-                </span>
-              </div>
-            </div>
+            <CompanyLogoLarge
+              companyDomain={domain}
+              companyName={company.name}
+            />
 
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-2">{company.name}</h1>
