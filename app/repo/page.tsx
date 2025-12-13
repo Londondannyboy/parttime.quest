@@ -14,7 +14,12 @@ interface JobResult {
   slug?: string
 }
 
-function VoiceInterface({ token, userId, profile }: { token: string; userId?: string; profile?: any }) {
+function VoiceInterface({ token, userId, profile, memoryContext }: {
+  token: string
+  userId?: string
+  profile?: any
+  memoryContext?: string
+}) {
   const { connect, disconnect, status, messages, isPlaying } = useVoice()
   const [displayedJobs, setDisplayedJobs] = useState<JobResult[]>([])
   const [showJobsPanel, setShowJobsPanel] = useState(false)
@@ -126,9 +131,14 @@ function VoiceInterface({ token, userId, profile }: { token: string; userId?: st
       interests: profile?.interests || '',
       timeline: profile?.timeline || '',
       budget: profile?.budget_monthly ? `£${profile.budget_monthly}/day` : '',
+      // Memory context from Supermemory - previous conversations
+      previous_context: memoryContext || '',
     }
 
     console.log('[Hume] Connecting with profile:', vars)
+    if (memoryContext) {
+      console.log('[Hume] Memory context:', memoryContext.substring(0, 200))
+    }
 
     try {
       await connect({
@@ -142,7 +152,7 @@ function VoiceInterface({ token, userId, profile }: { token: string; userId?: st
     } catch (e) {
       console.error('Connection error:', e)
     }
-  }, [connect, token, userId, profile])
+  }, [connect, token, userId, profile, memoryContext])
 
   const isConnected = status.value === 'connected'
   const isConnecting = status.value === 'connecting'
@@ -302,6 +312,7 @@ export default function RepoPage() {
   const user = useUser({ or: 'redirect' })
   const [token, setToken] = useState<string | null>(null)
   const [profile, setProfile] = useState<any>(null)
+  const [memoryContext, setMemoryContext] = useState<string>('')
   const [error, setError] = useState<string | null>(null)
   const [sidebarOpen, setSidebarOpen] = useState(true)
 
@@ -323,6 +334,20 @@ export default function RepoPage() {
         setProfile(data)
       })
       .catch(console.error)
+  }, [user])
+
+  // Fetch memory context from Supermemory
+  useEffect(() => {
+    if (!user) return
+    fetch('/api/memory-context')
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (data?.context) {
+          console.log('[Memory context from Supermemory]', data.context.substring(0, 100))
+          setMemoryContext(data.context)
+        }
+      })
+      .catch(e => console.error('[Memory context error]', e))
   }, [user])
 
   if (!user) return null
@@ -410,6 +435,7 @@ export default function RepoPage() {
               token={token}
               userId={user.id}
               profile={profile}
+              memoryContext={memoryContext}
             />
           </VoiceProvider>
         )}
