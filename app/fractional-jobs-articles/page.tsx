@@ -20,9 +20,9 @@ export const metadata: Metadata = {
 }
 
 interface ArticlesPageProps {
-  searchParams: {
+  searchParams: Promise<{
     page?: string
-  }
+  }>
 }
 
 async function getArticleStats() {
@@ -40,8 +40,9 @@ async function getArticleStats() {
 }
 
 export default async function ArticlesPage({ searchParams }: ArticlesPageProps) {
+  const params = await searchParams
   const limit = 12
-  const page = parseInt(searchParams.page || '1')
+  const page = parseInt(params.page || '1')
   const offset = (page - 1) * limit
 
   try {
