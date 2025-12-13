@@ -82,15 +82,25 @@ export default function RepoBuilder({ userId, voiceTranscript, onPreferenceSaved
     setIsExtracting(true)
 
     try {
-      // Call Pydantic AI extraction endpoint
-      const response = await fetch('/api/pydantic-extract', {
+      // Try Pydantic AI first, fallback to TypeScript extraction
+      let response = await fetch('/api/pydantic-extract', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ transcript: text })
       })
 
+      // Fallback to TypeScript endpoint if Pydantic AI fails
       if (!response.ok) {
-        console.log('[RepoBuilder] API not ready, skipping extraction')
+        console.log('[RepoBuilder] Pydantic AI unavailable, trying TypeScript extraction')
+        response = await fetch('/api/extract-preferences', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ transcript: text })
+        })
+      }
+
+      if (!response.ok) {
+        console.log('[RepoBuilder] All extraction APIs failed')
         return
       }
 

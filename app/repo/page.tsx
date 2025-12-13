@@ -591,6 +591,20 @@ export default function RepoPage() {
   const [memoryContext, setMemoryContext] = useState<string>('')
   const [error, setError] = useState<string | null>(null)
   const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [showDebug, setShowDebug] = useState(false)
+  const [debugInfo, setDebugInfo] = useState<{
+    supermemoryLoaded: boolean
+    supermemoryLength: number
+    humeResumeId: string | null
+    profileLoaded: boolean
+    extractionEndpoint: string | null
+  }>({
+    supermemoryLoaded: false,
+    supermemoryLength: 0,
+    humeResumeId: null,
+    profileLoaded: false,
+    extractionEndpoint: null
+  })
 
   // Fetch Hume token
   useEffect(() => {
@@ -608,6 +622,7 @@ export default function RepoPage() {
       .then(data => {
         console.log('[Profile from Neon]', data)
         setProfile(data)
+        setDebugInfo(prev => ({ ...prev, profileLoaded: !!data }))
       })
       .catch(console.error)
   }, [user])
@@ -625,10 +640,37 @@ export default function RepoPage() {
         if (data?.context) {
           console.log('[Memory context from Supermemory]', data.context.substring(0, 100))
           setMemoryContext(data.context)
+          setDebugInfo(prev => ({
+            ...prev,
+            supermemoryLoaded: true,
+            supermemoryLength: data.context.length
+          }))
         }
       })
       .catch(e => console.error('[Memory context error]', e))
   }, [user])
+
+  // Check for existing Hume chat to resume
+  useEffect(() => {
+    if (!user?.id) return
+    const existingChatId = getChatGroupId(user.id)
+    setDebugInfo(prev => ({ ...prev, humeResumeId: existingChatId }))
+  }, [user?.id])
+
+  // Test which extraction endpoint works
+  useEffect(() => {
+    fetch('/api/pydantic-extract', { method: 'GET' })
+      .then(r => {
+        if (r.ok) {
+          setDebugInfo(prev => ({ ...prev, extractionEndpoint: 'Pydantic AI (Python)' }))
+        } else {
+          setDebugInfo(prev => ({ ...prev, extractionEndpoint: 'TypeScript (fallback)' }))
+        }
+      })
+      .catch(() => {
+        setDebugInfo(prev => ({ ...prev, extractionEndpoint: 'TypeScript (fallback)' }))
+      })
+  }, [])
 
   // Handle chat_group_id from Hume for resume functionality
   const handleHumeMessage = useCallback((msg: any) => {
@@ -686,6 +728,53 @@ export default function RepoPage() {
             )}
           </div>
         </div>
+
+        {/* Debug Panel Toggle */}
+        {sidebarOpen && (
+          <div className="px-3 py-2 border-t border-gray-100">
+            <button
+              onClick={() => setShowDebug(!showDebug)}
+              className="w-full flex items-center gap-2 px-3 py-2 text-xs text-gray-500 hover:text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+            >
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              Debug Panel
+              <span className="ml-auto">{showDebug ? '▼' : '▶'}</span>
+            </button>
+
+            {showDebug && (
+              <div className="mt-2 p-3 bg-gray-900 rounded-lg text-xs font-mono text-gray-300 space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className={`w-2 h-2 rounded-full ${debugInfo.profileLoaded ? 'bg-green-500' : 'bg-red-500'}`} />
+                  <span>Profile: {debugInfo.profileLoaded ? 'Loaded' : 'Not loaded'}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className={`w-2 h-2 rounded-full ${debugInfo.supermemoryLoaded ? 'bg-green-500' : 'bg-yellow-500'}`} />
+                  <span>Supermemory: {debugInfo.supermemoryLoaded ? `${debugInfo.supermemoryLength} chars` : 'Empty'}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className={`w-2 h-2 rounded-full ${debugInfo.humeResumeId ? 'bg-green-500' : 'bg-yellow-500'}`} />
+                  <span>Hume Resume: {debugInfo.humeResumeId ? 'Yes' : 'New session'}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className={`w-2 h-2 rounded-full ${debugInfo.extractionEndpoint?.includes('Pydantic') ? 'bg-green-500' : 'bg-yellow-500'}`} />
+                  <span>Extraction: {debugInfo.extractionEndpoint || 'Checking...'}</span>
+                </div>
+                {memoryContext && (
+                  <div className="pt-2 border-t border-gray-700">
+                    <p className="text-gray-400 mb-1">Memory Preview:</p>
+                    <p className="text-gray-500 text-[10px] break-all">{memoryContext.substring(0, 150)}...</p>
+                  </div>
+                )}
+                {debugInfo.humeResumeId && (
+                  <div className="pt-2 border-t border-gray-700">
+                    <p className="text-gray-400 mb-1">Chat ID:</p>
+                    <p className="text-gray-500 text-[10px] break-all">{debugInfo.humeResumeId}</p>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Collapse Toggle */}
         <button
