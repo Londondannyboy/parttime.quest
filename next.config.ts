@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
         destination: '/:slug',
         permanent: true, // 301 redirect for SEO
       },
+      // Redirect /fractional-jobs-london to new SEO-optimized URL for "fractional jobs UK"
+      {
+        source: '/fractional-jobs-london',
+        destination: '/uk-fractional-jobs-uk-london-fractional-jobs-london',
+        permanent: true, // 301 redirect for SEO
+      },
     ];
   },
 
