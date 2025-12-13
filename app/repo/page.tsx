@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { useUser } from '@stackframe/stack'
 import { VoiceProvider, useVoice } from '@humeai/voice-react'
 import Link from 'next/link'
+import RepoBuilder from '@/components/RepoBuilder'
 
 const CONFIG_ID = 'd57ceb71-4cf5-47e9-87cd-6052445a031c'
 
@@ -372,6 +373,24 @@ function VoiceInterface({ token, userId, profile, memoryContext }: {
             </button>
           </div>
         )}
+      </div>
+
+      {/* Repo Builder - extracts preferences from voice + text */}
+      <div className="px-6 py-4">
+        <RepoBuilder
+          userId={userId}
+          voiceTranscript={
+            // Get the last few user messages as transcript
+            messages
+              .filter((m: any) => m.type === 'user_message' && m.message?.content)
+              .slice(-5)
+              .map((m: any) => m.message.content)
+              .join(' ')
+          }
+          onPreferenceSaved={(pref, validated) => {
+            console.log('[RepoBuilder] Saved:', pref, validated ? '(validated)' : '(soft)')
+          }}
+        />
       </div>
 
       {/* Preference Confirmation Card - fades and auto-saves */}
