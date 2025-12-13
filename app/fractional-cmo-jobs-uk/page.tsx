@@ -4,8 +4,12 @@ import { Suspense } from 'react'
 import { createDbQuery } from '@/lib/db'
 import { EmbeddedJobBoard } from '@/components/EmbeddedJobBoard'
 import { FAQ, CMO_FAQS } from '@/components/FAQ'
+import { VideoHeroBackground } from '@/components/VideoHeroBackground'
 
 export const revalidate = 3600
+
+// Mux video - professional executive theme
+const HERO_VIDEO_PLAYBACK_ID: string | undefined = "qIS6PGKxIZyzjrDBzxQuqPRBOhHofDnXq1chdsqAY9Y"
 
 export const metadata: Metadata = {
   title: 'Fractional CMO Jobs UK | Part-Time CMO Roles',
@@ -18,154 +22,123 @@ export const metadata: Metadata = {
   },
 }
 
-async function getCmoStats() {
+async function getMarketingStats() {
   try {
     const sql = createDbQuery()
-    const result = await sql`SELECT COUNT(*) as count FROM jobs WHERE is_active = true AND role_category = 'Marketing'`
-    return parseInt((result[0] as any)?.count || '0')
+    const [totalResult, avgRateResult, remoteResult] = await Promise.all([
+      sql`SELECT COUNT(*) as count FROM jobs WHERE is_active = true AND role_category = 'Marketing'`,
+      sql`SELECT AVG(CAST(REGEXP_REPLACE(compensation, '[^0-9]', '', 'g') AS INTEGER)) as avg FROM jobs WHERE is_active = true AND role_category = 'Marketing' AND compensation IS NOT NULL AND compensation ~ '^[£$]?[0-9]+'`,
+      sql`SELECT COUNT(*) as count FROM jobs WHERE is_active = true AND role_category = 'Marketing' AND (is_remote = true OR workplace_type = 'Remote')`
+    ])
+    return {
+      total: parseInt((totalResult[0] as any)?.count || '0'),
+      avgRate: Math.round(parseFloat((avgRateResult[0] as any)?.avg || '950')),
+      remoteCount: parseInt((remoteResult[0] as any)?.count || '0')
+    }
   } catch {
-    return 38
+    return { total: 38, avgRate: 950, remoteCount: 15 }
+  }
+}
+
+async function getFeaturedCompanies() {
+  try {
+    const sql = createDbQuery()
+    const companies = await sql`
+      SELECT DISTINCT company_name
+      FROM jobs
+      WHERE is_active = true AND role_category = 'Marketing' AND company_name IS NOT NULL
+      ORDER BY posted_date DESC NULLS LAST
+      LIMIT 8
+    `
+    return companies.map((c: any) => c.company_name)
+  } catch {
+    return []
   }
 }
 
 export default async function FractionalCmoJobsUkPage() {
-  const jobCount = await getCmoStats()
+  const [stats, companies] = await Promise.all([getMarketingStats(), getFeaturedCompanies()])
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-purple-900 to-purple-800 py-20">
-        <div className="max-w-4xl mx-auto px-4">
-          <Link href="/" className="text-purple-200 hover:text-white mb-6 inline-block">← Back to Home</Link>
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">Fractional CMO Jobs UK</h1>
-          <p className="text-xl text-purple-100 mb-8">
-            Find <strong>fractional CMO jobs UK</strong> opportunities. Browse {jobCount}+ live part-time Chief Marketing Officer roles paying £700-£1,400 per day.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Link href="#jobs" className="px-8 py-4 bg-white text-purple-900 rounded-lg font-semibold hover:bg-purple-50">
-              Browse Marketing Jobs
+      {/* Editorial Hero with Video Background */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+        <VideoHeroBackground
+          playbackId={HERO_VIDEO_PLAYBACK_ID}
+          fallbackGradient={true}
+        />
+
+        {/* Hero Content */}
+        <div className="relative z-10 w-full py-20">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+            {/* Breadcrumb */}
+            <Link href="/" className="inline-flex items-center text-white/60 hover:text-white mb-8 transition-colors text-sm tracking-wide">
+              <span className="mr-2">←</span> Back to Home
             </Link>
-            <Link href="/fractional-cmo-salary" className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10">
-              CMO Salary Guide
-            </Link>
+
+            {/* Editorial Typography */}
+            <div className="max-w-4xl">
+              <span className="inline-block bg-amber-500 text-black px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] mb-6">
+                Marketing Leadership
+              </span>
+
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-[0.9] tracking-tight">
+                Fractional CMO<br />
+                <span className="text-amber-400">Jobs UK</span>
+              </h1>
+
+              <p className="text-xl md:text-2xl text-white/80 leading-relaxed max-w-2xl mb-8">
+                <strong className="text-white">Fractional CMO jobs UK</strong> for experienced marketing leaders.
+                Part-time Chief Marketing Officer roles paying £700-£1,400/day.
+              </p>
+
+              {/* Stats Row */}
+              <div className="flex flex-wrap gap-8 mb-10">
+                <div>
+                  <div className="text-4xl md:text-5xl font-black text-amber-400">{stats.total}+</div>
+                  <div className="text-white/60 text-sm uppercase tracking-wider">Live Roles</div>
+                </div>
+                <div>
+                  <div className="text-4xl md:text-5xl font-black text-white">£{stats.avgRate}</div>
+                  <div className="text-white/60 text-sm uppercase tracking-wider">Avg Day Rate</div>
+                </div>
+                <div>
+                  <div className="text-4xl md:text-5xl font-black text-white">{stats.remoteCount}</div>
+                  <div className="text-white/60 text-sm uppercase tracking-wider">Remote</div>
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="#jobs"
+                  className="px-8 py-4 bg-amber-500 text-black font-bold uppercase tracking-wider hover:bg-amber-400 transition-colors"
+                >
+                  Browse Jobs Now
+                </Link>
+                <Link
+                  href="/fractional-cmo-salary"
+                  className="px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors"
+                >
+                  Salary Guide
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Key Stats */}
-      <section className="bg-white border-b">
-        <div className="max-w-4xl mx-auto px-4 py-8">
-          <div className="grid grid-cols-3 gap-8 text-center">
+      {/* JOBS SECTION - Immediately After Hero */}
+      <section id="jobs" className="py-16 md:py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
             <div>
-              <div className="text-4xl font-black text-purple-700">{jobCount}+</div>
-              <div className="text-gray-600">Marketing Jobs</div>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Browse</span>
+              <h2 className="text-3xl md:text-4xl font-black text-gray-900">Marketing & CMO Jobs</h2>
             </div>
-            <div>
-              <div className="text-4xl font-black text-purple-700">£950</div>
-              <div className="text-gray-600">Avg Day Rate</div>
-            </div>
-            <div>
-              <div className="text-4xl font-black text-purple-700">2-3</div>
-              <div className="text-gray-600">Days Per Week</div>
-            </div>
+            <p className="text-gray-500">Pre-filtered to Marketing. Change filters to explore.</p>
           </div>
-        </div>
-      </section>
 
-      {/* SEO Image */}
-      <section className="py-8 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4">
-          <img
-            src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200"
-            alt="Fractional CMO jobs UK - marketing executive leading strategy meeting with team"
-            className="w-full h-64 object-cover rounded-xl shadow-lg"
-          />
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <article className="py-16">
-        <div className="max-w-4xl mx-auto px-4 prose prose-lg prose-purple">
-          <h2>What Are Fractional CMO Jobs?</h2>
-          <p>
-            <strong>Fractional CMO jobs</strong> are part-time Chief Marketing Officer positions where experienced marketing leaders provide strategic leadership to multiple companies simultaneously. Rather than committing full-time to one organisation, fractional CMOs typically work 1-3 days per week with each client, delivering senior marketing expertise at a fraction of the cost of a permanent hire.
-          </p>
-          <p>
-            The UK market for <strong>fractional CMO jobs UK</strong> has grown significantly, with a 200% year-on-year increase in searches. This growth reflects how startups, scale-ups, and SMEs are accessing world-class marketing talent without the £120,000-£200,000 annual cost of a full-time Chief Marketing Officer.
-          </p>
-
-          <h2>Why Fractional CMO Jobs Are Growing in the UK</h2>
-          <p>Several factors are driving the rapid growth of fractional CMO opportunities:</p>
-          <ul>
-            <li><strong>Cost efficiency:</strong> Companies access experienced CMO expertise for £1,500-£4,000 per week instead of £10,000+ monthly for a full-time hire</li>
-            <li><strong>Breadth of experience:</strong> Fractional CMOs bring diverse perspectives from working across multiple brands and industries</li>
-            <li><strong>Immediate impact:</strong> No lengthy onboarding—experienced CMOs start delivering strategy from week one</li>
-            <li><strong>Scalability:</strong> Engagement can flex based on company needs—increase during product launches, reduce during steady-state</li>
-            <li><strong>VC expectations:</strong> Investors increasingly expect professional marketing leadership post Series A</li>
-          </ul>
-
-          <h2>Types of Fractional CMO Jobs Available</h2>
-          <p>The UK market offers diverse <strong>fractional CMO jobs</strong>:</p>
-          <ul>
-            <li><strong>B2B SaaS CMO:</strong> Demand generation, product marketing, and pipeline acceleration for software companies</li>
-            <li><strong>DTC/E-commerce CMO:</strong> Customer acquisition, retention, and brand building for consumer brands</li>
-            <li><strong>Startup CMO:</strong> Building marketing foundations for Series A-C companies establishing product-market fit</li>
-            <li><strong>Brand Transformation CMO:</strong> Repositioning and rebranding established companies for new markets</li>
-            <li><strong>Growth Marketing CMO:</strong> Performance-focused roles optimising CAC, LTV, and channel mix</li>
-          </ul>
-
-          <h2>Fractional CMO Jobs by Location</h2>
-          <p>While London leads the market with approximately 55% of roles, opportunities exist nationwide:</p>
-          <ul>
-            <li><strong>London (Shoreditch/Tech City):</strong> Startup ecosystem hub—premium rates £900-£1,400/day</li>
-            <li><strong>London (City/Canary Wharf):</strong> Financial services marketing—rates £850-£1,200/day</li>
-            <li><strong>Manchester:</strong> Growing creative and tech scene—rates £700-£1,000/day</li>
-            <li><strong>Bristol:</strong> Strong creative industry presence—rates £700-£1,000/day</li>
-            <li><strong>Edinburgh:</strong> Financial services and tech—rates £700-£1,000/day</li>
-            <li><strong>Remote UK:</strong> Increasingly common, especially post-pandemic—rates £650-£950/day</li>
-          </ul>
-
-          <h2>Fractional CMO Jobs by Industry</h2>
-          <p>High-demand sectors include:</p>
-          <ul>
-            <li><strong>B2B SaaS:</strong> Highest demand—complex buying cycles need experienced CMOs (£1,000-£1,400/day)</li>
-            <li><strong>DTC/E-commerce:</strong> Performance marketing and brand expertise in high demand (£900-£1,300/day)</li>
-            <li><strong>FinTech:</strong> Regulated marketing requiring specialist knowledge (£900-£1,250/day)</li>
-            <li><strong>HealthTech/MedTech:</strong> Compliance-aware marketing leadership (£850-£1,150/day)</li>
-            <li><strong>Marketplaces:</strong> Two-sided marketplace growth expertise (£850-£1,200/day)</li>
-            <li><strong>Professional Services:</strong> B2B marketing and thought leadership (£700-£1,000/day)</li>
-          </ul>
-
-          <h2>How to Find Fractional CMO Jobs UK</h2>
-          <p>The best channels for finding opportunities include:</p>
-          <ul>
-            <li><strong>Specialist platforms:</strong> <Link href="/fractional-jobs">Fractional Quest</Link> curates verified CMO opportunities</li>
-            <li><strong>LinkedIn positioning:</strong> Building thought leadership content establishes CMO credibility</li>
-            <li><strong>VC networks:</strong> Relationships with investors who need CMOs for portfolio companies</li>
-            <li><strong>Fractional communities:</strong> Groups connecting marketing leaders with opportunities</li>
-            <li><strong>Agency networks:</strong> Marketing agencies often refer fractional CMOs to their clients</li>
-          </ul>
-
-          <h2>Requirements for Fractional CMO Jobs</h2>
-          <p>Successful candidates typically have:</p>
-          <ul>
-            <li>12-15+ years of marketing experience with 5+ years in senior leadership</li>
-            <li>Proven track record of pipeline/revenue growth</li>
-            <li>Deep expertise in specific channels (performance, brand, PLG, ABM)</li>
-            <li>Experience building and managing marketing teams</li>
-            <li>Strong data literacy and marketing technology knowledge</li>
-            <li>Board-level communication and stakeholder management skills</li>
-          </ul>
-        </div>
-      </article>
-
-      {/* Embedded Job Board */}
-      <section id="jobs" className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Browse Fractional CMO Jobs UK</h2>
-            <p className="text-lg text-gray-600">Marketing jobs pre-selected. Change filters to explore other departments.</p>
-          </div>
           <Suspense fallback={
             <div className="bg-white rounded-2xl border border-gray-200 p-8">
               <div className="animate-pulse space-y-4">
@@ -193,43 +166,169 @@ export default async function FractionalCmoJobsUkPage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <FAQ
-            items={CMO_FAQS}
-            title="Frequently Asked Questions About Fractional CMO Jobs UK"
-          />
+      {/* Companies Hiring - Editorial Style */}
+      {companies.length > 0 && (
+        <section className="py-16 bg-black text-white">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-2 block">Who's Hiring</span>
+              <h2 className="text-3xl md:text-4xl font-black">Companies Seeking CMOs</h2>
+            </div>
+            <div className="flex flex-wrap justify-center gap-x-12 gap-y-6">
+              {companies.map((company: string, index: number) => (
+                <span
+                  key={index}
+                  className="text-xl md:text-2xl font-light text-gray-400 hover:text-amber-400 transition-colors cursor-default"
+                >
+                  {company}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Editorial Content Section */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          {/* Lead-in */}
+          <div className="mb-16">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-4 block">The Guide</span>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
+              Everything You Need to Know About<br />
+              <span className="text-amber-600">Fractional CMO Jobs UK</span>
+            </h2>
+            <div className="w-24 h-1 bg-amber-500"></div>
+          </div>
+
+          {/* SEO Image - Editorial Style */}
+          <figure className="mb-16 -mx-6 lg:-mx-16">
+            <img
+              src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="Fractional CMO jobs UK - marketing executive leading strategy meeting with team"
+              className="w-full h-80 md:h-96 object-cover"
+            />
+            <figcaption className="text-sm text-gray-500 mt-3 px-6 lg:px-16">
+              Marketing leaders across the UK are embracing fractional work
+            </figcaption>
+          </figure>
+
+          {/* Article Content - Editorial Typography */}
+          <article className="prose prose-lg prose-gray max-w-none">
+            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8 font-light">
+              <strong className="font-semibold text-gray-900">Fractional CMO jobs</strong> represent the new frontier of marketing leadership. Part-time Chief Marketing Officer positions where experienced leaders provide strategic guidance to multiple companies simultaneously—delivering world-class expertise at a fraction of the cost.
+            </p>
+
+            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">The Rise of Fractional CMO Jobs UK</h3>
+            <p>
+              The UK market for <strong>fractional CMO jobs UK</strong> has exploded, with a 200% year-on-year increase in searches. Startups, scale-ups, and SMEs are accessing senior marketing talent without the £120,000-£200,000 annual cost of a full-time Chief Marketing Officer.
+            </p>
+
+            <div className="bg-gray-50 p-8 my-10 border-l-4 border-amber-500">
+              <p className="text-xl font-semibold text-gray-900 mb-0">
+                "Companies access CMO expertise for £1,500-£4,000/week instead of £10,000+ monthly for full-time."
+              </p>
+            </div>
+
+            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Why Fractional CMO Jobs Are Booming</h3>
+            <ul className="space-y-3">
+              <li><strong>Cost efficiency:</strong> Senior expertise at a fraction of the cost</li>
+              <li><strong>Diverse experience:</strong> CMOs bringing insights from multiple industries</li>
+              <li><strong>Immediate impact:</strong> No lengthy onboarding—strategy from day one</li>
+              <li><strong>Scalability:</strong> Flex engagement based on business needs</li>
+              <li><strong>VC expectations:</strong> Professional marketing leadership post-Series A</li>
+            </ul>
+
+            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Types of Fractional CMO Jobs</h3>
+            <div className="grid md:grid-cols-2 gap-6 not-prose my-8">
+              {[
+                { title: 'B2B SaaS CMO', desc: 'Demand generation & pipeline acceleration', rate: '£1,000-£1,400/day' },
+                { title: 'DTC/E-commerce CMO', desc: 'Customer acquisition & brand building', rate: '£900-£1,300/day' },
+                { title: 'Startup CMO', desc: 'Building marketing foundations Series A-C', rate: '£850-£1,200/day' },
+                { title: 'Growth Marketing CMO', desc: 'Performance-focused CAC/LTV optimisation', rate: '£900-£1,300/day' },
+              ].map((type, i) => (
+                <div key={i} className="bg-gray-50 p-6 border border-gray-200">
+                  <h4 className="font-bold text-gray-900 mb-1">{type.title}</h4>
+                  <p className="text-gray-600 text-sm mb-2">{type.desc}</p>
+                  <span className="text-amber-600 font-semibold text-sm">{type.rate}</span>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Fractional CMO Jobs by Location</h3>
+            <p>London leads with 55% of roles, but opportunities exist nationwide:</p>
+            <ul className="space-y-2">
+              <li><strong>London Tech City:</strong> £900-£1,400/day</li>
+              <li><strong>Manchester:</strong> £700-£1,000/day</li>
+              <li><strong>Bristol & Edinburgh:</strong> £700-£1,000/day</li>
+              <li><strong>Remote UK:</strong> £650-£950/day</li>
+            </ul>
+
+            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Requirements for Fractional CMO Jobs</h3>
+            <ul className="space-y-2">
+              <li>12-15+ years marketing experience, 5+ in senior leadership</li>
+              <li>Proven track record of revenue/pipeline growth</li>
+              <li>Deep channel expertise (performance, brand, PLG, ABM)</li>
+              <li>Team building and management experience</li>
+              <li>Board-level communication skills</li>
+            </ul>
+          </article>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-purple-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Find Your Next Fractional CMO Role?</h2>
-          <p className="text-purple-100 mb-8">Create your profile to get matched with companies seeking fractional marketing leadership.</p>
-          <div className="flex justify-center gap-4">
-            <Link href="/handler/sign-up" className="px-8 py-4 bg-white text-purple-900 rounded-lg font-semibold hover:bg-purple-50">
+      {/* FAQ Section - Editorial Style */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <div className="mb-12">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">FAQ</span>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">
+              Common Questions About Fractional CMO Jobs UK
+            </h2>
+          </div>
+          <FAQ items={CMO_FAQS} title="" />
+        </div>
+      </section>
+
+      {/* CTA Section - Bold Editorial */}
+      <section className="py-20 md:py-28 bg-black text-white">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-4 block">Ready?</span>
+          <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
+            Find Your Next<br />
+            <span className="text-amber-400">Fractional CMO Role</span>
+          </h2>
+          <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+            Create your profile and get matched with companies seeking fractional marketing leadership.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link
+              href="/handler/sign-up"
+              className="px-10 py-5 bg-amber-500 text-black font-bold uppercase tracking-wider hover:bg-amber-400 transition-colors"
+            >
               Create Profile
             </Link>
-            <Link href="/fractional-cmo-salary" className="px-8 py-4 border-2 border-white rounded-lg font-semibold hover:bg-white/10">
-              CMO Salary Guide
+            <Link
+              href="/fractional-cmo-salary"
+              className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors"
+            >
+              Salary Guide
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Internal Links */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">Related Pages</h2>
-          <div className="flex flex-wrap gap-4">
-            <Link href="/part-time-cmo" className="px-4 py-2 bg-white rounded-lg border hover:border-purple-300">Part-Time CMO Guide</Link>
-            <Link href="/fractional-cmo-salary" className="px-4 py-2 bg-white rounded-lg border hover:border-purple-300">CMO Salary Guide</Link>
-            <Link href="/fractional-jobs-london" className="px-4 py-2 bg-white rounded-lg border hover:border-purple-300">Jobs London</Link>
-            <Link href="/fractional-cfo-jobs-uk" className="px-4 py-2 bg-white rounded-lg border hover:border-emerald-300">CFO Jobs UK</Link>
-            <Link href="/fractional-cto-jobs-uk" className="px-4 py-2 bg-white rounded-lg border hover:border-blue-300">CTO Jobs UK</Link>
-            <Link href="/fractional-coo-jobs-uk" className="px-4 py-2 bg-white rounded-lg border hover:border-orange-300">COO Jobs UK</Link>
+      {/* Related Pages - Minimal */}
+      <section className="py-12 bg-white border-t border-gray-200">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <span className="text-sm font-bold uppercase tracking-wider text-gray-400">Related</span>
+            <div className="flex flex-wrap gap-4">
+              <Link href="/part-time-cmo" className="text-gray-600 hover:text-amber-600 font-medium transition-colors">Part-Time CMO Guide</Link>
+              <Link href="/fractional-cmo-salary" className="text-gray-600 hover:text-amber-600 font-medium transition-colors">CMO Salary Guide</Link>
+              <Link href="/fractional-jobs-london" className="text-gray-600 hover:text-amber-600 font-medium transition-colors">Jobs London</Link>
+              <Link href="/fractional-cfo-jobs-uk" className="text-gray-600 hover:text-amber-600 font-medium transition-colors">CFO Jobs UK</Link>
+              <Link href="/fractional-cto-jobs-uk" className="text-gray-600 hover:text-amber-600 font-medium transition-colors">CTO Jobs UK</Link>
+            </div>
           </div>
         </div>
       </section>

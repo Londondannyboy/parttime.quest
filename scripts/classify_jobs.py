@@ -46,6 +46,9 @@ class StructuredJob(BaseModel):
     city: Optional[str] = Field(default=None, description="Primary city, e.g., 'London', 'Manchester'")
     is_remote: bool = Field(description="True if remote work is available")
 
+    # Company Info
+    company_domain: Optional[str] = Field(default=None, description="Company website domain WITHOUT https:// (e.g., 'vercel.com', 'stripe.com', 'notion.so'). Infer from company name if well-known. For agencies/recruiters, leave as None.")
+
     # Categorization
     vertical: str = Field(description="Industry vertical: Technology, Finance, Healthcare, Professional Services, E-commerce, Manufacturing, Recruitment, Consulting, Media, Retail, etc.")
     seniority_level: str = Field(description="MUST be one of: Executive, Director, Manager, Senior, Mid, Junior, Intern. Map C-suite/VP to Executive, directors to Director, managers to Manager, senior ICs to Senior, mid-level to Mid, entry-level to Junior, interns to Intern.")
@@ -325,6 +328,7 @@ def update_structured_job(conn, job_id: str, structured: StructuredJob):
                 benefits = %s,
                 skills_required = %s,
                 about_company = %s,
+                company_domain = %s,
                 classification_confidence = 1.0,
                 classification_reasoning = %s,
                 updated_date = NOW()
@@ -346,6 +350,7 @@ def update_structured_job(conn, job_id: str, structured: StructuredJob):
             structured.benefits,
             structured.skills_required,
             structured.about_company,
+            structured.company_domain,
             f"Pydantic AI - Vertical: {structured.vertical}, City: {structured.city}, Country: {structured.country}",
             job_id
         ))

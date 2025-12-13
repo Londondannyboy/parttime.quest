@@ -190,7 +190,8 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
         role_category,
         skills_required,
         posted_date,
-        description_snippet
+        description_snippet,
+        company_domain
       FROM jobs
       WHERE ${sql.unsafe(whereClause)}
       ORDER BY posted_date DESC NULLS LAST
@@ -307,6 +308,7 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
                           roleCategory={job.role_category}
                           skills={job.skills_required || []}
                           postedDaysAgo={postedDaysAgo}
+                          companyDomain={job.company_domain}
                         />
                       </Link>
                     )

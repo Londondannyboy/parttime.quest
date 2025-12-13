@@ -14,6 +14,7 @@ interface JobCardProps {
   postedDaysAgo?: number
   className?: string
   onClick?: () => void
+  companyDomain?: string
 }
 
 export function JobCard({
@@ -29,6 +30,7 @@ export function JobCard({
   postedDaysAgo,
   className = '',
   onClick,
+  companyDomain,
 }: JobCardProps) {
   const displayedCompensation = compensation || (dayRate ? `${currency}${dayRate}/day` : null)
 
@@ -58,11 +60,28 @@ export function JobCard({
 
       {/* Header */}
       <div className="flex items-start gap-4 mb-4">
-        {/* Company Initial Avatar */}
-        <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg flex items-center justify-center">
-          <span className="text-xl font-bold text-purple-700">
-            {company.charAt(0).toUpperCase()}
-          </span>
+        {/* Company Logo or Initial */}
+        <div className="flex-shrink-0 w-12 h-12 rounded-lg overflow-hidden bg-white border border-gray-100">
+          {companyDomain ? (
+            <img
+              src={`https://cdn.brandfetch.io/${companyDomain}/w/400/h/400?c=${process.env.NEXT_PUBLIC_BRANDFETCH_CLIENT_ID}`}
+              alt={`${company} logo`}
+              className="w-full h-full object-contain p-1.5"
+              onError={(e) => {
+                const target = e.currentTarget
+                target.style.display = 'none'
+                const fallback = target.nextElementSibling as HTMLElement
+                if (fallback) fallback.style.display = 'flex'
+              }}
+            />
+          ) : null}
+          <div
+            className={`w-full h-full bg-gradient-to-br from-purple-100 to-purple-200 items-center justify-center ${companyDomain ? 'hidden' : 'flex'}`}
+          >
+            <span className="text-xl font-bold text-purple-700">
+              {company.charAt(0).toUpperCase()}
+            </span>
+          </div>
         </div>
         <div className="flex-1 min-w-0">
           <h3 className="text-lg font-bold text-gray-900 group-hover:text-purple-700 transition-colors mb-1 line-clamp-2">
