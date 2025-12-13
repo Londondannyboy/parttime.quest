@@ -77,10 +77,18 @@ export const metadata: Metadata = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://fractional.quest/#organization",
   name: "Fractional.Quest",
+  alternateName: ["Fractional Quest", "FractionalQuest"],
   url: "https://fractional.quest",
-  logo: "https://fractional.quest/logo.svg",
-  description: "UK job board for fractional executive roles. Browse fractional CFO, CTO, CMO and senior leadership positions.",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://fractional.quest/logo.svg",
+    width: "512",
+    height: "512"
+  },
+  image: "https://fractional.quest/logo.svg",
+  description: "UK marketplace for fractional jobs and executive services. Browse fractional CFO, CTO, CMO roles or hire fractional executives.",
   foundingDate: "2024",
   sameAs: [
     "https://twitter.com/fractionalquest",
@@ -102,15 +110,25 @@ const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Fractional.Quest",
+  alternateName: ["Fractional Quest", "FractionalQuest", "Fractional Jobs UK"],
   url: "https://fractional.quest",
-  description: "Discover fractional jobs in the UK. Browse fractional CFO, CMO, CTO and executive roles.",
+  description: "UK marketplace for fractional jobs and executive services. Browse fractional CFO, CMO, CTO roles.",
+  inLanguage: "en-GB",
   publisher: {
     "@type": "Organization",
-    name: "Fractional.Quest"
+    name: "Fractional.Quest",
+    url: "https://fractional.quest",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://fractional.quest/logo.svg"
+    }
   },
   potentialAction: {
     "@type": "SearchAction",
-    target: "https://fractional.quest/fractional-jobs?q={search_term_string}",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: "https://fractional.quest/fractional-jobs?q={search_term_string}"
+    },
     "query-input": "required name=search_term_string"
   }
 };
