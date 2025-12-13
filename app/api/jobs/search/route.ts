@@ -5,16 +5,25 @@ const sql = neon(process.env.DATABASE_URL!)
 
 export interface JobSearchResult {
   id: string
+  slug?: string
   title: string
   company: string
+  company_name?: string
   location: string
   isRemote: boolean
+  is_remote?: boolean
   isFractional: boolean
+  is_fractional?: boolean
+  workplace_type?: string
   salaryRange?: string
+  compensation?: string
   postedDate?: string
+  posted_date?: string
   url: string
   snippet?: string
   roleCategory?: string
+  role_category?: string
+  skills_required?: string[]
 }
 
 export interface JobSearchResponse {
@@ -33,86 +42,116 @@ export interface JobSearchResponse {
 export async function GET(request: NextRequest) {
   const params = request.nextUrl.searchParams
 
+  // Support both naming conventions for filters
   const roleType = params.get('role') || params.get('roleType') || ''
   const location = params.get('location') || ''
-  const remote = params.get('remote') === 'true'
+  const remoteParam = params.get('remote') || ''
   const fractionalOnly = params.get('fractional') !== 'false'
   const query = params.get('q') || ''
 
+  // Pagination parameters
+  const page = parseInt(params.get('page') || '1')
+  const limit = Math.min(parseInt(params.get('limit') || '20'), 50) // Cap at 50
+  const offset = (page - 1) * limit
+
   try {
-    // Simple query with pattern matching
-    const rolePattern = roleType ? `%${roleType}%` : '%'
-    const locationPattern = location ? `%${location}%` : '%'
-    const queryPattern = query ? `%${query}%` : '%'
+    // Build WHERE conditions dynamically
+    let whereConditions = ['is_active = true']
 
-    let jobs
+    // Role/Department filter - use role_category if it looks like a department name
+    const departments = ['Engineering', 'Marketing', 'Finance', 'Operations', 'Sales', 'HR', 'Product', 'Design', 'Data', 'Legal', 'Customer Success', 'Other']
+    if (roleType) {
+      if (departments.includes(roleType)) {
+        // Exact match on role_category for department filtering
+        whereConditions.push(`role_category = '${roleType}'`)
+      } else {
+        // Pattern match on title for role type filtering
+        whereConditions.push(`LOWER(title) LIKE LOWER('%${roleType}%')`)
+      }
+    }
 
+    // Location filter
+    if (location) {
+      whereConditions.push(`LOWER(COALESCE(location, '')) LIKE LOWER('%${location}%')`)
+    }
+
+    // Remote/work type filter
+    if (remoteParam === 'remote' || remoteParam === 'true') {
+      whereConditions.push(`(is_remote = true OR workplace_type = 'Remote')`)
+    } else if (remoteParam === 'hybrid') {
+      whereConditions.push(`workplace_type = 'Hybrid'`)
+    } else if (remoteParam === 'onsite') {
+      whereConditions.push(`(is_remote = false AND workplace_type IS DISTINCT FROM 'Remote' AND workplace_type IS DISTINCT FROM 'Hybrid')`)
+    }
+
+    // Fractional filter
     if (fractionalOnly) {
-      jobs = await sql`
-        SELECT
-          id, title, company_name, location, is_remote, is_fractional,
-          salary_min, salary_max, salary_currency, posted_date, url,
-          description_snippet, role_category
-        FROM jobs
-        WHERE is_active = true
-          AND (is_fractional = true OR LOWER(title) LIKE '%fractional%')
-          AND LOWER(title) LIKE LOWER(${rolePattern})
-          AND LOWER(COALESCE(location, '')) LIKE LOWER(${locationPattern})
-          AND (
-            LOWER(title) LIKE LOWER(${queryPattern})
-            OR LOWER(company_name) LIKE LOWER(${queryPattern})
-          )
-        ORDER BY is_fractional DESC, posted_date DESC NULLS LAST
-        LIMIT 20
-      `
-    } else {
-      jobs = await sql`
-        SELECT
-          id, title, company_name, location, is_remote, is_fractional,
-          salary_min, salary_max, salary_currency, posted_date, url,
-          description_snippet, role_category
-        FROM jobs
-        WHERE is_active = true
-          AND LOWER(title) LIKE LOWER(${rolePattern})
-          AND LOWER(COALESCE(location, '')) LIKE LOWER(${locationPattern})
-          AND (
-            LOWER(title) LIKE LOWER(${queryPattern})
-            OR LOWER(company_name) LIKE LOWER(${queryPattern})
-          )
-        ORDER BY is_fractional DESC, posted_date DESC NULLS LAST
-        LIMIT 20
-      `
+      whereConditions.push(`(is_fractional = true OR LOWER(title) LIKE '%fractional%')`)
     }
 
-    // Apply remote filter in JS (simpler than complex SQL)
-    if (remote) {
-      jobs = jobs.filter(j => j.is_remote || (j.location && j.location.toLowerCase().includes('remote')))
+    // Query/search filter
+    if (query) {
+      whereConditions.push(`(LOWER(title) LIKE LOWER('%${query}%') OR LOWER(company_name) LIKE LOWER('%${query}%'))`)
     }
 
-    // Format results
-    const formattedJobs: JobSearchResult[] = jobs.map(job => ({
+    const whereClause = whereConditions.join(' AND ')
+
+    // Get total count first
+    const countResult = await sql`
+      SELECT COUNT(*) as count
+      FROM jobs
+      WHERE ${sql.unsafe(whereClause)}
+    `
+    const total = parseInt((countResult[0] as any)?.count || '0')
+
+    // Get paginated jobs
+    const jobs = await sql`
+      SELECT
+        id, slug, title, company_name, location, is_remote, is_fractional,
+        workplace_type, salary_min, salary_max, salary_currency, compensation,
+        posted_date, url, description_snippet, role_category, skills_required
+      FROM jobs
+      WHERE ${sql.unsafe(whereClause)}
+      ORDER BY posted_date DESC NULLS LAST
+      LIMIT ${limit} OFFSET ${offset}
+    `
+
+    // Format results - return both formats for compatibility
+    const formattedJobs: JobSearchResult[] = jobs.map((job: any) => ({
       id: job.id,
+      slug: job.slug,
       title: job.title,
       company: job.company_name,
+      company_name: job.company_name,
       location: job.location || 'Location not specified',
-      isRemote: job.is_remote || false,
+      isRemote: job.is_remote || job.workplace_type === 'Remote' || false,
+      is_remote: job.is_remote || false,
       isFractional: job.is_fractional || false,
+      is_fractional: job.is_fractional || false,
+      workplace_type: job.workplace_type,
       salaryRange: formatSalaryRange(job.salary_min, job.salary_max, job.salary_currency),
+      compensation: job.compensation,
       postedDate: job.posted_date ? new Date(job.posted_date).toLocaleDateString('en-GB') : undefined,
+      posted_date: job.posted_date,
       url: job.url,
       snippet: job.description_snippet?.slice(0, 200),
-      roleCategory: job.role_category
+      roleCategory: job.role_category,
+      role_category: job.role_category,
+      skills_required: job.skills_required || []
     }))
 
     // Voice-friendly summary
-    const summary = generateVoiceSummary(formattedJobs, { roleType, location, remote, fractional: fractionalOnly })
+    const summary = generateVoiceSummary(formattedJobs, { roleType, location, remote: remoteParam === 'remote' || remoteParam === 'true', fractional: fractionalOnly })
 
     return NextResponse.json({
       jobs: formattedJobs,
-      total: formattedJobs.length,
-      query: { roleType: roleType || undefined, location: location || undefined, remote, fractional: fractionalOnly },
+      total,
+      page,
+      limit,
+      totalPages: Math.ceil(total / limit),
+      query: { roleType: roleType || undefined, location: location || undefined, remote: remoteParam === 'remote' || remoteParam === 'true', fractional: fractionalOnly },
       summary
-    } as JobSearchResponse)
+    })
   } catch (error) {
     console.error('Jobs search error:', error)
     return NextResponse.json(

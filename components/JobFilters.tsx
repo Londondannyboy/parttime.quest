@@ -10,25 +10,21 @@ interface FilterOption {
 
 interface JobFiltersProps {
   currentRole?: string
-  currentRemote?: string
   currentLocation?: string
   currentIndustry?: string
   totalJobs: number
   roleOptions: FilterOption[]
   locationOptions: FilterOption[]
-  workTypeOptions: FilterOption[]
   industryOptions: FilterOption[]
 }
 
 export function JobFilters({
   currentRole = '',
-  currentRemote = '',
   currentLocation = '',
   currentIndustry = '',
   totalJobs,
   roleOptions,
   locationOptions,
-  workTypeOptions,
   industryOptions
 }: JobFiltersProps) {
   const router = useRouter()
@@ -54,16 +50,16 @@ export function JobFilters({
     router.push(`/fractional-jobs${queryString ? `?${queryString}` : ''}`)
   }
 
-  const activeFilters = [currentRole, currentRemote, currentLocation, currentIndustry].filter(Boolean).length
+  const activeFilters = [currentRole, currentLocation, currentIndustry].filter(Boolean).length
 
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-      {/* First Row - Role, Industry */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+      {/* Filters Row */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
         {/* Role Filter */}
         <div>
           <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-1">
-            Role Type
+            Department
           </label>
           <select
             id="role"
@@ -116,25 +112,6 @@ export function JobFilters({
             ))}
           </select>
         </div>
-
-        {/* Work Type Filter */}
-        <div>
-          <label htmlFor="workType" className="block text-sm font-medium text-gray-700 mb-1">
-            Work Type
-          </label>
-          <select
-            id="workType"
-            value={currentRemote}
-            onChange={(e) => handleFilterChange('remote', e.target.value)}
-            className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-gray-900 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors"
-          >
-            {workTypeOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </div>
       </div>
 
       {/* Results Count & Clear */}
@@ -165,7 +142,7 @@ export function JobFilters({
                 className="hover:text-purple-900"
                 aria-label={`Remove ${roleOptions.find(r => r.value === currentRole)?.label || currentRole} filter`}
               >
-                ×
+                &times;
               </button>
             </span>
           )}
@@ -177,7 +154,7 @@ export function JobFilters({
                 className="hover:text-orange-900"
                 aria-label={`Remove ${industryOptions.find(i => i.value === currentIndustry)?.label || currentIndustry} filter`}
               >
-                ×
+                &times;
               </button>
             </span>
           )}
@@ -189,19 +166,7 @@ export function JobFilters({
                 className="hover:text-blue-900"
                 aria-label={`Remove ${locationOptions.find(l => l.value === currentLocation)?.label || currentLocation} filter`}
               >
-                ×
-              </button>
-            </span>
-          )}
-          {currentRemote && (
-            <span className="inline-flex items-center gap-1 px-3 py-1 bg-emerald-100 text-emerald-800 text-sm rounded-full">
-              {workTypeOptions.find(r => r.value === currentRemote)?.label || currentRemote}
-              <button
-                onClick={() => handleFilterChange('remote', '')}
-                className="hover:text-emerald-900"
-                aria-label={`Remove ${workTypeOptions.find(r => r.value === currentRemote)?.label || currentRemote} filter`}
-              >
-                ×
+                &times;
               </button>
             </span>
           )}

@@ -28,7 +28,6 @@ interface JobsPageProps {
   searchParams: Promise<{
     page?: string
     role?: string
-    remote?: string
     location?: string
     industry?: string
   }>
@@ -56,98 +55,82 @@ const ROLE_CATEGORIES: FilterOption[] = [
   { value: 'Other', label: 'Other' },
 ]
 
-// Fetch filter options from database
-async function getFilterOptions(sql: any) {
-  // Use functional department categories (matches database ENUM)
-  const roleOptions: FilterOption[] = ROLE_CATEGORIES
+// Location options (matches database ENUM)
+const LOCATIONS: FilterOption[] = [
+  { value: '', label: 'All Locations' },
+  { value: 'London', label: 'London' },
+  { value: 'Manchester', label: 'Manchester' },
+  { value: 'Birmingham', label: 'Birmingham' },
+  { value: 'Leeds', label: 'Leeds' },
+  { value: 'Bristol', label: 'Bristol' },
+  { value: 'Edinburgh', label: 'Edinburgh' },
+  { value: 'Glasgow', label: 'Glasgow' },
+  { value: 'Liverpool', label: 'Liverpool' },
+  { value: 'Newcastle', label: 'Newcastle' },
+  { value: 'Sheffield', label: 'Sheffield' },
+  { value: 'Cambridge', label: 'Cambridge' },
+  { value: 'Oxford', label: 'Oxford' },
+  { value: 'Cardiff', label: 'Cardiff' },
+  { value: 'Belfast', label: 'Belfast' },
+  { value: 'Remote', label: 'Remote' },
+  { value: 'Other UK', label: 'Other UK' },
+]
 
-  // Get workplace types
-  const workTypeResults = await sql`
-    SELECT DISTINCT workplace_type
-    FROM jobs
-    WHERE is_active = true AND workplace_type IS NOT NULL
-    ORDER BY workplace_type
-  `
-  const workTypeOptions: FilterOption[] = [
-    { value: '', label: 'All Work Types' },
-    ...workTypeResults.map((w: any) => ({
-      value: w.workplace_type.toLowerCase(),
-      label: w.workplace_type
-    }))
-  ]
+// Industry options (matches database ENUM)
+const INDUSTRIES: FilterOption[] = [
+  { value: '', label: 'All Industries' },
+  { value: 'Technology', label: 'Technology' },
+  { value: 'FinTech', label: 'FinTech' },
+  { value: 'SaaS', label: 'SaaS' },
+  { value: 'Healthcare', label: 'Healthcare' },
+  { value: 'E-commerce', label: 'E-commerce' },
+  { value: 'Professional Services', label: 'Professional Services' },
+  { value: 'Financial Services', label: 'Financial Services' },
+  { value: 'Manufacturing', label: 'Manufacturing' },
+  { value: 'Retail', label: 'Retail' },
+  { value: 'Media', label: 'Media' },
+  { value: 'Real Estate', label: 'Real Estate' },
+  { value: 'Education', label: 'Education' },
+  { value: 'Energy', label: 'Energy' },
+  { value: 'Recruitment', label: 'Recruitment' },
+  { value: 'Other', label: 'Other' },
+]
 
-  // Get unique locations (simplified - extract city/region)
-  const locationResults = await sql`
-    SELECT location, COUNT(*) as count
-    FROM jobs
-    WHERE is_active = true AND location IS NOT NULL
-    GROUP BY location
-    ORDER BY count DESC
-    LIMIT 15
-  `
-
-  // Static list of UK locations - comprehensive coverage
-  const ukLocations = [
-    'London', 'Manchester', 'Birmingham', 'Leeds', 'Bristol',
-    'Edinburgh', 'Glasgow', 'Liverpool', 'Newcastle', 'Sheffield',
-    'Nottingham', 'Cardiff', 'Belfast', 'Cambridge', 'Oxford',
-    'Reading', 'Brighton', 'Southampton', 'Leicester', 'Coventry',
-    'Remote'
-  ]
-
-  const locationOptions: FilterOption[] = [
-    { value: '', label: 'All Locations' },
-    ...ukLocations.map(loc => ({ value: loc, label: loc }))
-  ]
-
-  // Static list of industries
-  const industries = [
-    'Technology', 'FinTech', 'SaaS', 'Healthcare', 'E-commerce',
-    'Professional Services', 'Financial Services', 'Manufacturing',
-    'Retail', 'Media & Entertainment', 'Real Estate', 'Education',
-    'Energy', 'Startups', 'Private Equity'
-  ]
-
-  const industryOptions: FilterOption[] = [
-    { value: '', label: 'All Industries' },
-    ...industries.map(ind => ({ value: ind, label: ind }))
-  ]
-
-  return { roleOptions, workTypeOptions, locationOptions, industryOptions }
+// Fetch filter options
+function getFilterOptions() {
+  return {
+    roleOptions: ROLE_CATEGORIES,
+    locationOptions: LOCATIONS,
+    industryOptions: INDUSTRIES
+  }
 }
 
 function JobFiltersWrapper({
   currentRole,
-  currentRemote,
   currentLocation,
   currentIndustry,
   totalJobs,
   roleOptions,
   locationOptions,
-  workTypeOptions,
   industryOptions
 }: {
   currentRole: string
-  currentRemote: string
   currentLocation: string
   currentIndustry: string
   totalJobs: number
   roleOptions: FilterOption[]
   locationOptions: FilterOption[]
-  workTypeOptions: FilterOption[]
   industryOptions: FilterOption[]
 }) {
   return (
     <Suspense fallback={<div className="h-24 bg-gray-100 rounded-xl animate-pulse" />}>
       <JobFilters
         currentRole={currentRole}
-        currentRemote={currentRemote}
         currentLocation={currentLocation}
         currentIndustry={currentIndustry}
         totalJobs={totalJobs}
         roleOptions={roleOptions}
         locationOptions={locationOptions}
-        workTypeOptions={workTypeOptions}
         industryOptions={industryOptions}
       />
     </Suspense>
@@ -164,15 +147,14 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
 
   // Get filter values
   const roleFilter = params.role || ''
-  const remoteFilter = params.remote || ''
   const locationFilter = params.location || ''
   const industryFilter = params.industry || ''
 
   try {
     const sql = createDbQuery()
 
-    // Get filter options from database
-    const { roleOptions, workTypeOptions, locationOptions, industryOptions } = await getFilterOptions(sql)
+    // Get filter options (static ENUMs)
+    const { roleOptions, locationOptions, industryOptions } = getFilterOptions()
 
     // Build dynamic WHERE clause
     let whereConditions = ['is_active = true']
@@ -182,25 +164,14 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
       whereConditions.push(`role_category = '${roleFilter}'`)
     }
 
-    if (remoteFilter === 'remote') {
-      whereConditions.push(`(is_remote = true OR workplace_type = 'Remote')`)
-    } else if (remoteFilter === 'hybrid') {
-      whereConditions.push(`workplace_type = 'Hybrid'`)
-    } else if (remoteFilter === 'onsite') {
-      whereConditions.push(`(is_remote = false AND workplace_type IS DISTINCT FROM 'Remote' AND workplace_type IS DISTINCT FROM 'Hybrid')`)
-    }
-
     if (locationFilter) {
-      whereConditions.push(`location ILIKE '%${locationFilter}%'`)
+      // Direct match against city ENUM
+      whereConditions.push(`city = '${locationFilter}'`)
     }
 
     if (industryFilter) {
-      // Match industry in company description, title, or skills
-      whereConditions.push(`(
-        description ILIKE '%${industryFilter}%' OR
-        title ILIKE '%${industryFilter}%' OR
-        company_name ILIKE '%${industryFilter}%'
-      )`)
+      // Direct match against industry ENUM
+      whereConditions.push(`industry = '${industryFilter}'`)
     }
 
     const whereClause = whereConditions.join(' AND ')
@@ -241,7 +212,6 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
       const params = new URLSearchParams()
       params.set('page', pageNum.toString())
       if (roleFilter) params.set('role', roleFilter)
-      if (remoteFilter) params.set('remote', remoteFilter)
       if (locationFilter) params.set('location', locationFilter)
       if (industryFilter) params.set('industry', industryFilter)
       return `/fractional-jobs?${params.toString()}`
@@ -293,13 +263,11 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
             <JobFiltersWrapper
               currentRole={roleFilter}
-              currentRemote={remoteFilter}
               currentLocation={locationFilter}
               currentIndustry={industryFilter}
               totalJobs={total}
               roleOptions={roleOptions}
               locationOptions={locationOptions}
-              workTypeOptions={workTypeOptions}
               industryOptions={industryOptions}
             />
           </div>
