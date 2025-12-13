@@ -29,9 +29,9 @@ class ExtractionResult(BaseModel):
     should_confirm: bool = Field(default=False)
 
 
-# Use Anthropic - confirmed working with credit
+# Use Google Gemini (cheapest, user has credit)
 def get_model():
-    return "anthropic:claude-3-haiku-20240307"
+    return "google-gla:gemini-2.0-flash"
 
 
 SYSTEM_PROMPT = """You are a career preference extraction agent for Fractional.Quest.
@@ -124,7 +124,7 @@ class handler(BaseHTTPRequestHandler):
         self.wfile.write(json.dumps({
             "status": "ok",
             "agent": "pydantic-ai",
-            "version": "v5-anthropic-only",
+            "version": "v6-google-gemini",
             "model": model,
             "keys": {
                 "openai": has_openai,
