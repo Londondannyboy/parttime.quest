@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useUser } from '@stackframe/stack'
 import { VoiceProvider, useVoice } from '@humeai/voice-react'
 import Link from 'next/link'
@@ -8,7 +8,18 @@ import { UserGraph } from '@/components/UserGraph'
 
 const CONFIG_ID = 'd57ceb71-4cf5-47e9-87cd-6052445a031c'
 
-function VoiceInterface({ token, profile, userId }: { token: string; profile: any; userId?: string }) {
+// Store chat_group_id per user for resume functionality
+function getChatGroupId(userId: string): string | null {
+  if (typeof window === 'undefined') return null
+  return localStorage.getItem(`hume_chat_group_${userId}`)
+}
+
+function setChatGroupId(userId: string, chatGroupId: string) {
+  if (typeof window === 'undefined') return
+  localStorage.setItem(`hume_chat_group_${userId}`, chatGroupId)
+}
+
+function VoiceInterface({ token, profile, userId, previousContext }: { token: string; profile: any; userId?: string; previousContext?: string }) {
   const {
     connect,
     disconnect,
@@ -65,21 +76,29 @@ function VoiceInterface({ token, profile, userId }: { token: string; profile: an
     const vars = {
       user_id: userId || '',  // CRITICAL: Hume tools use this to identify the user
       first_name: profile?.first_name || '',
+      last_name: profile?.last_name || '',
       is_authenticated: userId ? 'true' : 'false',
       current_country: profile?.current_country || 'United Kingdom',
       interests: Array.isArray(profile?.interests) ? profile.interests.join(', ') : (profile?.interests || ''),
       timeline: profile?.timeline || '',
       budget: profile?.budget_monthly ? `£${profile.budget_monthly}/day` : (profile?.budget || ''),
       email: profile?.email || '',
-      last_name: profile?.last_name || ''
+      previous_context: previousContext || ''  // From Supermemory
     }
 
+    // Check for existing chat to resume
+    const existingChatGroupId = userId ? getChatGroupId(userId) : null
+
     console.log('[Hume] Connecting with user_id and profile:', JSON.stringify(vars, null, 2))
+    if (existingChatGroupId) {
+      console.log('[Hume] Resuming chat group:', existingChatGroupId)
+    }
 
     try {
       await connect({
         auth: { type: 'accessToken', value: token },
         configId: CONFIG_ID,
+        resumedChatGroupId: existingChatGroupId || undefined,  // Resume previous chat if available
         sessionSettings: {
           type: 'session_settings' as const,
           variables: vars
@@ -88,7 +107,7 @@ function VoiceInterface({ token, profile, userId }: { token: string; profile: an
     } catch (e: any) {
       console.error('Connection error:', e)
     }
-  }, [connect, token, profile, userId])
+  }, [connect, token, profile, userId, previousContext])
 
   const isConnected = status.value === 'connected'
   const isConnecting = status.value === 'connecting'
@@ -222,6 +241,7 @@ export default function VoicePage() {
   const user = useUser()
   const [token, setToken] = useState<string | null>(null)
   const [profile, setProfile] = useState<any>(null)
+  const [previousContext, setPreviousContext] = useState<string>('')
   const [error, setError] = useState<string | null>(null)
 
   // Fetch token
@@ -240,6 +260,37 @@ export default function VoicePage() {
       .then(setProfile)
       .catch(console.error)
   }, [user])
+
+  // Fetch Supermemory context for long-term memory
+  useEffect(() => {
+    if (!user?.id) return
+    fetch('/api/supermemory-context', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: user.id, query: 'career preferences and background' })
+    })
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (data?.context) {
+          console.log('[Supermemory] Got previous context:', data.context.substring(0, 100))
+          setPreviousContext(data.context)
+        }
+      })
+      .catch(console.error)
+  }, [user?.id])
+
+  // Handle chat_group_id from Hume for resume functionality
+  const handleHumeMessage = useCallback((msg: any) => {
+    // Log specific message types that might indicate issues
+    if (msg.type === 'error' || msg.type === 'chat_metadata') {
+      console.log('=== HUME onMessage ===', msg.type, JSON.stringify(msg, null, 2))
+    }
+    // Save chat_group_id for resume functionality
+    if (msg.type === 'chat_metadata' && msg.chatGroupId && user?.id) {
+      console.log('[Hume] Saving chat_group_id for resume:', msg.chatGroupId)
+      setChatGroupId(user.id, msg.chatGroupId)
+    }
+  }, [user?.id])
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white">
@@ -297,14 +348,9 @@ export default function VoicePage() {
                   type: (error as any)?.type
                 }, null, 2))
               }}
-              onMessage={(msg) => {
-                // Log specific message types that might indicate issues
-                if (msg.type === 'error' || msg.type === 'chat_metadata') {
-                  console.log('=== HUME onMessage ===', msg.type, JSON.stringify(msg, null, 2))
-                }
-              }}
+              onMessage={handleHumeMessage}
             >
-              <VoiceInterface token={token} profile={profile} userId={user?.id} />
+              <VoiceInterface token={token} profile={profile} userId={user?.id} previousContext={previousContext} />
             </VoiceProvider>
           )}
         </div>

@@ -1,7 +1,7 @@
 /**
  * Supermemory Integration for Conversational Context
  *
- * Provides persistent memory for conversations with Quest voice agent.
+ * Provides persistent memory for conversations with Repo voice agent.
  * Memories are stored per user and can be searched semantically.
  */
 
