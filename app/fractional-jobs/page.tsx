@@ -283,7 +283,7 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">No jobs match your filters</h2>
                 <p className="text-gray-600 mb-6">Try adjusting your search criteria</p>
                 <Link href="/fractional-jobs">
-                  <button className="px-6 py-2.5 bg-purple-700 text-white rounded-lg hover:bg-purple-800 font-semibold transition-colors">
+                  <button className="px-6 py-2.5 bg-gray-900 text-white rounded-lg hover:bg-black font-semibold transition-colors">
                     Clear All Filters
                   </button>
                 </Link>
@@ -336,7 +336,7 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
                             <button
                               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                                 pageNum === page
-                                  ? 'bg-purple-700 text-white'
+                                  ? 'bg-gray-900 text-white'
                                   : 'bg-white border border-gray-200 hover:bg-gray-50'
                               }`}
                             >
@@ -396,28 +396,28 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
               <Link href="/part-time-cfo" className="group">
                 <article className="p-6 bg-gray-50 rounded-xl hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-200">
                   <span className="text-3xl mb-4 block">💰</span>
-                  <h3 className="font-bold text-gray-900 group-hover:text-purple-700 transition-colors mb-1">Part-Time CFO</h3>
+                  <h3 className="font-bold text-gray-900 group-hover:text-black transition-colors mb-1">Part-Time CFO</h3>
                   <p className="text-gray-500 text-sm">Finance leadership roles</p>
                 </article>
               </Link>
               <Link href="/part-time-cmo" className="group">
                 <article className="p-6 bg-gray-50 rounded-xl hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-200">
                   <span className="text-3xl mb-4 block">📢</span>
-                  <h3 className="font-bold text-gray-900 group-hover:text-purple-700 transition-colors mb-1">Part-Time CMO</h3>
+                  <h3 className="font-bold text-gray-900 group-hover:text-black transition-colors mb-1">Part-Time CMO</h3>
                   <p className="text-gray-500 text-sm">Marketing leadership roles</p>
                 </article>
               </Link>
               <Link href="/fractional-cfo-salary" className="group">
                 <article className="p-6 bg-gray-50 rounded-xl hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-200">
                   <span className="text-3xl mb-4 block">📊</span>
-                  <h3 className="font-bold text-gray-900 group-hover:text-purple-700 transition-colors mb-1">CFO Salary Guide</h3>
+                  <h3 className="font-bold text-gray-900 group-hover:text-black transition-colors mb-1">CFO Salary Guide</h3>
                   <p className="text-gray-500 text-sm">Day rates & earnings</p>
                 </article>
               </Link>
               <Link href="/fractional-cmo-salary" className="group">
                 <article className="p-6 bg-gray-50 rounded-xl hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-200">
                   <span className="text-3xl mb-4 block">📈</span>
-                  <h3 className="font-bold text-gray-900 group-hover:text-purple-700 transition-colors mb-1">CMO Salary Guide</h3>
+                  <h3 className="font-bold text-gray-900 group-hover:text-black transition-colors mb-1">CMO Salary Guide</h3>
                   <p className="text-gray-500 text-sm">Day rates & earnings</p>
                 </article>
               </Link>
@@ -489,7 +489,7 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Unable to Load Jobs</h1>
           <p className="text-gray-600 mb-6">There was an error loading jobs. Please try again later.</p>
           <Link href="/">
-            <button className="px-6 py-2.5 bg-purple-700 text-white rounded-lg hover:bg-purple-800 font-semibold transition-colors">
+            <button className="px-6 py-2.5 bg-gray-900 text-white rounded-lg hover:bg-black font-semibold transition-colors">
               Back to Home
             </button>
           </Link>
