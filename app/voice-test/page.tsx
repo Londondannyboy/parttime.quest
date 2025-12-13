@@ -33,6 +33,9 @@ function VoiceInterface({ token, profile, userId, previousContext }: { token: st
     readyState
   } = useVoice()
 
+  // Track previous connection state to detect disconnections
+  const wasConnectedRef = useRef(false)
+
   // Debug: Log all status changes with timestamp
   useEffect(() => {
     const time = new Date().toLocaleTimeString()
@@ -44,7 +47,48 @@ function VoiceInterface({ token, profile, userId, previousContext }: { token: st
     if (status.value === 'error') {
       console.error('❌ HUME ERROR STATE')
     }
+
+    // Track connection state for save-on-disconnect
+    if (status.value === 'connected') {
+      wasConnectedRef.current = true
+    }
   }, [status.value, readyState])
+
+  // Save conversation to Supermemory when session ends
+  useEffect(() => {
+    // Only save if we were connected and now disconnected
+    if (status.value === 'disconnected' && wasConnectedRef.current && userId && messages.length > 0) {
+      wasConnectedRef.current = false
+
+      // Build transcript from messages
+      const transcript = messages
+        .filter((m: any) => m.type === 'user_message' || m.type === 'assistant_message')
+        .map((m: any) => {
+          const role = m.type === 'user_message' ? 'User' : 'Repo'
+          return `${role}: ${m.message?.content || ''}`
+        })
+        .join('\n')
+
+      if (transcript.length > 50) {
+        console.log('[Supermemory] Saving conversation transcript, length:', transcript.length)
+
+        fetch('/api/supermemory-save', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userId, transcript })
+        })
+          .then(r => r.json())
+          .then(data => {
+            if (data.saved) {
+              console.log('[Supermemory] Conversation saved successfully')
+            } else {
+              console.log('[Supermemory] Conversation not saved:', data.reason || data.error)
+            }
+          })
+          .catch(err => console.error('[Supermemory] Save error:', err))
+      }
+    }
+  }, [status.value, messages, userId])
 
   // Log error states
   useEffect(() => {
