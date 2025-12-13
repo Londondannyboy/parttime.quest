@@ -78,7 +78,8 @@ async def do_extraction(transcript: str) -> dict:
     try:
         agent = get_agent()
         result = await agent.run(f"Extract preferences from:\n\n{transcript}")
-        return result.data.model_dump()
+        # Access output via .output (not .data)
+        return result.output.model_dump()
     except Exception as e:
         print(f"[Pydantic AI] Error: {e}")
         return {"preferences": [], "should_confirm": False, "error": str(e)}
@@ -124,7 +125,7 @@ class handler(BaseHTTPRequestHandler):
         self.wfile.write(json.dumps({
             "status": "ok",
             "agent": "pydantic-ai",
-            "version": "v7-anthropic",
+            "version": "v8-output-fix",
             "model": model,
             "keys": {
                 "openai": has_openai,
