@@ -89,9 +89,18 @@ export default function RepoBuilder({ userId, voiceTranscript, onPreferenceSaved
         body: JSON.stringify({ transcript: text })
       })
 
-      if (!response.ok) return
+      if (!response.ok) {
+        console.log('[RepoBuilder] API not ready, skipping extraction')
+        return
+      }
 
-      const { preferences, should_confirm } = await response.json()
+      const data = await response.json()
+      if (data.error) {
+        console.log('[RepoBuilder] Extraction error:', data.error)
+        return
+      }
+
+      const { preferences, should_confirm } = data
 
       // Add new validations
       for (const pref of preferences as ExtractedPreference[]) {
