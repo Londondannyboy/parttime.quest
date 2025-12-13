@@ -4,10 +4,17 @@ import { useEffect, useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 
 // Dynamically import the 3D graph component with SSR disabled
-const ForceGraph3D = dynamic(() => import('react-force-graph-3d'), {
-  ssr: false,
-  loading: () => null
-})
+const ForceGraph3D = dynamic(
+  () => import('react-force-graph-3d').then(mod => mod.default || mod),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-full flex items-center justify-center">
+        <div className="text-gray-400">Loading 3D engine...</div>
+      </div>
+    )
+  }
+)
 
 interface GraphNode {
   id: string
