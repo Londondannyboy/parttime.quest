@@ -48,7 +48,7 @@ export function JobCard({
   return (
     <div
       onClick={onClick}
-      className={`group relative bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl hover:border-purple-300 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer ${className}`}
+      className={`group relative bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl hover:border-gray-400 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer ${className}`}
     >
       {/* Role badge - top right corner */}
       {roleCategory && (
@@ -68,7 +68,7 @@ export function JobCard({
           size="sm"
         />
         <div className="flex-1 min-w-0">
-          <h3 className="text-lg font-bold text-gray-900 group-hover:text-purple-700 transition-colors mb-1 line-clamp-2">
+          <h3 className="text-lg font-bold text-gray-900 group-hover:text-black transition-colors mb-1 line-clamp-2">
             {title}
           </h3>
           <p className="text-sm text-gray-600 font-medium">{company}</p>
@@ -85,7 +85,7 @@ export function JobCard({
           {location}
         </span>
         {isRemote && (
-          <span className="flex items-center gap-1.5 text-emerald-700 font-medium">
+          <span className="flex items-center gap-1.5 text-gray-700 font-medium">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -93,7 +93,7 @@ export function JobCard({
           </span>
         )}
         {displayedCompensation && (
-          <span className="flex items-center gap-1.5 font-semibold text-purple-700">
+          <span className="flex items-center gap-1.5 font-semibold text-gray-900">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -111,7 +111,7 @@ export function JobCard({
             </span>
           ))}
           {skills.length > 5 && (
-            <span className="px-2.5 py-1 bg-purple-50 text-purple-700 text-xs font-medium rounded-full">
+            <span className="px-2.5 py-1 bg-gray-200 text-gray-700 text-xs font-medium rounded-full">
               +{skills.length - 5} more
             </span>
           )}
@@ -123,7 +123,7 @@ export function JobCard({
         <span className="text-xs text-gray-600">
           {formatPostedDate(postedDaysAgo)}
         </span>
-        <span className="flex items-center gap-1 text-sm font-semibold text-purple-700 group-hover:text-purple-900 transition-colors">
+        <span className="flex items-center gap-1 text-sm font-semibold text-gray-700 group-hover:text-black transition-colors">
           View Details
           <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

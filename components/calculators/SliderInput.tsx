@@ -50,7 +50,7 @@ export function SliderInput({
         <label htmlFor={id} className="text-sm font-medium text-gray-700">
           {label}
         </label>
-        <span className="text-lg font-bold text-purple-800 font-data animate-count">
+        <span className="text-lg font-bold text-gray-900 font-data animate-count">
           {displayValue}
         </span>
       </div>
@@ -67,7 +67,7 @@ export function SliderInput({
           className="slider-premium w-full h-2 cursor-pointer"
           style={{
             '--value': `${percentage}%`,
-            background: `linear-gradient(to right, #6b21a8 0%, #6b21a8 ${percentage}%, #e5e7eb ${percentage}%, #e5e7eb 100%)`
+            background: `linear-gradient(to right, #111827 0%, #111827 ${percentage}%, #e5e7eb ${percentage}%, #e5e7eb 100%)`
           } as React.CSSProperties}
         />
       </div>

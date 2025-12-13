@@ -28,7 +28,7 @@ export function Input({
         className={`
           w-full px-4 py-2.5 border rounded-lg font-medium
           bg-white text-gray-900 placeholder-gray-500
-          border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200
+          border-gray-200 focus:border-gray-900 focus:ring-2 focus:ring-gray-200
           transition-colors duration-200
           disabled:bg-gray-50 disabled:text-gray-600 disabled:cursor-not-allowed
           ${error ? 'border-red-500 focus:border-red-500 focus:ring-red-200' : ''}
@@ -70,7 +70,7 @@ export function Textarea({
         className={`
           w-full px-4 py-2.5 border rounded-lg font-medium
           bg-white text-gray-900 placeholder-gray-500
-          border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200
+          border-gray-200 focus:border-gray-900 focus:ring-2 focus:ring-gray-200
           transition-colors duration-200 resize-none
           disabled:bg-gray-50 disabled:text-gray-600 disabled:cursor-not-allowed
           ${error ? 'border-red-500 focus:border-red-500 focus:ring-red-200' : ''}
