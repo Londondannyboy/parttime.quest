@@ -49,6 +49,8 @@ export async function POST(request: NextRequest) {
           result = await getUserProfile(params.user_id)
           break
 
+        // Support both Hume name (get_user_facts) and original name (get_user_skills)
+        case 'get_user_facts':
         case 'get_user_skills':
           result = await getUserSkills(params.user_id)
           break
@@ -57,12 +59,24 @@ export async function POST(request: NextRequest) {
           result = await searchJobs(params)
           break
 
+        case 'search_articles':
+          result = await searchArticles(params)
+          break
+
+        // Support both Hume name (save_user_fact) and original name (save_user_preference)
+        case 'save_user_fact':
         case 'save_user_preference':
           result = await saveUserPreference(params)
           break
 
         case 'get_job_details':
           result = await getJobDetails(params.job_id)
+          break
+
+        case 'confirm_preference':
+          // This tool triggers client-side UI for human confirmation
+          // Returns structured data that the client can parse and display
+          result = confirmPreference(params)
           break
 
         default:
@@ -323,16 +337,85 @@ async function getJobDetails(jobId: string): Promise<string> {
   }
 }
 
+async function searchArticles(params: {
+  topic?: string
+  limit?: number
+}): Promise<string> {
+  try {
+    const topicPattern = params.topic ? `%${params.topic}%` : '%'
+    const limit = params.limit || 5
+
+    const articles = await sql`
+      SELECT id, slug, title, summary, category
+      FROM articles
+      WHERE is_published = true
+        AND (LOWER(title) LIKE LOWER(${topicPattern})
+             OR LOWER(COALESCE(summary, '')) LIKE LOWER(${topicPattern})
+             OR LOWER(COALESCE(category, '')) LIKE LOWER(${topicPattern}))
+      ORDER BY published_date DESC NULLS LAST
+      LIMIT ${limit}
+    `
+
+    if (articles.length === 0) {
+      return params.topic
+        ? `No articles found about ${params.topic}. Try a different topic.`
+        : "No articles available at the moment."
+    }
+
+    const articleDescriptions = articles.map(a => {
+      let desc = a.title
+      if (a.category) desc += ` (${a.category})`
+      if (a.slug) desc += ` - Read at fractional.quest/articles/${a.slug}`
+      return desc
+    }).join('. ')
+
+    return `Found ${articles.length} articles: ${articleDescriptions}`
+  } catch (error) {
+    console.error('[searchArticles] Error:', error)
+    return "Unable to search articles at this time."
+  }
+}
+
+/**
+ * Human-in-the-loop preference confirmation
+ * Returns structured data that triggers client-side confirmation UI
+ *
+ * The response format uses a special prefix [CONFIRM_PREFERENCE] that
+ * the client can detect and parse to show a confirmation card.
+ */
+function confirmPreference(params: {
+  preference_type: string  // e.g., "role", "industry", "location", "availability", "day_rate"
+  extracted_values: string[] | string  // e.g., ["CMO", "CFO"] or "tech, games, software"
+  user_id?: string
+}): string {
+  const values = Array.isArray(params.extracted_values)
+    ? params.extracted_values
+    : params.extracted_values.split(',').map(v => v.trim())
+
+  // Create structured response that client can parse
+  const confirmData = {
+    action: 'CONFIRM_PREFERENCE',
+    preference_type: params.preference_type,
+    values: values,
+    user_id: params.user_id
+  }
+
+  // Return in a format Hume will speak naturally while client can parse the JSON
+  return `[CONFIRM_PREFERENCE:${JSON.stringify(confirmData)}] I want to make sure I've got this right. You're interested in ${params.preference_type === 'role' ? 'roles like' : params.preference_type === 'industry' ? 'industries like' : ''} ${values.join(', ')}. Is that correct?`
+}
+
 // Also support GET for testing
 export async function GET() {
   return NextResponse.json({
     status: 'ok',
     tools: [
       'get_user_profile',
-      'get_user_skills',
+      'get_user_facts (get_user_skills)',
       'search_jobs',
-      'save_user_preference',
-      'get_job_details'
+      'search_articles',
+      'save_user_fact (save_user_preference)',
+      'get_job_details',
+      'confirm_preference'
     ],
     usage: 'POST tool calls from Hume EVI'
   })

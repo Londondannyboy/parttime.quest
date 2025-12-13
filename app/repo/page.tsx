@@ -14,6 +14,20 @@ interface JobResult {
   slug?: string
 }
 
+interface PendingPreference {
+  preference_type: string
+  values: string[]
+  user_id?: string
+  raw_text?: string
+}
+
+interface ExtractedPreference {
+  type: 'role' | 'industry' | 'location' | 'availability' | 'day_rate' | 'skill'
+  values: string[]
+  confidence: 'high' | 'medium' | 'low'
+  raw_text: string
+}
+
 function VoiceInterface({ token, userId, profile, memoryContext }: {
   token: string
   userId?: string
@@ -23,6 +37,135 @@ function VoiceInterface({ token, userId, profile, memoryContext }: {
   const { connect, disconnect, status, messages, isPlaying } = useVoice()
   const [displayedJobs, setDisplayedJobs] = useState<JobResult[]>([])
   const [showJobsPanel, setShowJobsPanel] = useState(false)
+  const [pendingPreference, setPendingPreference] = useState<PendingPreference | null>(null)
+  const [preferenceOpacity, setPreferenceOpacity] = useState(1)
+  const [savingPreference, setSavingPreference] = useState(false)
+
+  // Track processed items to avoid duplicates
+  const processedToolCalls = useRef<Set<string>>(new Set())
+  const processedConfirmations = useRef<Set<string>>(new Set())
+  const lastExtractedText = useRef<string>('')
+  const fadeTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  // Auto-fade and save unvalidated preference after timeout
+  useEffect(() => {
+    if (pendingPreference && !savingPreference) {
+      // Clear any existing timeout
+      if (fadeTimeoutRef.current) {
+        clearTimeout(fadeTimeoutRef.current)
+      }
+
+      // Start fade after 5 seconds
+      fadeTimeoutRef.current = setTimeout(() => {
+        setPreferenceOpacity(0.5)
+        // After another 3 seconds, save as unvalidated and hide
+        setTimeout(() => {
+          handleSavePreference(false) // false = unvalidated
+        }, 3000)
+      }, 5000)
+    }
+
+    return () => {
+      if (fadeTimeoutRef.current) {
+        clearTimeout(fadeTimeoutRef.current)
+      }
+    }
+  }, [pendingPreference])
+
+  // Save preference (validated or not)
+  const handleSavePreference = async (validated: boolean) => {
+    if (!pendingPreference || savingPreference) return
+
+    setSavingPreference(true)
+    try {
+      const response = await fetch('/api/save-repo-preference', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          user_id: userId,
+          preference_type: pendingPreference.preference_type,
+          values: pendingPreference.values,
+          validated,
+          raw_text: pendingPreference.raw_text
+        })
+      })
+
+      if (response.ok) {
+        console.log(`[Preference] Saved ${validated ? 'validated' : 'unvalidated'}:`, pendingPreference)
+      }
+    } catch (error) {
+      console.error('[Preference] Save error:', error)
+    } finally {
+      setSavingPreference(false)
+      setPendingPreference(null)
+      setPreferenceOpacity(1)
+    }
+  }
+
+  // Watch for voice confirmation ("yes", "correct", etc.)
+  useEffect(() => {
+    if (!pendingPreference) return
+
+    const lastUserMsg = [...messages].reverse().find(
+      (m: any) => m.type === 'user_message' && m.message?.content
+    ) as any
+
+    if (lastUserMsg?.message?.content) {
+      const content = lastUserMsg.message.content.toLowerCase()
+      const confirmPhrases = ['yes', 'yeah', 'correct', 'that\'s right', 'thats right', 'right', 'exactly', 'yep', 'sure']
+
+      if (confirmPhrases.some(phrase => content.includes(phrase))) {
+        console.log('[Preference] Voice confirmation detected!')
+        handleSavePreference(true) // true = validated
+      }
+    }
+  }, [messages, pendingPreference])
+
+  // Extract preferences from user messages
+  const extractPreferences = useCallback(async (userMessages: string[]) => {
+    const transcript = userMessages.join('\n')
+
+    // Don't re-extract the same text
+    if (transcript === lastExtractedText.current) return
+    lastExtractedText.current = transcript
+
+    try {
+      const response = await fetch('/api/extract-preferences', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ transcript })
+      })
+
+      if (!response.ok) return
+
+      const { preferences, should_confirm } = await response.json()
+
+      if (should_confirm && preferences.length > 0) {
+        // Find the highest confidence preference that hasn't been confirmed yet
+        const highConfidence = preferences.find(
+          (p: ExtractedPreference) =>
+            p.confidence === 'high' &&
+            !processedConfirmations.current.has(`${p.type}:${p.values.join(',')}`)
+        )
+
+        if (highConfidence) {
+          const key = `${highConfidence.type}:${highConfidence.values.join(',')}`
+          processedConfirmations.current.add(key)
+
+          setPendingPreference({
+            preference_type: highConfidence.type,
+            values: highConfidence.values,
+            user_id: userId,
+            raw_text: highConfidence.raw_text
+          })
+          setPreferenceOpacity(1)
+          console.log('[Preference] Showing confirmation for:', highConfidence)
+        }
+      }
+    } catch (error) {
+      console.error('[Preference] Extraction error:', error)
+    }
+  }, [userId])
 
   // Watch for tool calls and job-related messages
   useEffect(() => {
@@ -33,18 +176,49 @@ function VoiceInterface({ token, userId, profile, memoryContext }: {
     console.log('[Hume] Recent messages:', recentMessages.map((m: any) => ({
       type: m.type,
       hasContent: !!m.message?.content,
-      preview: m.message?.content?.substring(0, 60)
+      toolName: m.name || m.tool_name,
+      preview: (m.message?.content || m.content || '').substring(0, 100)
     })))
 
-    // Check for tool_call or tool_response messages (indicates search was done)
-    const hasToolActivity = messages.some((m: any) =>
-      m.type === 'tool_call' || m.type === 'tool_response' || m.type === 'tool_result'
+    // PRIORITY 1: Check for tool_response/tool_result with job URLs
+    // This is the most reliable way to detect search_jobs results
+    const toolResponses = messages.filter((m: any) =>
+      m.type === 'tool_response' || m.type === 'tool_result'
     )
-    if (hasToolActivity) {
-      console.log('[Hume] Tool activity detected!')
+
+    for (const toolMsg of toolResponses) {
+      const content = toolMsg.content || toolMsg.message?.content || ''
+      const toolId = toolMsg.tool_call_id || `${messages.indexOf(toolMsg)}`
+
+      // Skip if we've already processed this tool response
+      if (processedToolCalls.current.has(toolId)) continue
+
+      // Check if this is a job search response (contains job URLs)
+      const jobMatches = content.match(/fractional\.quest\/job\/([^\s,\.\)]+)/g)
+      if (jobMatches && jobMatches.length > 0) {
+        console.log('[Hume] Found job URLs in tool response:', jobMatches)
+        processedToolCalls.current.add(toolId)
+        setShowJobsPanel(true)
+        fetchJobsForDisplay(jobMatches.map((m: string) => m.replace('fractional.quest/job/', '')))
+        return // Found jobs, no need to continue
+      }
+
+      // Also check for "Found X roles" pattern without URLs
+      if (content.toLowerCase().includes('found') && content.toLowerCase().includes('role')) {
+        console.log('[Hume] Tool response mentions found roles:', content.substring(0, 100))
+        processedToolCalls.current.add(toolId)
+      }
     }
 
-    // Get the last assistant message
+    // PRIORITY 2: Check for tool_call to search_jobs (tool is being called)
+    const searchJobsCalls = messages.filter((m: any) =>
+      (m.type === 'tool_call' && (m.name === 'search_jobs' || m.tool_name === 'search_jobs'))
+    )
+    if (searchJobsCalls.length > 0) {
+      console.log('[Hume] search_jobs tool called!', searchJobsCalls.length, 'times')
+    }
+
+    // PRIORITY 3: Detect from assistant message (fallback)
     const lastAssistantMsg = [...messages].reverse().find(
       (m: any) => m.type === 'assistant_message' && m.message?.content
     ) as any
@@ -52,31 +226,28 @@ function VoiceInterface({ token, userId, profile, memoryContext }: {
     if (lastAssistantMsg?.message?.content) {
       const content = lastAssistantMsg.message.content.toLowerCase()
 
-      // Broader detection - any mention of jobs/roles in response
+      // Detect when Repo says they're showing jobs
       const mentionsJobs = content.includes('job') || content.includes('role') ||
                           content.includes('position') || content.includes('opportunit')
       const soundsLikeResults = content.includes('found') || content.includes('show') ||
-                               content.includes('here') || content.includes('screen') ||
-                               content.includes('pull') || content.includes('look at')
+                               content.includes('screen') || content.includes('pull') ||
+                               content.includes('look at') || content.includes('putting') ||
+                               content.includes('here are') || content.includes('take a look')
 
       if (mentionsJobs && soundsLikeResults) {
-        console.log('[Hume] Job results detected in response!')
-        setShowJobsPanel(true)
+        console.log('[Hume] Job results mentioned in response!')
 
-        // Try to parse job URLs from the message
-        const jobMatches = lastAssistantMsg.message.content.match(/fractional\.quest\/job\/([^\s,\.\)]+)/g)
-        if (jobMatches && jobMatches.length > 0) {
-          console.log('[Hume] Found job URLs:', jobMatches)
-          fetchJobsForDisplay(jobMatches.map((m: string) => m.replace('fractional.quest/job/', '')))
-        } else {
-          // No URLs in message - fetch recent jobs as fallback based on what user might have asked
-          console.log('[Hume] No job URLs found, fetching recent jobs as fallback')
+        // If panel not already showing and we haven't found jobs from tool response
+        if (!showJobsPanel) {
+          setShowJobsPanel(true)
+          // Fetch recent jobs since Repo mentioned jobs but we don't have specific ones
+          console.log('[Hume] Fetching recent jobs as Repo mentioned showing results')
           fetchRecentJobs()
         }
       }
     }
 
-    // Also check if USER mentioned jobs - proactively show panel
+    // Also check if USER mentioned jobs - prepare panel early
     const lastUserMsg = [...messages].reverse().find(
       (m: any) => m.type === 'user_message' && m.message?.content
     ) as any
@@ -85,10 +256,39 @@ function VoiceInterface({ token, userId, profile, memoryContext }: {
       if (userContent.includes('job') || userContent.includes('cfo') ||
           userContent.includes('cmo') || userContent.includes('cto') ||
           userContent.includes('marketing') || userContent.includes('finance')) {
-        console.log('[Hume] User asking about jobs - preparing panel')
+        console.log('[Hume] User asking about jobs - panel will show when results arrive')
       }
     }
-  }, [messages])
+  }, [messages, showJobsPanel])
+
+  // Extract preferences from user messages (debounced)
+  const extractionTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  useEffect(() => {
+    // Collect all user messages
+    const userMessages = messages
+      .filter((m: any) => m.type === 'user_message' && m.message?.content)
+      .map((m: any) => m.message.content)
+
+    if (userMessages.length === 0) return
+
+    // Debounce extraction - wait for 2 seconds of no new messages
+    if (extractionTimeoutRef.current) {
+      clearTimeout(extractionTimeoutRef.current)
+    }
+
+    extractionTimeoutRef.current = setTimeout(() => {
+      // Only extract if we have new messages since last extraction
+      if (userMessages.length > 0) {
+        extractPreferences(userMessages)
+      }
+    }, 2000)
+
+    return () => {
+      if (extractionTimeoutRef.current) {
+        clearTimeout(extractionTimeoutRef.current)
+      }
+    }
+  }, [messages, extractPreferences])
 
   const fetchRecentJobs = async () => {
     try {
@@ -184,7 +384,7 @@ function VoiceInterface({ token, userId, profile, memoryContext }: {
             {profile?.first_name ? `Hi ${profile.first_name}` : 'Your Repo'}
           </h1>
           <p className="text-gray-600">
-            Talk to Quest about your experience, skills, and career goals
+            Talk to Repo about your experience, skills, and career goals
           </p>
         </div>
 
@@ -216,26 +416,90 @@ function VoiceInterface({ token, userId, profile, memoryContext }: {
         </button>
 
         <p className="mt-4 text-sm text-gray-500">
-          {isConnected ? (isPlaying ? 'Quest is speaking...' : 'Listening...') : 'Tap to start'}
+          {isConnected ? (isPlaying ? 'Repo is speaking...' : 'Listening...') : 'Tap to start'}
         </p>
 
-        {/* Stop button when connected */}
+        {/* Action buttons when connected */}
         {isConnected && (
-          <button
-            onClick={disconnect}
-            className="mt-4 px-6 py-2 bg-red-500 hover:bg-red-600 text-white rounded-full text-sm font-medium transition-colors"
-          >
-            Stop Conversation
-          </button>
+          <div className="mt-4 flex gap-3">
+            <button
+              onClick={() => {
+                console.log('[Manual] Show jobs button clicked')
+                fetchRecentJobs()
+              }}
+              className="px-4 py-2 bg-purple-100 hover:bg-purple-200 text-purple-700 rounded-full text-sm font-medium transition-colors"
+            >
+              Show Latest Jobs
+            </button>
+            <button
+              onClick={disconnect}
+              className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-full text-sm font-medium transition-colors"
+            >
+              Stop
+            </button>
+          </div>
         )}
       </div>
 
-      {/* Jobs Panel - appears when Quest finds jobs */}
+      {/* Preference Confirmation Card - fades and auto-saves */}
+      {pendingPreference && (
+        <div
+          className="border-t border-gray-200 bg-gradient-to-r from-green-50 to-emerald-50 p-4 transition-opacity duration-500"
+          style={{ opacity: preferenceOpacity }}
+        >
+          <div className="max-w-md mx-auto">
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <p className="text-sm font-medium text-gray-900">
+                  Adding to your Repo
+                </p>
+                <p className="text-sm text-gray-600 mt-1">
+                  <span className="font-medium capitalize">{pendingPreference.preference_type}:</span>{' '}
+                  {pendingPreference.values.join(', ')}
+                </p>
+                {pendingPreference.raw_text && (
+                  <p className="text-xs text-gray-400 mt-1 italic">
+                    "{pendingPreference.raw_text}"
+                  </p>
+                )}
+              </div>
+            </div>
+            <div className="flex gap-2 mt-3 justify-end">
+              <button
+                onClick={() => handleSavePreference(true)}
+                disabled={savingPreference}
+                className="px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white text-xs font-medium rounded-full transition-colors disabled:opacity-50"
+              >
+                {savingPreference ? 'Saving...' : 'Confirm'}
+              </button>
+              <button
+                onClick={() => {
+                  setPendingPreference(null)
+                  setPreferenceOpacity(1)
+                }}
+                className="px-3 py-1.5 text-gray-500 hover:text-gray-700 text-xs font-medium"
+              >
+                Skip
+              </button>
+            </div>
+            <p className="text-xs text-gray-400 mt-2 text-center">
+              Say "yes" to confirm, or it will be added automatically
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Jobs Panel - appears when Repo finds jobs */}
       {showJobsPanel && displayedJobs.length > 0 && (
         <div className="border-t border-gray-200 bg-gradient-to-r from-purple-50 to-amber-50 p-6">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-bold text-gray-900">
-              Jobs Quest Found For You
+              Jobs Repo Found For You
             </h3>
             <button
               onClick={() => setShowJobsPanel(false)}
@@ -430,6 +694,14 @@ export default function RepoPage() {
           <VoiceProvider
             onError={(err) => console.error('[Hume Error]', err)}
             onClose={(e) => console.warn('[Hume Close]', e?.code, e?.reason)}
+            onMessage={(msg) => {
+              // Log ALL message types for debugging
+              console.log('[Hume Raw Message]', msg.type, msg)
+              // Specifically log tool-related messages
+              if (msg.type === 'tool_call' || msg.type === 'tool_response' || msg.type === 'tool_result') {
+                console.log('[Hume Tool Event]', JSON.stringify(msg, null, 2))
+              }
+            }}
           >
             <VoiceInterface
               token={token}

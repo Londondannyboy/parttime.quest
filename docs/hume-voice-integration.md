@@ -150,29 +150,117 @@ One or two ideas per response. Under three sentences. One question at a time.
 </stay_concise>
 ```
 
-### Tool Configuration (add in Hume dashboard):
+### Tool Configuration (MUST add in Hume dashboard):
 
+**Tool URL for ALL tools:** `https://fractional.quest/api/hume-tool`
+
+#### Tool 1: search_jobs
 ```json
 {
   "name": "search_jobs",
-  "description": "Search for fractional executive jobs. Use when user asks about available roles, jobs in a location, or specific job types.",
+  "description": "Search for fractional executive jobs. ALWAYS use this when user asks about roles, jobs, positions, or opportunities. After calling, tell the user you're showing results on their screen.",
   "parameters": {
     "type": "object",
     "properties": {
       "role_type": {
         "type": "string",
-        "description": "Job role type like CFO, CMO, CTO, COO"
+        "description": "Job role type like CFO, CMO, CTO, COO, HR Director, Marketing"
       },
       "location": {
         "type": "string",
-        "description": "Location like London, Manchester, Remote"
+        "description": "Location like London, Manchester, Remote, UK"
+      },
+      "limit": {
+        "type": "number",
+        "description": "Max results to return, default 5"
       }
     }
   }
 }
 ```
 
-Tool URL: `https://fractional.quest/api/hume-tool`
+#### Tool 2: get_user_profile
+```json
+{
+  "name": "get_user_profile",
+  "description": "Get the user's profile information including name, location, interests, timeline, and budget",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "user_id": {
+        "type": "string",
+        "description": "The user's ID from session variables"
+      }
+    },
+    "required": ["user_id"]
+  }
+}
+```
+
+#### Tool 3: get_user_skills
+```json
+{
+  "name": "get_user_skills",
+  "description": "Get the user's recorded skills and experience levels",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "user_id": {
+        "type": "string",
+        "description": "The user's ID from session variables"
+      }
+    },
+    "required": ["user_id"]
+  }
+}
+```
+
+#### Tool 4: save_user_preference
+```json
+{
+  "name": "save_user_preference",
+  "description": "Save a user preference. Use when user tells you their interests, timeline, budget, or location.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "user_id": {
+        "type": "string",
+        "description": "The user's ID from session variables"
+      },
+      "field": {
+        "type": "string",
+        "enum": ["interests", "timeline", "budget_monthly", "current_country"],
+        "description": "Which field to update"
+      },
+      "value": {
+        "type": "string",
+        "description": "The value to save"
+      }
+    },
+    "required": ["user_id", "field", "value"]
+  }
+}
+```
+
+#### Tool 5: get_job_details
+```json
+{
+  "name": "get_job_details",
+  "description": "Get full details about a specific job by ID",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "job_id": {
+        "type": "string",
+        "description": "The job ID to look up"
+      }
+    },
+    "required": ["job_id"]
+  }
+}
+```
+
+**IMPORTANT:** All tools must be registered in Hume dashboard with the same endpoint URL
 
 ## Environment Variables
 
