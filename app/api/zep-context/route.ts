@@ -4,7 +4,7 @@ import {
   getUserGraphEdges,
   searchUserGraph,
   getZepClient,
-  ensureZepUser,
+  addToUserGraph,
   ZepNode,
   ZepEdge,
 } from '@/lib/zep-client'
@@ -147,9 +147,6 @@ export async function POST(request: NextRequest) {
     if (preference) {
       const { type, values, validated, raw_text } = preference
 
-      // Ensure user exists in ZEP before adding data
-      await ensureZepUser(userId)
-
       // Format data for ZEP graph
       const graphData = {
         type: `user_${type}`,
@@ -160,19 +157,22 @@ export async function POST(request: NextRequest) {
         context: `User ${validated ? 'confirmed' : 'mentioned'} ${type}: ${values.join(', ')}`
       }
 
-      await zepClient.graph.add({
-        userId,
-        type: 'json',
-        data: JSON.stringify(graphData)
-      })
+      // Use the helper function which handles user creation
+      const result = await addToUserGraph(userId, graphData, 'json')
 
-      console.log(`[ZEP] Added ${type} preference for user ${userId}:`, values)
-
-      return NextResponse.json({
-        saved: true,
-        type,
-        values
-      })
+      if (result) {
+        console.log(`[ZEP] Added ${type} preference for user ${userId}:`, values)
+        return NextResponse.json({
+          saved: true,
+          type,
+          values
+        })
+      } else {
+        return NextResponse.json({
+          saved: false,
+          reason: 'Failed to add to ZEP graph'
+        })
+      }
     }
 
     return NextResponse.json({
