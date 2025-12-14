@@ -2,10 +2,10 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Fractional Executive Calculators | Day Rate, Savings & Portfolio Tools',
-  description: 'Free calculators for fractional executives and companies. Calculate day rates, company savings vs full-time hires, and plan your portfolio career. Essential tools for the UK fractional market.',
+  title: 'Part-Time Executive Calculators | Day Rate, Savings & Portfolio Tools',
+  description: 'Free calculators for part-time executives and companies. Calculate day rates, company savings vs full-time hires, and plan your portfolio career. Essential tools for the UK part-time market.',
   alternates: {
-    canonical: 'https://fractional.quest/calculators'
+    canonical: 'https://parttime.quest/calculators'
   }
 }
 
@@ -14,10 +14,10 @@ const calculators = [
     slug: 'company-savings',
     title: 'Company Savings Calculator',
     subtitle: 'For Companies',
-    description: 'See how much your company saves hiring a fractional executive vs a full-time hire. Compare total costs including NI, pension, benefits, and overheads.',
+    description: 'See how much your company saves hiring a part-time executive vs a full-time hire. Compare total costs including NI, pension, benefits, and overheads.',
     icon: '🏢',
     color: 'from-purple-600 to-purple-800',
-    features: ['Full-time cost breakdown', 'Fractional cost comparison', 'Annual savings calculation', 'Role-specific defaults']
+    features: ['Full-time cost breakdown', 'Part-Time cost comparison', 'Annual savings calculation', 'Role-specific defaults']
   },
   {
     slug: 'rate-finder',
@@ -32,7 +32,7 @@ const calculators = [
     slug: 'portfolio-builder',
     title: 'Portfolio Builder Calculator',
     subtitle: 'Career Planning',
-    description: 'Plan your fractional portfolio career. Calculate how many clients you need, optimize your schedule, and assess concentration risk.',
+    description: 'Plan your part-time portfolio career. Calculate how many clients you need, optimize your schedule, and assess concentration risk.',
     icon: '📊',
     color: 'from-emerald-500 to-teal-600',
     features: ['Client number planning', 'Weekly allocation', 'Risk assessment', 'Income optimization']
@@ -41,7 +41,7 @@ const calculators = [
     slug: 'earnings',
     title: 'Earnings Calculator',
     subtitle: 'Income Planning',
-    description: 'Calculate your potential earnings as a fractional executive. Factor in day rate, clients, and working patterns to see annual income.',
+    description: 'Calculate your potential earnings as a part-time executive. Factor in day rate, clients, and working patterns to see annual income.',
     icon: '💰',
     color: 'from-blue-500 to-indigo-600',
     features: ['Annual income projection', 'Tax estimation', 'Multiple client scenarios', 'IR35 considerations'],
@@ -57,11 +57,11 @@ export default function CalculatorsHub() {
         <div className="max-w-5xl mx-auto px-4 text-center">
           <span className="section-label text-purple-300 mb-4 block">Free Tools</span>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Fractional Executive Calculators
+            Part-Time Executive Calculators
           </h1>
           <p className="text-xl text-purple-200 max-w-3xl mx-auto leading-relaxed">
-            Essential tools for executives exploring fractional careers and companies
-            considering fractional hires. Make data-driven decisions about your next move.
+            Essential tools for executives exploring part-time careers and companies
+            considering part-time hires. Make data-driven decisions about your next move.
           </p>
         </div>
       </section>
@@ -148,7 +148,7 @@ export default function CalculatorsHub() {
               <ul className="space-y-3 text-gray-600">
                 <li className="flex items-start gap-2">
                   <span className="text-purple-500 mt-1">✓</span>
-                  <span>Exploring a transition to fractional work</span>
+                  <span>Exploring a transition to part-time work</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-purple-500 mt-1">✓</span>
@@ -178,11 +178,11 @@ export default function CalculatorsHub() {
               <ul className="space-y-3 text-gray-600">
                 <li className="flex items-start gap-2">
                   <span className="text-purple-500 mt-1">✓</span>
-                  <span>Comparing fractional vs full-time hiring costs</span>
+                  <span>Comparing part-time vs full-time hiring costs</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-purple-500 mt-1">✓</span>
-                  <span>Building a business case for fractional leadership</span>
+                  <span>Building a business case for part-time leadership</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-purple-500 mt-1">✓</span>
@@ -190,7 +190,7 @@ export default function CalculatorsHub() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-purple-500 mt-1">✓</span>
-                  <span>Budgeting for fractional executive support</span>
+                  <span>Budgeting for part-time executive support</span>
                 </li>
               </ul>
               <Link
@@ -212,14 +212,14 @@ export default function CalculatorsHub() {
           </h2>
           <p className="text-xl text-gray-600 mb-8">
             Whether you're an executive looking for your next opportunity or a
-            company seeking fractional talent, we can help.
+            company seeking part-time talent, we can help.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/fractional-jobs"
+              href="/part-time-jobs"
               className="btn-gradient inline-flex items-center justify-center gap-2"
             >
-              Browse Fractional Jobs
+              Browse Part-Time Jobs
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>

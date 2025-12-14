@@ -36,13 +36,13 @@ export default function CompanySavingsCalculator() {
     const pension = salary * (pensionPercent / 100)
     const fullTimeTotalCost = salary + employerNI + pension + benefits + overheads
 
-    // Fractional costs
+    // Part-Time costs
     const daysPerWeek = hoursNeeded / 8 // Assuming 8-hour days
     const weeksPerYear = 48 // Accounting for holidays
-    const fractionalAnnualCost = dayRate * daysPerWeek * weeksPerYear
+    const part-timeAnnualCost = dayRate * daysPerWeek * weeksPerYear
 
     // Savings
-    const annualSavings = fullTimeTotalCost - fractionalAnnualCost
+    const annualSavings = fullTimeTotalCost - part-timeAnnualCost
     const savingsPercentage = Math.round((annualSavings / fullTimeTotalCost) * 100)
 
     return {
@@ -54,11 +54,11 @@ export default function CompanySavingsCalculator() {
         overheads,
         total: Math.round(fullTimeTotalCost)
       },
-      fractional: {
+      part-time: {
         dayRate,
         daysPerWeek: Math.round(daysPerWeek * 10) / 10,
         weeksPerYear,
-        total: Math.round(fractionalAnnualCost)
+        total: Math.round(part-timeAnnualCost)
       },
       savings: {
         annual: Math.round(annualSavings),
@@ -89,7 +89,7 @@ export default function CompanySavingsCalculator() {
             Company Savings Calculator
           </h1>
           <p className="text-xl text-purple-200 max-w-2xl mx-auto">
-            See how much your company could save by hiring a fractional executive
+            See how much your company could save by hiring a part-time executive
             instead of a full-time hire.
           </p>
         </div>
@@ -102,7 +102,7 @@ export default function CompanySavingsCalculator() {
             {/* Inputs */}
             <CalculatorCard
               title="Calculate Your Savings"
-              subtitle="Compare full-time vs fractional costs"
+              subtitle="Compare full-time vs part-time costs"
               icon="🏢"
             >
               <div className="space-y-8">
@@ -176,7 +176,7 @@ export default function CompanySavingsCalculator() {
                 <div className="pt-4 border-t border-gray-200">
                   <h4 className="text-sm font-semibold text-gray-900 mb-4 flex items-center gap-2">
                     <span className="w-6 h-6 bg-purple-100 text-purple-800 rounded-full flex items-center justify-center text-xs">2</span>
-                    Fractional Requirements
+                    Part-Time Requirements
                   </h4>
 
                   <div className="space-y-6">
@@ -192,7 +192,7 @@ export default function CompanySavingsCalculator() {
                     />
 
                     <SliderInput
-                      label="Fractional Day Rate"
+                      label="Part-Time Day Rate"
                       value={dayRate}
                       onChange={setDayRate}
                       min={600}
@@ -225,13 +225,13 @@ export default function CompanySavingsCalculator() {
                     ]
                   },
                   {
-                    label: 'Fractional Executive',
-                    value: calculations.fractional.total,
+                    label: 'Part-Time Executive',
+                    value: calculations.part-time.total,
                     color: 'purple',
                     details: [
-                      { label: 'Day Rate', value: `£${calculations.fractional.dayRate.toLocaleString()}` },
-                      { label: 'Days/Week', value: `${calculations.fractional.daysPerWeek}` },
-                      { label: 'Weeks/Year', value: `${calculations.fractional.weeksPerYear}` },
+                      { label: 'Day Rate', value: `£${calculations.part-time.dayRate.toLocaleString()}` },
+                      { label: 'Days/Week', value: `${calculations.part-time.daysPerWeek}` },
+                      { label: 'Weeks/Year', value: `${calculations.part-time.weeksPerYear}` },
                       { label: 'No Employer NI', value: '£0' },
                       { label: 'No Benefits/Pension', value: '£0' }
                     ]
@@ -275,16 +275,16 @@ export default function CompanySavingsCalculator() {
               {/* CTA */}
               <div className="bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl p-6 border border-purple-200">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">
-                  Ready to find your fractional executive?
+                  Ready to find your part-time executive?
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Browse our network of experienced fractional CFOs, CTOs, CMOs and more.
+                  Browse our network of experienced part-time CFOs, CTOs, CMOs and more.
                 </p>
                 <Link
-                  href="/fractional-jobs"
+                  href="/part-time-jobs"
                   className="btn-gradient inline-flex items-center gap-2"
                 >
-                  Browse Fractional Executives
+                  Browse Part-Time Executives
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>

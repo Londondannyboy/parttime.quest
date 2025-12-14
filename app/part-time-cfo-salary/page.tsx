@@ -4,20 +4,20 @@ import { Suspense } from 'react'
 import { RateDistribution } from '@/components/RateDistribution'
 
 export const metadata: Metadata = {
-  title: 'Fractional CFO Salary UK 2025 - Day Rates, Annual Earnings & Pay Guide',
-  description: 'Fractional CFO salary guide for 2025. UK day rates £800-£1,500. Annual earnings £120k-£250k. Compare rates by location, industry and experience level.',
-  keywords: 'fractional cfo salary, fractional cfo day rate, fractional cfo pay, part time cfo salary, fractional cfo earnings uk',
+  title: 'Part-Time CFO Salary UK 2025 - Day Rates, Annual Earnings & Pay Guide',
+  description: 'Part-Time CFO salary guide for 2025. UK day rates £800-£1,500. Annual earnings £120k-£250k. Compare rates by location, industry and experience level.',
+  keywords: 'part-time cfo salary, part-time cfo day rate, part-time cfo pay, part time cfo salary, part-time cfo earnings uk',
   openGraph: {
-    title: 'Fractional CFO Salary UK 2025 - Complete Pay Guide',
-    description: 'Fractional CFO salary guide. UK day rates £800-£1,500. Annual earnings £120k-£250k.',
+    title: 'Part-Time CFO Salary UK 2025 - Complete Pay Guide',
+    description: 'Part-Time CFO salary guide. UK day rates £800-£1,500. Annual earnings £120k-£250k.',
   },
 }
 
 const salaryData = {
   dayRates: [
-    { level: 'Entry-level Fractional CFO', range: '£700-£900/day', annual: '£100k-£140k', experience: '10-15 years' },
-    { level: 'Mid-level Fractional CFO', range: '£900-£1,200/day', annual: '£140k-£190k', experience: '15-20 years' },
-    { level: 'Senior Fractional CFO', range: '£1,200-£1,500/day', annual: '£190k-£250k', experience: '20+ years' },
+    { level: 'Entry-level Part-Time CFO', range: '£700-£900/day', annual: '£100k-£140k', experience: '10-15 years' },
+    { level: 'Mid-level Part-Time CFO', range: '£900-£1,200/day', annual: '£140k-£190k', experience: '15-20 years' },
+    { level: 'Senior Part-Time CFO', range: '£1,200-£1,500/day', annual: '£190k-£250k', experience: '20+ years' },
   ],
   byLocation: [
     { location: 'London (City/Canary Wharf)', range: '£1,000-£1,500/day', premium: '+25%' },
@@ -46,9 +46,9 @@ export default function FractionalCfoSalaryPage() {
       <section className="bg-gradient-to-br from-emerald-900 to-emerald-800 py-20">
         <div className="max-w-4xl mx-auto px-4">
           <Link href="/" className="text-emerald-200 hover:text-white mb-6 inline-block">← Back to Home</Link>
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">Fractional CFO Salary UK 2025</h1>
+          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">Part-Time CFO Salary UK 2025</h1>
           <p className="text-xl text-emerald-100 mb-8">
-            Complete guide to fractional CFO pay rates, day rates, and annual earnings in the UK market.
+            Complete guide to part-time CFO pay rates, day rates, and annual earnings in the UK market.
           </p>
         </div>
       </section>
@@ -95,18 +95,18 @@ export default function FractionalCfoSalaryPage() {
       <article className="py-16">
         <div className="max-w-4xl mx-auto px-4">
           <div className="prose prose-lg prose-emerald mb-12">
-            <h2>Fractional CFO Salary Overview</h2>
+            <h2>Part-Time CFO Salary Overview</h2>
             <p>
-              <strong>Fractional CFO salary</strong> in the UK varies significantly based on experience, location, industry specialisation, and client portfolio. Unlike full-time CFO roles with fixed annual salaries, fractional CFOs charge day rates—typically ranging from £800 to £1,500 per day in 2025.
+              <strong>Part-Time CFO salary</strong> in the UK varies significantly based on experience, location, industry specialisation, and client portfolio. Unlike full-time CFO roles with fixed annual salaries, part-time CFOs charge day rates—typically ranging from £800 to £1,500 per day in 2025.
             </p>
             <p>
-              The <strong>fractional CFO pay</strong> model offers higher effective hourly earnings than most full-time positions. A fractional CFO working 3 days per week at £1,100/day earns approximately £170,000 annually—comparable to a full-time CFO at a Series B startup, but with significantly more flexibility.
+              The <strong>part-time CFO pay</strong> model offers higher effective hourly earnings than most full-time positions. A part-time CFO working 3 days per week at £1,100/day earns approximately £170,000 annually—comparable to a full-time CFO at a Series B startup, but with significantly more flexibility.
             </p>
           </div>
 
           {/* Day Rates by Experience */}
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Fractional CFO Day Rates by Experience</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Part-Time CFO Day Rates by Experience</h2>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
@@ -134,7 +134,7 @@ export default function FractionalCfoSalaryPage() {
 
           {/* By Location */}
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Fractional CFO Salary by Location</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Part-Time CFO Salary by Location</h2>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
@@ -159,7 +159,7 @@ export default function FractionalCfoSalaryPage() {
 
           {/* By Industry */}
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Fractional CFO Rates by Industry</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Part-Time CFO Rates by Industry</h2>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
@@ -183,19 +183,19 @@ export default function FractionalCfoSalaryPage() {
           </div>
 
           <div className="prose prose-lg prose-emerald">
-            <h2>Factors Affecting Fractional CFO Salary</h2>
-            <p>Several factors influence <strong>fractional CFO earnings</strong>:</p>
+            <h2>Factors Affecting Part-Time CFO Salary</h2>
+            <p>Several factors influence <strong>part-time CFO earnings</strong>:</p>
             <ul>
               <li><strong>Qualifications</strong> - ACA/ACCA/CIMA qualified CFOs command 10-15% higher rates</li>
               <li><strong>Fundraising experience</strong> - Series A-C experience adds £100-200/day premium</li>
               <li><strong>Industry specialisation</strong> - Deep sector expertise (FinTech, PE) commands premium rates</li>
-              <li><strong>Client portfolio</strong> - Established fractional CFOs with referral networks earn more</li>
+              <li><strong>Client portfolio</strong> - Established part-time CFOs with referral networks earn more</li>
               <li><strong>Scope of work</strong> - Roles requiring M&A, fundraising, or turnaround expertise pay more</li>
             </ul>
 
-            <h2>Full-Time CFO vs Fractional CFO Salary</h2>
+            <h2>Full-Time CFO vs Part-Time CFO Salary</h2>
             <p>
-              Comparing <strong>fractional CFO salary</strong> to full-time equivalents requires considering total compensation and working patterns. A full-time CFO at a Series B startup might earn £150,000-£200,000 plus equity. A fractional CFO earning £1,100/day for 150 days achieves £165,000—similar cash compensation with more flexibility and typically better effective hourly rate.
+              Comparing <strong>part-time CFO salary</strong> to full-time equivalents requires considering total compensation and working patterns. A full-time CFO at a Series B startup might earn £150,000-£200,000 plus equity. A part-time CFO earning £1,100/day for 150 days achieves £165,000—similar cash compensation with more flexibility and typically better effective hourly rate.
             </p>
           </div>
         </div>
@@ -204,10 +204,10 @@ export default function FractionalCfoSalaryPage() {
       {/* CTA */}
       <section className="py-16 bg-emerald-900 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Explore Fractional CFO Opportunities?</h2>
+          <h2 className="text-3xl font-bold mb-4">Ready to Explore Part-Time CFO Opportunities?</h2>
           <p className="text-emerald-100 mb-8">Browse live CFO roles or create your profile to get matched with companies.</p>
           <div className="flex justify-center gap-4">
-            <Link href="/fractional-jobs?role=CFO" className="px-8 py-4 bg-white text-emerald-900 rounded-lg font-semibold hover:bg-emerald-50">
+            <Link href="/part-time-jobs?role=CFO" className="px-8 py-4 bg-white text-emerald-900 rounded-lg font-semibold hover:bg-emerald-50">
               Browse CFO Jobs
             </Link>
             <Link href="/part-time-cfo" className="px-8 py-4 border-2 border-white rounded-lg font-semibold hover:bg-white/10">
@@ -222,8 +222,8 @@ export default function FractionalCfoSalaryPage() {
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-xl font-bold text-gray-900 mb-4">Related Salary Guides</h2>
           <div className="flex flex-wrap gap-4">
-            <Link href="/fractional-cmo-salary" className="px-4 py-2 bg-white rounded-lg border hover:border-purple-300">Fractional CMO Salary →</Link>
-            <Link href="/fractional-jobs-london" className="px-4 py-2 bg-white rounded-lg border hover:border-purple-300">London CFO Jobs →</Link>
+            <Link href="/part-time-cmo-salary" className="px-4 py-2 bg-white rounded-lg border hover:border-purple-300">Fractional CMO Salary →</Link>
+            <Link href="/part-time-jobs-london" className="px-4 py-2 bg-white rounded-lg border hover:border-purple-300">London CFO Jobs →</Link>
             <Link href="/part-time-cfo" className="px-4 py-2 bg-white rounded-lg border hover:border-purple-300">Part-Time CFO Guide →</Link>
           </div>
         </div>

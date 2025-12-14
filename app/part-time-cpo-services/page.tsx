@@ -38,7 +38,7 @@ const CPO_SERVICE_FAQS = [
 export const metadata: Metadata = {
   title: 'Part-Time CPO Services UK | Hire a Part-Time Chief Product Officer',
   description: 'Hire a Part-Time CPO for your business. Access senior product leadership at a fraction of full-time cost. Expert CPOs for product strategy, roadmaps, and team leadership. Start within days.',
-  keywords: 'part-time cpo, part-time cpo services, hire part-time cpo, part time cpo, fractional chief product officer, part-time cpo uk, fractional product director',
+  keywords: 'part-time cpo, part-time cpo services, hire part-time cpo, part time cpo, part-time chief product officer, part-time cpo uk, part-time product director',
   alternates: {
     canonical: 'https://parttime.quest/part-time-cpo-services',
   },
@@ -299,7 +299,7 @@ export default function FractionalCPOServicesPage() {
           <div className="mb-8 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Calculator</span>
             <h2 className="text-3xl md:text-4xl font-black text-gray-900">How Much Does a Part-Time CPO Cost?</h2>
-            <p className="text-gray-600 mt-4">Compare the cost of fractional vs full-time CPO</p>
+            <p className="text-gray-600 mt-4">Compare the cost of part-time vs full-time CPO</p>
           </div>
           <RoleCalculator role="cpo" />
         </div>

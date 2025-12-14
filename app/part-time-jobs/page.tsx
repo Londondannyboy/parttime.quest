@@ -461,14 +461,14 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
                   <p className="text-gray-400 text-sm">Marketing leadership roles</p>
                 </article>
               </Link>
-              <Link href="/fractional-cfo-salary" className="group">
+              <Link href="/part-time-cfo-salary" className="group">
                 <article className="p-6 bg-white/5 rounded-xl hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20">
                   <span className="text-3xl mb-4 block">📊</span>
                   <h3 className="font-bold text-white group-hover:text-white transition-colors mb-1">CFO Salary Guide</h3>
                   <p className="text-gray-400 text-sm">Day rates & earnings</p>
                 </article>
               </Link>
-              <Link href="/fractional-cmo-salary" className="group">
+              <Link href="/part-time-cmo-salary" className="group">
                 <article className="p-6 bg-white/5 rounded-xl hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20">
                   <span className="text-3xl mb-4 block">📈</span>
                   <h3 className="font-bold text-white group-hover:text-white transition-colors mb-1">CMO Salary Guide</h3>
@@ -481,18 +481,18 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
               <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-500 mb-4 block">By Location</span>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Browse by City</h2>
               <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-                London dominates with 60% of roles, but Manchester, Birmingham, and Edinburgh have growing fractional communities.
+                London dominates with 60% of roles, but Manchester, Birmingham, and Edinburgh have growing part-time communities.
               </p>
             </div>
 
             <div className="flex flex-wrap justify-center gap-3">
               {[
-                { label: 'London', href: '/fractional-jobs-london' },
-                { label: 'Manchester', href: '/fractional-jobs-manchester' },
-                { label: 'Birmingham', href: '/fractional-jobs-birmingham' },
-                { label: 'Edinburgh', href: '/fractional-jobs-edinburgh' },
-                { label: 'Bristol', href: '/fractional-jobs-bristol' },
-                { label: 'Leeds', href: '/fractional-jobs-leeds' },
+                { label: 'London', href: '/part-time-jobs-london' },
+                { label: 'Manchester', href: '/part-time-jobs-manchester' },
+                { label: 'Birmingham', href: '/part-time-jobs-birmingham' },
+                { label: 'Edinburgh', href: '/part-time-jobs-edinburgh' },
+                { label: 'Bristol', href: '/part-time-jobs-bristol' },
+                { label: 'Leeds', href: '/part-time-jobs-leeds' },
               ].map((loc) => (
                 <Link
                   key={loc.label}
@@ -514,7 +514,7 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
               Can't find the right job?
             </h2>
             <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-              Get notified when new fractional positions match your profile
+              Get notified when new part-time positions match your profile
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -524,7 +524,7 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
                 Create Job Alert
               </Link>
               <Link
-                href="/fractional-jobs-articles"
+                href="/part-time-jobs-articles"
                 className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg border border-white/20 text-white hover:bg-white/10 transition-all duration-200"
               >
                 Read Career Guides

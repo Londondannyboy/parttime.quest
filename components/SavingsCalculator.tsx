@@ -21,8 +21,8 @@ export function SavingsCalculator() {
   const fullTimeTotalCost = fullTimeSalary * 1.35 // Include NI, benefits, overhead
   const hourlyRate = 150 // Average part-time executive hourly rate
   const weeksPerYear = 48
-  const fractionalAnnualCost = hoursNeeded * hourlyRate * weeksPerYear
-  const savings = fullTimeTotalCost - fractionalAnnualCost
+  const partTimeAnnualCost = hoursNeeded * hourlyRate * weeksPerYear
+  const savings = fullTimeTotalCost - partTimeAnnualCost
   const savingsPercent = Math.round((savings / fullTimeTotalCost) * 100)
 
   const formatCurrency = (amount: number) => {
@@ -146,7 +146,7 @@ export function SavingsCalculator() {
                 <div className="text-xs text-purple-300">({hoursNeeded} hrs/week × 48 weeks)</div>
               </div>
               <div className="text-2xl font-bold text-green-300">
-                {formatCurrency(fractionalAnnualCost)}
+                {formatCurrency(partTimeAnnualCost)}
               </div>
             </div>
           </div>

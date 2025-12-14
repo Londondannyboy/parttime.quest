@@ -242,7 +242,7 @@ export function JobsCalendarHeatmap({ height = '300px' }: JobsCalendarHeatmapPro
             {selectedDay.jobs.map((job, i) => (
               <a
                 key={i}
-                href={`/fractional-job/${job.slug}`}
+                href={`/part-time-job/${job.slug}`}
                 className="block p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors"
               >
                 <p className="text-white text-sm font-medium truncate">{job.title}</p>

@@ -189,7 +189,7 @@ function generateVoiceSummary(
   summary += '.'
 
   if (fractionalCount > 0) {
-    summary += ` ${fractionalCount} ${fractionalCount > 1 ? 'are' : 'is'} fractional.`
+    summary += ` ${fractionalCount} ${fractionalCount > 1 ? 'are' : 'is'} part-time.`
   }
   if (remoteCount > 0 && !filters.remote) {
     summary += ` ${remoteCount} offer remote work.`

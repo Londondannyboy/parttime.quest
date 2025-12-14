@@ -38,7 +38,7 @@ const CHRO_SERVICE_FAQS = [
 export const metadata: Metadata = {
   title: 'Part-Time CHRO Services UK | Hire a Part-Time HR Director',
   description: 'Hire a Part-Time CHRO for your business. Access senior HR leadership at a fraction of full-time cost. Expert CHROs for people strategy, culture building, and talent development. Start within days.',
-  keywords: 'part-time chro, fractional hr director, hire part-time chro, part time hr director, fractional chief hr officer, part-time chro uk, fractional people director',
+  keywords: 'part-time chro, part-time hr director, hire part-time chro, part time hr director, part-time chief hr officer, part-time chro uk, part-time people director',
   alternates: {
     canonical: 'https://parttime.quest/part-time-chro-services',
   },
@@ -296,7 +296,7 @@ export default function FractionalCHROServicesPage() {
           <div className="mb-8 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Calculator</span>
             <h2 className="text-3xl md:text-4xl font-black text-gray-900">How Much Does a Part-Time CHRO Cost?</h2>
-            <p className="text-gray-600 mt-4">Compare the cost of fractional vs full-time CHRO</p>
+            <p className="text-gray-600 mt-4">Compare the cost of part-time vs full-time CHRO</p>
           </div>
           <RoleCalculator role="chro" />
         </div>

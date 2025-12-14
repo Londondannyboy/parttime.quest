@@ -7,20 +7,20 @@ import { JobsGraph3D } from '@/components/JobsGraph3D'
 export const revalidate = 3600 // Revalidate every hour
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs UK | Fractional Jobs London - Executive Roles Nationwide',
-  description: 'Find fractional jobs UK wide. Fractional jobs London, Manchester, Birmingham & more. CFO, CMO, CTO roles. £800-£1,500 daily rates. 200+ fractional jobs UK opportunities.',
-  keywords: 'fractional jobs UK, fractional jobs London, fractional executive jobs UK, fractional CFO jobs UK, fractional CMO jobs UK, fractional CTO jobs UK',
+  title: 'Part-Time Jobs UK | Part-Time Jobs London - Executive Roles Nationwide',
+  description: 'Find part-time jobs UK wide. Part-time jobs London, Manchester, Birmingham & more. CFO, CMO, CTO roles. £800-£1,500 daily rates. 200+ part-time jobs UK opportunities.',
+  keywords: 'part-time jobs UK, part-time jobs London, part-time executive jobs UK, part-time CFO jobs UK, part-time CMO jobs UK, part-time CTO jobs UK',
   openGraph: {
-    title: 'Fractional Jobs UK | Fractional Jobs London - Executive Roles Nationwide',
-    description: 'Find fractional jobs UK wide. Fractional jobs London, Manchester, Birmingham & more. CFO, CMO, CTO roles. £800-£1,500 daily rates.',
+    title: 'Part-Time Jobs UK | Part-Time Jobs London - Executive Roles Nationwide',
+    description: 'Find part-time jobs UK wide. Part-time jobs London, Manchester, Birmingham & more. CFO, CMO, CTO roles. £800-£1,500 daily rates.',
     type: 'website',
   },
 }
 
 // UK regions with London highlighted
 const ukRegions = [
-  { name: 'London', description: 'UK\'s largest fractional market - 60% of all UK roles', rateRange: '£900-£1,500/day', highlight: true },
-  { name: 'Manchester', description: 'Northern tech hub & growing fractional market', rateRange: '£700-£1,200/day', highlight: false },
+  { name: 'London', description: 'UK\'s largest part-time executive market - 60% of all UK roles', rateRange: '£900-£1,500/day', highlight: true },
+  { name: 'Manchester', description: 'Northern tech hub & growing part-time market', rateRange: '£700-£1,200/day', highlight: false },
   { name: 'Birmingham', description: 'Midlands business centre', rateRange: '£650-£1,100/day', highlight: false },
   { name: 'Edinburgh', description: 'Scottish finance & tech sector', rateRange: '£700-£1,150/day', highlight: false },
   { name: 'Bristol', description: 'South West tech corridor', rateRange: '£700-£1,200/day', highlight: false },
@@ -38,21 +38,21 @@ const londonAreas = [
 // Success stories
 const successStories = [
   {
-    quote: "Fractional jobs UK offer incredible flexibility. I work with clients in London and Manchester, combining the best of both markets.",
+    quote: "Part-time jobs UK offer incredible flexibility. I work with clients in London and Manchester, combining the best of both markets.",
     name: "Rachel S.",
-    role: "Fractional CFO",
+    role: "Part-Time CFO",
     area: "London & Manchester",
   },
   {
-    quote: "The UK fractional market has exploded. I started with fractional jobs London but now work across the whole country remotely.",
+    quote: "The UK part-time executive market has exploded. I started with part-time jobs London but now work across the whole country remotely.",
     name: "Michael C.",
-    role: "Fractional CTO",
+    role: "Part-Time CTO",
     area: "UK-wide",
   },
   {
-    quote: "Fractional jobs UK let me build a portfolio career. London rates with the flexibility to work from anywhere.",
+    quote: "Part-time jobs UK let me build a portfolio career. London rates with the flexibility to work from anywhere.",
     name: "Sophie W.",
-    role: "Fractional CMO",
+    role: "Part-Time CMO",
     area: "London",
   },
 ]
@@ -104,7 +104,7 @@ async function getUKJobs() {
   }
 }
 
-export default async function FractionalJobsUKPage() {
+export default async function PartTimeJobsUKPage() {
   const [stats, ukJobs] = await Promise.all([
     getUKStats(),
     getUKJobs()
@@ -137,24 +137,24 @@ export default async function FractionalJobsUKPage() {
                   </Link>
 
                   <span className="inline-block bg-white/10 backdrop-blur text-white/90 px-4 py-1.5 rounded-full text-xs font-medium uppercase tracking-widest mb-6">
-                    {stats.totalUK}+ Fractional Jobs UK
+                    {stats.totalUK}+ Part-Time Jobs UK
                   </span>
 
                   <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[0.95] tracking-tight">
-                    Fractional Jobs UK<br />
+                    Part-Time Jobs UK<br />
                     <span className="text-white/90">& London</span>
                   </h1>
 
                   <p className="text-lg text-white/70 mb-8 leading-relaxed max-w-lg">
-                    Find fractional jobs UK wide. From fractional jobs London to Manchester, Birmingham and beyond. CFO, CMO, CTO roles with £800-£1,500 daily rates.
+                    Find part-time jobs UK wide. From part-time jobs London to Manchester, Birmingham and beyond. CFO, CMO, CTO roles with £800-£1,500 daily rates.
                   </p>
 
                   <div className="flex flex-wrap gap-4">
                     <Link
-                      href="/fractional-jobs"
+                      href="/part-time-jobs"
                       className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg bg-white text-black hover:bg-white/90 transition-all duration-200"
                     >
-                      Browse Fractional Jobs UK &rarr;
+                      Browse Part-Time Jobs UK &rarr;
                     </Link>
                     <Link
                       href="/handler/sign-up"
@@ -198,14 +198,14 @@ export default async function FractionalJobsUKPage() {
       <section className="py-24 md:py-32 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Fractional Jobs UK</span>
+            <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Part-Time Jobs UK</span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-              Your marketplace<br />for fractional jobs UK
+              Your marketplace<br />for part-time jobs UK
             </h2>
           </div>
           <div className="prose prose-xl prose-gray max-w-none">
             <p className="text-xl text-gray-600 leading-relaxed text-center">
-              Fractional jobs UK are transforming how executives work. With London accounting for 60% of opportunities and growing markets in Manchester, Birmingham, and Edinburgh, the UK fractional executive market offers unmatched flexibility and earning potential. Day rates range from £700-£1,500, with professionals earning £150,000-£300,000+ annually.
+              Part-time jobs UK are transforming how executives work. With London accounting for 60% of opportunities and growing markets in Manchester, Birmingham, and Edinburgh, the UK part-time executive market offers unmatched flexibility and earning potential. Day rates range from £700-£1,500, with professionals earning £150,000-£300,000+ annually.
             </p>
           </div>
         </div>
@@ -215,16 +215,16 @@ export default async function FractionalJobsUKPage() {
       <section className="py-24 md:py-32 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Fractional Jobs UK</span>
+            <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Part-Time Jobs UK</span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">UK Regions</h2>
-            <p className="text-xl text-gray-500">Find fractional jobs UK wide</p>
+            <p className="text-xl text-gray-500">Find part-time jobs UK wide</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {regionJobEstimates.map((region) => (
               <Link
                 key={region.name}
-                href={region.name === 'London' ? '#london-jobs' : `/fractional-jobs-${region.name.toLowerCase()}`}
+                href={region.name === 'London' ? '#london-jobs' : `/part-time-jobs-${region.name.toLowerCase()}`}
                 className="group"
               >
                 <article className={`bg-white rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border ${region.highlight ? 'border-purple-200 ring-2 ring-purple-100' : 'border-gray-100 hover:border-gray-200'}`}>
@@ -250,16 +250,16 @@ export default async function FractionalJobsUKPage() {
       <section id="london-jobs" className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Fractional Jobs London</span>
+            <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Part-Time Jobs London</span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">London Districts</h2>
-            <p className="text-xl text-gray-500">Fractional jobs London - the UK's largest market</p>
+            <p className="text-xl text-gray-500">Part-time jobs London - the UK's largest market</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {londonAreas.map((area) => (
               <Link
                 key={area.name}
-                href={`/fractional-jobs?location=${encodeURIComponent(area.name.split('/')[0])}`}
+                href={`/part-time-jobs?location=${encodeURIComponent(area.name.split('/')[0])}`}
                 className="group"
               >
                 <article className="bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-200">
@@ -280,18 +280,18 @@ export default async function FractionalJobsUKPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">By Function</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Fractional Executive Roles UK</h2>
-            <p className="text-xl text-gray-500">Fractional jobs UK across all executive functions</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Part-Time Executive Roles UK</h2>
+            <p className="text-xl text-gray-500">Part-time jobs UK across all executive functions</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { icon: '&#128176;', title: 'Fractional CFO Jobs UK', subtitle: 'Finance Leadership', rate: '£800-£1,400/day', role: 'CFO', link: '/fractional-cfo-jobs-uk' },
-              { icon: '&#128187;', title: 'Fractional CTO Jobs UK', subtitle: 'Technology Leadership', rate: '£850-£1,500/day', link: '/fractional-cto-jobs-uk', role: 'CTO' },
-              { icon: '&#128226;', title: 'Fractional CMO Jobs UK', subtitle: 'Marketing Leadership', rate: '£750-£1,200/day', link: '/fractional-cmo-jobs-uk', role: 'CMO' },
-              { icon: '&#9881;', title: 'Fractional COO Jobs UK', subtitle: 'Operations Leadership', rate: '£800-£1,300/day', link: '/fractional-coo-jobs-uk', role: 'COO' },
-              { icon: '&#128101;', title: 'Fractional HRD Jobs UK', subtitle: 'People Leadership', rate: '£700-£1,100/day', role: 'HR', link: '/fractional-jobs?role=HR' },
-              { icon: '&#128200;', title: 'Fractional Sales Jobs UK', subtitle: 'Revenue Leadership', rate: '£750-£1,250/day', role: 'Sales', link: '/fractional-jobs?role=Sales' },
+              { icon: '&#128176;', title: 'Part-Time CFO Jobs UK', subtitle: 'Finance Leadership', rate: '£800-£1,400/day', role: 'CFO', link: '/part-time-cfo-jobs-uk' },
+              { icon: '&#128187;', title: 'Part-Time CTO Jobs UK', subtitle: 'Technology Leadership', rate: '£850-£1,500/day', link: '/part-time-cto-jobs-uk', role: 'CTO' },
+              { icon: '&#128226;', title: 'Part-Time CMO Jobs UK', subtitle: 'Marketing Leadership', rate: '£750-£1,200/day', link: '/part-time-cmo-jobs-uk', role: 'CMO' },
+              { icon: '&#9881;', title: 'Part-Time COO Jobs UK', subtitle: 'Operations Leadership', rate: '£800-£1,300/day', link: '/part-time-coo-jobs-uk', role: 'COO' },
+              { icon: '&#128101;', title: 'Part-Time HRD Jobs UK', subtitle: 'People Leadership', rate: '£700-£1,100/day', role: 'HR', link: '/part-time-jobs?role=HR' },
+              { icon: '&#128200;', title: 'Part-Time Sales Jobs UK', subtitle: 'Revenue Leadership', rate: '£750-£1,250/day', role: 'Sales', link: '/part-time-jobs?role=Sales' },
             ].map((item) => {
               const roleCount = stats.roleStats.find(r => r.role_category === item.role)?.count || '0'
               return (
@@ -325,10 +325,10 @@ export default async function FractionalJobsUKPage() {
             <div className="flex justify-between items-end mb-12">
               <div>
                 <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Featured</span>
-                <h2 className="text-4xl font-bold text-gray-900">Fractional Jobs UK & London</h2>
+                <h2 className="text-4xl font-bold text-gray-900">Part-Time Jobs UK & London</h2>
               </div>
               <Link
-                href="/fractional-jobs"
+                href="/part-time-jobs"
                 className="hidden md:inline-flex items-center text-purple-700 font-semibold hover:text-purple-900 transition-colors"
               >
                 View all &rarr;
@@ -342,7 +342,7 @@ export default async function FractionalJobsUKPage() {
                   : undefined
 
                 return (
-                  <Link key={job.id} href={`/fractional-job/${job.slug}`}>
+                  <Link key={job.id} href={`/part-time-job/${job.slug}`}>
                     <JobCard
                       title={job.title}
                       company={job.company_name}
@@ -359,10 +359,10 @@ export default async function FractionalJobsUKPage() {
             </div>
             <div className="text-center md:hidden">
               <Link
-                href="/fractional-jobs"
+                href="/part-time-jobs"
                 className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg bg-purple-700 text-white hover:bg-purple-800 transition-all"
               >
-                View All Fractional Jobs UK &rarr;
+                View All Part-Time Jobs UK &rarr;
               </Link>
             </div>
           </div>
@@ -374,7 +374,7 @@ export default async function FractionalJobsUKPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-500 mb-4 block">Perspectives</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Fractional Jobs UK Success Stories</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Part-Time Jobs UK Success Stories</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -403,26 +403,26 @@ export default async function FractionalJobsUKPage() {
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">FAQ</span>
-            <h2 className="text-4xl font-bold text-gray-900">Fractional Jobs UK - Common Questions</h2>
+            <h2 className="text-4xl font-bold text-gray-900">Part-Time Jobs UK - Common Questions</h2>
           </div>
 
           <div className="divide-y divide-gray-200">
             {[
               {
-                q: 'What are fractional jobs UK?',
-                a: 'Fractional jobs UK are part-time executive roles where experienced professionals work with multiple companies simultaneously. Fractional jobs UK typically involve CFO, CMO, CTO, and COO positions, offering flexibility and high earning potential across the United Kingdom.'
+                q: 'What are part-time jobs UK?',
+                a: 'Part-time jobs UK are flexible executive roles where experienced professionals work reduced hours or with multiple companies. Part-time jobs UK typically involve CFO, CMO, CTO, and COO positions, offering flexibility and high earning potential across the United Kingdom.'
               },
               {
-                q: 'How much do fractional jobs UK pay?',
-                a: 'Fractional jobs UK typically pay £700-£1,500 per day depending on role and location. Fractional jobs London command premium rates of £900-£1,500/day, while other UK cities offer £700-£1,200/day. Most professionals work with 2-4 clients, earning £150,000-£300,000+ annually.'
+                q: 'How much do part-time jobs UK pay?',
+                a: 'Part-time jobs UK typically pay £700-£1,500 per day depending on role and location. Part-time jobs London command premium rates of £900-£1,500/day, while other UK cities offer £700-£1,200/day. Most professionals work with 2-4 clients, earning £150,000-£300,000+ annually.'
               },
               {
-                q: 'Where are most fractional jobs UK located?',
-                a: 'Fractional jobs London account for approximately 60% of the UK market. However, fractional jobs UK are growing rapidly in Manchester, Birmingham, Edinburgh, Bristol, and Leeds. Many fractional jobs UK also offer remote or hybrid working arrangements.'
+                q: 'Where are most part-time jobs UK located?',
+                a: 'Part-time jobs London account for approximately 60% of the UK market. However, part-time jobs UK are growing rapidly in Manchester, Birmingham, Edinburgh, Bristol, and Leeds. Many part-time jobs UK also offer remote or hybrid working arrangements.'
               },
               {
-                q: 'How do I find fractional jobs UK?',
-                a: 'Fractional.quest is a UK job board focused on fractional jobs. Browse fractional jobs London, Manchester, Birmingham and across the UK. Sign up for alerts to get notified of new fractional jobs UK matching your skills.'
+                q: 'How do I find part-time jobs UK?',
+                a: 'Parttime.quest is a UK job board focused on part-time jobs. Browse part-time jobs London, Manchester, Birmingham and across the UK. Sign up for alerts to get notified of new part-time jobs UK matching your skills.'
               },
             ].map((faq, i) => (
               <details key={i} className="group py-6">
@@ -442,30 +442,30 @@ export default async function FractionalJobsUKPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div>
-              <h3 className="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Fractional Jobs UK by Role</h3>
+              <h3 className="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Part-Time Jobs UK by Role</h3>
               <ul className="space-y-3 text-gray-600">
-                <li><Link href="/fractional-cfo-jobs-uk" className="hover:text-purple-700 transition-colors">Fractional CFO Jobs UK</Link></li>
-                <li><Link href="/fractional-cmo-jobs-uk" className="hover:text-purple-700 transition-colors">Fractional CMO Jobs UK</Link></li>
-                <li><Link href="/fractional-cto-jobs-uk" className="hover:text-purple-700 transition-colors">Fractional CTO Jobs UK</Link></li>
-                <li><Link href="/fractional-coo-jobs-uk" className="hover:text-purple-700 transition-colors">Fractional COO Jobs UK</Link></li>
+                <li><Link href="/part-time-cfo-jobs-uk" className="hover:text-purple-700 transition-colors">Part-Time CFO Jobs UK</Link></li>
+                <li><Link href="/part-time-cmo-jobs-uk" className="hover:text-purple-700 transition-colors">Part-Time CMO Jobs UK</Link></li>
+                <li><Link href="/part-time-cto-jobs-uk" className="hover:text-purple-700 transition-colors">Part-Time CTO Jobs UK</Link></li>
+                <li><Link href="/part-time-coo-jobs-uk" className="hover:text-purple-700 transition-colors">Part-Time COO Jobs UK</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Fractional Jobs UK by Location</h3>
+              <h3 className="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Part-Time Jobs UK by Location</h3>
               <ul className="space-y-3 text-gray-600">
-                <li><Link href="/fractional-jobs?location=London" className="hover:text-purple-700 transition-colors">Fractional Jobs London</Link></li>
-                <li><Link href="/fractional-jobs-manchester" className="hover:text-purple-700 transition-colors">Fractional Jobs Manchester</Link></li>
-                <li><Link href="/fractional-jobs-birmingham" className="hover:text-purple-700 transition-colors">Fractional Jobs Birmingham</Link></li>
-                <li><Link href="/fractional-jobs-edinburgh" className="hover:text-purple-700 transition-colors">Fractional Jobs Edinburgh</Link></li>
+                <li><Link href="/part-time-jobs?location=London" className="hover:text-purple-700 transition-colors">Part-Time Jobs London</Link></li>
+                <li><Link href="/part-time-jobs-manchester" className="hover:text-purple-700 transition-colors">Part-Time Jobs Manchester</Link></li>
+                <li><Link href="/part-time-jobs-birmingham" className="hover:text-purple-700 transition-colors">Part-Time Jobs Birmingham</Link></li>
+                <li><Link href="/part-time-jobs-edinburgh" className="hover:text-purple-700 transition-colors">Part-Time Jobs Edinburgh</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Resources</h3>
               <ul className="space-y-3 text-gray-600">
-                <li><Link href="/fractional-jobs" className="hover:text-purple-700 transition-colors">All Fractional Jobs UK</Link></li>
-                <li><Link href="/how-to-become-a-fractional-executive" className="hover:text-purple-700 transition-colors">How to Go Fractional</Link></li>
-                <li><Link href="/fractional-executive-salary-uk" className="hover:text-purple-700 transition-colors">UK Salary Guide</Link></li>
-                <li><Link href="/fractional-jobs-articles" className="hover:text-purple-700 transition-colors">All Articles</Link></li>
+                <li><Link href="/part-time-jobs" className="hover:text-purple-700 transition-colors">All Part-Time Jobs UK</Link></li>
+                <li><Link href="/how-to-become-a-part-time-executive" className="hover:text-purple-700 transition-colors">How to Go Part-Time</Link></li>
+                <li><Link href="/part-time-executive-salary-uk" className="hover:text-purple-700 transition-colors">UK Salary Guide</Link></li>
+                <li><Link href="/part-time-jobs-articles" className="hover:text-purple-700 transition-colors">All Articles</Link></li>
               </ul>
             </div>
           </div>
@@ -477,17 +477,17 @@ export default async function FractionalJobsUKPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-500 mb-6 block">Get Started</span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Find Fractional Jobs UK Today
+            Find Part-Time Jobs UK Today
           </h2>
           <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-            {stats.totalUK}+ fractional jobs UK including {stats.totalLondon}+ fractional jobs London. Join the UK&apos;s fastest-growing executive job market.
+            {stats.totalUK}+ part-time jobs UK including {stats.totalLondon}+ part-time jobs London. Join the UK&apos;s fastest-growing executive job market.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/fractional-jobs"
+              href="/part-time-jobs"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-gray-900 hover:bg-gray-100 transition-all duration-200"
             >
-              Browse Fractional Jobs UK
+              Browse Part-Time Jobs UK
             </Link>
             <Link
               href="/handler/sign-up"

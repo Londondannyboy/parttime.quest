@@ -226,7 +226,7 @@ export function JobsGlobe({ height = '600px', focusCity = 'london' }: JobsGlobeP
             {selectedLocation.jobs.map((job, i) => (
               <a
                 key={i}
-                href={`/fractional-job/${job.slug}`}
+                href={`/part-time-job/${job.slug}`}
                 className="block p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors"
               >
                 <p className="text-white text-sm font-medium truncate">{job.title}</p>
@@ -236,7 +236,7 @@ export function JobsGlobe({ height = '600px', focusCity = 'london' }: JobsGlobeP
           </div>
           {selectedLocation.jobCount > 5 && (
             <a
-              href={`/fractional-jobs?location=${encodeURIComponent(selectedLocation.city)}`}
+              href={`/part-time-jobs?location=${encodeURIComponent(selectedLocation.city)}`}
               className="block mt-3 text-center text-indigo-400 text-sm hover:text-indigo-300"
             >
               View all {selectedLocation.jobCount} jobs →

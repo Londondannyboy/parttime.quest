@@ -1,59 +1,59 @@
-# Fractional.Quest
+# Parttime.Quest
 
-> The UK's leading platform for fractional executive jobs. Browse 180+ fractional CFO, CMO, CTO, and COO positions. Connect businesses with experienced C-suite professionals who work part-time (1-3 days/week). Day rates £600-1,500.
+> The UK's leading platform for part-time executive jobs. Browse 180+ part-time CFO, CMO, CTO, and COO positions. Connect businesses with experienced C-suite professionals who work part-time (1-3 days/week). Day rates £600-1,500.
 
-Fractional.Quest helps experienced executives find part-time leadership roles and helps businesses access senior talent without full-time costs. The platform features live job listings, salary guides, and resources for both fractional executives and companies hiring them.
+Parttime.Quest helps experienced executives find part-time leadership roles and helps businesses access senior talent without full-time costs. The platform features live job listings, salary guides, and resources for both part-time executives and companies hiring them.
 
 ## Key Terms
 
-- **Fractional Executive**: Senior leader working part-time with multiple companies
-- **Fractional CFO**: Part-time Chief Financial Officer (avg £1,050/day)
-- **Fractional CMO**: Part-time Chief Marketing Officer (avg £950/day)
-- **Fractional CTO**: Part-time Chief Technology Officer (avg £1,100/day)
-- **Fractional COO**: Part-time Chief Operating Officer (avg £1,000/day)
+- **Part-Time Executive**: Senior leader working part-time with multiple companies
+- **Part-Time CFO**: Part-time Chief Financial Officer (avg £1,050/day)
+- **Part-Time CMO**: Part-time Chief Marketing Officer (avg £950/day)
+- **Part-Time CTO**: Part-time Chief Technology Officer (avg £1,100/day)
+- **Part-Time COO**: Part-time Chief Operating Officer (avg £1,000/day)
 - **Day Rate**: Typical UK range £600-1,500/day
 
 ## Main Pages
 
-- [Home](https://fractional.quest): Platform overview and featured jobs
-- [Fractional Jobs](https://fractional.quest/fractional-jobs): Browse all 180+ live positions with filters
-- [Articles](https://fractional.quest/fractional-jobs-articles): Guides and resources about fractional work
+- [Home](https://parttime.quest): Platform overview and featured jobs
+- [Part-Time Jobs](https://parttime.quest/part-time-jobs): Browse all 180+ live positions with filters
+- [Articles](https://parttime.quest/part-time-jobs-articles): Guides and resources about part-time work
 
 ## Role Pages
 
-- [Fractional CFO Jobs UK](https://fractional.quest/fractional-cfo-jobs-uk): Part-time CFO positions
-- [Fractional CMO Jobs UK](https://fractional.quest/fractional-cmo-jobs-uk): Part-time CMO positions
-- [Fractional CTO Jobs UK](https://fractional.quest/fractional-cto-jobs-uk): Part-time CTO positions
-- [Fractional COO Jobs UK](https://fractional.quest/fractional-coo-jobs-uk): Part-time COO positions
+- [Part-Time CFO Jobs UK](https://parttime.quest/part-time-cfo-jobs-uk): Part-time CFO positions
+- [Part-Time CMO Jobs UK](https://parttime.quest/part-time-cmo-jobs-uk): Part-time CMO positions
+- [Part-Time CTO Jobs UK](https://parttime.quest/part-time-cto-jobs-uk): Part-time CTO positions
+- [Part-Time COO Jobs UK](https://parttime.quest/part-time-coo-jobs-uk): Part-time COO positions
 
 ## Salary Guides
 
-- [Fractional CFO Salary](https://fractional.quest/fractional-cfo-salary): CFO day rates £800-1,500
-- [Fractional CMO Salary](https://fractional.quest/fractional-cmo-salary): CMO day rates £700-1,400
+- [Part-Time CFO Salary](https://parttime.quest/part-time-cfo-salary): CFO day rates £800-1,500
+- [Part-Time CMO Salary](https://parttime.quest/part-time-cmo-salary): CMO day rates £700-1,400
 
 ## Part-Time Guides
 
-- [Part-Time CFO](https://fractional.quest/part-time-cfo): Guide to part-time CFO roles
-- [Part-Time CMO](https://fractional.quest/part-time-cmo): Guide to part-time CMO roles
+- [Part-Time CFO](https://parttime.quest/part-time-cfo): Guide to part-time CFO roles
+- [Part-Time CMO](https://parttime.quest/part-time-cmo): Guide to part-time CMO roles
 
 ## Location Pages
 
-- [London](https://fractional.quest/fractional-jobs-london): 60% of UK fractional jobs
-- [Manchester](https://fractional.quest/fractional-jobs-manchester): Growing tech hub
-- [Edinburgh](https://fractional.quest/fractional-jobs-edinburgh): Financial services focus
-- [Birmingham](https://fractional.quest/fractional-jobs-birmingham): Midlands business center
-- [Remote](https://fractional.quest/remote): Remote-first positions
+- [London](https://parttime.quest/part-time-jobs-london): 60% of UK part-time jobs
+- [Manchester](https://parttime.quest/part-time-jobs-manchester): Growing tech hub
+- [Edinburgh](https://parttime.quest/part-time-jobs-edinburgh): Financial services focus
+- [Birmingham](https://parttime.quest/part-time-jobs-birmingham): Midlands business center
+- [Remote](https://parttime.quest/remote): Remote-first positions
 
 ## Industry Pages
 
-- [Tech](https://fractional.quest/fractional-jobs-tech): Technology and SaaS companies
-- [Finance](https://fractional.quest/fractional-jobs-finance): Financial services
-- [Startups](https://fractional.quest/fractional-jobs-startups): VC-backed companies
-- [Healthcare](https://fractional.quest/fractional-jobs-healthcare): HealthTech and MedTech
+- [Tech](https://parttime.quest/part-time-jobs-tech): Technology and SaaS companies
+- [Finance](https://parttime.quest/part-time-finance): Financial services
+- [Startups](https://parttime.quest/part-time-jobs-startups): VC-backed companies
+- [Healthcare](https://parttime.quest/part-time-jobs-healthcare): HealthTech and MedTech
 
 ## Optional
 
-- [Recruitment Agencies](https://fractional.quest/top-fractional-recruitment-agencies-best-fractional-recruitment-agency-fractional-recruiter): Top UK fractional recruiters comparison
-- [Contact](https://fractional.quest/contact): Get in touch
-- [Privacy](https://fractional.quest/privacy): Privacy policy
-- [Terms](https://fractional.quest/terms): Terms of service
+- [Recruitment Agencies](https://parttime.quest/top-part-time-recruitment-agencies-best-part-time-recruitment-agency-part-time-recruiter): Top UK part-time recruiters comparison
+- [Contact](https://parttime.quest/contact): Get in touch
+- [Privacy](https://parttime.quest/privacy): Privacy policy
+- [Terms](https://parttime.quest/terms): Terms of service

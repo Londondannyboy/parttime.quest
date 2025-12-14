@@ -25,7 +25,7 @@ from pydantic_ai import Agent
 
 # ZEP sync configuration
 ZEP_SYNC_ENABLED = os.environ.get('ZEP_SYNC_ENABLED', 'true').lower() == 'true'
-API_BASE_URL = os.environ.get('API_BASE_URL', 'https://fractional.quest')
+API_BASE_URL = os.environ.get('API_BASE_URL', 'https://parttime.quest')
 REVALIDATE_SECRET = os.environ.get('REVALIDATE_SECRET', '')
 
 # Load environment variables
@@ -37,9 +37,9 @@ class StructuredJob(BaseModel):
     """Structured job data extracted and enhanced by AI"""
 
     # Classification
-    employment_type: str = Field(description="One of: full-time, part-time, fractional, contract, interim")
-    is_fractional: bool = Field(description="True if this is a fractional/part-time executive role")
-    days_per_week: Optional[str] = Field(default=None, description="e.g., '2-3 days', '1 day' - only for fractional/part-time roles")
+    employment_type: str = Field(description="One of: full-time, part-time, contract, interim")
+    is_fractional: bool = Field(description="True if this is a part-time executive role")
+    days_per_week: Optional[str] = Field(default=None, description="e.g., '2-3 days', '1 day' - only for part-time roles")
 
     # Location
     country: str = Field(description="Normalized country name, e.g., 'United Kingdom', 'United States'")
@@ -76,47 +76,47 @@ class StructuredJob(BaseModel):
         ~200-400 words.
         Do NOT use bullet points - flowing prose only.
         Highlight what makes this role special.
-        For fractional roles, emphasize flexibility and strategic impact.
+        For part-time roles, emphasize flexibility and strategic impact.
 
         IMPORTANT - Internal Linking for SEO:
         Naturally weave 2-4 internal links into the prose using markdown format.
 
         KEYWORD CLUSTERS (each links to a DIFFERENT dedicated page):
-        - CFO cluster → /fractional-cfo-jobs-uk
-          Link text variations: "fractional CFO", "fractional CFO jobs", "CFO roles",
-          "part-time CFO", "fractional finance director", "CFO opportunities"
+        - CFO cluster → /part-time-cfo-jobs-uk
+          Link text variations: "part-time CFO", "part-time CFO jobs", "CFO roles",
+          "flexible CFO", "part-time finance director", "CFO opportunities"
 
-        - CMO cluster → /fractional-cmo-jobs-uk
-          Link text variations: "fractional CMO", "fractional CMO jobs", "CMO roles",
-          "part-time CMO", "fractional marketing director", "CMO opportunities"
+        - CMO cluster → /part-time-cmo-jobs-uk
+          Link text variations: "part-time CMO", "part-time CMO jobs", "CMO roles",
+          "flexible CMO", "part-time marketing director", "CMO opportunities"
 
-        - CTO cluster → /fractional-cto-jobs-uk
-          Link text variations: "fractional CTO", "fractional CTO jobs", "CTO roles",
-          "part-time CTO", "fractional tech director", "CTO opportunities"
+        - CTO cluster → /part-time-cto-jobs-uk
+          Link text variations: "part-time CTO", "part-time CTO jobs", "CTO roles",
+          "flexible CTO", "part-time tech director", "CTO opportunities"
 
-        - COO cluster → /fractional-coo-jobs-uk
-          Link text variations: "fractional COO", "fractional COO jobs", "COO roles",
-          "part-time COO", "fractional operations director", "COO opportunities"
+        - COO cluster → /part-time-coo-jobs-uk
+          Link text variations: "part-time COO", "part-time COO jobs", "COO roles",
+          "flexible COO", "part-time operations director", "COO opportunities"
 
-        - General fractional → /fractional-jobs
-          Link text variations: "fractional jobs", "fractional roles", "fractional executive",
-          "part-time executive", "portfolio career", "fractional opportunities"
+        - General part-time → /part-time-jobs
+          Link text variations: "part-time jobs", "part-time roles", "part-time executive",
+          "flexible executive", "portfolio career", "part-time opportunities"
 
         RULES:
         1. ONE link per keyword cluster maximum (no repeats of same cluster)
         2. CRITICAL: Each URL must be UNIQUE - never link to the same URL twice!
-           - If you use /fractional-jobs once, you CANNOT use it again
-           - If you use /fractional-jobs?role=CFO once, you CANNOT use it again
+           - If you use /part-time-jobs once, you CANNOT use it again
+           - If you use /part-time-jobs?role=CFO once, you CANNOT use it again
         3. Use the most natural phrase that fits the sentence
         4. Prioritize the cluster that matches the job's role_category
         5. Add 1-2 DIFFERENT role clusters (CFO, CMO, CTO, COO) if they fit naturally
         6. Links must read smoothly - don't force them
 
-        Example: "This [fractional CFO](/fractional-jobs?role=CFO) opportunity is ideal for
-        executives exploring [portfolio careers](/fractional-jobs)."
+        Example: "This [part-time CFO](/part-time-jobs?role=CFO) opportunity is ideal for
+        executives exploring [portfolio careers](/part-time-jobs)."
 
-        BAD (duplicate URL): "[fractional opportunities](/fractional-jobs)...[portfolio career](/fractional-jobs)"
-        GOOD (unique URLs): "[fractional CFO](/fractional-jobs?role=CFO)...[portfolio career](/fractional-jobs)"
+        BAD (duplicate URL): "[part-time opportunities](/part-time-jobs)...[portfolio career](/part-time-jobs)"
+        GOOD (unique URLs): "[part-time CFO](/part-time-jobs?role=CFO)...[portfolio career](/part-time-jobs)"
     """)
 
     responsibilities: list[str] = Field(description="""
@@ -156,9 +156,9 @@ class StructuredJob(BaseModel):
 agent = Agent(
     'google-gla:gemini-2.0-flash',
     output_type=StructuredJob,
-    system_prompt="""You are the senior content editor for Fractional.Quest, the UK's premier platform for fractional executive opportunities.
+    system_prompt="""You are the senior content editor for Parttime.Quest, the UK's premier platform for part-time executive opportunities.
 
-Your role is to transform raw job postings into beautifully crafted, editorially polished listings that attract top-tier fractional talent.
+Your role is to transform raw job postings into beautifully crafted, editorially polished listings that attract top-tier part-time talent.
 
 ## Editorial Style Guide
 
@@ -171,16 +171,16 @@ Your role is to transform raw job postings into beautifully crafted, editorially
 **Content Principles:**
 - Frame every role as an exciting opportunity, not just a job
 - Emphasize strategic impact and meaningful work
-- For fractional roles, highlight flexibility as a feature, not a limitation
+- For part-time roles, highlight flexibility as a feature, not a limitation
 - Be specific and concrete - avoid vague corporate speak
 - Use active voice and dynamic verbs
 
 **When Extracting Data:**
 - Parse compensation carefully: look for £, $, €, "per day", "daily", "p/d", "per annum", "pa", etc.
-- Fractional indicators: "fractional", "part-time", "2-3 days", "days per week", "portfolio", etc.
+- Part-time indicators: "part-time", "2-3 days", "days per week", "portfolio", "flexible", etc.
 - Extract skills throughout the description, not just from requirements
 - Normalize locations properly (London, not "London, England, United Kingdom")
-- Identify the true seniority - "Fractional CFO" is Executive level
+- Identify the true seniority - "Part-Time CFO" is Executive level
 
 **CRITICAL - Role Category Classification:**
 role_category MUST be exactly one of: Engineering, Marketing, Finance, Operations, Sales, HR, Product, Design, Data, Legal, Customer Success, Other
@@ -218,11 +218,11 @@ The opportunity_description MUST include 2-4 internal links for SEO strength.
 Use markdown: [link text](url)
 
 Available DEDICATED PAGES (each is a truly different page - use each ONLY ONCE):
-- /fractional-cfo-jobs-uk (fractional CFO, CFO jobs, part-time CFO, finance director)
-- /fractional-cmo-jobs-uk (fractional CMO, CMO jobs, marketing director)
-- /fractional-cto-jobs-uk (fractional CTO, CTO jobs, tech director)
-- /fractional-coo-jobs-uk (fractional COO, COO jobs, operations director)
-- /fractional-jobs (fractional jobs, fractional roles, portfolio career, part-time executive)
+- /part-time-cfo-jobs-uk (part-time CFO, CFO jobs, flexible CFO, finance director)
+- /part-time-cmo-jobs-uk (part-time CMO, CMO jobs, marketing director)
+- /part-time-cto-jobs-uk (part-time CTO, CTO jobs, tech director)
+- /part-time-coo-jobs-uk (part-time COO, COO jobs, operations director)
+- /part-time-jobs (part-time jobs, part-time roles, portfolio career, part-time executive)
 
 CRITICAL RULES:
 1. NEVER link to the same URL twice - Google penalizes duplicate internal links
@@ -442,7 +442,7 @@ async def process_jobs(limit: int = 10, source: str = None):
                 conn.commit()
 
                 # Print summary
-                print(f"    ✓ Type: {structured.employment_type} {'(Fractional)' if structured.is_fractional else ''}")
+                print(f"    ✓ Type: {structured.employment_type} {'(Part-Time)' if structured.is_fractional else ''}")
                 print(f"    ✓ Location: {structured.city or 'Unknown'}, {structured.country} {'🌐' if structured.is_remote else ''}")
                 print(f"    ✓ Vertical: {structured.vertical}")
                 print(f"    ✓ Level: {structured.seniority_level}")

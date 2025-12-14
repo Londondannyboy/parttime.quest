@@ -47,7 +47,7 @@ export function JobHeader({
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}
         <div className="text-sm text-gray-600 mb-6">
-          <a href="/fractional-jobs" className="hover:text-purple-700">Jobs</a>
+          <a href="/part-time-jobs" className="hover:text-purple-700">Jobs</a>
           <span className="mx-2">/</span>
           <span className="text-gray-900">{title}</span>
         </div>

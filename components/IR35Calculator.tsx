@@ -209,7 +209,7 @@ export function IR35Calculator({ defaultDayRate = 800, className = '' }: IR35Cal
       <div className="bg-black text-white p-6">
         <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 block mb-2">UK Tax Calculator</span>
         <h2 className="text-2xl font-black">IR35 Take-Home Pay Calculator</h2>
-        <p className="text-gray-400 mt-2">See how IR35 status affects your earnings as a fractional executive</p>
+        <p className="text-gray-400 mt-2">See how IR35 status affects your earnings as a part-time executive</p>
       </div>
 
       {/* Inputs */}

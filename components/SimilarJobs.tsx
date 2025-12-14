@@ -85,7 +85,7 @@ export function SimilarJobs({
         {jobs.map((job) => (
           <Link
             key={job.id}
-            href={`/fractional-job/${job.slug}`}
+            href={`/part-time-job/${job.slug}`}
             className="block p-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors group"
           >
             <h4 className="font-medium text-gray-900 group-hover:text-amber-600 transition-colors text-sm line-clamp-2">

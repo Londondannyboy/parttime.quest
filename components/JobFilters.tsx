@@ -47,7 +47,7 @@ export function JobFilters({
 
   const handleFilterChange = (name: string, value: string) => {
     const queryString = createQueryString(name, value)
-    router.push(`/fractional-jobs${queryString ? `?${queryString}` : ''}`)
+    router.push(`/part-time-jobs${queryString ? `?${queryString}` : ''}`)
   }
 
   const activeFilters = [currentRole, currentLocation, currentIndustry].filter(Boolean).length
@@ -122,7 +122,7 @@ export function JobFilters({
         </div>
         {activeFilters > 0 && (
           <button
-            onClick={() => router.push('/fractional-jobs')}
+            onClick={() => router.push('/part-time-jobs')}
             className="px-4 py-2 text-sm font-medium text-purple-700 hover:text-purple-900 hover:bg-purple-50 rounded-lg transition-colors"
           >
             Clear All Filters

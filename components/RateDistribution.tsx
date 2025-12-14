@@ -15,7 +15,7 @@ export interface RateDistributionProps {
   roleFilter?: string
 }
 
-// Market rate distributions by role (based on UK fractional executive market data 2025)
+// Market rate distributions by role (based on UK part-time executive market data 2025)
 const MARKET_DATA: Record<string, { buckets: RateBucket[], avg: number, median: number }> = {
   CFO: {
     avg: 1050,
@@ -155,7 +155,7 @@ export function RateDistribution({ height = '400px', roleFilter }: RateDistribut
           <div className="flex items-center justify-between">
             <div>
               <p className="text-white font-bold">{selectedBucket.range} per day</p>
-              <p className="text-indigo-300 text-sm">{selectedBucket.percentage}% of fractional {roleFilter || 'executive'} roles</p>
+              <p className="text-indigo-300 text-sm">{selectedBucket.percentage}% of part-time {roleFilter || 'executive'} roles</p>
             </div>
             <button
               onClick={(e) => { e.stopPropagation(); setSelectedBucket(null) }}
@@ -171,7 +171,7 @@ export function RateDistribution({ height = '400px', roleFilter }: RateDistribut
 
       {/* Legend */}
       <div className="mt-6 text-center text-xs text-gray-500">
-        UK market rates for fractional {roleFilter || 'executive'} roles • 2025 data • Click bar for details
+        UK market rates for part-time {roleFilter || 'executive'} roles • 2025 data • Click bar for details
       </div>
     </div>
   )

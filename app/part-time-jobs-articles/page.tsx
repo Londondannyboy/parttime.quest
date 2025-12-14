@@ -9,11 +9,11 @@ import { JobsCalendarHeatmap } from '@/components/JobsCalendarHeatmap'
 export const revalidate = 14400 // Revalidate every 4 hours
 
 export const metadata: Metadata = {
-  title: 'Fractional Executive Articles & Guides | Fractional Quest',
-  description: 'Expert guides and articles about fractional executive roles, career tips, salary guides, and hiring strategies for CFO, CTO, CMO roles.',
+  title: 'Part-Time Executive Articles & Guides | Part-Time Quest',
+  description: 'Expert guides and articles about part-time executive roles, career tips, salary guides, and hiring strategies for CFO, CTO, CMO roles.',
   openGraph: {
-    title: 'Fractional Executive Articles & Guides | Fractional Quest',
-    description: 'Expert guides and articles about fractional executive roles, career tips, and hiring strategies.',
+    title: 'Part-Time Executive Articles & Guides | Part-Time Quest',
+    description: 'Expert guides and articles about part-time executive roles, career tips, and hiring strategies.',
     type: 'website',
   },
 }
@@ -30,7 +30,7 @@ async function getArticleStats() {
     const result = await sql`
       SELECT COUNT(*) as count
       FROM articles
-      WHERE status = 'published' AND app = 'fractional'
+      WHERE status = 'published' AND app = 'parttime'
     `
     return parseInt((result[0] as any)?.count || '0')
   } catch (error) {
@@ -61,7 +61,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
           word_count
         FROM articles
         WHERE status = 'published'
-          AND app = 'fractional'
+          AND app = 'parttime'
         ORDER BY published_at DESC
         LIMIT ${limit} OFFSET ${offset}
       `,
@@ -97,7 +97,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                   </h1>
 
                   <p className="text-lg text-white/70 mb-8 leading-relaxed max-w-lg">
-                    Expert guides, case studies, and career tips for fractional executives. Learn how to build a successful portfolio career.
+                    Expert guides, case studies, and career tips for part-time executives. Learn how to build a successful portfolio career.
                   </p>
 
                   <div className="flex flex-wrap gap-4">
@@ -125,12 +125,12 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="flex flex-wrap justify-center gap-3">
               {[
-                { label: 'All Guides', href: '/fractional-jobs-articles', active: true },
-                { label: 'CFO Guides', href: '/fractional-jobs-articles?category=cfo' },
-                { label: 'CTO Guides', href: '/fractional-jobs-articles?category=cto' },
-                { label: 'CMO Guides', href: '/fractional-jobs-articles?category=cmo' },
-                { label: 'Salary Guides', href: '/fractional-jobs-articles?category=salary' },
-                { label: 'Career Tips', href: '/fractional-jobs-articles?category=career' },
+                { label: 'All Guides', href: '/part-time-jobs-articles', active: true },
+                { label: 'CFO Guides', href: '/part-time-jobs-articles?category=cfo' },
+                { label: 'CTO Guides', href: '/part-time-jobs-articles?category=cto' },
+                { label: 'CMO Guides', href: '/part-time-jobs-articles?category=cmo' },
+                { label: 'Salary Guides', href: '/part-time-jobs-articles?category=salary' },
+                { label: 'Career Tips', href: '/part-time-jobs-articles?category=career' },
               ].map((cat) => (
                 <Link
                   key={cat.label}
@@ -154,7 +154,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
             <div className="text-center mb-8">
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2 block">Market Activity</span>
               <h2 className="text-2xl md:text-3xl font-black text-white">Job Posting Trends</h2>
-              <p className="text-gray-400 mt-2 text-sm">When fractional jobs are posted throughout the year</p>
+              <p className="text-gray-400 mt-2 text-sm">When part-time jobs are posted throughout the year</p>
             </div>
             <Suspense fallback={
               <div className="flex items-center justify-center h-48 bg-gray-900 rounded-xl">
@@ -236,7 +236,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                 {totalPages > 1 && (
                   <div className="flex justify-center items-center gap-2">
                     {page > 1 && (
-                      <Link href={`/fractional-jobs-articles?page=${page - 1}`}>
+                      <Link href={`/part-time-jobs-articles?page=${page - 1}`}>
                         <button className="px-5 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 text-sm font-medium">
                           ← Previous
                         </button>
@@ -249,7 +249,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                         if (pageNum > totalPages) return null
 
                         return (
-                          <Link key={pageNum} href={`/fractional-jobs-articles?page=${pageNum}`}>
+                          <Link key={pageNum} href={`/part-time-jobs-articles?page=${pageNum}`}>
                             <button
                               className={`w-10 h-10 rounded-lg text-sm font-medium ${
                                 pageNum === page
@@ -265,7 +265,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                     </div>
 
                     {page < totalPages && (
-                      <Link href={`/fractional-jobs-articles?page=${page + 1}`}>
+                      <Link href={`/part-time-jobs-articles?page=${page + 1}`}>
                         <button className="px-5 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 text-sm font-medium">
                           Next →
                         </button>
@@ -289,12 +289,12 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { icon: '💰', title: 'Fractional CFO Guides', desc: 'Finance leadership, fundraising, and financial strategy', link: '/fractional-cfo-jobs-uk' },
-                { icon: '💻', title: 'Fractional CTO Guides', desc: 'Technology leadership, architecture, and team building', link: '/fractional-cto-jobs-uk' },
-                { icon: '📢', title: 'Fractional CMO Guides', desc: 'Marketing strategy, brand building, and growth', link: '/fractional-cmo-jobs-uk' },
-                { icon: '📊', title: 'Salary Guides', desc: 'Day rates, annual earnings, and market benchmarks', link: '/fractional-executive-salary-uk' },
-                { icon: '🚀', title: 'Career Transition', desc: 'How to go from full-time to fractional executive', link: '/how-to-become-a-fractional-executive' },
-                { icon: '🤝', title: 'Hiring Guides', desc: 'How companies hire fractional executives', link: '/top-fractional-recruitment-agencies-best-fractional-recruitment-agency-fractional-recruiter' },
+                { icon: '💰', title: 'Part-Time CFO Guides', desc: 'Finance leadership, fundraising, and financial strategy', link: '/part-time-cfo-jobs-uk' },
+                { icon: '💻', title: 'Part-Time CTO Guides', desc: 'Technology leadership, architecture, and team building', link: '/part-time-cto-jobs-uk' },
+                { icon: '📢', title: 'Part-Time CMO Guides', desc: 'Marketing strategy, brand building, and growth', link: '/part-time-cmo-jobs-uk' },
+                { icon: '📊', title: 'Salary Guides', desc: 'Day rates, annual earnings, and market benchmarks', link: '/part-time-executive-salary-uk' },
+                { icon: '🚀', title: 'Career Transition', desc: 'How to go from full-time to part-time executive', link: '/how-to-become-a-part-time-executive' },
+                { icon: '🤝', title: 'Hiring Guides', desc: 'How companies hire part-time executives', link: '/top-part-time-recruitment-agencies-best-part-time-recruitment-agency-part-time-recruiter' },
               ].map((topic) => (
                 <Link key={topic.title} href={topic.link} className="group">
                   <article className="bg-white rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-gray-200">
@@ -318,7 +318,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
               Get the latest guides<br />in your inbox
             </h2>
             <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-              Join fractional executives who receive our weekly career insights and job alerts.
+              Join part-time executives who receive our weekly career insights and job alerts.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -328,7 +328,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                 Join the Platform
               </Link>
               <Link
-                href="/fractional-jobs"
+                href="/part-time-jobs"
                 className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg border border-white/20 text-white hover:bg-white/10 transition-all duration-200"
               >
                 Browse Jobs

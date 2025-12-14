@@ -4,20 +4,20 @@ import { Suspense } from 'react'
 import { RateDistribution } from '@/components/RateDistribution'
 
 export const metadata: Metadata = {
-  title: 'Fractional CMO Salary UK 2025 - Day Rates, Annual Earnings & Pay Guide',
-  description: 'Fractional CMO salary guide for 2025. UK day rates £700-£1,400. Annual earnings £110k-£220k. Compare rates by location, industry and experience.',
-  keywords: 'fractional cmo salary, fractional cmo day rate, fractional cmo pay, part time cmo salary, fractional cmo uk salary',
+  title: 'Part-Time CMO Salary UK 2025 - Day Rates, Annual Earnings & Pay Guide',
+  description: 'Part-Time CMO salary guide for 2025. UK day rates £700-£1,400. Annual earnings £110k-£220k. Compare rates by location, industry and experience.',
+  keywords: 'part-time cmo salary, part-time cmo day rate, part-time cmo pay, part time cmo salary, part-time cmo uk salary',
   openGraph: {
-    title: 'Fractional CMO Salary UK 2025 - Complete Pay Guide',
-    description: 'Fractional CMO salary guide. UK day rates £700-£1,400. Annual earnings £110k-£220k.',
+    title: 'Part-Time CMO Salary UK 2025 - Complete Pay Guide',
+    description: 'Part-Time CMO salary guide. UK day rates £700-£1,400. Annual earnings £110k-£220k.',
   },
 }
 
 const salaryData = {
   dayRates: [
-    { level: 'Entry-level Fractional CMO', range: '£600-£800/day', annual: '£90k-£125k', experience: '10-12 years' },
-    { level: 'Mid-level Fractional CMO', range: '£800-£1,100/day', annual: '£125k-£175k', experience: '12-18 years' },
-    { level: 'Senior Fractional CMO', range: '£1,100-£1,400/day', annual: '£175k-£220k', experience: '18+ years' },
+    { level: 'Entry-level Part-Time CMO', range: '£600-£800/day', annual: '£90k-£125k', experience: '10-12 years' },
+    { level: 'Mid-level Part-Time CMO', range: '£800-£1,100/day', annual: '£125k-£175k', experience: '12-18 years' },
+    { level: 'Senior Part-Time CMO', range: '£1,100-£1,400/day', annual: '£175k-£220k', experience: '18+ years' },
   ],
   byLocation: [
     { location: 'London (Shoreditch/Tech City)', range: '£900-£1,400/day', premium: '+20%' },
@@ -46,9 +46,9 @@ export default function FractionalCmoSalaryPage() {
       <section className="bg-gradient-to-br from-purple-900 to-purple-800 py-20">
         <div className="max-w-4xl mx-auto px-4">
           <Link href="/" className="text-purple-200 hover:text-white mb-6 inline-block">← Back to Home</Link>
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">Fractional CMO Salary UK 2025</h1>
+          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">Part-Time CMO Salary UK 2025</h1>
           <p className="text-xl text-purple-100 mb-8">
-            Complete guide to fractional CMO pay rates, day rates, and annual earnings in the UK market.
+            Complete guide to part-time CMO pay rates, day rates, and annual earnings in the UK market.
           </p>
         </div>
       </section>
@@ -95,18 +95,18 @@ export default function FractionalCmoSalaryPage() {
       <article className="py-16">
         <div className="max-w-4xl mx-auto px-4">
           <div className="prose prose-lg prose-purple mb-12">
-            <h2>Fractional CMO Salary Overview</h2>
+            <h2>Part-Time CMO Salary Overview</h2>
             <p>
-              <strong>Fractional CMO salary</strong> in the UK varies based on experience, specialisation, location, and the types of clients you work with. Unlike traditional full-time CMO roles with annual salaries of £100,000-£180,000, fractional CMOs charge day rates—typically £700 to £1,400 per day in 2025.
+              <strong>Part-Time CMO salary</strong> in the UK varies based on experience, specialisation, location, and the types of clients you work with. Unlike traditional full-time CMO roles with annual salaries of £100,000-£180,000, part-time CMOs charge day rates—typically £700 to £1,400 per day in 2025.
             </p>
             <p>
-              The <strong>fractional CMO UK salary</strong> model often delivers higher total compensation than full-time equivalents. A fractional CMO working with 2-3 clients at 2 days each can earn £150,000-£200,000 annually while maintaining flexibility and variety that full-time roles don't offer.
+              The <strong>part-time CMO UK salary</strong> model often delivers higher total compensation than full-time equivalents. A part-time CMO working with 2-3 clients at 2 days each can earn £150,000-£200,000 annually while maintaining flexibility and variety that full-time roles don't offer.
             </p>
           </div>
 
           {/* Day Rates by Experience */}
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Fractional CMO Day Rates by Experience</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Part-Time CMO Day Rates by Experience</h2>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
@@ -134,7 +134,7 @@ export default function FractionalCmoSalaryPage() {
 
           {/* By Location */}
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Fractional CMO Salary by Location</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Part-Time CMO Salary by Location</h2>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
@@ -159,7 +159,7 @@ export default function FractionalCmoSalaryPage() {
 
           {/* By Industry */}
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Fractional CMO Rates by Industry</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Part-Time CMO Rates by Industry</h2>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
@@ -183,8 +183,8 @@ export default function FractionalCmoSalaryPage() {
           </div>
 
           <div className="prose prose-lg prose-purple">
-            <h2>What Affects Fractional CMO Salary?</h2>
-            <p>Several factors influence <strong>fractional CMO earnings</strong>:</p>
+            <h2>What Affects Part-Time CMO Salary?</h2>
+            <p>Several factors influence <strong>part-time CMO earnings</strong>:</p>
             <ul>
               <li><strong>B2B vs B2C experience</strong> - B2B SaaS expertise commands highest rates due to demand</li>
               <li><strong>Track record</strong> - Proven results (pipeline growth, CAC reduction) add 15-25% premium</li>
@@ -193,12 +193,12 @@ export default function FractionalCmoSalaryPage() {
               <li><strong>Team size managed</strong> - Experience scaling teams adds to your value proposition</li>
             </ul>
 
-            <h2>Fractional CMO vs Full-Time CMO Salary</h2>
+            <h2>Part-Time CMO vs Full-Time CMO Salary</h2>
             <p>
-              A full-time CMO at a Series A/B startup typically earns £120,000-£160,000 plus equity. A <strong>fractional CMO</strong> earning £1,000/day for 150 days achieves £150,000—comparable cash with more flexibility. The trade-off is equity: full-time roles often include meaningful stock options that fractional arrangements typically don't.
+              A full-time CMO at a Series A/B startup typically earns £120,000-£160,000 plus equity. A <strong>part-time CMO</strong> earning £1,000/day for 150 days achieves £150,000—comparable cash with more flexibility. The trade-off is equity: full-time roles often include meaningful stock options that fractional arrangements typically don't.
             </p>
             <p>
-              However, fractional CMOs can mitigate this by negotiating advisory equity or working with multiple companies, diversifying their portfolio exposure while maintaining higher cash compensation.
+              However, part-time CMOs can mitigate this by negotiating advisory equity or working with multiple companies, diversifying their portfolio exposure while maintaining higher cash compensation.
             </p>
           </div>
         </div>
@@ -207,10 +207,10 @@ export default function FractionalCmoSalaryPage() {
       {/* CTA */}
       <section className="py-16 bg-purple-900 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Explore Fractional CMO Opportunities?</h2>
+          <h2 className="text-3xl font-bold mb-4">Ready to Explore Part-Time CMO Opportunities?</h2>
           <p className="text-purple-100 mb-8">Browse live CMO roles or create your profile to get matched with companies.</p>
           <div className="flex justify-center gap-4">
-            <Link href="/fractional-jobs?role=CMO" className="px-8 py-4 bg-white text-purple-900 rounded-lg font-semibold hover:bg-purple-50">
+            <Link href="/part-time-jobs?role=CMO" className="px-8 py-4 bg-white text-purple-900 rounded-lg font-semibold hover:bg-purple-50">
               Browse CMO Jobs
             </Link>
             <Link href="/part-time-cmo" className="px-8 py-4 border-2 border-white rounded-lg font-semibold hover:bg-white/10">
@@ -225,8 +225,8 @@ export default function FractionalCmoSalaryPage() {
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-xl font-bold text-gray-900 mb-4">Related Salary Guides</h2>
           <div className="flex flex-wrap gap-4">
-            <Link href="/fractional-cfo-salary" className="px-4 py-2 bg-white rounded-lg border hover:border-emerald-300">Fractional CFO Salary →</Link>
-            <Link href="/fractional-jobs-london" className="px-4 py-2 bg-white rounded-lg border hover:border-purple-300">London CMO Jobs →</Link>
+            <Link href="/part-time-cfo-salary" className="px-4 py-2 bg-white rounded-lg border hover:border-emerald-300">Fractional CFO Salary →</Link>
+            <Link href="/part-time-jobs-london" className="px-4 py-2 bg-white rounded-lg border hover:border-purple-300">London CMO Jobs →</Link>
             <Link href="/part-time-cmo" className="px-4 py-2 bg-white rounded-lg border hover:border-purple-300">Part-Time CMO Guide →</Link>
           </div>
         </div>

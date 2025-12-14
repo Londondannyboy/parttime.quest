@@ -38,7 +38,7 @@ const CISO_SERVICE_FAQS = [
 export const metadata: Metadata = {
   title: 'Part-Time CISO Services UK | Hire a Part-Time Chief Security Officer',
   description: 'Hire a Part-Time CISO for your business. Access senior security leadership at a fraction of full-time cost. Expert CISOs for SOC 2, ISO 27001, security strategy, and compliance. Start within days.',
-  keywords: 'part-time ciso, part-time ciso services, hire part-time ciso, part time ciso, fractional chief security officer, part-time ciso uk, fractional security director, soc 2 compliance',
+  keywords: 'part-time ciso, part-time ciso services, hire part-time ciso, part time ciso, part-time chief security officer, part-time ciso uk, part-time security director, soc 2 compliance',
   alternates: {
     canonical: 'https://parttime.quest/part-time-ciso-services',
   },
@@ -268,7 +268,7 @@ export default function FractionalCISOServicesPage() {
           <div className="mb-8 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Calculator</span>
             <h2 className="text-3xl md:text-4xl font-black text-gray-900">How Much Does a Part-Time CISO Cost?</h2>
-            <p className="text-gray-600 mt-4">Compare the cost of fractional vs full-time CISO</p>
+            <p className="text-gray-600 mt-4">Compare the cost of part-time vs full-time CISO</p>
           </div>
           <RoleCalculator role="ciso" />
         </div>

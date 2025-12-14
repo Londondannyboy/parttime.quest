@@ -91,7 +91,7 @@ export default function PortfolioBuilderCalculator() {
             Portfolio Builder Calculator
           </h1>
           <p className="text-xl text-emerald-100 max-w-2xl mx-auto">
-            Plan your fractional portfolio career. See how many clients you need
+            Plan your part-time portfolio career. See how many clients you need
             and optimize your work-life balance.
           </p>
         </div>
@@ -104,7 +104,7 @@ export default function PortfolioBuilderCalculator() {
             {/* Inputs */}
             <CalculatorCard
               title="Plan Your Portfolio"
-              subtitle="Design your ideal fractional career"
+              subtitle="Design your ideal part-time career"
               icon="📊"
             >
               <div className="space-y-8">
@@ -274,11 +274,11 @@ export default function PortfolioBuilderCalculator() {
                   Start building your portfolio
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Find your first (or next) fractional client on our platform.
+                  Find your first (or next) part-time client on our platform.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link
-                    href="/fractional-jobs"
+                    href="/part-time-jobs"
                     className="btn-gradient inline-flex items-center justify-center gap-2"
                   >
                     Browse Jobs

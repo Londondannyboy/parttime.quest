@@ -11,7 +11,7 @@ export const revalidate = 3600
 export const metadata: Metadata = {
   title: 'Part-Time COO Services UK | Hire a Part-Time COO',
   description: 'Hire a Part-Time COO for your business. Access senior operations leadership at a fraction of full-time cost. Expert COOs for scaling, process optimisation, and operational excellence. Start within days.',
-  keywords: 'part-time coo, part-time coo services, hire part-time coo, part time coo, fractional chief operating officer, part-time coo uk, fractional operations director',
+  keywords: 'part-time coo, part-time coo services, hire part-time coo, part time coo, part-time chief operating officer, part-time coo uk, part-time operations director',
   alternates: {
     canonical: 'https://parttime.quest/part-time-coo-services',
   },
@@ -277,7 +277,7 @@ export default function PartTimeCOOServicesPage() {
           <div className="mb-8 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Calculator</span>
             <h2 className="text-3xl md:text-4xl font-black text-gray-900">How Much Does a Part-Time COO Cost?</h2>
-            <p className="text-gray-600 mt-4">Compare the cost of fractional vs full-time COO</p>
+            <p className="text-gray-600 mt-4">Compare the cost of part-time vs full-time COO</p>
           </div>
           <RoleCalculator role="coo" />
           <div className="mt-8 prose prose-gray max-w-none">

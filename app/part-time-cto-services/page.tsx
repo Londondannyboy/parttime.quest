@@ -184,7 +184,7 @@ export default function PartTimeCTOServicesPage() {
               },
               {
                 title: 'Investor Credibility',
-                description: 'Investors want to see experienced technical leadership. A fractional CTO provides the credibility and can handle technical due diligence.',
+                description: 'Investors want to see experienced technical leadership. A part-time CTO provides the credibility and can handle technical due diligence.',
                 stat: '100%',
                 statLabel: 'DD Ready',
               },

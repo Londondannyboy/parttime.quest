@@ -106,16 +106,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     `
 
     if (jobs.length === 0) {
-      return { title: 'Job Not Found | Fractional Quest' }
+      return { title: 'Job Not Found | Part-Time Quest' }
     }
 
     const job = jobs[0] as any
     return {
-      title: `${job.title} at ${job.company_name} | Fractional Quest`,
-      description: `Fractional ${job.title} position at ${job.company_name} in ${job.location}. Browse and apply on Fractional Quest - a UK fractional executive job board.`,
+      title: `${job.title} at ${job.company_name} | Part-Time Quest`,
+      description: `Fractional ${job.title} position at ${job.company_name} in ${job.location}. Browse and apply on Part-Time Quest - a UK part-time executive job board.`,
     }
   } catch {
-    return { title: 'Job | Fractional Quest' }
+    return { title: 'Job | Part-Time Quest' }
   }
 }
 
@@ -170,7 +170,7 @@ export default async function JobDetailPage({ params }: PageProps) {
             <p className="text-xl text-gray-600 mb-8 max-w-md mx-auto">
               This position may have been filled or is no longer available.
             </p>
-            <Link href="/fractional-jobs">
+            <Link href="/part-time-jobs">
               <button className="px-8 py-3 bg-black text-white font-semibold hover:bg-gray-800 transition-colors">
                 Browse All Jobs
               </button>
@@ -244,7 +244,7 @@ export default async function JobDetailPage({ params }: PageProps) {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               {/* Breadcrumb */}
               <Link
-                href="/fractional-jobs"
+                href="/part-time-jobs"
                 className="inline-flex items-center mb-6 text-sm font-medium transition-colors hover:opacity-80"
                 style={{ color: colors.text, opacity: 0.7 }}
               >
@@ -664,7 +664,7 @@ export default async function JobDetailPage({ params }: PageProps) {
                       Related Jobs Network
                     </h3>
                     <p className="text-gray-300 text-sm mb-3">
-                      Explore similar {job.role_category || 'fractional'} roles in 3D
+                      Explore similar {job.role_category || 'part-time'} roles in 3D
                     </p>
                     <a
                       href="#jobs-graph"
@@ -721,7 +721,7 @@ export default async function JobDetailPage({ params }: PageProps) {
                   Ready to apply for {job.title}?
                 </h3>
                 <p className="mb-8" style={{ color: colors.text, opacity: 0.8 }}>
-                  Join {job.company_name} and take the next step in your fractional executive career.
+                  Join {job.company_name} and take the next step in your part-time executive career.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <a
@@ -738,15 +738,15 @@ export default async function JobDetailPage({ params }: PageProps) {
                     </svg>
                   </a>
                   <Link
-                    href="/fractional-jobs"
+                    href="/part-time-jobs"
                     className="px-8 py-4 border-2 font-bold transition-colors rounded-lg"
                     style={{
                       borderColor: colors.text,
                       color: colors.text
                     }}
-                    aria-label="Browse all fractional jobs on Fractional Quest"
+                    aria-label="Browse all part-time jobs on Part-Time Quest"
                   >
-                    ← Browse All Fractional Jobs
+                    ← Browse All Part-Time Jobs
                   </Link>
                 </div>
               </div>
@@ -769,7 +769,7 @@ export default async function JobDetailPage({ params }: PageProps) {
           <p className="text-xl text-gray-600 mb-8 max-w-md mx-auto">
             There was an error loading this job. Please try again later.
           </p>
-          <Link href="/fractional-jobs">
+          <Link href="/part-time-jobs">
             <button className="px-8 py-3 bg-black text-white font-semibold hover:bg-gray-800 transition-colors">
               Browse All Jobs
             </button>

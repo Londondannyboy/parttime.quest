@@ -218,13 +218,18 @@ export default async function Home() {
       item: {
         "@type": "JobPosting",
         title: job.title,
+        description: job.description_snippet || `${job.title} opportunity at ${job.company_name}. Part-time executive role in ${job.location || 'United Kingdom'}.`,
         hiringOrganization: {
           "@type": "Organization",
           name: job.company_name
         },
         jobLocation: {
           "@type": "Place",
-          address: job.location || "United Kingdom"
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: job.location?.split(',')[0] || "United Kingdom",
+            addressCountry: "GB"
+          }
         },
         employmentType: "PART_TIME",
         datePosted: job.posted_date || new Date().toISOString()
