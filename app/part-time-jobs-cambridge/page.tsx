@@ -6,11 +6,11 @@ import { JobsGraph3D } from '@/components/JobsGraph3D'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs Cambridge - Executive Roles in the Silicon Fen',
-  description: 'Find fractional executive jobs in Cambridge. CFO, CMO, CTO roles in Silicon Fen. £700-£1,200 daily rates. Deep tech, biotech, and AI hub.',
+  title: 'Part-Time Jobs Cambridge - Executive Roles in the Silicon Fen',
+  description: 'Find part-time executive jobs in Cambridge. CFO, CMO, CTO roles in Silicon Fen. £700-£1,200 daily rates. Deep tech, biotech, and AI hub.',
   openGraph: {
-    title: 'Fractional Jobs Cambridge - Executive Roles in Silicon Fen',
-    description: 'Find fractional executive jobs in Cambridge, the UK\'s deep tech and biotech capital.',
+    title: 'Part-Time Jobs Cambridge - Executive Roles in Silicon Fen',
+    description: 'Find part-time executive jobs in Cambridge, the UK\'s deep tech and biotech capital.',
     type: 'website',
   },
 }
@@ -35,15 +35,15 @@ const successStories = [
   {
     quote: "Cambridge is the UK's epicentre for deep tech. I work with companies developing quantum computing and AI. The intellectual capital here is unmatched globally.",
     name: "Dr Sarah Mitchell",
-    role: "Fractional CTO",
+    role: "Part-Time CTO",
     area: "Science Park",
     clients: 3,
     earnings: "£175k/year"
   },
   {
-    quote: "Biotech companies here need experienced CFOs who understand complex funding rounds and regulatory pathways. The demand for fractional finance leadership is extraordinary.",
+    quote: "Biotech companies here need experienced CFOs who understand complex funding rounds and regulatory pathways. The demand for part-time finance leadership is extraordinary.",
     name: "Richard Chambers",
-    role: "Fractional CFO",
+    role: "Part-Time CFO",
     area: "Biomedical Campus",
     clients: 3,
     earnings: "£165k/year"
@@ -86,14 +86,14 @@ export default async function CambridgePage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs Cambridge
+            Part-Time Jobs Cambridge
           </h1>
           <p className="max-w-2xl text-xl text-cyan-100 mb-10 leading-relaxed">
-            {stats.totalCambridge}+ fractional executive opportunities in Silicon Fen. £700-£1,200 daily rates. Work with world-leading deep tech, biotech, and AI companies.
+            {stats.totalCambridge}+ part-time executive opportunities in Silicon Fen. £700-£1,200 daily rates. Work with world-leading deep tech, biotech, and AI companies.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/fractional-jobs?location=Cambridge"
+              href="/part-time-jobs?location=Cambridge"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-cyan-900 hover:bg-cyan-50 transition-all duration-200"
             >
               Browse All Cambridge Jobs
@@ -142,7 +142,7 @@ export default async function CambridgePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {cambridgeAreas.map((area, i) => (
-              <Link key={area.name} href={`/fractional-jobs?location=${encodeURIComponent(area.name)}`} className="group">
+              <Link key={area.name} href={`/part-time-jobs?location=${encodeURIComponent(area.name)}`} className="group">
                 <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-transparent hover:border-cyan-200">
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-cyan-700 transition-colors mb-2">
                     {area.name}
@@ -170,7 +170,7 @@ export default async function CambridgePage() {
               <span className="text-3xl mb-4 block">🧬</span>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Biotech Capital</h3>
               <p className="text-gray-600">
-                Cambridge has the UK's largest life sciences cluster with AstraZeneca, Abcam, and 500+ biotech companies. Fractional CFOs are in high demand for IPO-ready companies.
+                Cambridge has the UK's largest life sciences cluster with AstraZeneca, Abcam, and 500+ biotech companies. Part-Time CFOs are in high demand for IPO-ready companies.
               </p>
             </div>
             <div className="bg-gray-50 rounded-2xl p-8">
@@ -184,7 +184,7 @@ export default async function CambridgePage() {
               <span className="text-3xl mb-4 block">🎓</span>
               <h3 className="text-xl font-bold text-gray-900 mb-3">World-Class Talent</h3>
               <p className="text-gray-600">
-                Cambridge University's 900+ spinouts create constant demand for experienced fractional leadership to commercialize breakthrough research.
+                Cambridge University's 900+ spinouts create constant demand for experienced part-time leadership to commercialize breakthrough research.
               </p>
             </div>
           </div>
@@ -247,21 +247,21 @@ export default async function CambridgePage() {
           <div className="space-y-6">
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                What is a fractional job in Cambridge?
+                What is a part-time job in Cambridge?
                 <span className="text-cyan-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                A fractional job in Cambridge is a part-time executive role working 1-3 days per week. Cambridge's deep tech and biotech clusters create exceptional demand for fractional CTOs and CFOs with specialist expertise.
+                A part-time job in Cambridge is a part-time executive role working 1-3 days per week. Cambridge's deep tech and biotech clusters create exceptional demand for part-time CTOs and CFOs with specialist expertise.
               </p>
             </details>
 
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                How much do fractional executives earn in Cambridge?
+                How much do part-time executives earn in Cambridge?
                 <span className="text-cyan-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Cambridge fractional executives earn £700-£1,200 per day - some of the highest rates outside London. Deep tech and biotech specialists can earn £150,000-£250,000+ annually.
+                Cambridge part-time executives earn £700-£1,200 per day - some of the highest rates outside London. Deep tech and biotech specialists can earn £150,000-£250,000+ annually.
               </p>
             </details>
 
@@ -281,32 +281,32 @@ export default async function CambridgePage() {
       {/* Internal Links */}
       <section className="py-16 bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Cambridge Fractional Resources</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Cambridge Part-Time Resources</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Roles by Function</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/cfo" className="hover:text-cyan-700">Fractional CFO Jobs</Link></li>
-                <li><Link href="/cto" className="hover:text-cyan-700">Fractional CTO Jobs</Link></li>
-                <li><Link href="/cmo" className="hover:text-cyan-700">Fractional CMO Jobs</Link></li>
+                <li><Link href="/cfo" className="hover:text-cyan-700">Part-Time CFO Jobs</Link></li>
+                <li><Link href="/cto" className="hover:text-cyan-700">Part-Time CTO Jobs</Link></li>
+                <li><Link href="/cmo" className="hover:text-cyan-700">Part-Time CMO Jobs</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Other UK Locations</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/fractional-jobs-london" className="hover:text-cyan-700">Fractional Jobs London</Link></li>
-                <li><Link href="/fractional-jobs-oxford" className="hover:text-cyan-700">Fractional Jobs Oxford</Link></li>
-                <li><Link href="/fractional-jobs-manchester" className="hover:text-cyan-700">Fractional Jobs Manchester</Link></li>
+                <li><Link href="/part-time-jobs-london" className="hover:text-cyan-700">Part-Time Jobs London</Link></li>
+                <li><Link href="/part-time-jobs-oxford" className="hover:text-cyan-700">Part-Time Jobs Oxford</Link></li>
+                <li><Link href="/part-time-jobs-manchester" className="hover:text-cyan-700">Part-Time Jobs Manchester</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Career Guides</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/guide" className="hover:text-cyan-700">Fractional Work Guide</Link></li>
-                <li><Link href="/fractional-executive-salary-uk" className="hover:text-cyan-700">Salary Guide</Link></li>
+                <li><Link href="/guide" className="hover:text-cyan-700">Part-Time Work Guide</Link></li>
+                <li><Link href="/part-time-executive-salary-uk" className="hover:text-cyan-700">Salary Guide</Link></li>
               </ul>
             </div>
           </div>
@@ -320,10 +320,10 @@ export default async function CambridgePage() {
             Ready to Work in Cambridge?
           </h2>
           <p className="text-xl text-cyan-100 mb-10">
-            {stats.totalCambridge}+ fractional opportunities in the UK's innovation capital.
+            {stats.totalCambridge}+ part-time opportunities in the UK's innovation capital.
           </p>
           <Link
-            href="/fractional-jobs?location=Cambridge"
+            href="/part-time-jobs?location=Cambridge"
             className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-cyan-900 hover:bg-cyan-50 transition-all duration-200"
           >
             Browse Cambridge Jobs →

@@ -1,5 +1,5 @@
 /**
- * AI-powered news article generator for fractional executive job news
+ * AI-powered news article generator for part-time executive job news
  * Uses Pydantic AI Gateway with Gemini Flash for cost-effective generation
  */
 
@@ -17,13 +17,13 @@ export type ContentType = 'job_roundup' | 'company_spotlight' | 'market_trend'
 
 // Internal links for SEO - spread link juice to pillar pages
 const INTERNAL_LINKS: Record<ArticleCategory, { services: string; jobs: string; salary?: string }> = {
-  Finance: { services: '/fractional-cfo-services', jobs: '/fractional-cfo-jobs-uk', salary: '/fractional-cfo-salary' },
-  Marketing: { services: '/fractional-cmo-services', jobs: '/fractional-cmo-jobs-uk', salary: '/fractional-cmo-salary' },
-  Engineering: { services: '/fractional-cto-services', jobs: '/fractional-cto-jobs-uk' },
-  Operations: { services: '/fractional-coo-services', jobs: '/fractional-coo-jobs-uk' },
-  HR: { services: '/fractional-chro-services', jobs: '/fractional-jobs?role=HR' },
-  Sales: { services: '/fractional-sales-director-services', jobs: '/fractional-jobs?role=Sales' },
-  General: { services: '/fractional-executive-services', jobs: '/fractional-jobs' }
+  Finance: { services: '/part-time-cfo-services', jobs: '/part-time-cfo-jobs-uk', salary: '/part-time-cfo-salary' },
+  Marketing: { services: '/part-time-cmo-services', jobs: '/part-time-cmo-jobs-uk', salary: '/part-time-cmo-salary' },
+  Engineering: { services: '/part-time-cto-services', jobs: '/part-time-cto-jobs-uk' },
+  Operations: { services: '/part-time-coo-services', jobs: '/part-time-coo-jobs-uk' },
+  HR: { services: '/part-time-chro-services', jobs: '/part-time-jobs?role=HR' },
+  Sales: { services: '/part-time-sales-director-services', jobs: '/part-time-jobs?role=Sales' },
+  General: { services: '/part-time-executive-services', jobs: '/part-time-jobs' }
 }
 
 // Zod schema for generated article validation
@@ -56,7 +56,7 @@ export interface JobData {
 function getInternalLinkingInstructions(category: ArticleCategory): string {
   const links = INTERNAL_LINKS[category]
   const linkList = [
-    `[fractional ${category.toLowerCase()} services](${links.services})`,
+    `[part-time ${category.toLowerCase()} services](${links.services})`,
     `[${category.toLowerCase()} jobs](${links.jobs})`,
     links.salary ? `[salary guide](${links.salary})` : null
   ].filter(Boolean).join(', ')
@@ -66,7 +66,7 @@ IMPORTANT - Internal Linking for SEO:
 Include 2-3 natural internal links in the article body using markdown format. Use these target URLs:
 ${linkList}
 
-Example: "Companies seeking [fractional CFO services](/fractional-cfo-services) are increasingly..." or "Browse current [CFO jobs](/fractional-cfo-jobs-uk) to see..."
+Example: "Companies seeking [part-time CFO services](/part-time-cfo-services) are increasingly..." or "Browse current [CFO jobs](/part-time-cfo-jobs-uk) to see..."
 Make links contextual and natural - don't force them.`
 }
 
@@ -77,10 +77,10 @@ Write for UK audience. Use £ for currency. Be factual and professional.`
 
 // Prompts for each content type
 const PROMPTS: Record<ContentType, string> = {
-  job_roundup: `You are a professional business journalist writing for a UK fractional executive marketplace.
+  job_roundup: `You are a professional business journalist writing for a UK part-time executive marketplace.
 
-Write a roundup article about the latest fractional executive jobs provided. The article should:
-- Have an engaging, SEO-friendly title (include "Fractional" and the role category, e.g. "Fractional CFO")
+Write a roundup article about the latest part-time executive jobs provided. The article should:
+- Have an engaging, SEO-friendly title (include "Part-Time" and the role category, e.g. "Part-Time CFO")
 - Open with a brief market observation
 - Highlight 3-5 key roles with company names and locations
 - Include salary insights where available
@@ -89,12 +89,12 @@ Write a roundup article about the latest fractional executive jobs provided. The
 ${BASE_INSTRUCTIONS}
 Target length: 300-500 words`,
 
-  company_spotlight: `You are a professional business journalist writing for a UK fractional executive marketplace.
+  company_spotlight: `You are a professional business journalist writing for a UK part-time executive marketplace.
 
-Write a spotlight article about a company hiring fractional executives. The article should:
+Write a spotlight article about a company hiring part-time executives. The article should:
 - Have a compelling title featuring the company name
 - Briefly introduce the company (use provided info)
-- Explain why they're hiring fractional talent
+- Explain why they're hiring part-time talent
 - Detail the specific role they're offering
 - Include location and compensation if available
 - Link to relevant services page for companies considering similar hires
@@ -102,10 +102,10 @@ Write a spotlight article about a company hiring fractional executives. The arti
 ${BASE_INSTRUCTIONS}
 Target length: 250-400 words`,
 
-  market_trend: `You are a professional business journalist writing for a UK fractional executive marketplace.
+  market_trend: `You are a professional business journalist writing for a UK part-time executive marketplace.
 
 Write a market trend article based on the job data provided. The article should:
-- Have an insight-driven title about the fractional market
+- Have an insight-driven title about the part-time market
 - Identify a trend from the data (e.g., remote work, sector growth, salary trends)
 - Support with specific examples from the jobs
 - Provide context for UK businesses and executives

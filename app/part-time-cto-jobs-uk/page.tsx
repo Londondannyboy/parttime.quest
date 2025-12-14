@@ -12,13 +12,13 @@ import { IR35Calculator } from '@/components/IR35Calculator'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional CTO Jobs UK | Part-Time CTO Roles',
-  description: 'Fractional CTO jobs UK - Find part-time Chief Technology Officer positions paying £850-£1,600/day. Browse live CTO roles for experienced tech leaders.',
-  keywords: 'fractional cto jobs uk, fractional cto jobs, part time cto jobs, fractional cto uk, cto jobs uk, part time chief technology officer',
+  title: 'Part-Time CTO Jobs UK | Part-Time CTO Roles',
+  description: 'Part-time CTO jobs UK - Find part-time Chief Technology Officer positions paying £850-£1,600/day. Browse live CTO roles for experienced tech leaders.',
+  keywords: 'part-time cto jobs uk, part-time cto jobs, part time cto jobs, part-time cto uk, cto jobs uk, part time chief technology officer',
   openGraph: {
-    title: 'Fractional CTO Jobs UK | Part-Time CTO Roles',
-    description: 'Fractional CTO jobs UK - Find part-time CTO positions paying £850-£1,600/day.',
-    images: ['/images/fractional-cto-jobs-uk.jpg'],
+    title: 'Part-Time CTO Jobs UK | Part-Time CTO Roles',
+    description: 'Part-time CTO jobs UK - Find part-time CTO positions paying £850-£1,600/day.',
+    images: ['/images/part-time-cto-jobs-uk.jpg'],
   },
 }
 
@@ -78,7 +78,7 @@ export default async function FractionalCtoJobsUkPage() {
                 <span className="text-blue-400">Jobs UK</span>
               </h1>
               <p className="text-xl md:text-2xl text-white/80 leading-relaxed max-w-2xl mb-8">
-                <strong className="text-white">Fractional CTO jobs UK</strong> for experienced technology leaders.
+                <strong className="text-white">Part-time CTO jobs UK</strong> for experienced technology leaders.
                 Part-time Chief Technology Officer roles paying £850-£1,600/day.
               </p>
               <div className="flex flex-wrap gap-8 mb-10">
@@ -99,7 +99,7 @@ export default async function FractionalCtoJobsUkPage() {
                 <Link href="#jobs" className="px-8 py-4 bg-blue-500 text-white font-bold uppercase tracking-wider hover:bg-blue-400 transition-colors">
                   Browse Jobs Now
                 </Link>
-                <Link href="/fractional-jobs-tech" className="px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
+                <Link href="/part-time-jobs-tech" className="px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
                   Tech Industry Jobs
                 </Link>
               </div>
@@ -113,7 +113,7 @@ export default async function FractionalCtoJobsUkPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-8 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Calculator</span>
-            <h2 className="text-2xl md:text-3xl font-black text-gray-900">How Much Can You Earn as a Fractional CTO?</h2>
+            <h2 className="text-2xl md:text-3xl font-black text-gray-900">How Much Can You Earn as a Part-Time CTO?</h2>
           </div>
           <RoleCalculator role="cto" />
         </div>
@@ -172,24 +172,24 @@ export default async function FractionalCtoJobsUkPage() {
           <div className="mb-16">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-4 block">The Guide</span>
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
-              Everything You Need to Know About<br /><span className="text-blue-600">Fractional CTO Jobs UK</span>
+              Everything You Need to Know About<br /><span className="text-blue-600">Part-Time CTO Jobs UK</span>
             </h2>
             <div className="w-24 h-1 bg-blue-500"></div>
           </div>
           <figure className="mb-16 -mx-6 lg:-mx-16">
-            <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Fractional CTO jobs UK - technology executive reviewing code and architecture" className="w-full h-80 md:h-96 object-cover" />
-            <figcaption className="text-sm text-gray-500 mt-3 px-6 lg:px-16">Technology leaders across the UK are embracing fractional work</figcaption>
+            <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Part-time CTO jobs UK - technology executive reviewing code and architecture" className="w-full h-80 md:h-96 object-cover" />
+            <figcaption className="text-sm text-gray-500 mt-3 px-6 lg:px-16">Technology leaders across the UK are embracing part-time work</figcaption>
           </figure>
           <article className="prose prose-lg prose-gray max-w-none">
             <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8 font-light">
-              <strong className="font-semibold text-gray-900">Fractional CTO jobs</strong> represent the new frontier of technology leadership. Part-time Chief Technology Officer positions where experienced leaders provide strategic technical guidance to multiple companies simultaneously—delivering world-class expertise at a fraction of the cost.
+              <strong className="font-semibold text-gray-900">Part-time CTO jobs</strong> represent the new frontier of technology leadership. Part-time Chief Technology Officer positions where experienced leaders provide strategic technical guidance to multiple companies simultaneously—delivering world-class expertise at a fraction of the cost.
             </p>
-            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">The Rise of Fractional CTO Jobs UK</h3>
-            <p>The UK market for <strong>fractional CTO jobs UK</strong> has grown significantly, driven by non-technical founders, digital transformation initiatives, and the need for expert technical due diligence. Companies that previously couldn't afford senior tech leadership now access world-class CTOs paying £850-£1,600 per day rather than £180,000-£350,000 annually.</p>
+            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">The Rise of Part-Time CTO Jobs UK</h3>
+            <p>The UK market for <strong>part-time CTO jobs UK</strong> has grown significantly, driven by non-technical founders, digital transformation initiatives, and the need for expert technical due diligence. Companies that previously couldn't afford senior tech leadership now access world-class CTOs paying £850-£1,600 per day rather than £180,000-£350,000 annually.</p>
             <div className="bg-gray-50 p-8 my-10 border-l-4 border-blue-500">
               <p className="text-xl font-semibold text-gray-900 mb-0">"Non-technical founders access CTO expertise without diluting equity or committing to £200k+ salaries."</p>
             </div>
-            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Why Fractional CTO Jobs Are Booming</h3>
+            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Why Part-Time CTO Jobs Are Booming</h3>
             <ul className="space-y-3">
               <li><strong>Non-technical founders:</strong> First-time founders need technical leadership without equity dilution</li>
               <li><strong>Digital transformation:</strong> Traditional businesses need strategic tech guidance</li>
@@ -197,7 +197,7 @@ export default async function FractionalCtoJobsUkPage() {
               <li><strong>Team scaling:</strong> Companies need CTOs to build teams from 2 to 20+</li>
               <li><strong>Architecture decisions:</strong> Critical build vs buy decisions require experience</li>
             </ul>
-            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Types of Fractional CTO Jobs</h3>
+            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Types of Part-Time CTO Jobs</h3>
             <div className="grid md:grid-cols-2 gap-6 not-prose my-8">
               {[
                 { title: 'Startup CTO', desc: 'Building MVP & hiring first engineers', rate: '£1,000-£1,400/day' },
@@ -212,7 +212,7 @@ export default async function FractionalCtoJobsUkPage() {
                 </div>
               ))}
             </div>
-            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Requirements for Fractional CTO Jobs</h3>
+            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Requirements for Part-Time CTO Jobs</h3>
             <ul className="space-y-2">
               <li>15+ years of software engineering experience</li>
               <li>5+ years in CTO, VP Engineering, or Technical Director roles</li>
@@ -230,7 +230,7 @@ export default async function FractionalCtoJobsUkPage() {
           <div className="mb-12 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">UK Tax</span>
             <h2 className="text-3xl md:text-4xl font-black text-gray-900">IR35: Inside vs Outside</h2>
-            <p className="text-gray-600 mt-4">As a fractional CTO, your IR35 status significantly impacts your take-home pay</p>
+            <p className="text-gray-600 mt-4">As a part-time CTO, your IR35 status significantly impacts your take-home pay</p>
           </div>
           <IR35Calculator defaultDayRate={1100} />
         </div>
@@ -241,7 +241,7 @@ export default async function FractionalCtoJobsUkPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">FAQ</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">Common Questions About Fractional CTO Jobs UK</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">Common Questions About Part-Time CTO Jobs UK</h2>
           </div>
           <FAQ items={CTO_FAQS} title="" />
         </div>
@@ -251,11 +251,11 @@ export default async function FractionalCtoJobsUkPage() {
       <section className="py-20 md:py-28 bg-black text-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-4 block">Ready?</span>
-          <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">Find Your Next<br /><span className="text-blue-400">Fractional CTO Role</span></h2>
-          <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">Create your profile and get matched with companies seeking fractional technology leadership.</p>
+          <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">Find Your Next<br /><span className="text-blue-400">Part-Time CTO Role</span></h2>
+          <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">Create your profile and get matched with companies seeking part-time technology leadership.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/handler/sign-up" className="px-10 py-5 bg-blue-500 text-white font-bold uppercase tracking-wider hover:bg-blue-400 transition-colors">Create Profile</Link>
-            <Link href="/fractional-jobs-tech" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Tech Jobs</Link>
+            <Link href="/part-time-jobs-tech" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Tech Jobs</Link>
           </div>
         </div>
       </section>
@@ -266,10 +266,10 @@ export default async function FractionalCtoJobsUkPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <span className="text-sm font-bold uppercase tracking-wider text-gray-400">Related</span>
             <div className="flex flex-wrap gap-4">
-              <Link href="/fractional-jobs-tech" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Tech Industry Jobs</Link>
-              <Link href="/fractional-cmo-jobs-uk" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">CMO Jobs UK</Link>
-              <Link href="/fractional-cfo-jobs-uk" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">CFO Jobs UK</Link>
-              <Link href="/fractional-coo-jobs-uk" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">COO Jobs UK</Link>
+              <Link href="/part-time-jobs-tech" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Tech Industry Jobs</Link>
+              <Link href="/part-time-cmo-jobs-uk" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">CMO Jobs UK</Link>
+              <Link href="/part-time-cfo-jobs-uk" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">CFO Jobs UK</Link>
+              <Link href="/part-time-coo-jobs-uk" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">COO Jobs UK</Link>
             </div>
           </div>
         </div>

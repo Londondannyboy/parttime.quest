@@ -6,11 +6,11 @@ import { JobsGraph3D } from '@/components/JobsGraph3D'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs Belfast - Executive Roles in Northern Ireland',
-  description: 'Find fractional executive jobs in Belfast. CFO, CMO, CTO roles in Northern Ireland. £500-£900 daily rates. Cyber security, fintech, and tech hub.',
+  title: 'Part-Time Jobs Belfast - Executive Roles in Northern Ireland',
+  description: 'Find part-time executive jobs in Belfast. CFO, CMO, CTO roles in Northern Ireland. £500-£900 daily rates. Cyber security, fintech, and tech hub.',
   openGraph: {
-    title: 'Fractional Jobs Belfast - Executive Roles in Northern Ireland',
-    description: 'Find fractional executive jobs in Belfast, Northern Ireland\'s tech capital.',
+    title: 'Part-Time Jobs Belfast - Executive Roles in Northern Ireland',
+    description: 'Find part-time executive jobs in Belfast, Northern Ireland\'s tech capital.',
     type: 'website',
   },
 }
@@ -35,7 +35,7 @@ const successStories = [
   {
     quote: "Belfast's cyber security cluster is world-class. I work with companies protecting global financial institutions. The talent here is exceptional.",
     name: "Patrick O'Connor",
-    role: "Fractional CTO",
+    role: "Part-Time CTO",
     area: "Titanic Quarter",
     clients: 3,
     earnings: "£115k/year"
@@ -43,7 +43,7 @@ const successStories = [
   {
     quote: "The fintech sector in Belfast is exploding. Lower costs than Dublin or London but access to incredible talent from Queen's and Ulster University.",
     name: "Siobhan Murphy",
-    role: "Fractional CFO",
+    role: "Part-Time CFO",
     area: "City Centre",
     clients: 4,
     earnings: "£110k/year"
@@ -86,14 +86,14 @@ export default async function BelfastPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs Belfast
+            Part-Time Jobs Belfast
           </h1>
           <p className="max-w-2xl text-xl text-emerald-100 mb-10 leading-relaxed">
-            {stats.totalBelfast}+ fractional executive opportunities in Northern Ireland. £500-£900 daily rates. Work with Europe's leading cyber security cluster.
+            {stats.totalBelfast}+ part-time executive opportunities in Northern Ireland. £500-£900 daily rates. Work with Europe's leading cyber security cluster.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/fractional-jobs?location=Belfast"
+              href="/part-time-jobs?location=Belfast"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-emerald-900 hover:bg-emerald-50 transition-all duration-200"
             >
               Browse All Belfast Jobs
@@ -142,7 +142,7 @@ export default async function BelfastPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {belfastAreas.map((area, i) => (
-              <Link key={area.name} href={`/fractional-jobs?location=${encodeURIComponent(area.name)}`} className="group">
+              <Link key={area.name} href={`/part-time-jobs?location=${encodeURIComponent(area.name)}`} className="group">
                 <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-transparent hover:border-emerald-200">
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-emerald-700 transition-colors mb-2">
                     {area.name}
@@ -247,31 +247,31 @@ export default async function BelfastPage() {
           <div className="space-y-6">
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                What is a fractional job in Belfast?
+                What is a part-time job in Belfast?
                 <span className="text-emerald-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                A fractional job in Belfast is a part-time executive role working 1-3 days per week. Belfast's cyber security and fintech clusters make it ideal for fractional CTOs and CFOs.
+                A part-time job in Belfast is a part-time executive role working 1-3 days per week. Belfast's cyber security and fintech clusters make it ideal for part-time CTOs and CFOs.
               </p>
             </details>
 
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                How much do fractional executives earn in Belfast?
+                How much do part-time executives earn in Belfast?
                 <span className="text-emerald-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Belfast fractional executives earn £500-£900 per day. With 55% lower cost of living than London, take-home value is exceptional. Most earn £90,000-£150,000+ annually.
+                Belfast part-time executives earn £500-£900 per day. With 55% lower cost of living than London, take-home value is exceptional. Most earn £90,000-£150,000+ annually.
               </p>
             </details>
 
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                Why is Belfast good for tech fractional roles?
+                Why is Belfast good for tech part-time roles?
                 <span className="text-emerald-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Belfast has Europe's largest cyber security cluster with 100+ companies. Global tech firms like Proofpoint and Rapid7 have major operations here, creating excellent fractional CTO and CISO opportunities.
+                Belfast has Europe's largest cyber security cluster with 100+ companies. Global tech firms like Proofpoint and Rapid7 have major operations here, creating excellent part-time CTO and CISO opportunities.
               </p>
             </details>
           </div>
@@ -281,32 +281,32 @@ export default async function BelfastPage() {
       {/* Internal Links */}
       <section className="py-16 bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Belfast Fractional Resources</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Belfast Part-Time Resources</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Roles by Function</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/cfo" className="hover:text-emerald-700">Fractional CFO Jobs</Link></li>
-                <li><Link href="/cto" className="hover:text-emerald-700">Fractional CTO Jobs</Link></li>
-                <li><Link href="/cmo" className="hover:text-emerald-700">Fractional CMO Jobs</Link></li>
+                <li><Link href="/cfo" className="hover:text-emerald-700">Part-Time CFO Jobs</Link></li>
+                <li><Link href="/cto" className="hover:text-emerald-700">Part-Time CTO Jobs</Link></li>
+                <li><Link href="/cmo" className="hover:text-emerald-700">Part-Time CMO Jobs</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Other UK Locations</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/fractional-jobs-london" className="hover:text-emerald-700">Fractional Jobs London</Link></li>
-                <li><Link href="/fractional-jobs-edinburgh" className="hover:text-emerald-700">Fractional Jobs Edinburgh</Link></li>
-                <li><Link href="/fractional-jobs-glasgow" className="hover:text-emerald-700">Fractional Jobs Glasgow</Link></li>
+                <li><Link href="/part-time-jobs-london" className="hover:text-emerald-700">Part-Time Jobs London</Link></li>
+                <li><Link href="/part-time-jobs-edinburgh" className="hover:text-emerald-700">Part-Time Jobs Edinburgh</Link></li>
+                <li><Link href="/part-time-jobs-glasgow" className="hover:text-emerald-700">Part-Time Jobs Glasgow</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Career Guides</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/guide" className="hover:text-emerald-700">Fractional Work Guide</Link></li>
-                <li><Link href="/fractional-executive-salary-uk" className="hover:text-emerald-700">Salary Guide</Link></li>
+                <li><Link href="/guide" className="hover:text-emerald-700">Part-Time Work Guide</Link></li>
+                <li><Link href="/part-time-executive-salary-uk" className="hover:text-emerald-700">Salary Guide</Link></li>
               </ul>
             </div>
           </div>
@@ -320,10 +320,10 @@ export default async function BelfastPage() {
             Ready to Work in Belfast?
           </h2>
           <p className="text-xl text-emerald-100 mb-10">
-            {stats.totalBelfast}+ fractional opportunities in Northern Ireland's tech capital.
+            {stats.totalBelfast}+ part-time opportunities in Northern Ireland's tech capital.
           </p>
           <Link
-            href="/fractional-jobs?location=Belfast"
+            href="/part-time-jobs?location=Belfast"
             className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-emerald-900 hover:bg-emerald-50 transition-all duration-200"
           >
             Browse Belfast Jobs →

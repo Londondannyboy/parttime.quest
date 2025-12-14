@@ -99,7 +99,7 @@ export function HeroVideo({ playbackId }: { playbackId?: string }) {
         <div className="w-full h-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center">
           <div className="text-center text-white">
             <div className="text-8xl mb-4">🚀</div>
-            <h2 className="text-4xl font-black mb-4">Fractional Executives</h2>
+            <h2 className="text-4xl font-black mb-4">Part-Time Executives</h2>
             <p className="text-xl text-purple-100">Video Hero Coming Soon</p>
           </div>
         </div>

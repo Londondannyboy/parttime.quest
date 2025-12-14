@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = 'Fractional Quest - UK Fractional Executive Jobs Platform'
+export const alt = 'Part-Time Quest - UK Part-Time Executive Jobs Platform'
 export const size = {
   width: 1200,
   height: 630,
@@ -58,7 +58,7 @@ export default async function Image() {
               letterSpacing: '-2px',
             }}
           >
-            Fractional Quest
+            Part-Time Quest
           </div>
 
           {/* Tagline */}
@@ -69,7 +69,7 @@ export default async function Image() {
               marginBottom: 48,
             }}
           >
-            UK&apos;s #1 Fractional Executive Platform
+            UK&apos;s #1 Part-Time Executive Platform
           </div>
 
           {/* Stats row */}
@@ -93,7 +93,7 @@ export default async function Image() {
                 }}
               >
                 <span style={{ color: '#ffffff', fontSize: 24, fontWeight: 600 }}>
-                  Fractional {role}
+                  Part-Time {role}
                 </span>
               </div>
             ))}
@@ -106,7 +106,7 @@ export default async function Image() {
               color: '#71717a',
             }}
           >
-            fractional.quest
+            parttime.quest
           </div>
         </div>
       </div>

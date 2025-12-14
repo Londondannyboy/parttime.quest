@@ -38,7 +38,7 @@ export async function getNextCategory(): Promise<ArticleCategory> {
     SELECT category, COUNT(*) as count
     FROM articles
     WHERE article_type = 'job_roundup'
-      AND app = 'fractional'
+      AND app = 'part-time'
       AND auto_generated = true
     GROUP BY category
   `
@@ -192,7 +192,7 @@ export async function getRecentNews(
       SELECT id, slug, title, excerpt, category, article_type,
              featured_asset_url, published_at
       FROM articles
-      WHERE app = 'fractional'
+      WHERE app = 'part-time'
         AND status = 'published'
         AND category = ${category}
       ORDER BY published_at DESC
@@ -204,7 +204,7 @@ export async function getRecentNews(
     SELECT id, slug, title, excerpt, category, article_type,
            featured_asset_url, published_at
     FROM articles
-    WHERE app = 'fractional'
+    WHERE app = 'part-time'
       AND status = 'published'
     ORDER BY published_at DESC
     LIMIT ${limit}

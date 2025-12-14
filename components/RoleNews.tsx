@@ -64,7 +64,7 @@ export async function RoleNews({
     SELECT id, slug, title, excerpt, category, article_type,
            featured_asset_url, published_at
     FROM articles
-    WHERE app = 'fractional'
+    WHERE app = 'part-time'
       AND status = 'published'
       AND category = ${category}
     ORDER BY published_at DESC
@@ -86,7 +86,7 @@ export async function RoleNews({
         </h3>
         {showViewAll && (
           <Link
-            href="/fractional-jobs-articles"
+            href="/part-time-jobs-articles"
             className="text-sm font-medium text-amber-700 hover:text-amber-800 transition-colors"
           >
             View all articles →
@@ -162,7 +162,7 @@ export async function RoleNewsCompact({
   const articles = await sql`
     SELECT id, slug, title, article_type, published_at
     FROM articles
-    WHERE app = 'fractional'
+    WHERE app = 'part-time'
       AND status = 'published'
       AND category = ${category}
     ORDER BY published_at DESC
@@ -206,7 +206,7 @@ export async function LatestNews({ limit = 6 }: { limit?: number }) {
       SELECT id, slug, title, excerpt, category, article_type,
              featured_asset_url, published_at
       FROM articles
-      WHERE app = 'fractional'
+      WHERE app = 'part-time'
         AND status = 'published'
       ORDER BY published_at DESC
       LIMIT ${limit}
@@ -223,7 +223,7 @@ export async function LatestNews({ limit = 6 }: { limit?: number }) {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-2xl font-bold text-gray-900">
-              Latest Fractional Executive News
+              Latest Part-Time Executive News
             </h2>
             <p className="text-gray-600 mt-1">
               Market insights, job updates, and industry trends
@@ -235,17 +235,17 @@ export async function LatestNews({ limit = 6 }: { limit?: number }) {
           <div className="text-5xl mb-4">📰</div>
           <h3 className="text-xl font-bold text-gray-900 mb-2">News Coming Soon</h3>
           <p className="text-gray-600 max-w-md mx-auto mb-6">
-            We're launching our automated news feed with daily updates on fractional executive opportunities, market trends, and company insights.
+            We're launching our automated news feed with daily updates on part-time executive opportunities, market trends, and company insights.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link
-              href="/fractional-jobs-articles"
+              href="/part-time-jobs-articles"
               className="inline-flex items-center px-5 py-2.5 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors"
             >
               Browse Existing Articles →
             </Link>
             <Link
-              href="/fractional-jobs"
+              href="/part-time-jobs"
               className="inline-flex items-center px-5 py-2.5 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 hover:border-emerald-300 transition-colors"
             >
               View Jobs
@@ -262,14 +262,14 @@ export async function LatestNews({ limit = 6 }: { limit?: number }) {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h2 className="text-2xl font-bold text-gray-900">
-            Latest Fractional Executive News
+            Latest Part-Time Executive News
           </h2>
           <p className="text-gray-600 mt-1">
             Market insights, job updates, and industry trends
           </p>
         </div>
         <Link
-          href="/fractional-jobs-articles"
+          href="/part-time-jobs-articles"
           className="hidden md:inline-flex items-center text-sm font-medium text-amber-700 hover:text-amber-800 transition-colors"
         >
           View all articles →
@@ -347,7 +347,7 @@ export async function LatestNews({ limit = 6 }: { limit?: number }) {
       {/* Mobile View All */}
       <div className="mt-6 md:hidden text-center">
         <Link
-          href="/fractional-jobs-articles"
+          href="/part-time-jobs-articles"
           className="inline-flex items-center text-sm font-medium text-amber-700 hover:text-amber-800 transition-colors"
         >
           View all articles →

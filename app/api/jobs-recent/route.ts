@@ -4,7 +4,7 @@ import { neon } from '@neondatabase/serverless'
 const sql = neon(process.env.DATABASE_URL!)
 
 /**
- * Get recent fractional jobs for display
+ * Get recent part-time jobs for display
  */
 export async function GET() {
   try {
@@ -18,7 +18,7 @@ export async function GET() {
         compensation
       FROM jobs
       WHERE is_active = true
-        AND (is_fractional = true OR LOWER(title) LIKE '%fractional%')
+        AND (is_fractional = true OR LOWER(title) LIKE '%part-time%')
       ORDER BY posted_date DESC NULLS LAST
       LIMIT 5
     `

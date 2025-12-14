@@ -12,13 +12,13 @@ import { IR35Calculator } from '@/components/IR35Calculator'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional COO Jobs UK | Part-Time COO Roles',
-  description: 'Fractional COO jobs UK - Find part-time Chief Operating Officer positions paying £750-£1,400/day. Browse live COO roles for experienced operations leaders.',
-  keywords: 'fractional coo jobs uk, fractional coo jobs, part time coo jobs, fractional coo uk, coo jobs uk, part time chief operating officer',
+  title: 'Part-Time COO Jobs UK | Part-Time COO Roles',
+  description: 'Part-time COO jobs UK - Find part-time Chief Operating Officer positions paying £750-£1,400/day. Browse live COO roles for experienced operations leaders.',
+  keywords: 'part-time coo jobs uk, part-time coo jobs, part time coo jobs, part-time coo uk, coo jobs uk, part time chief operating officer',
   openGraph: {
-    title: 'Fractional COO Jobs UK | Part-Time COO Roles',
-    description: 'Fractional COO jobs UK - Find part-time COO positions paying £750-£1,400/day.',
-    images: ['/images/fractional-coo-jobs-uk.jpg'],
+    title: 'Part-Time COO Jobs UK | Part-Time COO Roles',
+    description: 'Part-time COO jobs UK - Find part-time COO positions paying £750-£1,400/day.',
+    images: ['/images/part-time-coo-jobs-uk.jpg'],
   },
 }
 
@@ -74,11 +74,11 @@ export default async function FractionalCooJobsUkPage() {
                 Operations Leadership
               </span>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-[0.9] tracking-tight">
-                Fractional COO<br />
+                Part-Time COO<br />
                 <span className="text-orange-400">Jobs UK</span>
               </h1>
               <p className="text-xl md:text-2xl text-white/80 leading-relaxed max-w-2xl mb-8">
-                <strong className="text-white">Fractional COO jobs UK</strong> for experienced operations leaders.
+                <strong className="text-white">Part-time COO jobs UK</strong> for experienced operations leaders.
                 Part-time Chief Operating Officer roles paying £750-£1,400/day.
               </p>
               <div className="flex flex-wrap gap-8 mb-10">
@@ -99,7 +99,7 @@ export default async function FractionalCooJobsUkPage() {
                 <Link href="#jobs" className="px-8 py-4 bg-orange-500 text-black font-bold uppercase tracking-wider hover:bg-orange-400 transition-colors">
                   Browse Jobs Now
                 </Link>
-                <Link href="/fractional-jobs-startups" className="px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
+                <Link href="/part-time-jobs-startups" className="px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
                   Startup COO Jobs
                 </Link>
               </div>
@@ -113,7 +113,7 @@ export default async function FractionalCooJobsUkPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-8 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Calculator</span>
-            <h2 className="text-2xl md:text-3xl font-black text-gray-900">How Much Can You Earn as a Fractional COO?</h2>
+            <h2 className="text-2xl md:text-3xl font-black text-gray-900">How Much Can You Earn as a Part-Time COO?</h2>
           </div>
           <RoleCalculator role="coo" />
         </div>
@@ -172,32 +172,32 @@ export default async function FractionalCooJobsUkPage() {
           <div className="mb-16">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-4 block">The Guide</span>
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
-              Everything You Need to Know About<br /><span className="text-orange-600">Fractional COO Jobs UK</span>
+              Everything You Need to Know About<br /><span className="text-orange-600">Part-Time COO Jobs UK</span>
             </h2>
             <div className="w-24 h-1 bg-orange-500"></div>
           </div>
           <figure className="mb-16 -mx-6 lg:-mx-16">
-            <img src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Fractional COO jobs UK - operations executive leading team planning session" className="w-full h-80 md:h-96 object-cover" />
-            <figcaption className="text-sm text-gray-500 mt-3 px-6 lg:px-16">Operations leaders across the UK are embracing fractional work</figcaption>
+            <img src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Part-time COO jobs UK - operations executive leading team planning session" className="w-full h-80 md:h-96 object-cover" />
+            <figcaption className="text-sm text-gray-500 mt-3 px-6 lg:px-16">Operations leaders across the UK are embracing part-time work</figcaption>
           </figure>
           <article className="prose prose-lg prose-gray max-w-none">
             <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8 font-light">
-              <strong className="font-semibold text-gray-900">Fractional COO jobs</strong> represent the new frontier of operations leadership. Part-time Chief Operating Officer positions where experienced leaders provide strategic operational guidance to multiple companies simultaneously—delivering world-class expertise at a fraction of the cost.
+              <strong className="font-semibold text-gray-900">Part-time COO jobs</strong> represent the new frontier of operations leadership. Part-time Chief Operating Officer positions where experienced leaders provide strategic operational guidance to multiple companies simultaneously—delivering world-class expertise at a fraction of the cost.
             </p>
-            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">The Rise of Fractional COO Jobs UK</h3>
-            <p>The demand for <strong>fractional COO jobs UK</strong> has grown substantially as companies recognise that world-class operations leadership doesn't require a full-time commitment. Startups scaling from founder-led to operationally mature, PE portfolio companies, and SMEs professionalising their operations all increasingly turn to fractional COOs.</p>
+            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">The Rise of Part-Time COO Jobs UK</h3>
+            <p>The demand for <strong>part-time COO jobs UK</strong> has grown substantially as companies recognise that world-class operations leadership doesn't require a full-time commitment. Startups scaling from founder-led to operationally mature, PE portfolio companies, and SMEs professionalising their operations all increasingly turn to part-time COOs.</p>
             <div className="bg-gray-50 p-8 my-10 border-l-4 border-orange-500">
               <p className="text-xl font-semibold text-gray-900 mb-0">"Founders access operational expertise for £2,000-£4,000/week vs £150,000+ annually for full-time."</p>
             </div>
-            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Why Fractional COO Jobs Are Booming</h3>
+            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Why Part-Time COO Jobs Are Booming</h3>
             <ul className="space-y-3">
               <li><strong>Founder relief:</strong> CEO/founders need operational leadership without permanent overhead</li>
               <li><strong>PE requirements:</strong> Private equity mandates operational excellence</li>
               <li><strong>Cost efficiency:</strong> Access COO expertise at a fraction of full-time cost</li>
               <li><strong>Operational maturity:</strong> Companies need to professionalise as they scale</li>
-              <li><strong>Diverse experience:</strong> Fractional COOs bring multi-company best practices</li>
+              <li><strong>Diverse experience:</strong> Part-time COOs bring multi-company best practices</li>
             </ul>
-            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Types of Fractional COO Jobs</h3>
+            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Types of Part-Time COO Jobs</h3>
             <div className="grid md:grid-cols-2 gap-6 not-prose my-8">
               {[
                 { title: 'Scale-up COO', desc: 'Building operational infrastructure for growth', rate: '£900-£1,300/day' },
@@ -212,7 +212,7 @@ export default async function FractionalCooJobsUkPage() {
                 </div>
               ))}
             </div>
-            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Requirements for Fractional COO Jobs</h3>
+            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Requirements for Part-Time COO Jobs</h3>
             <ul className="space-y-2">
               <li>15+ years operations and general management experience</li>
               <li>5+ years in COO, VP Operations, or Operations Director roles</li>
@@ -230,7 +230,7 @@ export default async function FractionalCooJobsUkPage() {
           <div className="mb-12 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">UK Tax</span>
             <h2 className="text-3xl md:text-4xl font-black text-gray-900">IR35: Inside vs Outside</h2>
-            <p className="text-gray-600 mt-4">As a fractional COO, your IR35 status significantly impacts your take-home pay</p>
+            <p className="text-gray-600 mt-4">As a part-time COO, your IR35 status significantly impacts your take-home pay</p>
           </div>
           <IR35Calculator defaultDayRate={950} />
         </div>
@@ -241,7 +241,7 @@ export default async function FractionalCooJobsUkPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">FAQ</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">Common Questions About Fractional COO Jobs UK</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">Common Questions About Part-Time COO Jobs UK</h2>
           </div>
           <FAQ items={COO_FAQS} title="" />
         </div>
@@ -251,11 +251,11 @@ export default async function FractionalCooJobsUkPage() {
       <section className="py-20 md:py-28 bg-black text-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-4 block">Ready?</span>
-          <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">Find Your Next<br /><span className="text-orange-400">Fractional COO Role</span></h2>
-          <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">Create your profile and get matched with companies seeking fractional operations leadership.</p>
+          <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">Find Your Next<br /><span className="text-orange-400">Part-Time COO Role</span></h2>
+          <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">Create your profile and get matched with companies seeking part-time operations leadership.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/handler/sign-up" className="px-10 py-5 bg-orange-500 text-black font-bold uppercase tracking-wider hover:bg-orange-400 transition-colors">Create Profile</Link>
-            <Link href="/fractional-jobs-startups" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Startup Jobs</Link>
+            <Link href="/part-time-jobs-startups" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Startup Jobs</Link>
           </div>
         </div>
       </section>
@@ -266,10 +266,10 @@ export default async function FractionalCooJobsUkPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <span className="text-sm font-bold uppercase tracking-wider text-gray-400">Related</span>
             <div className="flex flex-wrap gap-4">
-              <Link href="/fractional-jobs-startups" className="text-gray-600 hover:text-orange-600 font-medium transition-colors">Startup COO Jobs</Link>
-              <Link href="/fractional-cmo-jobs-uk" className="text-gray-600 hover:text-orange-600 font-medium transition-colors">CMO Jobs UK</Link>
-              <Link href="/fractional-cfo-jobs-uk" className="text-gray-600 hover:text-orange-600 font-medium transition-colors">CFO Jobs UK</Link>
-              <Link href="/fractional-cto-jobs-uk" className="text-gray-600 hover:text-orange-600 font-medium transition-colors">CTO Jobs UK</Link>
+              <Link href="/part-time-jobs-startups" className="text-gray-600 hover:text-orange-600 font-medium transition-colors">Startup COO Jobs</Link>
+              <Link href="/part-time-cmo-jobs-uk" className="text-gray-600 hover:text-orange-600 font-medium transition-colors">CMO Jobs UK</Link>
+              <Link href="/part-time-cfo-jobs-uk" className="text-gray-600 hover:text-orange-600 font-medium transition-colors">CFO Jobs UK</Link>
+              <Link href="/part-time-cto-jobs-uk" className="text-gray-600 hover:text-orange-600 font-medium transition-colors">CTO Jobs UK</Link>
             </div>
           </div>
         </div>

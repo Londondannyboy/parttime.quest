@@ -36,7 +36,7 @@ export async function POST(request: Request) {
 
     if (action === 'test-store') {
       // Store a test memory
-      const testContent = `Test memory from Fractional Quest at ${new Date().toISOString()}`
+      const testContent = `Test memory from Part-Time Quest at ${new Date().toISOString()}`
       console.log('[Supermemory Test] Storing test memory for user:', userId)
 
       await storeConversationMemory(userId, testContent)

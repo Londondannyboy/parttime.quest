@@ -20,7 +20,7 @@ Extract the following categories:
 
 2. COMPANIES - Places they've worked
    - Include role if mentioned
-   - Note if it sounds like fractional/consulting vs full-time
+   - Note if it sounds like part-time/consulting vs full-time
    - Flag for validation (we'll verify company exists)
 
 3. QUALIFICATIONS - Degrees, certifications, courses, awards
@@ -56,7 +56,7 @@ Return valid JSON matching this exact structure:
       "name": "string",
       "normalizedName": "lowercase-no-special-chars",
       "role": "their title",
-      "roleType": "fractional|fulltime|contract|consulting",
+      "roleType": "part-time|fulltime|contract|consulting",
       "startYear": number or null,
       "endYear": number or null,
       "isCurrent": boolean,

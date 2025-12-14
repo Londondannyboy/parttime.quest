@@ -15,7 +15,7 @@ export interface ExtractedCompany {
   name: string
   normalizedName?: string // For matching
   role?: string
-  roleType?: 'fractional' | 'fulltime' | 'contract' | 'consulting'
+  roleType?: 'part-time' | 'fulltime' | 'contract' | 'consulting'
   startYear?: number
   endYear?: number
   isCurrent?: boolean
@@ -96,26 +96,26 @@ export const SKILL_DEPTH_MAP: Record<string, { children: string[], questions: st
 }
 
 // Role type normalization
-export const FRACTIONAL_ROLES = [
-  'Fractional CFO',
-  'Fractional CMO',
-  'Fractional CTO',
-  'Fractional COO',
-  'Fractional CHRO',
-  'Fractional CPO',
-  'Fractional CRO',
-  'Fractional CEO',
-  'Fractional VP Finance',
-  'Fractional VP Marketing',
-  'Fractional VP Engineering',
-  'Fractional VP Sales',
-  'Fractional VP Operations',
-  'Fractional VP People',
+export const PART_TIME_ROLES = [
+  'Part-Time CFO',
+  'Part-Time CMO',
+  'Part-Time CTO',
+  'Part-Time COO',
+  'Part-Time CHRO',
+  'Part-Time CPO',
+  'Part-Time CRO',
+  'Part-Time CEO',
+  'Part-Time VP Finance',
+  'Part-Time VP Marketing',
+  'Part-Time VP Engineering',
+  'Part-Time VP Sales',
+  'Part-Time VP Operations',
+  'Part-Time VP People',
   'Interim CFO',
   'Interim CMO',
   'Interim CTO',
-  'Part-time CFO',
-  'Part-time CMO',
+  'Fractional CFO',
+  'Fractional CMO',
   'Portfolio CFO',
   'Portfolio CMO'
 ]

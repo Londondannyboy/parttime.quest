@@ -75,13 +75,13 @@ function buildVoiceSummary(stats: Record<string, string>, featured: Array<{ titl
   const remote = parseInt(stats.remote_count)
 
   if (total === 0) {
-    return "We're currently building our job listings. Check back soon for new fractional executive opportunities."
+    return "We're currently building our job listings. Check back soon for new part-time executive opportunities."
   }
 
   let summary = `We currently have ${total} active role${total > 1 ? 's' : ''}`
 
   if (fractional > 0) {
-    summary += `, including ${fractional} fractional position${fractional > 1 ? 's' : ''}`
+    summary += `, including ${fractional} part-time position${fractional > 1 ? 's' : ''}`
   }
 
   summary += '.'

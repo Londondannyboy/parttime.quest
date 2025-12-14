@@ -58,7 +58,7 @@ export default function CompanyContactPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-black text-gray-900 mb-4">Hire Top Talent</h1>
           <p className="text-xl text-gray-600">
-            Post a job or get in touch with our team about hiring fractional executives.
+            Post a job or get in touch with our team about hiring part-time executives.
           </p>
         </div>
       </section>
@@ -114,7 +114,7 @@ export default function CompanyContactPage() {
                 <Input
                   name="jobTitle"
                   label="Job Title / Role"
-                  placeholder="e.g., Fractional CFO, Interim CMO"
+                  placeholder="e.g., Part-Time CFO, Interim CMO"
                   required
                 />
 
@@ -164,7 +164,7 @@ export default function CompanyContactPage() {
                 {
                   icon: '🎯',
                   title: 'Targeted Talent',
-                  desc: 'Access experienced fractional executives pre-screened for quality',
+                  desc: 'Access experienced part-time executives pre-screened for quality',
                 },
                 {
                   icon: '⚡',
@@ -174,7 +174,7 @@ export default function CompanyContactPage() {
                 {
                   icon: '💼',
                   title: 'Verified Professionals',
-                  desc: 'All candidates vetted and experienced in fractional work',
+                  desc: 'All candidates vetted and experienced in part-time work',
                 },
                 {
                   icon: '📊',

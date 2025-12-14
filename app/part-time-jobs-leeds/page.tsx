@@ -7,11 +7,11 @@ import { JobsGraph3D } from '@/components/JobsGraph3D'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs Leeds - Executive Roles in Yorkshire',
-  description: 'Find fractional executive jobs in Leeds and Yorkshire. CFO, CMO, CTO roles. £600-£1,000 daily rates. Growing digital and financial services hub.',
+  title: 'Part-Time Jobs Leeds - Executive Roles in Yorkshire',
+  description: 'Find part-time executive jobs in Leeds and Yorkshire. CFO, CMO, CTO roles. £600-£1,000 daily rates. Growing digital and financial services hub.',
   openGraph: {
-    title: 'Fractional Jobs Leeds - Executive Roles in Yorkshire',
-    description: 'Find fractional executive jobs in Leeds and across Yorkshire.',
+    title: 'Part-Time Jobs Leeds - Executive Roles in Yorkshire',
+    description: 'Find part-time executive jobs in Leeds and across Yorkshire.',
     type: 'website',
   },
 }
@@ -35,9 +35,9 @@ const yorkshireIndustries = [
 ]
 
 const relatedSearches = [
-  'Fractional CFO Jobs Leeds', 'Fractional CTO Jobs Yorkshire', 'Fractional CMO Jobs Leeds',
+  'Part-Time CFO Jobs Leeds', 'Part-Time CTO Jobs Yorkshire', 'Part-Time CMO Jobs Leeds',
   'Part-Time CFO Leeds', 'Interim Executive Yorkshire', 'Portfolio Career Leeds',
-  'Fractional Jobs Sheffield', 'Fractional Jobs York', 'Fractional Executive Salary Leeds'
+  'Part-Time Jobs Sheffield', 'Part-Time Jobs York', 'Part-Time Executive Salary Leeds'
 ]
 
 async function getLeedsStats() {
@@ -94,15 +94,15 @@ export default async function LeedsPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs Leeds</h1>
-          <img src="/logo.svg" alt="Fractional Jobs Leeds - Executive roles in Yorkshire" className="hidden" width={1} height={1} />
+            Part-Time Jobs Leeds</h1>
+          <img src="/logo.svg" alt="Part-Time Jobs Leeds - Executive roles in Yorkshire" className="hidden" width={1} height={1} />
           
           <p className="max-w-2xl text-xl text-purple-100 mb-10 leading-relaxed">
-            {stats.total}+ fractional executive opportunities across Leeds and Yorkshire. £600-£1,000 daily rates. The North's fastest-growing fractional market.
+            {stats.total}+ part-time executive opportunities across Leeds and Yorkshire. £600-£1,000 daily rates. The North's fastest-growing part-time market.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/fractional-jobs?location=Leeds"
+              href="/part-time-jobs?location=Leeds"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-purple-900 hover:bg-purple-50 transition-all duration-200"
             >
               Browse Leeds Jobs
@@ -117,7 +117,7 @@ export default async function LeedsPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-4xl font-black text-purple-700">6%</div>
-              <div className="text-gray-600 font-medium">of UK fractional roles</div>
+              <div className="text-gray-600 font-medium">of UK part-time roles</div>
             </div>
             <div>
               <div className="text-4xl font-black text-purple-700">£{stats.avgDayRate}</div>
@@ -140,7 +140,7 @@ export default async function LeedsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Jobs Across Yorkshire</h2>
-            <p className="text-xl text-gray-600">Find fractional roles from Leeds to Sheffield</p>
+            <p className="text-xl text-gray-600">Find part-time roles from Leeds to Sheffield</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {leedsAreas.map((area) => (
@@ -159,7 +159,7 @@ export default async function LeedsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Yorkshire Industries</h2>
-            <p className="text-xl text-gray-600">Key sectors hiring fractional executives</p>
+            <p className="text-xl text-gray-600">Key sectors hiring part-time executives</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {yorkshireIndustries.map((industry) => (
@@ -195,7 +195,7 @@ export default async function LeedsPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Digital Growth</h3>
               <p className="text-gray-600">
-                Leeds Digital Hub is one of the UK's fastest-growing tech clusters, with 20% YoY growth in fractional tech roles.
+                Leeds Digital Hub is one of the UK's fastest-growing tech clusters, with 20% YoY growth in part-time tech roles.
               </p>
             </div>
             <div className="bg-white rounded-2xl p-8 shadow-sm">
@@ -218,7 +218,7 @@ export default async function LeedsPage() {
             <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Featured Yorkshire Jobs</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {(jobs as any[]).map((job: any) => (
-                <Link key={job.id} href={`/fractional-job/${job.slug}`}>
+                <Link key={job.id} href={`/part-time-job/${job.slug}`}>
                   <JobCard
                     title={job.title}
                     company={job.company_name}
@@ -233,7 +233,7 @@ export default async function LeedsPage() {
             </div>
             <div className="text-center">
               <Link
-                href="/fractional-jobs?location=Leeds"
+                href="/part-time-jobs?location=Leeds"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-lg bg-purple-700 text-white hover:bg-purple-800 transition-all"
               >
                 View All Yorkshire Jobs →
@@ -250,20 +250,20 @@ export default async function LeedsPage() {
           <div className="space-y-6">
             <details className="group bg-white rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                How much do fractional executives earn in Leeds?
+                How much do part-time executives earn in Leeds?
                 <span className="text-purple-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600">
-                Leeds fractional executives typically earn £600-£1,000 per day. Legal and financial services roles command premium rates, often comparable to Birmingham levels.
+                Leeds part-time executives typically earn £600-£1,000 per day. Legal and financial services roles command premium rates, often comparable to Birmingham levels.
               </p>
             </details>
             <details className="group bg-white rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                Is Leeds good for fractional tech roles?
+                Is Leeds good for part-time tech roles?
                 <span className="text-purple-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600">
-                Yes - Leeds Digital Hub is thriving with 20% YoY growth in fractional tech positions. Companies like Sky Betting, NHS Digital, and numerous scale-ups hire fractional CTOs and tech leaders.
+                Yes - Leeds Digital Hub is thriving with 20% YoY growth in part-time tech positions. Companies like Sky Betting, NHS Digital, and numerous scale-ups hire part-time CTOs and tech leaders.
               </p>
             </details>
             <details className="group bg-white rounded-xl p-6 cursor-pointer">
@@ -272,7 +272,7 @@ export default async function LeedsPage() {
                 <span className="text-purple-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600">
-                Absolutely. Leeds is just 2hr 15min from London by train. Many fractional executives maintain a mixed client base, leveraging Leeds' lower costs while accessing London opportunities.
+                Absolutely. Leeds is just 2hr 15min from London by train. Many part-time executives maintain a mixed client base, leveraging Leeds' lower costs while accessing London opportunities.
               </p>
             </details>
           </div>
@@ -287,7 +287,7 @@ export default async function LeedsPage() {
             {relatedSearches.map((search) => (
               <Link
                 key={search}
-                href={`/fractional-jobs?q=${encodeURIComponent(search)}`}
+                href={`/part-time-jobs?q=${encodeURIComponent(search)}`}
                 className="px-4 py-2 bg-gray-50 rounded-full text-gray-700 hover:bg-purple-100 hover:text-purple-700 transition-colors text-sm"
               >
                 {search}
@@ -304,10 +304,10 @@ export default async function LeedsPage() {
             Ready to Work in Yorkshire?
           </h2>
           <p className="text-xl text-purple-100 mb-10">
-            {stats.total}+ fractional opportunities across Leeds, Sheffield, and York
+            {stats.total}+ part-time opportunities across Leeds, Sheffield, and York
           </p>
           <Link
-            href="/fractional-jobs?location=Leeds"
+            href="/part-time-jobs?location=Leeds"
             className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-purple-900 hover:bg-purple-50 transition-all"
           >
             Browse Yorkshire Jobs →

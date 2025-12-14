@@ -17,12 +17,12 @@ export const metadata: Metadata = {
   description: 'Part-time CMO jobs UK - Find flexible Chief Marketing Officer positions paying £700-£1,400/day. Browse live part-time CMO roles for experienced marketing leaders. Remote & hybrid available.',
   keywords: 'part time cmo jobs, part-time cmo jobs uk, part time chief marketing officer, cmo part time, flexible cmo roles, part time cmo uk, part-time cmo opportunities',
   alternates: {
-    canonical: 'https://fractional.quest/part-time-cmo-jobs-uk',
+    canonical: 'https://parttime.quest/part-time-cmo-jobs-uk',
   },
   openGraph: {
     title: 'Part-Time CMO Jobs UK | Flexible Chief Marketing Officer Roles',
     description: 'Part-time CMO jobs UK - Find flexible CMO positions paying £700-£1,400/day. Remote & hybrid available.',
-    url: 'https://fractional.quest/part-time-cmo-jobs-uk',
+    url: 'https://parttime.quest/part-time-cmo-jobs-uk',
   },
 }
 
@@ -103,7 +103,7 @@ export default async function PartTimeCmoJobsUkPage() {
                 <Link href="#jobs" className="px-8 py-4 bg-amber-500 text-black font-bold uppercase tracking-wider hover:bg-amber-400 transition-colors">
                   Browse Jobs Now
                 </Link>
-                <Link href="/fractional-cmo-salary" className="px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
+                <Link href="/part-time-cmo-salary" className="px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
                   Salary Guide
                 </Link>
               </div>
@@ -286,9 +286,9 @@ export default async function PartTimeCmoJobsUkPage() {
             </p>
 
             <div className="bg-amber-50 p-6 border border-amber-200 rounded-lg my-8 not-prose">
-              <p className="text-amber-800 font-medium mb-3">Looking for fractional CMO positions?</p>
-              <Link href="/fractional-cmo-jobs-uk" className="inline-flex items-center text-amber-700 font-bold hover:text-amber-900">
-                Browse Fractional CMO Jobs UK →
+              <p className="text-amber-800 font-medium mb-3">Looking for part-time CMO positions?</p>
+              <Link href="/part-time-cmo-jobs-uk" className="inline-flex items-center text-amber-700 font-bold hover:text-amber-900">
+                Browse Part-Time CMO Jobs UK →
               </Link>
             </div>
           </article>
@@ -357,7 +357,7 @@ export default async function PartTimeCmoJobsUkPage() {
           <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">Create your profile and get matched with companies seeking part-time marketing leadership.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/handler/sign-up" className="px-10 py-5 bg-amber-500 text-black font-bold uppercase tracking-wider hover:bg-amber-400 transition-colors">Create Profile</Link>
-            <Link href="/fractional-cmo-salary" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Salary Guide</Link>
+            <Link href="/part-time-cmo-salary" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Salary Guide</Link>
           </div>
         </div>
       </section>
@@ -368,11 +368,11 @@ export default async function PartTimeCmoJobsUkPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <span className="text-sm font-bold uppercase tracking-wider text-gray-400">Related</span>
             <div className="flex flex-wrap gap-4">
-              <Link href="/fractional-cmo-jobs-uk" className="text-gray-600 hover:text-amber-600 font-medium transition-colors">Fractional CMO Jobs</Link>
-              <Link href="/fractional-cmo-salary" className="text-gray-600 hover:text-amber-600 font-medium transition-colors">CMO Salary Guide</Link>
+              <Link href="/part-time-cmo-jobs-uk" className="text-gray-600 hover:text-amber-600 font-medium transition-colors">Part-Time CMO Jobs</Link>
+              <Link href="/part-time-cmo-salary" className="text-gray-600 hover:text-amber-600 font-medium transition-colors">CMO Salary Guide</Link>
               <Link href="/part-time-cfo-jobs-uk" className="text-gray-600 hover:text-amber-600 font-medium transition-colors">Part-Time CFO Jobs</Link>
-              <Link href="/fractional-cto-jobs-uk" className="text-gray-600 hover:text-amber-600 font-medium transition-colors">CTO Jobs UK</Link>
-              <Link href="/fractional-coo-jobs-uk" className="text-gray-600 hover:text-amber-600 font-medium transition-colors">COO Jobs UK</Link>
+              <Link href="/part-time-cto-jobs-uk" className="text-gray-600 hover:text-amber-600 font-medium transition-colors">CTO Jobs UK</Link>
+              <Link href="/part-time-coo-jobs-uk" className="text-gray-600 hover:text-amber-600 font-medium transition-colors">COO Jobs UK</Link>
             </div>
           </div>
         </div>

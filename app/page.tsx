@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import { createDbQuery } from "@/lib/db";
-import { FractionalCalculator } from "@/components/FractionalCalculator";
+import { PartTimeCalculator } from "@/components/PartTimeCalculator";
 import { JobCard } from "@/components/JobCard";
 import { AuthAwareHumeWidget } from "@/components/AuthAwareHumeWidget";
 import { VideoHeroBackground } from "@/components/VideoHeroBackground";
@@ -574,7 +574,7 @@ export default async function Home() {
             <h2 className="text-4xl font-bold text-white mb-4">Calculate Your Earning Potential</h2>
             <p className="text-xl text-gray-300">See how much you could earn as a part-time executive</p>
           </div>
-          <FractionalCalculator />
+          <PartTimeCalculator />
         </div>
       </section>
 

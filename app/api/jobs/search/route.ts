@@ -84,9 +84,9 @@ export async function GET(request: NextRequest) {
       whereConditions.push(`(is_remote = false AND workplace_type IS DISTINCT FROM 'Remote' AND workplace_type IS DISTINCT FROM 'Hybrid')`)
     }
 
-    // Fractional filter
+    // Part-time filter
     if (fractionalOnly) {
-      whereConditions.push(`(is_fractional = true OR LOWER(title) LIKE '%fractional%')`)
+      whereConditions.push(`(is_fractional = true OR LOWER(title) LIKE '%part-time%')`)
     }
 
     // Query/search filter

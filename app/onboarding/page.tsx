@@ -29,12 +29,12 @@ const COMMON_SKILLS = [
 ]
 
 const ROLE_OPTIONS = [
-  'Fractional CFO',
-  'Fractional CMO',
-  'Fractional CTO',
-  'Fractional COO',
-  'Fractional CHRO',
-  'Fractional CPO',
+  'Part-Time CFO',
+  'Part-Time CMO',
+  'Part-Time CTO',
+  'Part-Time COO',
+  'Part-Time CHRO',
+  'Part-Time CPO',
   'Board Advisor',
   'Consultant',
 ]
@@ -107,7 +107,7 @@ export default function OnboardingPage() {
     // Add role preferences
     formData.interests.forEach((role, i) => {
       const id = `pref-role-${i}`
-      nodes.push({ id, type: 'preference', label: role.replace('Fractional ', '') })
+      nodes.push({ id, type: 'preference', label: role.replace('Part-Time ', '') })
       edges.push({ source: 'user-you', target: id, type: 'seeks' })
     })
 

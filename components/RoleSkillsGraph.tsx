@@ -94,7 +94,7 @@ export function RoleSkillsGraph({
     nodes.push({
       id: `role-${role}`,
       type: 'job',
-      label: `Fractional ${roleLabel}`,
+      label: `Part-Time ${roleLabel}`,
       data: { central: true },
     })
 

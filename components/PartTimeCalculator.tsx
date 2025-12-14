@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-export function FractionalCalculator() {
+export function PartTimeCalculator() {
   const [dayRate, setDayRate] = useState(800)
   const [daysPerWeek, setDaysPerWeek] = useState(3)
   const [clients, setClients] = useState(2)
@@ -23,10 +23,10 @@ export function FractionalCalculator() {
     <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-4xl mx-auto">
       <div className="text-center mb-8">
         <h3 className="text-2xl font-bold text-gray-900 mb-2">
-          Fractional Earnings Calculator
+          Part-Time Earnings Calculator
         </h3>
         <p className="text-gray-600">
-          See how much you could earn as a fractional executive
+          See how much you could earn as a part-time executive
         </p>
       </div>
 

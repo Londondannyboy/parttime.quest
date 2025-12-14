@@ -5,10 +5,10 @@ import { JobsGraph3D } from '@/components/JobsGraph3D'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Hire Cybersecurity Consultants UK | Fractional Security Experts',
-  description: 'Hire experienced cybersecurity consultants on a fractional basis. Expert security professionals for compliance, risk assessment, and security programmes. Available part-time.',
-  keywords: 'cybersecurity consultants, hire cybersecurity consultant, fractional security expert, cybersecurity consultant uk, information security consultant',
-  alternates: { canonical: 'https://fractional.quest/cybersecurity-consultants' },
+  title: 'Hire Cybersecurity Consultants UK | Part-Time Security Experts',
+  description: 'Hire experienced cybersecurity consultants on a part-time basis. Expert security professionals for compliance, risk assessment, and security programmes. Available part-time.',
+  keywords: 'cybersecurity consultants, hire cybersecurity consultant, part-time security expert, cybersecurity consultant uk, information security consultant',
+  alternates: { canonical: 'https://parttime.quest/cybersecurity-consultants' },
 }
 
 export default function CybersecurityConsultantsPage() {
@@ -25,10 +25,10 @@ export default function CybersecurityConsultantsPage() {
             <div className="max-w-4xl">
               <span className="inline-block bg-red-500 text-white px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] mb-6">Popular Roles</span>
               <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-[0.9]">Cybersecurity<br /><span className="text-red-400">Consultants</span></h1>
-              <p className="text-xl text-white/80 leading-relaxed max-w-2xl mb-8">Hire experienced cybersecurity professionals on a fractional basis. Get expert security guidance without the cost of a full-time security team.</p>
+              <p className="text-xl text-white/80 leading-relaxed max-w-2xl mb-8">Hire experienced cybersecurity professionals on a part-time basis. Get expert security guidance without the cost of a full-time security team.</p>
               <div className="flex flex-wrap gap-4">
                 <Link href="#contact" className="px-8 py-4 bg-red-500 text-white font-bold uppercase tracking-wider hover:bg-red-400 transition-colors">Find a Consultant</Link>
-                <Link href="/fractional-ciso-services" className="px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Fractional CISO</Link>
+                <Link href="/part-time-ciso-services" className="px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Part-Time CISO</Link>
               </div>
             </div>
           </div>
@@ -38,7 +38,7 @@ export default function CybersecurityConsultantsPage() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <h2 className="text-3xl font-black text-gray-900 mb-6">What Cybersecurity Consultants Do</h2>
-          <p className="text-xl text-gray-600 leading-relaxed mb-6">Cybersecurity consultants help organisations protect their systems, data, and reputation from cyber threats. On a fractional basis, they provide expert guidance without the overhead of full-time security staff.</p>
+          <p className="text-xl text-gray-600 leading-relaxed mb-6">Cybersecurity consultants help organisations protect their systems, data, and reputation from cyber threats. On a part-time basis, they provide expert guidance without the overhead of full-time security staff.</p>
           <div className="grid md:grid-cols-2 gap-6 mt-10">
             {[
               { title: 'Security Assessments', description: 'Evaluate your security posture, identify vulnerabilities, and prioritise remediation.' },
@@ -84,7 +84,7 @@ export default function CybersecurityConsultantsPage() {
           <p className="text-xl text-gray-400 mb-10">Tell us about your security needs and we'll match you with experienced cybersecurity professionals.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/handler/sign-up" className="px-10 py-5 bg-red-500 text-white font-bold uppercase tracking-wider hover:bg-red-400 transition-colors">Get Started</Link>
-            <Link href="/fractional-security" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Explore Security Leadership</Link>
+            <Link href="/part-time-security" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Explore Security Leadership</Link>
           </div>
         </div>
       </section>

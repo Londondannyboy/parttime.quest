@@ -16,11 +16,11 @@ function VoiceInterface({ accessToken }: { accessToken: string }) {
       })
       // Send session settings after connection
       sendSessionSettings({
-        systemPrompt: `You are a helpful assistant for Fractional Quest, a UK-based platform for fractional executive jobs.
-        Help users find fractional jobs (CFO, CMO, CTO, COO, HR Director positions), answer questions about fractional work,
+        systemPrompt: `You are a helpful assistant for Part-Time Quest, a UK-based platform for part-time executive jobs.
+        Help users find part-time jobs (CFO, CMO, CTO, COO, HR Director positions), answer questions about part-time work,
         day rates (typically £800-1500/day), and the UK market. Be conversational and helpful.
-        You can discuss topics like: fractional vs full-time work, typical engagement lengths,
-        industries hiring fractional executives, and how to transition to fractional work.`
+        You can discuss topics like: part-time vs full-time work, typical engagement lengths,
+        industries hiring part-time executives, and how to transition to part-time work.`
       })
     } catch (error) {
       console.error('Failed to connect:', error)
@@ -82,7 +82,7 @@ function VoiceInterface({ accessToken }: { accessToken: string }) {
             : 'Click to start talking'}
         </p>
         <p className="text-sm text-gray-600 mt-1">
-          {isConnected ? 'Ask about fractional jobs, day rates, or career advice' : 'Voice-powered job search assistant'}
+          {isConnected ? 'Ask about part-time jobs, day rates, or career advice' : 'Voice-powered job search assistant'}
         </p>
       </div>
 
@@ -119,10 +119,10 @@ function VoiceInterface({ accessToken }: { accessToken: string }) {
         <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">Try asking</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {[
-            "What is a fractional CFO?",
-            "How much do fractional executives earn?",
+            "What is a part-time CFO?",
+            "How much do part-time executives earn?",
             "What jobs are available in London?",
-            "How do I transition to fractional work?",
+            "How do I transition to part-time work?",
           ].map((question, index) => (
             <div
               key={index}
@@ -167,7 +167,7 @@ export default function VoicePage() {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold mb-4">Voice Assistant</h1>
           <p className="text-xl text-purple-100">
-            Talk to our AI assistant about fractional jobs, day rates, and career opportunities
+            Talk to our AI assistant about part-time jobs, day rates, and career opportunities
           </p>
         </div>
       </div>

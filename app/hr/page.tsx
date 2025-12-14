@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 
-// Redirect /hr to the SEO-optimized /fractional-hr-jobs-uk
+// Redirect /hr to the SEO-optimized /part-time-hr-jobs-uk
 export default function HrRedirect() {
-  redirect('/fractional-hr-jobs-uk')
+  redirect('/part-time-hr-jobs-uk')
 }

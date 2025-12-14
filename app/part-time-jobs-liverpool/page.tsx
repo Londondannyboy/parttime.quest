@@ -7,11 +7,11 @@ import { JobsGraph3D } from '@/components/JobsGraph3D'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs Liverpool - Executive Roles in the North West',
-  description: 'Find fractional executive jobs in Liverpool. CFO, CMO, CTO roles across the Liverpool City Region. £550-£1,000 daily rates. Digital, creative, and maritime hub.',
+  title: 'Part-Time Jobs Liverpool - Executive Roles in the North West',
+  description: 'Find part-time executive jobs in Liverpool. CFO, CMO, CTO roles across the Liverpool City Region. £550-£1,000 daily rates. Digital, creative, and maritime hub.',
   openGraph: {
-    title: 'Fractional Jobs Liverpool - Executive Roles in the North West',
-    description: 'Find fractional executive jobs in Liverpool. CFO, CMO, CTO roles across the Liverpool City Region.',
+    title: 'Part-Time Jobs Liverpool - Executive Roles in the North West',
+    description: 'Find part-time executive jobs in Liverpool. CFO, CMO, CTO roles across the Liverpool City Region.',
     type: 'website',
   },
 }
@@ -38,7 +38,7 @@ const successStories = [
   {
     quote: "Baltic Triangle has transformed Liverpool's tech scene. I work with three digital agencies and a SaaS startup. The energy here rivals anywhere in the UK.",
     name: "Sarah Hughes",
-    role: "Fractional CMO",
+    role: "Part-Time CMO",
     area: "Baltic Triangle",
     clients: 4,
     earnings: "£115k/year"
@@ -46,15 +46,15 @@ const successStories = [
   {
     quote: "The Knowledge Quarter offers incredible opportunities in life sciences. These university spin-outs need experienced financial leadership as they scale.",
     name: "Michael O'Brien",
-    role: "Fractional CFO",
+    role: "Part-Time CFO",
     area: "Knowledge Quarter",
     clients: 3,
     earnings: "£125k/year"
   },
   {
-    quote: "Liverpool's cost of living means my fractional income goes much further. I'm earning the same as my London peers but with a much better lifestyle.",
+    quote: "Liverpool's cost of living means my part-time income goes much further. I'm earning the same as my London peers but with a much better lifestyle.",
     name: "James Harrison",
-    role: "Fractional CTO",
+    role: "Part-Time CTO",
     area: "City Centre",
     clients: 3,
     earnings: "£130k/year"
@@ -62,9 +62,9 @@ const successStories = [
 ]
 
 const relatedSearches = [
-  'Fractional CFO Jobs Liverpool', 'Fractional CMO Jobs Liverpool', 'Fractional CTO Jobs Liverpool',
+  'Part-Time CFO Jobs Liverpool', 'Part-Time CMO Jobs Liverpool', 'Part-Time CTO Jobs Liverpool',
   'Part-Time CFO Liverpool', 'Interim Executive Liverpool', 'Portfolio Career Liverpool',
-  'Fractional Jobs North West', 'Fractional Executive Salary Liverpool', 'Fractional Jobs Baltic Triangle'
+  'Part-Time Jobs North West', 'Part-Time Executive Salary Liverpool', 'Part-Time Jobs Baltic Triangle'
 ]
 
 async function getLiverpoolStats() {
@@ -139,14 +139,14 @@ export default async function LiverpoolPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs Liverpool
+            Part-Time Jobs Liverpool
           </h1>
           <p className="max-w-2xl text-xl text-red-100 mb-10 leading-relaxed">
-            {stats.totalLiverpool}+ fractional executive opportunities in the Liverpool City Region. £550-£1,000 daily rates. Work with innovative digital, creative, and life sciences companies.
+            {stats.totalLiverpool}+ part-time executive opportunities in the Liverpool City Region. £550-£1,000 daily rates. Work with innovative digital, creative, and life sciences companies.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/fractional-jobs?location=Liverpool"
+              href="/part-time-jobs?location=Liverpool"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-red-900 hover:bg-red-50 transition-all duration-200"
             >
               Browse All Liverpool Jobs
@@ -197,7 +197,7 @@ export default async function LiverpoolPage() {
             {areaJobEstimates.map((area) => (
               <Link
                 key={area.name}
-                href={`/fractional-jobs?location=${encodeURIComponent(area.name)}`}
+                href={`/part-time-jobs?location=${encodeURIComponent(area.name)}`}
                 className="group"
               >
                 <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-transparent hover:border-red-200">
@@ -224,18 +224,18 @@ export default async function LiverpoolPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { icon: '💰', title: 'Fractional CFO Liverpool', rate: '£600-£1,000/day', role: 'CFO' },
-              { icon: '💻', title: 'Fractional CTO Liverpool', rate: '£650-£1,050/day', role: 'CTO' },
-              { icon: '📢', title: 'Fractional CMO Liverpool', rate: '£550-£950/day', role: 'CMO' },
-              { icon: '⚙️', title: 'Fractional COO Liverpool', rate: '£550-£950/day', role: 'COO' },
-              { icon: '👥', title: 'Fractional HR Director Liverpool', rate: '£500-£850/day', role: 'HR' },
-              { icon: '📈', title: 'Fractional Sales Director Liverpool', rate: '£550-£900/day', role: 'Sales' },
+              { icon: '💰', title: 'Part-Time CFO Liverpool', rate: '£600-£1,000/day', role: 'CFO' },
+              { icon: '💻', title: 'Part-Time CTO Liverpool', rate: '£650-£1,050/day', role: 'CTO' },
+              { icon: '📢', title: 'Part-Time CMO Liverpool', rate: '£550-£950/day', role: 'CMO' },
+              { icon: '⚙️', title: 'Part-Time COO Liverpool', rate: '£550-£950/day', role: 'COO' },
+              { icon: '👥', title: 'Part-Time HR Director Liverpool', rate: '£500-£850/day', role: 'HR' },
+              { icon: '📈', title: 'Part-Time Sales Director Liverpool', rate: '£550-£900/day', role: 'Sales' },
             ].map((item) => {
               const roleCount = stats.roleStats.find(r => r.role_category === item.role)?.count || '0'
               return (
                 <Link
                   key={item.role}
-                  href={`/fractional-jobs?location=Liverpool&role=${item.role}`}
+                  href={`/part-time-jobs?location=Liverpool&role=${item.role}`}
                   className="group"
                 >
                   <div className="bg-gray-50 rounded-xl p-6 hover:bg-red-50 hover:shadow-lg transition-all duration-200 border border-transparent hover:border-red-200">
@@ -278,7 +278,7 @@ export default async function LiverpoolPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Excellent Value</h3>
               <p className="text-gray-600">
-                Cost of living 40% lower than London. Your fractional earnings go significantly further while enjoying one of the UK's most vibrant cities.
+                Cost of living 40% lower than London. Your part-time earnings go significantly further while enjoying one of the UK's most vibrant cities.
               </p>
             </div>
 
@@ -288,7 +288,7 @@ export default async function LiverpoolPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Knowledge Quarter</h3>
               <p className="text-gray-600">
-                World-class universities driving innovation in life sciences, materials, and AI. A hotbed for fractional CFO and CTO opportunities.
+                World-class universities driving innovation in life sciences, materials, and AI. A hotbed for part-time CFO and CTO opportunities.
               </p>
             </div>
           </div>
@@ -300,7 +300,7 @@ export default async function LiverpoolPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Liverpool Industries</h2>
-            <p className="text-xl text-gray-600">High-growth sectors hiring fractional executives</p>
+            <p className="text-xl text-gray-600">High-growth sectors hiring part-time executives</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -330,7 +330,7 @@ export default async function LiverpoolPage() {
                   : undefined
 
                 return (
-                  <Link key={job.id} href={`/fractional-job/${job.slug}`}>
+                  <Link key={job.id} href={`/part-time-job/${job.slug}`}>
                     <JobCard
                       title={job.title}
                       company={job.company_name}
@@ -347,7 +347,7 @@ export default async function LiverpoolPage() {
             </div>
             <div className="text-center">
               <Link
-                href="/fractional-jobs?location=Liverpool"
+                href="/part-time-jobs?location=Liverpool"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-lg bg-red-700 text-white hover:bg-red-800 transition-all duration-200"
               >
                 View All Liverpool Jobs →
@@ -362,7 +362,7 @@ export default async function LiverpoolPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">Liverpool Success Stories</h2>
-            <p className="text-xl text-red-200">Real fractional professionals thriving in Liverpool</p>
+            <p className="text-xl text-red-200">Real part-time professionals thriving in Liverpool</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -390,37 +390,37 @@ export default async function LiverpoolPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-            <p className="text-xl text-gray-600">Everything about fractional jobs in Liverpool</p>
+            <p className="text-xl text-gray-600">Everything about part-time jobs in Liverpool</p>
           </div>
 
           <div className="space-y-6">
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                What is a fractional job in Liverpool?
+                What is a part-time job in Liverpool?
                 <span className="text-red-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                A fractional job in Liverpool is a part-time executive role where you work with Liverpool-based companies 1-3 days per week. Liverpool's growing digital and creative sectors make it an excellent market for fractional CFOs, CMOs, and CTOs.
+                A part-time job in Liverpool is a part-time executive role where you work with Liverpool-based companies 1-3 days per week. Liverpool's growing digital and creative sectors make it an excellent market for part-time CFOs, CMOs, and CTOs.
               </p>
             </details>
 
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                How much do fractional executives earn in Liverpool?
+                How much do part-time executives earn in Liverpool?
                 <span className="text-red-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Liverpool fractional executives typically earn £550-£1,000 per day. With the city's lower cost of living (40% less than London), take-home value is excellent. Most professionals earn £110,000-£180,000+ annually working with 2-4 clients.
+                Liverpool part-time executives typically earn £550-£1,000 per day. With the city's lower cost of living (40% less than London), take-home value is excellent. Most professionals earn £110,000-£180,000+ annually working with 2-4 clients.
               </p>
             </details>
 
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                What's Baltic Triangle like for fractional work?
+                What's Baltic Triangle like for part-time work?
                 <span className="text-red-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Baltic Triangle is Liverpool's creative and tech hub with over 500 businesses. It's ideal for fractional CMOs and CTOs working with digital agencies, startups, and creative companies. The area has a vibrant, collaborative atmosphere.
+                Baltic Triangle is Liverpool's creative and tech hub with over 500 businesses. It's ideal for part-time CMOs and CTOs working with digital agencies, startups, and creative companies. The area has a vibrant, collaborative atmosphere.
               </p>
             </details>
 
@@ -430,13 +430,13 @@ export default async function LiverpoolPage() {
                 <span className="text-red-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Yes, many fractional executives work across the North West, combining Liverpool and Manchester clients. The cities are only 35 minutes apart by train, making it easy to serve both markets.
+                Yes, many part-time executives work across the North West, combining Liverpool and Manchester clients. The cities are only 35 minutes apart by train, making it easy to serve both markets.
               </p>
             </details>
 
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                Which industries hire fractional executives in Liverpool?
+                Which industries hire part-time executives in Liverpool?
                 <span className="text-red-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
@@ -450,37 +450,37 @@ export default async function LiverpoolPage() {
       {/* Internal Links */}
       <section className="py-16 bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Liverpool Fractional Resources</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Liverpool Part-Time Resources</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Liverpool Roles</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/cfo" className="hover:text-red-700 transition-colors">Fractional CFO Jobs</Link></li>
-                <li><Link href="/cmo" className="hover:text-red-700 transition-colors">Fractional CMO Jobs</Link></li>
-                <li><Link href="/cto" className="hover:text-red-700 transition-colors">Fractional CTO Jobs</Link></li>
-                <li><Link href="/coo" className="hover:text-red-700 transition-colors">Fractional COO Jobs</Link></li>
-                <li><Link href="/hr" className="hover:text-red-700 transition-colors">Fractional HR Jobs</Link></li>
+                <li><Link href="/cfo" className="hover:text-red-700 transition-colors">Part-Time CFO Jobs</Link></li>
+                <li><Link href="/cmo" className="hover:text-red-700 transition-colors">Part-Time CMO Jobs</Link></li>
+                <li><Link href="/cto" className="hover:text-red-700 transition-colors">Part-Time CTO Jobs</Link></li>
+                <li><Link href="/coo" className="hover:text-red-700 transition-colors">Part-Time COO Jobs</Link></li>
+                <li><Link href="/hr" className="hover:text-red-700 transition-colors">Part-Time HR Jobs</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Other UK Locations</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/fractional-jobs" className="hover:text-red-700 transition-colors">All Fractional Jobs UK</Link></li>
-                <li><Link href="/fractional-jobs-manchester" className="hover:text-red-700 transition-colors">Fractional Jobs Manchester</Link></li>
-                <li><Link href="/fractional-jobs-london" className="hover:text-red-700 transition-colors">Fractional Jobs London</Link></li>
-                <li><Link href="/fractional-jobs-leeds" className="hover:text-red-700 transition-colors">Fractional Jobs Leeds</Link></li>
-                <li><Link href="/remote" className="hover:text-red-700 transition-colors">Remote Fractional Jobs</Link></li>
+                <li><Link href="/part-time-jobs" className="hover:text-red-700 transition-colors">All Part-Time Jobs UK</Link></li>
+                <li><Link href="/part-time-jobs-manchester" className="hover:text-red-700 transition-colors">Part-Time Jobs Manchester</Link></li>
+                <li><Link href="/part-time-jobs-london" className="hover:text-red-700 transition-colors">Part-Time Jobs London</Link></li>
+                <li><Link href="/part-time-jobs-leeds" className="hover:text-red-700 transition-colors">Part-Time Jobs Leeds</Link></li>
+                <li><Link href="/remote" className="hover:text-red-700 transition-colors">Remote Part-Time Jobs</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Career Guides</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/how-to-become-a-fractional-executive" className="hover:text-red-700 transition-colors">Become a Fractional Executive</Link></li>
-                <li><Link href="/fractional-executive-salary-uk" className="hover:text-red-700 transition-colors">Fractional Salary UK</Link></li>
-                <li><Link href="/guide" className="hover:text-red-700 transition-colors">Fractional Work Guide</Link></li>
+                <li><Link href="/how-to-become-a-part-time-executive" className="hover:text-red-700 transition-colors">Become a Part-Time Executive</Link></li>
+                <li><Link href="/part-time-executive-salary-uk" className="hover:text-red-700 transition-colors">Part-Time Salary UK</Link></li>
+                <li><Link href="/guide" className="hover:text-red-700 transition-colors">Part-Time Work Guide</Link></li>
                 <li><Link href="/articles" className="hover:text-red-700 transition-colors">All Guides</Link></li>
               </ul>
             </div>
@@ -496,7 +496,7 @@ export default async function LiverpoolPage() {
             {relatedSearches.map((search) => (
               <Link
                 key={search}
-                href={`/fractional-jobs?q=${encodeURIComponent(search)}`}
+                href={`/part-time-jobs?q=${encodeURIComponent(search)}`}
                 className="px-4 py-2 bg-white rounded-full text-gray-700 hover:bg-red-100 hover:text-red-700 transition-colors text-sm border border-gray-200"
               >
                 {search}
@@ -513,10 +513,10 @@ export default async function LiverpoolPage() {
             Ready to Work in Liverpool?
           </h2>
           <p className="text-xl text-red-100 mb-10">
-            {stats.totalLiverpool}+ fractional opportunities in the North West's creative capital.
+            {stats.totalLiverpool}+ part-time opportunities in the North West's creative capital.
           </p>
           <Link
-            href="/fractional-jobs?location=Liverpool"
+            href="/part-time-jobs?location=Liverpool"
             className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-red-900 hover:bg-red-50 transition-all duration-200"
           >
             Browse Liverpool Jobs →

@@ -29,7 +29,7 @@ export function JobsSunburst({ height = '600px' }: JobsSunburstProps) {
   const chartRef = useRef<any>(null)
   const [data, setData] = useState<SunburstNode | null>(null)
   const [loading, setLoading] = useState(true)
-  const [breadcrumb, setBreadcrumb] = useState<string[]>(['Fractional Jobs'])
+  const [breadcrumb, setBreadcrumb] = useState<string[]>(['Part-Time Jobs'])
 
   // Fetch and process job data
   useEffect(() => {
@@ -96,7 +96,7 @@ export function JobsSunburst({ height = '600px' }: JobsSunburstProps) {
           companyMap.get(company)!.push({
             name: job.label || 'Job',
             value: 1,
-            url: job.data?.slug ? `/fractional-job/${job.data.slug}` : undefined,
+            url: job.data?.slug ? `/part-time-job/${job.data.slug}` : undefined,
             children: jobSkillsList.length > 0 ? jobSkillsList.map(s => ({ name: s, value: 1 })) : undefined
           })
         }
@@ -127,7 +127,7 @@ export function JobsSunburst({ height = '600px' }: JobsSunburstProps) {
         }
 
         setData({
-          name: 'Fractional Jobs',
+          name: 'Part-Time Jobs',
           children: rootChildren
         })
         setLoading(false)
@@ -214,7 +214,7 @@ export function JobsSunburst({ height = '600px' }: JobsSunburstProps) {
   const handleReset = () => {
     if (chartRef.current) {
       chartRef.current.focusOnNode(null)
-      setBreadcrumb(['Fractional Jobs'])
+      setBreadcrumb(['Part-Time Jobs'])
     }
   }
 

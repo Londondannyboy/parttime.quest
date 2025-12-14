@@ -77,7 +77,7 @@ export function ServiceComparisonTable({
               Feature
             </th>
             <th className={`p-4 text-left text-sm font-bold uppercase tracking-wider text-white ${colors.header} border-b-4 ${colors.border}`}>
-              Fractional {role}
+              Part-Time {role}
             </th>
             <th className="p-4 text-left text-sm font-bold uppercase tracking-wider text-gray-700 bg-gray-100 border-b border-gray-200">
               Interim {role}

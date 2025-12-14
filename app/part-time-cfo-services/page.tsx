@@ -9,21 +9,21 @@ import { ServiceComparisonTable } from '@/components/ServiceComparisonTable'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional CFO Services UK | Hire a Part-Time CFO',
-  description: 'Hire a Fractional CFO for your business. Access senior financial leadership at a fraction of full-time cost. Expert CFOs for fundraising, financial strategy, and growth. Start within days.',
-  keywords: 'fractional cfo, fractional cfo services, hire fractional cfo, part time cfo, fractional chief financial officer, fractional cfo uk, fractional finance director',
+  title: 'Part-Time CFO Services UK | Hire a Part-Time CFO',
+  description: 'Hire a Part-Time CFO for your business. Access senior financial leadership at a fraction of full-time cost. Expert CFOs for fundraising, financial strategy, and growth. Start within days.',
+  keywords: 'part-time cfo, part time cfo services, hire part-time cfo, part time cfo, part-time chief financial officer, part-time cfo uk, part-time finance director',
   alternates: {
-    canonical: 'https://fractional.quest/fractional-cfo-services',
+    canonical: 'https://parttime.quest/part-time-cfo-services',
   },
   openGraph: {
-    title: 'Fractional CFO Services UK | Hire a Part-Time CFO',
-    description: 'Hire a Fractional CFO for your business. Senior financial leadership at a fraction of full-time cost.',
-    images: ['/images/fractional-cfo-services.jpg'],
-    url: 'https://fractional.quest/fractional-cfo-services',
+    title: 'Part-Time CFO Services UK | Hire a Part-Time CFO',
+    description: 'Hire a Part-Time CFO for your business. Senior financial leadership at a fraction of full-time cost.',
+    images: ['/images/part-time-cfo-services.jpg'],
+    url: 'https://parttime.quest/part-time-cfo-services',
   },
 }
 
-export default function FractionalCFOServicesPage() {
+export default function PartTimeCFOServicesPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with 3D Knowledge Graph Background */}
@@ -41,11 +41,11 @@ export default function FractionalCFOServicesPage() {
                 Financial Leadership
               </span>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-[0.9] tracking-tight">
-                Fractional CFO<br />
+                Part-Time CFO<br />
                 <span className="text-gray-400">Services UK</span>
               </h1>
               <p className="text-xl md:text-2xl text-white/80 leading-relaxed max-w-2xl mb-8">
-                Hire a <strong className="text-white">Fractional CFO</strong> to lead your finance function.
+                Hire a <strong className="text-white">Part-Time CFO</strong> to lead your finance function.
                 Senior financial leadership, strategic expertise, and hands-on support—at a fraction of full-time cost.
               </p>
               <div className="flex flex-wrap gap-8 mb-10">
@@ -64,7 +64,7 @@ export default function FractionalCFOServicesPage() {
               </div>
               <div className="flex flex-wrap gap-4">
                 <Link href="#contact" className="px-8 py-4 bg-white text-black font-bold uppercase tracking-wider hover:bg-gray-100 transition-colors">
-                  Hire a Fractional CFO
+                  Hire a Part-Time CFO
                 </Link>
                 <Link href="#calculator" className="px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
                   Calculate Savings
@@ -75,31 +75,31 @@ export default function FractionalCFOServicesPage() {
         </div>
       </section>
 
-      {/* What is a Fractional CFO */}
+      {/* What is a Part-Time CFO */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Overview</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">What is a Fractional CFO?</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">What is a Part-Time CFO?</h2>
           </div>
           <div className="prose prose-lg prose-gray max-w-none">
             <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8 font-light">
-              A <strong className="font-semibold text-gray-900">Fractional CFO</strong> is an experienced Chief Financial Officer who works with your company on a part-time basis—typically 1-3 days per week. You get the strategic financial leadership, expertise, and guidance of a senior CFO without the commitment and cost of a full-time hire.
+              A <strong className="font-semibold text-gray-900">Part-Time CFO</strong> is an experienced Chief Financial Officer who works with your company on a part-time basis—typically 1-3 days per week. You get the strategic financial leadership, expertise, and guidance of a senior CFO without the commitment and cost of a full-time hire.
             </p>
             <p>
-              Unlike consultants who advise from the sidelines, a fractional CFO becomes part of your leadership team. They attend board meetings, manage your finance function, build investor relationships, and take ownership of financial outcomes—just not five days a week.
+              Unlike consultants who advise from the sidelines, a part-time CFO becomes part of your leadership team. They attend board meetings, manage your finance function, build investor relationships, and take ownership of financial outcomes—just not five days a week.
             </p>
             <div className="bg-gray-50 p-8 my-10 border-l-4 border-gray-900">
               <p className="text-xl font-semibold text-gray-900 mb-0">
                 "Companies access CFO expertise for £3,000-£6,000 per week instead of £12,500+ monthly for a full-time CFO."
               </p>
             </div>
-            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Fractional CFO vs Full-Time CFO</h3>
+            <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Part-Time CFO vs Full-Time CFO</h3>
             <p>
               A full-time CFO costs £150,000-£250,000 in salary alone, plus benefits, equity, office space, and management overhead. For many growing companies, that's overkill—you need CFO-level thinking on capital strategy and fundraising, but not 40 hours a week of it.
             </p>
             <p>
-              A fractional CFO gives you exactly what you need: senior financial leadership scaled to your actual requirements. As your company grows, you can increase their time—or transition to a full-time hire when the role justifies it.
+              A part-time CFO gives you exactly what you need: senior financial leadership scaled to your actual requirements. As your company grows, you can increase their time—or transition to a full-time hire when the role justifies it.
             </p>
           </div>
         </div>
@@ -110,8 +110,8 @@ export default function FractionalCFOServicesPage() {
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Responsibilities</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">What Does a Fractional CFO Do?</h2>
-            <p className="text-xl text-gray-600 mt-4">Core responsibilities your fractional CFO will own</p>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">What Does a Part-Time CFO Do?</h2>
+            <p className="text-xl text-gray-600 mt-4">Core responsibilities your part-time CFO will own</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -166,7 +166,7 @@ export default function FractionalCFOServicesPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Benefits</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">Why Hire a Fractional CFO?</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">Why Hire a Part-Time CFO?</h2>
           </div>
           <div className="space-y-8">
             {[
@@ -178,7 +178,7 @@ export default function FractionalCFOServicesPage() {
               },
               {
                 title: 'Immediate Impact',
-                description: 'Skip the 3-6 month recruitment process. Fractional CFOs are experienced professionals who can start within days and make immediate impact.',
+                description: 'Skip the 3-6 month recruitment process. Part-time CFOs are experienced professionals who can start within days and make immediate impact.',
                 stat: '7',
                 statLabel: 'Days to Start',
               },
@@ -196,7 +196,7 @@ export default function FractionalCFOServicesPage() {
               },
               {
                 title: 'Fresh Perspective',
-                description: 'Fractional CFOs work across multiple companies and industries. They bring best practices, benchmarks, and insights you wouldn\'t get from a single-company CFO.',
+                description: 'Part-time CFOs work across multiple companies and industries. They bring best practices, benchmarks, and insights you wouldn\'t get from a single-company CFO.',
                 stat: '3-5',
                 statLabel: 'Companies Seen',
               },
@@ -221,11 +221,11 @@ export default function FractionalCFOServicesPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Timing</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">When Should You Hire a Fractional CFO?</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">When Should You Hire a Part-Time CFO?</h2>
           </div>
           <div className="prose prose-lg prose-gray max-w-none mb-8">
             <p>
-              The right time to hire a fractional CFO depends on your company's stage and challenges. Here are the most common scenarios:
+              The right time to hire a part-time CFO depends on your company's stage and challenges. Here are the most common scenarios:
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -242,7 +242,7 @@ export default function FractionalCFOServicesPage() {
               },
               {
                 scenario: 'Revenue £1M-£20M',
-                description: 'You\'ve outgrown a bookkeeper or part-time accountant but can\'t justify a £200k CFO. This is the sweet spot for fractional.',
+                description: 'You\'ve outgrown a bookkeeper or part-time accountant but can\'t justify a £200k CFO. This is the sweet spot for part-time CFOs.',
                 timing: 'When complexity increases',
               },
               {
@@ -257,7 +257,7 @@ export default function FractionalCFOServicesPage() {
               },
               {
                 scenario: 'Financial Function Needs Building',
-                description: 'You need to implement systems, hire finance staff, and create processes. A fractional CFO can build the foundation, then hand off to an FD.',
+                description: 'You need to implement systems, hire finance staff, and create processes. A part-time CFO can build the foundation, then hand off to an FD.',
                 timing: 'As early as practical',
               },
             ].map((item, index) => (
@@ -276,12 +276,12 @@ export default function FractionalCFOServicesPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-8 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Calculator</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">How Much Does a Fractional CFO Cost?</h2>
-            <p className="text-gray-600 mt-4">Compare the cost of fractional vs full-time CFO</p>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">How Much Does a Part-Time CFO Cost?</h2>
+            <p className="text-gray-600 mt-4">Compare the cost of part-time vs full-time CFO</p>
           </div>
           <RoleCalculator role="cfo" />
           <div className="mt-8 prose prose-gray max-w-none">
-            <h3 className="text-xl font-bold text-gray-900">Typical Fractional CFO Pricing</h3>
+            <h3 className="text-xl font-bold text-gray-900">Typical Part-Time CFO Pricing</h3>
             <ul className="text-gray-600">
               <li><strong>Day Rate:</strong> £800-£1,500 per day (depending on experience and specialisation)</li>
               <li><strong>Monthly Retainer:</strong> £3,000-£6,000 for 1-2 days per week</li>
@@ -300,7 +300,7 @@ export default function FractionalCFOServicesPage() {
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="mb-12 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Comparison</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">Fractional vs Interim vs Full-Time CFO</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">Part-Time vs Interim vs Full-Time CFO</h2>
             <p className="text-gray-600 mt-4">Choose the right model for your needs</p>
           </div>
           <ServiceComparisonTable role="CFO" accentColor="gray" />
@@ -312,7 +312,7 @@ export default function FractionalCFOServicesPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-12 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Process</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">How to Hire a Fractional CFO</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">How to Hire a Part-Time CFO</h2>
             <p className="text-gray-600 mt-4">From first conversation to start date in as little as 7 days</p>
           </div>
           <HireProcessStepper accentColor="gray" />
@@ -323,7 +323,7 @@ export default function FractionalCFOServicesPage() {
               <li><strong>Specific Expertise:</strong> Do they have the skills you need most (fundraising, M&A, international expansion)?</li>
               <li><strong>Cultural Fit:</strong> Will they work well with your team and leadership style?</li>
               <li><strong>Availability:</strong> Can they commit to the time you need, when you need it?</li>
-              <li><strong>Track Record:</strong> Can they demonstrate results from previous fractional engagements?</li>
+              <li><strong>Track Record:</strong> Can they demonstrate results from previous part-time engagements?</li>
             </ul>
           </div>
         </div>
@@ -334,17 +334,17 @@ export default function FractionalCFOServicesPage() {
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Industries</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">Fractional CFOs by Industry</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">Part-Time CFOs by Industry</h2>
             <p className="text-gray-600 mt-4">Specialists with deep sector experience</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { name: 'SaaS & Technology', description: 'ARR/MRR metrics, burn rate management, growth financing', link: '/fractional-jobs-saas' },
-              { name: 'E-commerce & DTC', description: 'Unit economics, inventory financing, marketplace expansion', link: '/fractional-jobs-ecommerce' },
-              { name: 'FinTech', description: 'Regulatory compliance, funding rounds, FCA requirements', link: '/fractional-jobs-finance' },
-              { name: 'Healthcare & HealthTech', description: 'NHS contracting, clinical economics, health regulations', link: '/fractional-jobs-healthcare' },
-              { name: 'Professional Services', description: 'Partner economics, utilisation metrics, practice management', link: '/fractional-jobs-professional-services' },
-              { name: 'Startups & Scale-ups', description: 'Seed to Series C, investor relations, rapid scaling', link: '/fractional-jobs-startups' },
+              { name: 'SaaS & Technology', description: 'ARR/MRR metrics, burn rate management, growth financing', link: '/part-time-jobs-saas' },
+              { name: 'E-commerce & DTC', description: 'Unit economics, inventory financing, marketplace expansion', link: '/part-time-jobs-ecommerce' },
+              { name: 'FinTech', description: 'Regulatory compliance, funding rounds, FCA requirements', link: '/part-time-jobs-finance' },
+              { name: 'Healthcare & HealthTech', description: 'NHS contracting, clinical economics, health regulations', link: '/part-time-jobs-healthcare' },
+              { name: 'Professional Services', description: 'Partner economics, utilisation metrics, practice management', link: '/part-time-jobs-professional-services' },
+              { name: 'Startups & Scale-ups', description: 'Seed to Series C, investor relations, rapid scaling', link: '/part-time-jobs-startups' },
             ].map((industry, index) => (
               <Link key={index} href={industry.link} className="block bg-white p-6 border border-gray-200 hover:border-gray-400 hover:shadow-lg transition-all">
                 <h3 className="font-bold text-gray-900 mb-2">{industry.name}</h3>
@@ -371,16 +371,16 @@ export default function FractionalCFOServicesPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-4 block">Get Started</span>
           <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
-            Ready to Hire a<br /><span className="text-gray-400">Fractional CFO?</span>
+            Ready to Hire a<br /><span className="text-gray-400">Part-Time CFO?</span>
           </h2>
           <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-            Tell us about your needs and we'll match you with pre-vetted fractional CFOs who fit your requirements. Start conversations within 48 hours.
+            Tell us about your needs and we'll match you with pre-vetted part-time CFOs who fit your requirements. Start conversations within 48 hours.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/handler/sign-up" className="px-10 py-5 bg-white text-black font-bold uppercase tracking-wider hover:bg-gray-100 transition-colors">
-              Find a Fractional CFO
+              Find a Part-Time CFO
             </Link>
-            <Link href="/fractional-cfo-jobs-uk" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
+            <Link href="/part-time-cfo-jobs-uk" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
               I'm a CFO Looking for Roles
             </Link>
           </div>
@@ -393,11 +393,11 @@ export default function FractionalCFOServicesPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <span className="text-sm font-bold uppercase tracking-wider text-gray-400">Related Services</span>
             <div className="flex flex-wrap gap-4">
-              <Link href="/fractional-cmo-services" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">Fractional CMO</Link>
-              <Link href="/fractional-cto-services" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">Fractional CTO</Link>
-              <Link href="/fractional-coo-services" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">Fractional COO</Link>
-              <Link href="/fractional-cfo-jobs-uk" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">CFO Jobs</Link>
-              <Link href="/fractional-cfo-salary" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">CFO Salary Guide</Link>
+              <Link href="/part-time-cmo-services" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">Part-Time CMO</Link>
+              <Link href="/part-time-cto-services" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">Part-Time CTO</Link>
+              <Link href="/part-time-coo-services" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">Part-Time COO</Link>
+              <Link href="/part-time-cfo-jobs-uk" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">CFO Jobs</Link>
+              <Link href="/part-time-cfo-salary" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">CFO Salary Guide</Link>
             </div>
           </div>
         </div>

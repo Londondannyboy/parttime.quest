@@ -58,7 +58,7 @@ export default async function PartTimeCmoPage() {
               Flexible Chief Marketing Officer roles for experienced marketing leaders. Work 1-3 days per week earning £700-£1,400 per day.
             </p>
             <div className="flex gap-4">
-              <Link href="/fractional-jobs?role=CMO" className="px-8 py-4 bg-white text-purple-900 rounded-lg font-semibold hover:bg-purple-50">
+              <Link href="/part-time-jobs?role=CMO" className="px-8 py-4 bg-white text-purple-900 rounded-lg font-semibold hover:bg-purple-50">
                 Browse {jobCount}+ CMO Jobs
               </Link>
             </div>
@@ -71,7 +71,7 @@ export default async function PartTimeCmoPage() {
         <div className="max-w-4xl mx-auto px-4 prose prose-lg prose-purple">
           <h2>What is a Part-Time CMO?</h2>
           <p>
-            A <strong>part-time CMO</strong> (also known as a fractional CMO or outsourced CMO) is a senior marketing executive who provides strategic marketing leadership to companies on a flexible, part-time basis. Instead of working full-time for a single organisation, part-time CMOs typically engage with multiple clients, dedicating 1-3 days per week to each company.
+            A <strong>part-time CMO</strong> (also known as a part-time CMO or outsourced CMO) is a senior marketing executive who provides strategic marketing leadership to companies on a flexible, part-time basis. Instead of working full-time for a single organisation, part-time CMOs typically engage with multiple clients, dedicating 1-3 days per week to each company.
           </p>
           <p>
             The <strong>part-time CMO</strong> model has gained significant traction in the UK, particularly among startups, scale-ups, and SMEs that need experienced marketing leadership but cannot justify the £120,000-£200,000 annual cost of a full-time Chief Marketing Officer. A part-time CMO brings the same strategic expertise at a fraction of the cost.
@@ -124,12 +124,12 @@ export default async function PartTimeCmoPage() {
             Transitioning to a <strong>part-time CMO career</strong> typically requires 12-15+ years of marketing experience, including significant time in senior leadership roles (VP Marketing, Marketing Director, or CMO). The most successful fractional CMOs have deep expertise in specific areas—such as B2B SaaS growth, brand building, or performance marketing—that make them highly valuable to target clients.
           </p>
           <p>
-            Building a fractional practice takes time. Many part-time CMOs start with one or two engagements while consulting or between full-time roles, gradually building their client portfolio through referrals, networking, and platforms like <Link href="/fractional-jobs">Fractional Quest</Link>.
+            Building a part-time practice takes time. Many part-time CMOs start with one or two engagements while consulting or between full-time roles, gradually building their client portfolio through referrals, networking, and platforms like <Link href="/part-time-jobs">Part-Time Quest</Link>.
           </p>
 
           <h2>Part-Time CMO Jobs in London</h2>
           <p>
-            London dominates the UK market for <strong>part-time CMO jobs</strong>, with approximately 55% of all fractional marketing leadership roles based in the capital. Shoreditch and the broader Tech City area are particularly active, given the concentration of startups and scale-ups requiring marketing leadership.
+            London dominates the UK market for <strong>part-time CMO jobs</strong>, with approximately 55% of all part-time marketing leadership roles based in the capital. Shoreditch and the broader Tech City area are particularly active, given the concentration of startups and scale-ups requiring marketing leadership.
           </p>
           <p>
             Manchester, Birmingham, and Bristol also have growing fractional CMO markets, particularly for companies in creative industries, e-commerce, and professional services. Remote and hybrid arrangements are increasingly common, expanding opportunities beyond traditional geographic boundaries.
@@ -157,7 +157,7 @@ export default async function PartTimeCmoPage() {
               ))}
             </div>
             <div className="text-center mt-8">
-              <Link href="/fractional-jobs?role=CMO" className="px-8 py-4 bg-purple-700 text-white rounded-lg font-semibold hover:bg-purple-800">
+              <Link href="/part-time-jobs?role=CMO" className="px-8 py-4 bg-purple-700 text-white rounded-lg font-semibold hover:bg-purple-800">
                 View All CMO Jobs →
               </Link>
             </div>
@@ -170,10 +170,10 @@ export default async function PartTimeCmoPage() {
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Pages</h2>
           <div className="grid md:grid-cols-3 gap-4">
-            <Link href="/fractional-cmo-salary" className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100">
-              <span className="font-semibold text-gray-900">Fractional CMO Salary Guide →</span>
+            <Link href="/part-time-cmo-salary" className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100">
+              <span className="font-semibold text-gray-900">Part-Time CMO Salary Guide →</span>
             </Link>
-            <Link href="/fractional-jobs-london" className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100">
+            <Link href="/part-time-jobs-london" className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100">
               <span className="font-semibold text-gray-900">CMO Jobs London →</span>
             </Link>
             <Link href="/part-time-cfo" className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100">

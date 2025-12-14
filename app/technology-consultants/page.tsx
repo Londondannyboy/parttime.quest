@@ -5,10 +5,10 @@ import { JobsGraph3D } from '@/components/JobsGraph3D'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Hire Technology Consultants UK | Fractional Tech Experts',
-  description: 'Hire experienced technology consultants on a fractional basis. Expert tech professionals for architecture, engineering leadership, and digital transformation. Available part-time.',
-  keywords: 'technology consultants, hire tech consultant, fractional technology expert, it consultant uk, technical strategy consultant',
-  alternates: { canonical: 'https://fractional.quest/technology-consultants' },
+  title: 'Hire Technology Consultants UK | Part-Time Tech Experts',
+  description: 'Hire experienced technology consultants on a part-time basis. Expert tech professionals for architecture, engineering leadership, and digital transformation. Available part-time.',
+  keywords: 'technology consultants, hire tech consultant, part-time technology expert, it consultant uk, technical strategy consultant',
+  alternates: { canonical: 'https://parttime.quest/technology-consultants' },
 }
 
 export default function TechnologyConsultantsPage() {
@@ -25,10 +25,10 @@ export default function TechnologyConsultantsPage() {
             <div className="max-w-4xl">
               <span className="inline-block bg-blue-500 text-white px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] mb-6">Popular Roles</span>
               <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-[0.9]">Technology<br /><span className="text-blue-400">Consultants</span></h1>
-              <p className="text-xl text-white/80 leading-relaxed max-w-2xl mb-8">Hire experienced technology professionals on a fractional basis. Get expert technical strategy and architecture without the cost of a full technology team.</p>
+              <p className="text-xl text-white/80 leading-relaxed max-w-2xl mb-8">Hire experienced technology professionals on a part-time basis. Get expert technical strategy and architecture without the cost of a full technology team.</p>
               <div className="flex flex-wrap gap-4">
                 <Link href="#contact" className="px-8 py-4 bg-blue-500 text-white font-bold uppercase tracking-wider hover:bg-blue-400 transition-colors">Find a Consultant</Link>
-                <Link href="/fractional-cto-services" className="px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Fractional CTO</Link>
+                <Link href="/part-time-cto-services" className="px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Part-Time CTO</Link>
               </div>
             </div>
           </div>
@@ -38,7 +38,7 @@ export default function TechnologyConsultantsPage() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <h2 className="text-3xl font-black text-gray-900 mb-6">What Technology Consultants Do</h2>
-          <p className="text-xl text-gray-600 leading-relaxed mb-6">Technology consultants help businesses make the right technical decisions, build great products, and scale their engineering capabilities. On a fractional basis, they bring CTO-level expertise without the full-time commitment.</p>
+          <p className="text-xl text-gray-600 leading-relaxed mb-6">Technology consultants help businesses make the right technical decisions, build great products, and scale their engineering capabilities. On a part-time basis, they bring CTO-level expertise without the full-time commitment.</p>
           <div className="grid md:grid-cols-2 gap-6 mt-10">
             {[
               { title: 'Technical Strategy', description: 'Define technology roadmaps, architecture, and build vs buy decisions.' },
@@ -84,7 +84,7 @@ export default function TechnologyConsultantsPage() {
           <p className="text-xl text-gray-400 mb-10">Tell us about your technical needs and we'll match you with experienced technology professionals.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/handler/sign-up" className="px-10 py-5 bg-blue-500 text-white font-bold uppercase tracking-wider hover:bg-blue-400 transition-colors">Get Started</Link>
-            <Link href="/fractional-technology" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Explore Tech Leadership</Link>
+            <Link href="/part-time-technology" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Explore Tech Leadership</Link>
           </div>
         </div>
       </section>

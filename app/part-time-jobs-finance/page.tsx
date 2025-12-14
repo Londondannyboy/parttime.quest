@@ -9,22 +9,22 @@ import { FAQ, FINANCE_FAQS } from '@/components/FAQ'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional Finance Jobs UK - CFO, FD, Finance Director Roles',
-  description: 'Find fractional finance jobs in the UK. Fractional CFO, Finance Director, FD roles. £800-£1,400 daily rates. PE-backed, startups, and SMEs.',
+  title: 'Part-Time Finance Jobs UK - CFO, FD, Finance Director Roles',
+  description: 'Find part-time finance jobs in the UK. Part-Time CFO, Finance Director, FD roles. £800-£1,400 daily rates. PE-backed, startups, and SMEs.',
   openGraph: {
-    title: 'Fractional Finance Jobs UK - CFO, FD, Finance Director Roles',
-    description: 'Find fractional finance leadership roles across the UK.',
+    title: 'Part-Time Finance Jobs UK - CFO, FD, Finance Director Roles',
+    description: 'Find part-time finance leadership roles across the UK.',
     type: 'website',
   },
 }
 
 const financeRoles = [
-  { name: 'Fractional CFO', description: 'Strategic finance leadership', rateRange: '£900-£1,400/day', demand: 'Very High' },
-  { name: 'Fractional Finance Director', description: 'Financial operations & reporting', rateRange: '£750-£1,100/day', demand: 'High' },
-  { name: 'Fractional FP&A Director', description: 'Financial planning & analysis', rateRange: '£700-£1,000/day', demand: 'High' },
-  { name: 'Fractional Controller', description: 'Accounting & controls', rateRange: '£600-£900/day', demand: 'Medium' },
-  { name: 'Fractional Treasury Director', description: 'Cash & risk management', rateRange: '£800-£1,200/day', demand: 'Growing' },
-  { name: 'Fractional M&A Director', description: 'Deals & transactions', rateRange: '£1,000-£1,500/day', demand: 'High' },
+  { name: 'Part-Time CFO', description: 'Strategic finance leadership', rateRange: '£900-£1,400/day', demand: 'Very High' },
+  { name: 'Part-Time Finance Director', description: 'Financial operations & reporting', rateRange: '£750-£1,100/day', demand: 'High' },
+  { name: 'Part-Time FP&A Director', description: 'Financial planning & analysis', rateRange: '£700-£1,000/day', demand: 'High' },
+  { name: 'Part-Time Controller', description: 'Accounting & controls', rateRange: '£600-£900/day', demand: 'Medium' },
+  { name: 'Part-Time Treasury Director', description: 'Cash & risk management', rateRange: '£800-£1,200/day', demand: 'Growing' },
+  { name: 'Part-Time M&A Director', description: 'Deals & transactions', rateRange: '£1,000-£1,500/day', demand: 'High' },
 ]
 
 const financeSectors = [
@@ -43,9 +43,9 @@ const financeSkills = [
 ]
 
 const relatedSearches = [
-  'Fractional CFO Jobs UK', 'Fractional Finance Director', 'Part-Time CFO London',
-  'Fractional FD Jobs', 'PE Backed Fractional CFO', 'Startup CFO Jobs',
-  'Fractional CFO Day Rate', 'Fractional Finance Jobs Remote', 'SaaS Fractional CFO'
+  'Part-Time CFO Jobs UK', 'Part-Time Finance Director', 'Part-Time CFO London',
+  'Part-Time FD Jobs', 'PE Backed Part-Time CFO', 'Startup CFO Jobs',
+  'Part-Time CFO Day Rate', 'Part-Time Finance Jobs Remote', 'SaaS Part-Time CFO'
 ]
 
 async function getFinanceStats() {
@@ -91,17 +91,17 @@ export default async function FinanceJobsPage() {
                   </span>
 
                   <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[0.95] tracking-tight">
-                    Fractional<br />
+                    Part-Time<br />
                     <span className="text-emerald-300">Finance</span> Jobs UK
                   </h1>
 
                   <p className="text-lg text-white/70 mb-8 leading-relaxed max-w-lg">
-                    Fractional CFO, Finance Director, FD positions. £800-£1,400 daily rates across PE-backed companies, startups, and SMEs.
+                    Part-Time CFO, Finance Director, FD positions. £800-£1,400 daily rates across PE-backed companies, startups, and SMEs.
                   </p>
 
                   <div className="flex flex-wrap gap-4">
                     <Link
-                      href="/fractional-jobs?industry=Financial Services"
+                      href="/part-time-jobs?industry=Financial Services"
                       className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg bg-white text-black hover:bg-white/90 transition-all duration-200"
                     >
                       Browse Finance Jobs →
@@ -149,7 +149,7 @@ export default async function FinanceJobsPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Opportunities</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Fractional Finance Jobs</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Part-Time Finance Jobs</h2>
             <p className="text-xl text-gray-500">Browse {stats.total}+ finance leadership opportunities</p>
           </div>
           <EmbeddedJobBoard defaultDepartment="Finance" />
@@ -161,7 +161,7 @@ export default async function FinanceJobsPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">By Role</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Fractional Finance Roles</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Part-Time Finance Roles</h2>
             <p className="text-xl text-gray-500">Finance leadership positions available</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -221,7 +221,7 @@ export default async function FinanceJobsPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">The Opportunity</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Fractional CFO?</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Part-Time CFO?</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl p-8">
@@ -230,7 +230,7 @@ export default async function FinanceJobsPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">PE/VC Demand</h3>
               <p className="text-gray-600">
-                45% of fractional CFO roles are with PE-backed companies. Investors demand senior finance expertise their portfolio companies can't afford full-time.
+                45% of part-time CFO roles are with PE-backed companies. Investors demand senior finance expertise their portfolio companies can't afford full-time.
               </p>
             </div>
             <div className="bg-white rounded-2xl p-8">
@@ -239,7 +239,7 @@ export default async function FinanceJobsPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Highest Demand</h3>
               <p className="text-gray-600">
-                CFO/Finance Director is the most common fractional role, accounting for 35% of all positions. Every growing company needs financial leadership.
+                CFO/Finance Director is the most common part-time role, accounting for 35% of all positions. Every growing company needs financial leadership.
               </p>
             </div>
             <div className="bg-white rounded-2xl p-8">
@@ -248,7 +248,7 @@ export default async function FinanceJobsPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Clear Value</h3>
               <p className="text-gray-600">
-                Fractional CFOs deliver measurable ROI - improved cash flow, successful fundraises, and exit readiness. Value is easy to demonstrate.
+                Part-Time CFOs deliver measurable ROI - improved cash flow, successful fundraises, and exit readiness. Value is easy to demonstrate.
               </p>
             </div>
           </div>
@@ -261,7 +261,7 @@ export default async function FinanceJobsPage() {
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Tax Planning</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">IR35 Calculator</h2>
-            <p className="text-xl text-gray-500">Understand your take-home as a fractional finance leader</p>
+            <p className="text-xl text-gray-500">Understand your take-home as a part-time finance leader</p>
           </div>
           <IR35Calculator defaultDayRate={1050} />
         </div>
@@ -272,8 +272,8 @@ export default async function FinanceJobsPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">FAQ</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Finance Fractional FAQs</h2>
-            <p className="text-xl text-gray-500">Common questions about fractional finance roles</p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Finance Part-Time FAQs</h2>
+            <p className="text-xl text-gray-500">Common questions about part-time finance roles</p>
           </div>
           <FAQ items={FINANCE_FAQS} title="" />
         </div>
@@ -287,7 +287,7 @@ export default async function FinanceJobsPage() {
             {relatedSearches.map((search) => (
               <Link
                 key={search}
-                href={`/fractional-jobs?q=${encodeURIComponent(search)}`}
+                href={`/part-time-jobs?q=${encodeURIComponent(search)}`}
                 className="px-4 py-2 bg-gray-50 rounded-full text-gray-700 hover:bg-emerald-100 hover:text-emerald-700 transition-colors text-sm border border-gray-200"
               >
                 {search}
@@ -302,14 +302,14 @@ export default async function FinanceJobsPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-500 mb-6 block">Get Started</span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready for Fractional Finance Leadership?
+            Ready for Part-Time Finance Leadership?
           </h2>
           <p className="text-xl text-gray-400 mb-10">
             {stats.total}+ CFO, Finance Director, and FD opportunities
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/fractional-jobs?role=CFO"
+              href="/part-time-jobs?role=CFO"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-gray-900 hover:bg-gray-100 transition-all"
             >
               Browse Finance Jobs

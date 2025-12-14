@@ -114,7 +114,7 @@ export function RepoDisplay({ userId, refreshTrigger }: RepoDisplayProps) {
   })
 
   // Role type options
-  const ROLE_TYPES = ['full-time', 'fractional', 'consulting', 'contract', 'part-time']
+  const ROLE_TYPES = ['full-time', 'part-time', 'consulting', 'contract', 'interim']
   const currentYear = new Date().getFullYear()
   const years = Array.from({ length: 50 }, (_, i) => currentYear - i)
 
@@ -537,7 +537,7 @@ export function RepoDisplay({ userId, refreshTrigger }: RepoDisplayProps) {
                       type="text"
                       value={newExperience.roleTitle}
                       onChange={(e) => setNewExperience(prev => ({ ...prev, roleTitle: e.target.value }))}
-                      placeholder="e.g., Fractional CFO, VP Product"
+                      placeholder="e.g., Part-Time CFO, VP Product"
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                     />
                   </div>
@@ -689,7 +689,7 @@ export function RepoDisplay({ userId, refreshTrigger }: RepoDisplayProps) {
                       <div className="flex items-center gap-2">
                         {exp.role_type && (
                           <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                            exp.role_type === 'fractional' ? 'bg-purple-100 text-purple-700' :
+                            exp.role_type === 'part-time' ? 'bg-purple-100 text-purple-700' :
                             exp.role_type === 'consulting' ? 'bg-blue-100 text-blue-700' :
                             'bg-gray-100 text-gray-600'
                           }`}>

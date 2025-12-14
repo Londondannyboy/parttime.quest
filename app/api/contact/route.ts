@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
           ${data.phone || null},
           ${data.message},
           ${data.newsletter},
-          'fractional',
+          'part-time',
           NOW()
         )
       `
@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
           ${data.jobTitle},
           ${data.jobDescription},
           ${data.scheduleCall},
-          'fractional',
+          'part-time',
           NOW()
         )
       `

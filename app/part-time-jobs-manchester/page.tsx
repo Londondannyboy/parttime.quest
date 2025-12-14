@@ -9,11 +9,11 @@ import { FAQ, MANCHESTER_FAQS } from '@/components/FAQ'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs Manchester - Executive Roles in the North West',
-  description: 'Find fractional executive jobs in Manchester. CFO, CMO, CTO roles across Greater Manchester. £700-£1,200 daily rates. Tech, media, and finance hub.',
+  title: 'Part-Time Jobs Manchester - Executive Roles in the North West',
+  description: 'Find part-time executive jobs in Manchester. CFO, CMO, CTO roles across Greater Manchester. £700-£1,200 daily rates. Tech, media, and finance hub.',
   openGraph: {
-    title: 'Fractional Jobs Manchester - Executive Roles in the North West',
-    description: 'Find fractional executive jobs in Manchester and Greater Manchester.',
+    title: 'Part-Time Jobs Manchester - Executive Roles in the North West',
+    description: 'Find part-time executive jobs in Manchester and Greater Manchester.',
     type: 'website',
   },
 }
@@ -37,9 +37,9 @@ const manchesterIndustries = [
 ]
 
 const relatedSearches = [
-  'Fractional CFO Jobs Manchester', 'Fractional CTO Jobs Manchester', 'Fractional CMO Jobs North West',
+  'Part-Time CFO Jobs Manchester', 'Part-Time CTO Jobs Manchester', 'Part-Time CMO Jobs North West',
   'Part-Time CFO Manchester', 'Interim Executive Manchester', 'Portfolio Career Manchester',
-  'Fractional Jobs MediaCity', 'Fractional Jobs Liverpool', 'Fractional Executive Salary Manchester'
+  'Part-Time Jobs MediaCity', 'Part-Time Jobs Liverpool', 'Part-Time Executive Salary Manchester'
 ]
 
 async function getManchesterStats() {
@@ -85,13 +85,13 @@ export default async function ManchesterPage() {
                   </span>
 
                   <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[0.95] tracking-tight">
-                    Fractional Jobs<br />
+                    Part-Time Jobs<br />
                     <span className="text-white/90">Manchester</span>
                   </h1>
 
                   <img
-                    src="/images/fractional-jobs-manchester.svg"
-                    alt="Fractional Jobs Manchester - Executive recruitment opportunities in the North West"
+                    src="/images/part-time-jobs-manchester.svg"
+                    alt="Part-Time Jobs Manchester - Executive recruitment opportunities in the North West"
                     className="hidden"
                     width={1}
                     height={1}
@@ -103,7 +103,7 @@ export default async function ManchesterPage() {
 
                   <div className="flex flex-wrap gap-4">
                     <Link
-                      href="/fractional-jobs?location=Manchester"
+                      href="/part-time-jobs?location=Manchester"
                       className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg bg-white text-black hover:bg-white/90 transition-all duration-200"
                     >
                       Browse Manchester Jobs →
@@ -151,7 +151,7 @@ export default async function ManchesterPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Opportunities</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Manchester Fractional Jobs</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Manchester Part-Time Jobs</h2>
             <p className="text-xl text-gray-500">Browse {stats.total}+ live opportunities in Greater Manchester</p>
           </div>
           <EmbeddedJobBoard defaultLocation="Manchester" />
@@ -162,8 +162,8 @@ export default async function ManchesterPage() {
       <section className="py-20 md:py-28 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Fractional Jobs Manchester by Area</h2>
-            <p className="text-xl text-gray-600">Find fractional roles from the City to MediaCity</p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Part-Time Jobs Manchester by Area</h2>
+            <p className="text-xl text-gray-600">Find part-time roles from the City to MediaCity</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {manchesterAreas.map((area) => (
@@ -182,7 +182,7 @@ export default async function ManchesterPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Manchester Industries</h2>
-            <p className="text-xl text-gray-600">Key sectors hiring fractional executives</p>
+            <p className="text-xl text-gray-600">Key sectors hiring part-time executives</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {manchesterIndustries.map((industry) => (
@@ -209,7 +209,7 @@ export default async function ManchesterPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Tech Powerhouse</h3>
               <p className="text-gray-600">
-                Manchester has the UK's largest tech ecosystem outside London. 25% YoY growth in fractional tech roles.
+                Manchester has the UK's largest tech ecosystem outside London. 25% YoY growth in part-time tech roles.
               </p>
             </div>
             <div className="bg-white rounded-2xl p-8 shadow-sm">
@@ -218,7 +218,7 @@ export default async function ManchesterPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Media Capital</h3>
               <p className="text-gray-600">
-                MediaCityUK hosts BBC, ITV, and dozens of production companies. Perfect for fractional CMOs in media.
+                MediaCityUK hosts BBC, ITV, and dozens of production companies. Perfect for part-time CMOs in media.
               </p>
             </div>
             <div className="bg-white rounded-2xl p-8 shadow-sm">
@@ -240,7 +240,7 @@ export default async function ManchesterPage() {
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Tax Planning</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">IR35 Calculator</h2>
-            <p className="text-xl text-gray-500">Understand your take-home as a fractional executive in Manchester</p>
+            <p className="text-xl text-gray-500">Understand your take-home as a part-time executive in Manchester</p>
           </div>
           <IR35Calculator defaultDayRate={900} />
         </div>
@@ -252,7 +252,7 @@ export default async function ManchesterPage() {
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">FAQ</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Common Questions</h2>
-            <p className="text-xl text-gray-500">About fractional work in Manchester</p>
+            <p className="text-xl text-gray-500">About part-time work in Manchester</p>
           </div>
           <FAQ items={MANCHESTER_FAQS} title="" />
         </div>
@@ -266,7 +266,7 @@ export default async function ManchesterPage() {
             {relatedSearches.map((search) => (
               <Link
                 key={search}
-                href={`/fractional-jobs?q=${encodeURIComponent(search)}`}
+                href={`/part-time-jobs?q=${encodeURIComponent(search)}`}
                 className="px-4 py-2 bg-gray-50 rounded-full text-gray-700 hover:bg-purple-100 hover:text-purple-700 transition-colors text-sm"
               >
                 {search}
@@ -283,10 +283,10 @@ export default async function ManchesterPage() {
             Ready to Work in Manchester?
           </h2>
           <p className="text-xl text-purple-100 mb-10">
-            {stats.total}+ fractional opportunities across Manchester, MediaCity, and Liverpool
+            {stats.total}+ part-time opportunities across Manchester, MediaCity, and Liverpool
           </p>
           <Link
-            href="/fractional-jobs?location=Manchester"
+            href="/part-time-jobs?location=Manchester"
             className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-purple-900 hover:bg-purple-50 transition-all"
           >
             Browse Manchester Jobs →

@@ -68,7 +68,7 @@ export function JobsPanel({ searchQuery, roleFilter, locationFilter, onJobSelect
     <div className="bg-white h-full flex flex-col">
       {/* Header */}
       <div className="p-4 border-b border-gray-200">
-        <h2 className="text-lg font-semibold text-gray-900">Fractional Jobs</h2>
+        <h2 className="text-lg font-semibold text-gray-900">Part-Time Jobs</h2>
         <p className="text-sm text-gray-600 mt-1">
           {jobs.length > 0 ? `${jobs.length} roles available` : 'Browse opportunities'}
         </p>
@@ -133,7 +133,7 @@ export function JobsPanel({ searchQuery, roleFilter, locationFilter, onJobSelect
       {/* Footer */}
       <div className="p-4 border-t border-gray-200 bg-gray-50">
         <Link
-          href="/fractional-jobs"
+          href="/part-time-jobs"
           className="block w-full text-center py-2 px-4 bg-purple-600 text-white text-sm font-medium rounded-lg hover:bg-purple-700 transition-colors"
         >
           View All Jobs →
@@ -160,7 +160,7 @@ function JobCard({ job, onClick }: { job: Job; onClick?: () => void }) {
         </div>
         {job.isFractional && (
           <span className="flex-shrink-0 px-2 py-0.5 bg-purple-100 text-purple-700 text-xs font-medium rounded-full">
-            Fractional
+            Part-Time
           </span>
         )}
       </div>

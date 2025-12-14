@@ -58,7 +58,7 @@ export default function CandidateContactPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-black text-gray-900 mb-4">Get in Touch</h1>
           <p className="text-xl text-gray-600">
-            Have questions about fractional roles or want to share feedback? We&apos;d love to hear from you.
+            Have questions about part-time roles or want to share feedback? We&apos;d love to hear from you.
           </p>
         </div>
       </section>
@@ -134,7 +134,7 @@ export default function CandidateContactPage() {
                     defaultChecked
                   />
                   <label htmlFor="newsletter" className="text-sm text-gray-600">
-                    I&apos;d like to receive job alerts and updates about new fractional opportunities
+                    I&apos;d like to receive job alerts and updates about new part-time opportunities
                   </label>
                 </div>
 
@@ -161,8 +161,8 @@ export default function CandidateContactPage() {
               <div className="text-3xl mb-3">📧</div>
               <h3 className="font-bold text-gray-900 mb-2">Email</h3>
               <p className="text-gray-600 text-sm">
-                <a href="mailto:careers@fractional.quest" className="text-purple-700 hover:text-purple-900">
-                  careers@fractional.quest
+                <a href="mailto:careers@parttime.quest" className="text-purple-700 hover:text-purple-900">
+                  careers@parttime.quest
                 </a>
               </p>
             </Card>

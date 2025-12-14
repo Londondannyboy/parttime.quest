@@ -7,11 +7,11 @@ import { JobsGraph3D } from '@/components/JobsGraph3D'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs Newcastle - Executive Roles in the North East',
-  description: 'Find fractional executive jobs in Newcastle. CFO, CMO, CTO roles in the North East. £500-£950 daily rates. Tech, digital, and professional services hub.',
+  title: 'Part-Time Jobs Newcastle - Executive Roles in the North East',
+  description: 'Find part-time executive jobs in Newcastle. CFO, CMO, CTO roles in the North East. £500-£950 daily rates. Tech, digital, and professional services hub.',
   openGraph: {
-    title: 'Fractional Jobs Newcastle - Executive Roles in the North East',
-    description: 'Find fractional executive jobs in Newcastle. Tech, digital, and professional services hub.',
+    title: 'Part-Time Jobs Newcastle - Executive Roles in the North East',
+    description: 'Find part-time executive jobs in Newcastle. Tech, digital, and professional services hub.',
     type: 'website',
   },
 }
@@ -38,15 +38,15 @@ const successStories = [
   {
     quote: "Newcastle's tech scene is massively underrated. I work with 4 scale-ups and the quality of companies here rivals anywhere. The lifestyle is unbeatable.",
     name: "Tom Anderson",
-    role: "Fractional CTO",
+    role: "Part-Time CTO",
     area: "Quayside",
     clients: 4,
     earnings: "£125k/year"
   },
   {
-    quote: "Newcastle Helix is transforming the region. The innovation happening in data science and ageing & health is creating incredible fractional opportunities.",
+    quote: "Newcastle Helix is transforming the region. The innovation happening in data science and ageing & health is creating incredible part-time opportunities.",
     name: "Emma Richardson",
-    role: "Fractional CFO",
+    role: "Part-Time CFO",
     area: "Newcastle Helix",
     clients: 3,
     earnings: "£115k/year"
@@ -54,7 +54,7 @@ const successStories = [
   {
     quote: "I moved from London and couldn't be happier. Same quality work, better clients, and a cost of living that means I can actually enjoy life.",
     name: "David Wright",
-    role: "Fractional CMO",
+    role: "Part-Time CMO",
     area: "City Centre",
     clients: 3,
     earnings: "£105k/year"
@@ -105,14 +105,14 @@ export default async function NewcastlePage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs Newcastle
+            Part-Time Jobs Newcastle
           </h1>
           <p className="max-w-2xl text-xl text-slate-100 mb-10 leading-relaxed">
-            {stats.totalNewcastle}+ fractional executive opportunities in the North East. £500-£950 daily rates. Work with innovative tech, gaming, and life sciences companies.
+            {stats.totalNewcastle}+ part-time executive opportunities in the North East. £500-£950 daily rates. Work with innovative tech, gaming, and life sciences companies.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/fractional-jobs?location=Newcastle"
+              href="/part-time-jobs?location=Newcastle"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-slate-900 hover:bg-slate-50 transition-all duration-200"
             >
               Browse All Newcastle Jobs
@@ -161,7 +161,7 @@ export default async function NewcastlePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {newcastleAreas.map((area, i) => (
-              <Link key={area.name} href={`/fractional-jobs?location=${encodeURIComponent(area.name)}`} className="group">
+              <Link key={area.name} href={`/part-time-jobs?location=${encodeURIComponent(area.name)}`} className="group">
                 <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-transparent hover:border-slate-200">
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-slate-700 transition-colors mb-2">
                     {area.name}
@@ -189,14 +189,14 @@ export default async function NewcastlePage() {
               <span className="text-3xl mb-4 block">🎮</span>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Gaming Hub</h3>
               <p className="text-gray-600">
-                Newcastle is home to Ubisoft, Sumo Digital, and 50+ game studios. Fractional CTOs and CMOs are in high demand in this growing sector.
+                Newcastle is home to Ubisoft, Sumo Digital, and 50+ game studios. Part-Time CTOs and CMOs are in high demand in this growing sector.
               </p>
             </div>
             <div className="bg-gray-50 rounded-2xl p-8">
               <span className="text-3xl mb-4 block">🏗️</span>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Newcastle Helix</h3>
               <p className="text-gray-600">
-                £350m innovation district focused on urban science, data, and ageing. World-class research creating fractional leadership opportunities.
+                £350m innovation district focused on urban science, data, and ageing. World-class research creating part-time leadership opportunities.
               </p>
             </div>
             <div className="bg-gray-50 rounded-2xl p-8">
@@ -215,7 +215,7 @@ export default async function NewcastlePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Newcastle Industries</h2>
-            <p className="text-xl text-gray-600">High-growth sectors hiring fractional executives</p>
+            <p className="text-xl text-gray-600">High-growth sectors hiring part-time executives</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -235,7 +235,7 @@ export default async function NewcastlePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">Newcastle Success Stories</h2>
-            <p className="text-xl text-slate-200">Real fractional professionals thriving in Newcastle</p>
+            <p className="text-xl text-slate-200">Real part-time professionals thriving in Newcastle</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -268,31 +268,31 @@ export default async function NewcastlePage() {
           <div className="space-y-6">
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                What is a fractional job in Newcastle?
+                What is a part-time job in Newcastle?
                 <span className="text-slate-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                A fractional job in Newcastle is a part-time executive role working 1-3 days per week. Newcastle's growing tech and gaming sectors make it ideal for fractional CTOs and CMOs.
+                A part-time job in Newcastle is a part-time executive role working 1-3 days per week. Newcastle's growing tech and gaming sectors make it ideal for part-time CTOs and CMOs.
               </p>
             </details>
 
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                How much do fractional executives earn in Newcastle?
+                How much do part-time executives earn in Newcastle?
                 <span className="text-slate-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Newcastle fractional executives earn £500-£950 per day. With 50% lower cost of living than London, take-home value is excellent. Most earn £100,000-£160,000+ annually.
+                Newcastle part-time executives earn £500-£950 per day. With 50% lower cost of living than London, take-home value is excellent. Most earn £100,000-£160,000+ annually.
               </p>
             </details>
 
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                Which industries hire fractional executives in Newcastle?
+                Which industries hire part-time executives in Newcastle?
                 <span className="text-slate-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Key industries include tech/digital, gaming, life sciences, energy, and fintech. The gaming sector (Ubisoft, Sumo Digital) is particularly strong for fractional leadership.
+                Key industries include tech/digital, gaming, life sciences, energy, and fintech. The gaming sector (Ubisoft, Sumo Digital) is particularly strong for part-time leadership.
               </p>
             </details>
           </div>
@@ -302,32 +302,32 @@ export default async function NewcastlePage() {
       {/* Internal Links */}
       <section className="py-16 bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Newcastle Fractional Resources</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Newcastle Part-Time Resources</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Roles by Function</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/cfo" className="hover:text-slate-700">Fractional CFO Jobs</Link></li>
-                <li><Link href="/cmo" className="hover:text-slate-700">Fractional CMO Jobs</Link></li>
-                <li><Link href="/cto" className="hover:text-slate-700">Fractional CTO Jobs</Link></li>
+                <li><Link href="/cfo" className="hover:text-slate-700">Part-Time CFO Jobs</Link></li>
+                <li><Link href="/cmo" className="hover:text-slate-700">Part-Time CMO Jobs</Link></li>
+                <li><Link href="/cto" className="hover:text-slate-700">Part-Time CTO Jobs</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Other UK Locations</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/fractional-jobs-london" className="hover:text-slate-700">Fractional Jobs London</Link></li>
-                <li><Link href="/fractional-jobs-manchester" className="hover:text-slate-700">Fractional Jobs Manchester</Link></li>
-                <li><Link href="/fractional-jobs-leeds" className="hover:text-slate-700">Fractional Jobs Leeds</Link></li>
+                <li><Link href="/part-time-jobs-london" className="hover:text-slate-700">Part-Time Jobs London</Link></li>
+                <li><Link href="/part-time-jobs-manchester" className="hover:text-slate-700">Part-Time Jobs Manchester</Link></li>
+                <li><Link href="/part-time-jobs-leeds" className="hover:text-slate-700">Part-Time Jobs Leeds</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Career Guides</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/guide" className="hover:text-slate-700">Fractional Work Guide</Link></li>
-                <li><Link href="/fractional-executive-salary-uk" className="hover:text-slate-700">Salary Guide</Link></li>
+                <li><Link href="/guide" className="hover:text-slate-700">Part-Time Work Guide</Link></li>
+                <li><Link href="/part-time-executive-salary-uk" className="hover:text-slate-700">Salary Guide</Link></li>
               </ul>
             </div>
           </div>
@@ -341,10 +341,10 @@ export default async function NewcastlePage() {
             Ready to Work in Newcastle?
           </h2>
           <p className="text-xl text-slate-100 mb-10">
-            {stats.totalNewcastle}+ fractional opportunities in the North East's tech capital.
+            {stats.totalNewcastle}+ part-time opportunities in the North East's tech capital.
           </p>
           <Link
-            href="/fractional-jobs?location=Newcastle"
+            href="/part-time-jobs?location=Newcastle"
             className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-slate-900 hover:bg-slate-50 transition-all duration-200"
           >
             Browse Newcastle Jobs →

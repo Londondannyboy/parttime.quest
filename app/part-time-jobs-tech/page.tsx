@@ -9,22 +9,22 @@ import { FAQ, TECH_FAQS } from '@/components/FAQ'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional Tech Jobs UK - CTO, VP Engineering, Tech Director Roles',
-  description: 'Find fractional tech jobs in the UK. Fractional CTO, VP Engineering, Tech Director roles. £900-£1,500 daily rates. SaaS, FinTech, HealthTech opportunities.',
+  title: 'Part-Time Tech Jobs UK - CTO, VP Engineering, Tech Director Roles',
+  description: 'Find part-time tech jobs in the UK. Part-Time CTO, VP Engineering, Tech Director roles. £900-£1,500 daily rates. SaaS, FinTech, HealthTech opportunities.',
   openGraph: {
-    title: 'Fractional Tech Jobs UK - CTO, VP Engineering, Tech Director Roles',
-    description: 'Find fractional technology leadership roles across the UK.',
+    title: 'Part-Time Tech Jobs UK - CTO, VP Engineering, Tech Director Roles',
+    description: 'Find part-time technology leadership roles across the UK.',
     type: 'website',
   },
 }
 
 const techRoles = [
-  { name: 'Fractional CTO', description: 'Strategic technology leadership', rateRange: '£1,000-£1,500/day', demand: 'Very High' },
-  { name: 'Fractional VP Engineering', description: 'Engineering team leadership', rateRange: '£900-£1,300/day', demand: 'High' },
-  { name: 'Fractional Tech Director', description: 'Technical strategy & delivery', rateRange: '£850-£1,200/day', demand: 'High' },
-  { name: 'Fractional Head of Product', description: 'Product strategy & roadmap', rateRange: '£800-£1,200/day', demand: 'High' },
-  { name: 'Fractional CISO', description: 'Security & compliance leadership', rateRange: '£950-£1,400/day', demand: 'Growing' },
-  { name: 'Fractional Data Lead', description: 'Data strategy & analytics', rateRange: '£850-£1,250/day', demand: 'Growing' },
+  { name: 'Part-Time CTO', description: 'Strategic technology leadership', rateRange: '£1,000-£1,500/day', demand: 'Very High' },
+  { name: 'Part-Time VP Engineering', description: 'Engineering team leadership', rateRange: '£900-£1,300/day', demand: 'High' },
+  { name: 'Part-Time Tech Director', description: 'Technical strategy & delivery', rateRange: '£850-£1,200/day', demand: 'High' },
+  { name: 'Part-Time Head of Product', description: 'Product strategy & roadmap', rateRange: '£800-£1,200/day', demand: 'High' },
+  { name: 'Part-Time CISO', description: 'Security & compliance leadership', rateRange: '£950-£1,400/day', demand: 'Growing' },
+  { name: 'Part-Time Data Lead', description: 'Data strategy & analytics', rateRange: '£850-£1,250/day', demand: 'Growing' },
 ]
 
 const techSectors = [
@@ -43,9 +43,9 @@ const techSkills = [
 ]
 
 const relatedSearches = [
-  'Fractional CTO Jobs UK', 'Fractional VP Engineering', 'Part-Time CTO London',
-  'Fractional Tech Director', 'Fractional CISO Jobs', 'Startup CTO Jobs',
-  'SaaS Fractional CTO', 'FinTech Fractional CTO', 'Fractional Head of Engineering'
+  'Part-Time CTO Jobs UK', 'Part-Time VP Engineering', 'Part-Time CTO London',
+  'Part-Time Tech Director', 'Part-Time CISO Jobs', 'Startup CTO Jobs',
+  'SaaS Part-Time CTO', 'FinTech Part-Time CTO', 'Part-Time Head of Engineering'
 ]
 
 async function getTechStats() {
@@ -91,17 +91,17 @@ export default async function TechJobsPage() {
                   </span>
 
                   <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[0.95] tracking-tight">
-                    Fractional<br />
+                    Part-Time<br />
                     <span className="text-blue-300">Tech</span> Jobs UK
                   </h1>
 
                   <p className="text-lg text-white/70 mb-8 leading-relaxed max-w-lg">
-                    Fractional CTO, VP Engineering, Tech Director positions. £900-£1,500 daily rates across SaaS, FinTech, and HealthTech.
+                    Part-Time CTO, VP Engineering, Tech Director positions. £900-£1,500 daily rates across SaaS, FinTech, and HealthTech.
                   </p>
 
                   <div className="flex flex-wrap gap-4">
                     <Link
-                      href="/fractional-jobs?industry=Technology"
+                      href="/part-time-jobs?industry=Technology"
                       className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg bg-white text-black hover:bg-white/90 transition-all duration-200"
                     >
                       Browse Tech Jobs →
@@ -149,7 +149,7 @@ export default async function TechJobsPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Opportunities</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Fractional Tech Jobs</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Part-Time Tech Jobs</h2>
             <p className="text-xl text-gray-500">Browse {stats.total}+ tech leadership opportunities</p>
           </div>
           <EmbeddedJobBoard defaultDepartment="Engineering" />
@@ -161,7 +161,7 @@ export default async function TechJobsPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">By Role</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Fractional Tech Roles</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Part-Time Tech Roles</h2>
             <p className="text-xl text-gray-500">Technology leadership positions available</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -183,7 +183,7 @@ export default async function TechJobsPage() {
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">By Sector</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Tech Sectors Hiring</h2>
-            <p className="text-xl text-gray-500">Industries with highest demand for fractional tech leaders</p>
+            <p className="text-xl text-gray-500">Industries with highest demand for part-time tech leaders</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {techSectors.map((sector) => (
@@ -204,7 +204,7 @@ export default async function TechJobsPage() {
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Skills</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">In-Demand Tech Skills</h2>
-            <p className="text-xl text-gray-500">Skills that command premium fractional rates</p>
+            <p className="text-xl text-gray-500">Skills that command premium part-time rates</p>
           </div>
           <div className="flex flex-wrap justify-center gap-3">
             {techSkills.map((skill) => (
@@ -221,7 +221,7 @@ export default async function TechJobsPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">The Opportunity</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Fractional Tech Leadership?</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Part-Time Tech Leadership?</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl p-8">
@@ -230,7 +230,7 @@ export default async function TechJobsPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Startup-Ready</h3>
               <p className="text-gray-600">
-                Startups and scale-ups can't always afford a £200k+ full-time CTO. Fractional tech leaders provide senior expertise at a fraction of the cost.
+                Startups and scale-ups can't always afford a £200k+ full-time CTO. Part-time tech leaders provide senior expertise at a fraction of the cost.
               </p>
             </div>
             <div className="bg-white rounded-2xl p-8">
@@ -248,7 +248,7 @@ export default async function TechJobsPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Remote-First</h3>
               <p className="text-gray-600">
-                65% of fractional tech roles are fully remote or hybrid. Work with clients across the UK and Europe from anywhere.
+                65% of part-time tech roles are fully remote or hybrid. Work with clients across the UK and Europe from anywhere.
               </p>
             </div>
           </div>
@@ -261,7 +261,7 @@ export default async function TechJobsPage() {
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Tax Planning</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">IR35 Calculator</h2>
-            <p className="text-xl text-gray-500">Understand your take-home as a fractional tech leader</p>
+            <p className="text-xl text-gray-500">Understand your take-home as a part-time tech leader</p>
           </div>
           <IR35Calculator defaultDayRate={1100} />
         </div>
@@ -272,8 +272,8 @@ export default async function TechJobsPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">FAQ</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Tech Fractional FAQs</h2>
-            <p className="text-xl text-gray-500">Common questions about fractional tech roles</p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Tech Part-Time FAQs</h2>
+            <p className="text-xl text-gray-500">Common questions about part-time tech roles</p>
           </div>
           <FAQ items={TECH_FAQS} title="" />
         </div>
@@ -287,7 +287,7 @@ export default async function TechJobsPage() {
             {relatedSearches.map((search) => (
               <Link
                 key={search}
-                href={`/fractional-jobs?q=${encodeURIComponent(search)}`}
+                href={`/part-time-jobs?q=${encodeURIComponent(search)}`}
                 className="px-4 py-2 bg-gray-50 rounded-full text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition-colors text-sm border border-gray-200"
               >
                 {search}
@@ -302,14 +302,14 @@ export default async function TechJobsPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-500 mb-6 block">Get Started</span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready for Fractional Tech Leadership?
+            Ready for Part-Time Tech Leadership?
           </h2>
           <p className="text-xl text-gray-400 mb-10">
             {stats.total}+ CTO, VP Engineering, and Tech Director opportunities
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/fractional-jobs?role=CTO"
+              href="/part-time-jobs?role=CTO"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-gray-900 hover:bg-gray-100 transition-all"
             >
               Browse Tech Jobs

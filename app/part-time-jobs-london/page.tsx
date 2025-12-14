@@ -9,11 +9,11 @@ import { FAQ, LONDON_FAQS } from '@/components/FAQ'
 export const revalidate = 3600 // Revalidate every hour
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs London - Executive Roles in the City, Shoreditch & Canary Wharf',
-  description: 'Find fractional executive jobs in London. CFO, CMO, CTO roles across the City, Shoreditch, Canary Wharf. £800-£1,500 daily rates. 85+ opportunities.',
+  title: 'Part-Time Jobs London - Executive Roles in the City, Shoreditch & Canary Wharf',
+  description: 'Find part-time executive jobs in London. CFO, CMO, CTO roles across the City, Shoreditch, Canary Wharf. £800-£1,500 daily rates. 85+ opportunities.',
   openGraph: {
-    title: 'Fractional Jobs London - Executive Roles in the City, Shoreditch & Canary Wharf',
-    description: 'Find fractional executive jobs in London. CFO, CMO, CTO roles across the City, Shoreditch, Canary Wharf. £800-£1,500 daily rates.',
+    title: 'Part-Time Jobs London - Executive Roles in the City, Shoreditch & Canary Wharf',
+    description: 'Find part-time executive jobs in London. CFO, CMO, CTO roles across the City, Shoreditch, Canary Wharf. £800-£1,500 daily rates.',
     type: 'website',
   },
 }
@@ -33,19 +33,19 @@ const successStories = [
   {
     quote: "Working with 3 fintech scale-ups in the City has been incredible. The diversity of challenges keeps me sharp.",
     name: "Rachel S.",
-    role: "Fractional CFO",
+    role: "Part-Time CFO",
     area: "City of London",
   },
   {
-    quote: "Shoreditch has become the epicenter for fractional tech leadership. I work with startups that need strategic guidance.",
+    quote: "Shoreditch has become the epicenter for part-time tech leadership. I work with startups that need strategic guidance.",
     name: "Michael C.",
-    role: "Fractional CTO",
+    role: "Part-Time CTO",
     area: "Shoreditch",
   },
   {
-    quote: "The flexibility of fractional work combined with London's premium rates is unbeatable.",
+    quote: "The flexibility of part-time work combined with London's premium rates is unbeatable.",
     name: "Sophie W.",
-    role: "Fractional CMO",
+    role: "Part-Time CMO",
     area: "Canary Wharf",
   },
 ]
@@ -108,13 +108,13 @@ export default async function LondonPage() {
                   </span>
 
                   <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[0.95] tracking-tight">
-                    Fractional Jobs<br />
+                    Part-Time Jobs<br />
                     <span className="text-white/90">London</span>
                   </h1>
 
                   <img
-                    src="/images/fractional-jobs-london.svg"
-                    alt="Fractional Jobs London - Executive recruitment opportunities in the City, Shoreditch and Canary Wharf"
+                    src="/images/part-time-jobs-london.svg"
+                    alt="Part-Time Jobs London - Executive recruitment opportunities in the City, Shoreditch and Canary Wharf"
                     className="hidden"
                     width={1}
                     height={1}
@@ -126,7 +126,7 @@ export default async function LondonPage() {
 
                   <div className="flex flex-wrap gap-4">
                     <Link
-                      href="/fractional-jobs?location=London"
+                      href="/part-time-jobs?location=London"
                       className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg bg-white text-black hover:bg-white/90 transition-all duration-200"
                     >
                       Browse London Jobs →
@@ -175,12 +175,12 @@ export default async function LondonPage() {
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">The Market</span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-              London dominates the UK<br />fractional executive market
+              London dominates the UK<br />part-time executive market
             </h2>
           </div>
           <div className="prose prose-xl prose-gray max-w-none">
             <p className="text-xl text-gray-600 leading-relaxed text-center">
-              Accounting for 60% of all fractional opportunities nationwide, London offers unmatched access to startups, scale-ups, and established companies seeking flexible leadership. Day rates range from £800-£1,500, with professionals earning £150,000-£300,000+ annually across 2-4 clients.
+              Accounting for 60% of all part-time opportunities nationwide, London offers unmatched access to startups, scale-ups, and established companies seeking flexible leadership. Day rates range from £800-£1,500, with professionals earning £150,000-£300,000+ annually across 2-4 clients.
             </p>
           </div>
         </div>
@@ -192,14 +192,14 @@ export default async function LondonPage() {
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">By District</span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">London's Business Districts</h2>
-            <p className="text-xl text-gray-500">Where fractional executives thrive</p>
+            <p className="text-xl text-gray-500">Where part-time executives thrive</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {areaJobEstimates.map((area) => (
               <Link
                 key={area.name}
-                href={`/fractional-jobs?location=${encodeURIComponent(area.name.split('/')[0])}`}
+                href={`/part-time-jobs?location=${encodeURIComponent(area.name.split('/')[0])}`}
                 className="group"
               >
                 <article className="bg-white rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-gray-200">
@@ -226,23 +226,23 @@ export default async function LondonPage() {
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">By Function</span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Executive Roles</h2>
-            <p className="text-xl text-gray-500">Fractional leadership positions in London</p>
+            <p className="text-xl text-gray-500">Part-Time leadership positions in London</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { icon: '💰', title: 'Fractional CFO', subtitle: 'Finance Leadership', rate: '£900-£1,400/day', role: 'CFO' },
-              { icon: '💻', title: 'Fractional CTO', subtitle: 'Technology Leadership', rate: '£950-£1,500/day', role: 'CTO' },
-              { icon: '📢', title: 'Fractional CMO', subtitle: 'Marketing Leadership', rate: '£800-£1,200/day', role: 'CMO' },
-              { icon: '⚙️', title: 'Fractional COO', subtitle: 'Operations Leadership', rate: '£850-£1,300/day', role: 'COO' },
-              { icon: '👥', title: 'Fractional HRD', subtitle: 'People Leadership', rate: '£750-£1,100/day', role: 'HR' },
-              { icon: '📈', title: 'Fractional Sales', subtitle: 'Revenue Leadership', rate: '£800-£1,250/day', role: 'Sales' },
+              { icon: '💰', title: 'Part-Time CFO', subtitle: 'Finance Leadership', rate: '£900-£1,400/day', role: 'CFO' },
+              { icon: '💻', title: 'Part-Time CTO', subtitle: 'Technology Leadership', rate: '£950-£1,500/day', role: 'CTO' },
+              { icon: '📢', title: 'Part-Time CMO', subtitle: 'Marketing Leadership', rate: '£800-£1,200/day', role: 'CMO' },
+              { icon: '⚙️', title: 'Part-Time COO', subtitle: 'Operations Leadership', rate: '£850-£1,300/day', role: 'COO' },
+              { icon: '👥', title: 'Part-Time HRD', subtitle: 'People Leadership', rate: '£750-£1,100/day', role: 'HR' },
+              { icon: '📈', title: 'Part-Time Sales', subtitle: 'Revenue Leadership', rate: '£800-£1,250/day', role: 'Sales' },
             ].map((item) => {
               const roleCount = stats.roleStats.find(r => r.role_category === item.role)?.count || '0'
               return (
                 <Link
                   key={item.role}
-                  href={`/fractional-jobs?location=London&role=${item.role}`}
+                  href={`/part-time-jobs?location=London&role=${item.role}`}
                   className="group"
                 >
                   <article className="bg-gray-50 rounded-xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-200">
@@ -268,7 +268,7 @@ export default async function LondonPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Opportunities</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">London Fractional Jobs</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">London Part-Time Jobs</h2>
             <p className="text-xl text-gray-500">Browse {stats.totalLondon}+ live opportunities in London</p>
           </div>
           <EmbeddedJobBoard defaultLocation="London" />
@@ -280,7 +280,7 @@ export default async function LondonPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-500 mb-4 block">Perspectives</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">From London's Fractional Leaders</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">From London's Part-Time Leaders</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -310,7 +310,7 @@ export default async function LondonPage() {
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Tax Planning</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">IR35 Calculator</h2>
-            <p className="text-xl text-gray-500">Understand your take-home as a fractional executive in London</p>
+            <p className="text-xl text-gray-500">Understand your take-home as a part-time executive in London</p>
           </div>
           <IR35Calculator defaultDayRate={950} />
         </div>
@@ -322,7 +322,7 @@ export default async function LondonPage() {
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">FAQ</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Common Questions</h2>
-            <p className="text-xl text-gray-500">About fractional work in London</p>
+            <p className="text-xl text-gray-500">About part-time work in London</p>
           </div>
           <FAQ items={LONDON_FAQS} title="" />
         </div>
@@ -335,27 +335,27 @@ export default async function LondonPage() {
             <div>
               <h3 className="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">London Roles</h3>
               <ul className="space-y-3 text-gray-600">
-                <li><Link href="/fractional-cfo-jobs-uk" className="hover:text-purple-700 transition-colors">Fractional CFO Jobs UK</Link></li>
-                <li><Link href="/fractional-cmo-jobs-uk" className="hover:text-purple-700 transition-colors">Fractional CMO Jobs UK</Link></li>
-                <li><Link href="/fractional-cto-jobs-uk" className="hover:text-purple-700 transition-colors">Fractional CTO Jobs UK</Link></li>
-                <li><Link href="/fractional-coo-jobs-uk" className="hover:text-purple-700 transition-colors">Fractional COO Jobs UK</Link></li>
+                <li><Link href="/part-time-cfo-jobs-uk" className="hover:text-purple-700 transition-colors">Part-Time CFO Jobs UK</Link></li>
+                <li><Link href="/part-time-cmo-jobs-uk" className="hover:text-purple-700 transition-colors">Part-Time CMO Jobs UK</Link></li>
+                <li><Link href="/part-time-cto-jobs-uk" className="hover:text-purple-700 transition-colors">Part-Time CTO Jobs UK</Link></li>
+                <li><Link href="/part-time-coo-jobs-uk" className="hover:text-purple-700 transition-colors">Part-Time COO Jobs UK</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Other Locations</h3>
               <ul className="space-y-3 text-gray-600">
-                <li><Link href="/fractional-jobs" className="hover:text-purple-700 transition-colors">All Fractional Jobs UK</Link></li>
-                <li><Link href="/fractional-jobs-manchester" className="hover:text-purple-700 transition-colors">Fractional Jobs Manchester</Link></li>
-                <li><Link href="/fractional-jobs-birmingham" className="hover:text-purple-700 transition-colors">Fractional Jobs Birmingham</Link></li>
-                <li><Link href="/fractional-jobs-edinburgh" className="hover:text-purple-700 transition-colors">Fractional Jobs Edinburgh</Link></li>
+                <li><Link href="/part-time-jobs" className="hover:text-purple-700 transition-colors">All Part-Time Jobs UK</Link></li>
+                <li><Link href="/part-time-jobs-manchester" className="hover:text-purple-700 transition-colors">Part-Time Jobs Manchester</Link></li>
+                <li><Link href="/part-time-jobs-birmingham" className="hover:text-purple-700 transition-colors">Part-Time Jobs Birmingham</Link></li>
+                <li><Link href="/part-time-jobs-edinburgh" className="hover:text-purple-700 transition-colors">Part-Time Jobs Edinburgh</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wider">Resources</h3>
               <ul className="space-y-3 text-gray-600">
-                <li><Link href="/how-to-become-a-fractional-executive" className="hover:text-purple-700 transition-colors">How to Go Fractional</Link></li>
-                <li><Link href="/fractional-executive-salary-uk" className="hover:text-purple-700 transition-colors">Salary Guide</Link></li>
-                <li><Link href="/fractional-jobs-articles" className="hover:text-purple-700 transition-colors">All Articles</Link></li>
+                <li><Link href="/how-to-become-a-part-time-executive" className="hover:text-purple-700 transition-colors">How to Go Part-Time</Link></li>
+                <li><Link href="/part-time-executive-salary-uk" className="hover:text-purple-700 transition-colors">Salary Guide</Link></li>
+                <li><Link href="/part-time-jobs-articles" className="hover:text-purple-700 transition-colors">All Articles</Link></li>
               </ul>
             </div>
           </div>
@@ -370,11 +370,11 @@ export default async function LondonPage() {
             Ready to work in London?
           </h2>
           <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-            {stats.totalLondon}+ fractional executive opportunities across London's top startups and scale-ups.
+            {stats.totalLondon}+ part-time executive opportunities across London's top startups and scale-ups.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/fractional-jobs?location=London"
+              href="/part-time-jobs?location=London"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-gray-900 hover:bg-gray-100 transition-all duration-200"
             >
               Browse London Jobs

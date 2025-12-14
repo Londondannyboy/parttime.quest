@@ -7,11 +7,11 @@ import { JobsGraph3D } from '@/components/JobsGraph3D'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs Edinburgh - Executive Roles in Scotland',
-  description: 'Find fractional executive jobs in Edinburgh and Scotland. CFO, CMO, CTO roles. £700-£1,200 daily rates. Scotland\'s leading fractional market.',
+  title: 'Part-Time Jobs Edinburgh - Executive Roles in Scotland',
+  description: 'Find part-time executive jobs in Edinburgh and Scotland. CFO, CMO, CTO roles. £700-£1,200 daily rates. Scotland\'s leading part-time market.',
   openGraph: {
-    title: 'Fractional Jobs Edinburgh - Executive Roles in Scotland',
-    description: 'Find fractional executive jobs in Edinburgh and across Scotland.',
+    title: 'Part-Time Jobs Edinburgh - Executive Roles in Scotland',
+    description: 'Find part-time executive jobs in Edinburgh and across Scotland.',
     type: 'website',
   },
 }
@@ -35,9 +35,9 @@ const scottishIndustries = [
 ]
 
 const relatedSearches = [
-  'Fractional CFO Jobs Edinburgh', 'Fractional CTO Jobs Scotland', 'Fractional CMO Jobs Glasgow',
+  'Part-Time CFO Jobs Edinburgh', 'Part-Time CTO Jobs Scotland', 'Part-Time CMO Jobs Glasgow',
   'Part-Time CFO Edinburgh', 'Interim Executive Scotland', 'Portfolio Career Edinburgh',
-  'Fractional Jobs Glasgow', 'Fractional Jobs Aberdeen', 'Fractional Executive Salary Scotland'
+  'Part-Time Jobs Glasgow', 'Part-Time Jobs Aberdeen', 'Part-Time Executive Salary Scotland'
 ]
 
 async function getEdinburghStats() {
@@ -95,15 +95,15 @@ export default async function EdinburghPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs Edinburgh</h1>
-          <img src="/logo.svg" alt="Fractional Jobs Edinburgh - Executive roles in Scotland" className="hidden" width={1} height={1} />
+            Part-Time Jobs Edinburgh</h1>
+          <img src="/logo.svg" alt="Part-Time Jobs Edinburgh - Executive roles in Scotland" className="hidden" width={1} height={1} />
           
           <p className="max-w-2xl text-xl text-purple-100 mb-10 leading-relaxed">
-            {stats.total}+ fractional executive opportunities across Scotland. £700-£1,200 daily rates. Financial services, energy, and tech sectors leading demand.
+            {stats.total}+ part-time executive opportunities across Scotland. £700-£1,200 daily rates. Financial services, energy, and tech sectors leading demand.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/fractional-jobs?location=Edinburgh"
+              href="/part-time-jobs?location=Edinburgh"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-purple-900 hover:bg-purple-50 transition-all duration-200"
             >
               Browse Edinburgh Jobs
@@ -118,7 +118,7 @@ export default async function EdinburghPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-4xl font-black text-purple-700">8%</div>
-              <div className="text-gray-600 font-medium">of UK fractional roles</div>
+              <div className="text-gray-600 font-medium">of UK part-time roles</div>
             </div>
             <div>
               <div className="text-4xl font-black text-purple-700">£{stats.avgDayRate}</div>
@@ -141,7 +141,7 @@ export default async function EdinburghPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Jobs Across Scotland</h2>
-            <p className="text-xl text-gray-600">Find fractional roles from Edinburgh to Aberdeen</p>
+            <p className="text-xl text-gray-600">Find part-time roles from Edinburgh to Aberdeen</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {edinburghAreas.map((area) => (
@@ -160,7 +160,7 @@ export default async function EdinburghPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Scottish Industries</h2>
-            <p className="text-xl text-gray-600">Key sectors hiring fractional executives</p>
+            <p className="text-xl text-gray-600">Key sectors hiring part-time executives</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {scottishIndustries.map((industry) => (
@@ -196,7 +196,7 @@ export default async function EdinburghPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Energy Sector</h3>
               <p className="text-gray-600">
-                Aberdeen's oil & gas and Scotland's renewables sector offer premium fractional rates for energy expertise.
+                Aberdeen's oil & gas and Scotland's renewables sector offer premium part-time rates for energy expertise.
               </p>
             </div>
             <div className="bg-white rounded-2xl p-8 shadow-sm">
@@ -219,7 +219,7 @@ export default async function EdinburghPage() {
             <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Featured Scottish Jobs</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {(jobs as any[]).map((job: any) => (
-                <Link key={job.id} href={`/fractional-job/${job.slug}`}>
+                <Link key={job.id} href={`/part-time-job/${job.slug}`}>
                   <JobCard
                     title={job.title}
                     company={job.company_name}
@@ -234,7 +234,7 @@ export default async function EdinburghPage() {
             </div>
             <div className="text-center">
               <Link
-                href="/fractional-jobs?location=Edinburgh"
+                href="/part-time-jobs?location=Edinburgh"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-lg bg-purple-700 text-white hover:bg-purple-800 transition-all"
               >
                 View All Scottish Jobs →
@@ -251,29 +251,29 @@ export default async function EdinburghPage() {
           <div className="space-y-6">
             <details className="group bg-white rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                How much do fractional executives earn in Edinburgh?
+                How much do part-time executives earn in Edinburgh?
                 <span className="text-purple-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600">
-                Edinburgh fractional executives typically earn £700-£1,200 per day. Financial services and energy roles command premium rates, often matching London levels.
+                Edinburgh part-time executives typically earn £700-£1,200 per day. Financial services and energy roles command premium rates, often matching London levels.
               </p>
             </details>
             <details className="group bg-white rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                Is Edinburgh a good base for fractional work?
+                Is Edinburgh a good base for part-time work?
                 <span className="text-purple-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600">
-                Yes - Edinburgh combines a strong local market with easy access to London (4.5hr train or 1hr flight). Many fractional executives maintain clients in both markets.
+                Yes - Edinburgh combines a strong local market with easy access to London (4.5hr train or 1hr flight). Many part-time executives maintain clients in both markets.
               </p>
             </details>
             <details className="group bg-white rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                What about Aberdeen for fractional roles?
+                What about Aberdeen for part-time roles?
                 <span className="text-purple-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600">
-                Aberdeen offers some of the highest day rates in the UK for energy sector expertise. Fractional CFOs and CTOs with oil & gas experience can earn £1,000-£1,500/day.
+                Aberdeen offers some of the highest day rates in the UK for energy sector expertise. Part-Time CFOs and CTOs with oil & gas experience can earn £1,000-£1,500/day.
               </p>
             </details>
           </div>
@@ -288,7 +288,7 @@ export default async function EdinburghPage() {
             {relatedSearches.map((search) => (
               <Link
                 key={search}
-                href={`/fractional-jobs?q=${encodeURIComponent(search)}`}
+                href={`/part-time-jobs?q=${encodeURIComponent(search)}`}
                 className="px-4 py-2 bg-gray-50 rounded-full text-gray-700 hover:bg-purple-100 hover:text-purple-700 transition-colors text-sm"
               >
                 {search}
@@ -305,10 +305,10 @@ export default async function EdinburghPage() {
             Ready to Work in Scotland?
           </h2>
           <p className="text-xl text-purple-100 mb-10">
-            {stats.total}+ fractional opportunities across Edinburgh, Glasgow, and Aberdeen
+            {stats.total}+ part-time opportunities across Edinburgh, Glasgow, and Aberdeen
           </p>
           <Link
-            href="/fractional-jobs?location=Edinburgh"
+            href="/part-time-jobs?location=Edinburgh"
             className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-purple-900 hover:bg-purple-50 transition-all"
           >
             Browse Scottish Jobs →

@@ -816,11 +816,11 @@ export default function RepoPage() {
         <div className="p-5 border-b border-gray-100">
           <Link href="/" className="flex items-center gap-3">
             <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl flex items-center justify-center flex-shrink-0">
-              <span className="text-white font-bold text-lg">F</span>
+              <span className="text-white font-bold text-lg">P</span>
             </div>
             {sidebarOpen && (
               <div>
-                <span className="text-gray-900 font-bold">Fractional</span>
+                <span className="text-gray-900 font-bold">Part-Time</span>
                 <span className="text-purple-600">.Quest</span>
               </div>
             )}

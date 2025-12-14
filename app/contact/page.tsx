@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { Button } from '@/components/Button'
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Fractional Quest',
-  description: 'Get in touch with Fractional Quest. Whether you\'re a job seeker or hiring company.',
+  title: 'Contact Us | Part-Time Quest',
+  description: 'Get in touch with Part-Time Quest. Whether you\'re a job seeker or hiring company.',
 }
 
 export default function ContactPage() {
@@ -36,7 +36,7 @@ export default function ContactPage() {
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Job Seekers</h2>
                 <p className="text-gray-600 mb-6">
-                  Are you a fractional executive or specialist looking for your next opportunity? Tell us about yourself and what you're looking for.
+                  Are you a part-time executive or specialist looking for your next opportunity? Tell us about yourself and what you're looking for.
                 </p>
                 <div className="text-gray-900 font-semibold">Get Started →</div>
               </div>
@@ -52,7 +52,7 @@ export default function ContactPage() {
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Companies</h2>
                 <p className="text-gray-600 mb-6">
-                  Looking to hire fractional executives or specialist talent? Let us know about your open roles and requirements.
+                  Looking to hire part-time executives or specialist talent? Let us know about your open roles and requirements.
                 </p>
                 <div className="text-gray-900 font-semibold">Post a Job →</div>
               </div>
@@ -67,9 +67,9 @@ export default function ContactPage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Questions?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h3 className="font-bold text-gray-900 mb-2">What is a Fractional Executive?</h3>
+              <h3 className="font-bold text-gray-900 mb-2">What is a Part-Time Executive?</h3>
               <p className="text-gray-600">
-                A fractional executive is a senior-level professional who works part-time or on a project basis, typically 1-3 days per week, providing specialized expertise without the cost of a full-time hire.
+                A part-time executive is a senior-level professional who works part-time or on a project basis, typically 1-3 days per week, providing specialized expertise without the cost of a full-time hire.
               </p>
             </div>
             <div>

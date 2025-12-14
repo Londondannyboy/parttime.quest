@@ -6,11 +6,11 @@ import { JobsGraph3D } from '@/components/JobsGraph3D'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs Cardiff - Executive Roles in Wales',
-  description: 'Find fractional executive jobs in Cardiff. CFO, CMO, CTO roles in the Welsh capital. £500-£900 daily rates. FinTech, creative, and professional services hub.',
+  title: 'Part-Time Jobs Cardiff - Executive Roles in Wales',
+  description: 'Find part-time executive jobs in Cardiff. CFO, CMO, CTO roles in the Welsh capital. £500-£900 daily rates. FinTech, creative, and professional services hub.',
   openGraph: {
-    title: 'Fractional Jobs Cardiff - Executive Roles in Wales',
-    description: 'Find fractional executive jobs in Cardiff, Wales\' business capital.',
+    title: 'Part-Time Jobs Cardiff - Executive Roles in Wales',
+    description: 'Find part-time executive jobs in Cardiff, Wales\' business capital.',
     type: 'website',
   },
 }
@@ -35,15 +35,15 @@ const successStories = [
   {
     quote: "Cardiff's fintech cluster is Europe's best-kept secret. I work with 3 scaling companies and the Welsh Government's support for the sector is exceptional.",
     name: "Gareth Davies",
-    role: "Fractional CFO",
+    role: "Part-Time CFO",
     area: "Central Square",
     clients: 3,
     earnings: "£110k/year"
   },
   {
-    quote: "The BBC and S4C presence in Cardiff Bay has created a thriving creative sector. Perfect for fractional marketing and digital leadership.",
+    quote: "The BBC and S4C presence in Cardiff Bay has created a thriving creative sector. Perfect for part-time marketing and digital leadership.",
     name: "Rhian Williams",
-    role: "Fractional CMO",
+    role: "Part-Time CMO",
     area: "Cardiff Bay",
     clients: 4,
     earnings: "£105k/year"
@@ -86,14 +86,14 @@ export default async function CardiffPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs Cardiff
+            Part-Time Jobs Cardiff
           </h1>
           <p className="max-w-2xl text-xl text-green-100 mb-10 leading-relaxed">
-            {stats.totalCardiff}+ fractional executive opportunities in the Welsh capital. £500-£900 daily rates. Work with Europe's fastest-growing fintech cluster.
+            {stats.totalCardiff}+ part-time executive opportunities in the Welsh capital. £500-£900 daily rates. Work with Europe's fastest-growing fintech cluster.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/fractional-jobs?location=Cardiff"
+              href="/part-time-jobs?location=Cardiff"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-green-900 hover:bg-green-50 transition-all duration-200"
             >
               Browse All Cardiff Jobs
@@ -142,7 +142,7 @@ export default async function CardiffPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {cardiffAreas.map((area, i) => (
-              <Link key={area.name} href={`/fractional-jobs?location=${encodeURIComponent(area.name)}`} className="group">
+              <Link key={area.name} href={`/part-time-jobs?location=${encodeURIComponent(area.name)}`} className="group">
                 <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-transparent hover:border-green-200">
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-green-700 transition-colors mb-2">
                     {area.name}
@@ -170,14 +170,14 @@ export default async function CardiffPage() {
               <span className="text-3xl mb-4 block">💳</span>
               <h3 className="text-xl font-bold text-gray-900 mb-3">FinTech Capital</h3>
               <p className="text-gray-600">
-                Cardiff is Europe's fastest-growing fintech cluster. Companies like Wealthify, Delio, and Moneybox have created a thriving ecosystem for fractional CFOs.
+                Cardiff is Europe's fastest-growing fintech cluster. Companies like Wealthify, Delio, and Moneybox have created a thriving ecosystem for part-time CFOs.
               </p>
             </div>
             <div className="bg-gray-50 rounded-2xl p-8">
               <span className="text-3xl mb-4 block">🎬</span>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Creative Hub</h3>
               <p className="text-gray-600">
-                BBC Wales, S4C, and a vibrant production sector make Cardiff Bay ideal for fractional CMOs and digital leaders in media and entertainment.
+                BBC Wales, S4C, and a vibrant production sector make Cardiff Bay ideal for part-time CMOs and digital leaders in media and entertainment.
               </p>
             </div>
             <div className="bg-gray-50 rounded-2xl p-8">
@@ -247,27 +247,27 @@ export default async function CardiffPage() {
           <div className="space-y-6">
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                What is a fractional job in Cardiff?
+                What is a part-time job in Cardiff?
                 <span className="text-green-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                A fractional job in Cardiff is a part-time executive role working 1-3 days per week. Cardiff's fintech cluster and creative sector make it ideal for fractional CFOs and CMOs.
+                A part-time job in Cardiff is a part-time executive role working 1-3 days per week. Cardiff's fintech cluster and creative sector make it ideal for part-time CFOs and CMOs.
               </p>
             </details>
 
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                How much do fractional executives earn in Cardiff?
+                How much do part-time executives earn in Cardiff?
                 <span className="text-green-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Cardiff fractional executives earn £500-£900 per day. With 45% lower cost of living than London, take-home value is excellent. Most earn £95,000-£150,000+ annually.
+                Cardiff part-time executives earn £500-£900 per day. With 45% lower cost of living than London, take-home value is excellent. Most earn £95,000-£150,000+ annually.
               </p>
             </details>
 
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                Why is Cardiff good for fintech fractional roles?
+                Why is Cardiff good for fintech part-time roles?
                 <span className="text-green-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
@@ -281,32 +281,32 @@ export default async function CardiffPage() {
       {/* Internal Links */}
       <section className="py-16 bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Cardiff Fractional Resources</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Cardiff Part-Time Resources</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Roles by Function</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/cfo" className="hover:text-green-700">Fractional CFO Jobs</Link></li>
-                <li><Link href="/cmo" className="hover:text-green-700">Fractional CMO Jobs</Link></li>
-                <li><Link href="/cto" className="hover:text-green-700">Fractional CTO Jobs</Link></li>
+                <li><Link href="/cfo" className="hover:text-green-700">Part-Time CFO Jobs</Link></li>
+                <li><Link href="/cmo" className="hover:text-green-700">Part-Time CMO Jobs</Link></li>
+                <li><Link href="/cto" className="hover:text-green-700">Part-Time CTO Jobs</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Other UK Locations</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/fractional-jobs-london" className="hover:text-green-700">Fractional Jobs London</Link></li>
-                <li><Link href="/fractional-jobs-bristol" className="hover:text-green-700">Fractional Jobs Bristol</Link></li>
-                <li><Link href="/fractional-jobs-birmingham" className="hover:text-green-700">Fractional Jobs Birmingham</Link></li>
+                <li><Link href="/part-time-jobs-london" className="hover:text-green-700">Part-Time Jobs London</Link></li>
+                <li><Link href="/part-time-jobs-bristol" className="hover:text-green-700">Part-Time Jobs Bristol</Link></li>
+                <li><Link href="/part-time-jobs-birmingham" className="hover:text-green-700">Part-Time Jobs Birmingham</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Career Guides</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/guide" className="hover:text-green-700">Fractional Work Guide</Link></li>
-                <li><Link href="/fractional-executive-salary-uk" className="hover:text-green-700">Salary Guide</Link></li>
+                <li><Link href="/guide" className="hover:text-green-700">Part-Time Work Guide</Link></li>
+                <li><Link href="/part-time-executive-salary-uk" className="hover:text-green-700">Salary Guide</Link></li>
               </ul>
             </div>
           </div>
@@ -320,10 +320,10 @@ export default async function CardiffPage() {
             Ready to Work in Cardiff?
           </h2>
           <p className="text-xl text-green-100 mb-10">
-            {stats.totalCardiff}+ fractional opportunities in Wales' thriving capital.
+            {stats.totalCardiff}+ part-time opportunities in Wales' thriving capital.
           </p>
           <Link
-            href="/fractional-jobs?location=Cardiff"
+            href="/part-time-jobs?location=Cardiff"
             className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-green-900 hover:bg-green-50 transition-all duration-200"
           >
             Browse Cardiff Jobs →

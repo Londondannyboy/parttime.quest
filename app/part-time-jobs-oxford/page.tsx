@@ -6,11 +6,11 @@ import { JobsGraph3D } from '@/components/JobsGraph3D'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs Oxford - Executive Roles in the Innovation Hub',
-  description: 'Find fractional executive jobs in Oxford. CFO, CMO, CTO roles in the Oxford cluster. £700-£1,100 daily rates. Life sciences, AI, and deep tech hub.',
+  title: 'Part-Time Jobs Oxford - Executive Roles in the Innovation Hub',
+  description: 'Find part-time executive jobs in Oxford. CFO, CMO, CTO roles in the Oxford cluster. £700-£1,100 daily rates. Life sciences, AI, and deep tech hub.',
   openGraph: {
-    title: 'Fractional Jobs Oxford - Executive Roles in the Innovation Hub',
-    description: 'Find fractional executive jobs in Oxford, the UK\'s life sciences and AI innovation hub.',
+    title: 'Part-Time Jobs Oxford - Executive Roles in the Innovation Hub',
+    description: 'Find part-time executive jobs in Oxford, the UK\'s life sciences and AI innovation hub.',
     type: 'website',
   },
 }
@@ -35,7 +35,7 @@ const successStories = [
   {
     quote: "Oxford's vaccine success put the life sciences cluster on the global map. I work with spinouts that are genuinely changing medicine. The calibre of science is extraordinary.",
     name: "Dr James Richardson",
-    role: "Fractional CFO",
+    role: "Part-Time CFO",
     area: "Headington",
     clients: 3,
     earnings: "£155k/year"
@@ -43,7 +43,7 @@ const successStories = [
   {
     quote: "Harwell is becoming the UK's space tech capital. I'm working with companies building satellite communications and space data analytics. Incredible growth opportunity.",
     name: "Emma Thompson",
-    role: "Fractional CTO",
+    role: "Part-Time CTO",
     area: "Harwell Campus",
     clients: 3,
     earnings: "£145k/year"
@@ -86,14 +86,14 @@ export default async function OxfordPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs Oxford
+            Part-Time Jobs Oxford
           </h1>
           <p className="max-w-2xl text-xl text-indigo-100 mb-10 leading-relaxed">
-            {stats.totalOxford}+ fractional executive opportunities in the Oxford cluster. £700-£1,100 daily rates. Work with world-changing life sciences and deep tech companies.
+            {stats.totalOxford}+ part-time executive opportunities in the Oxford cluster. £700-£1,100 daily rates. Work with world-changing life sciences and deep tech companies.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/fractional-jobs?location=Oxford"
+              href="/part-time-jobs?location=Oxford"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-indigo-900 hover:bg-indigo-50 transition-all duration-200"
             >
               Browse All Oxford Jobs
@@ -142,7 +142,7 @@ export default async function OxfordPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {oxfordAreas.map((area, i) => (
-              <Link key={area.name} href={`/fractional-jobs?location=${encodeURIComponent(area.name)}`} className="group">
+              <Link key={area.name} href={`/part-time-jobs?location=${encodeURIComponent(area.name)}`} className="group">
                 <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-transparent hover:border-indigo-200">
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-indigo-700 transition-colors mb-2">
                     {area.name}
@@ -170,7 +170,7 @@ export default async function OxfordPage() {
               <span className="text-3xl mb-4 block">🧬</span>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Life Sciences Leader</h3>
               <p className="text-gray-600">
-                Oxford developed the AstraZeneca vaccine and hosts Europe's largest life sciences cluster. Fractional CFOs are critical for navigating complex funding and regulatory pathways.
+                Oxford developed the AstraZeneca vaccine and hosts Europe's largest life sciences cluster. Part-Time CFOs are critical for navigating complex funding and regulatory pathways.
               </p>
             </div>
             <div className="bg-gray-50 rounded-2xl p-8">
@@ -184,7 +184,7 @@ export default async function OxfordPage() {
               <span className="text-3xl mb-4 block">🎓</span>
               <h3 className="text-xl font-bold text-gray-900 mb-3">200+ Spinouts</h3>
               <p className="text-gray-600">
-                Oxford University has created 200+ spinout companies valued at £13bn+. These research-led companies need experienced fractional executives to scale commercially.
+                Oxford University has created 200+ spinout companies valued at £13bn+. These research-led companies need experienced part-time executives to scale commercially.
               </p>
             </div>
           </div>
@@ -247,21 +247,21 @@ export default async function OxfordPage() {
           <div className="space-y-6">
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                What is a fractional job in Oxford?
+                What is a part-time job in Oxford?
                 <span className="text-indigo-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                A fractional job in Oxford is a part-time executive role working 1-3 days per week. Oxford's life sciences and deep tech clusters create exceptional demand for fractional CFOs and CTOs.
+                A part-time job in Oxford is a part-time executive role working 1-3 days per week. Oxford's life sciences and deep tech clusters create exceptional demand for part-time CFOs and CTOs.
               </p>
             </details>
 
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                How much do fractional executives earn in Oxford?
+                How much do part-time executives earn in Oxford?
                 <span className="text-indigo-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Oxford fractional executives earn £700-£1,100 per day. Life sciences and space tech specialists can earn £140,000-£220,000+ annually working with 2-4 clients.
+                Oxford part-time executives earn £700-£1,100 per day. Life sciences and space tech specialists can earn £140,000-£220,000+ annually working with 2-4 clients.
               </p>
             </details>
 
@@ -271,7 +271,7 @@ export default async function OxfordPage() {
                 <span className="text-indigo-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Harwell Campus is the UK's leading science and innovation campus with ESA, Diamond Light Source, and 100+ space and healthcare tech companies. It's creating huge demand for fractional tech leadership.
+                Harwell Campus is the UK's leading science and innovation campus with ESA, Diamond Light Source, and 100+ space and healthcare tech companies. It's creating huge demand for part-time tech leadership.
               </p>
             </details>
           </div>
@@ -281,32 +281,32 @@ export default async function OxfordPage() {
       {/* Internal Links */}
       <section className="py-16 bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Oxford Fractional Resources</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Oxford Part-Time Resources</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Roles by Function</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/cfo" className="hover:text-indigo-700">Fractional CFO Jobs</Link></li>
-                <li><Link href="/cto" className="hover:text-indigo-700">Fractional CTO Jobs</Link></li>
-                <li><Link href="/cmo" className="hover:text-indigo-700">Fractional CMO Jobs</Link></li>
+                <li><Link href="/cfo" className="hover:text-indigo-700">Part-Time CFO Jobs</Link></li>
+                <li><Link href="/cto" className="hover:text-indigo-700">Part-Time CTO Jobs</Link></li>
+                <li><Link href="/cmo" className="hover:text-indigo-700">Part-Time CMO Jobs</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Other UK Locations</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/fractional-jobs-london" className="hover:text-indigo-700">Fractional Jobs London</Link></li>
-                <li><Link href="/fractional-jobs-cambridge" className="hover:text-indigo-700">Fractional Jobs Cambridge</Link></li>
-                <li><Link href="/fractional-jobs-bristol" className="hover:text-indigo-700">Fractional Jobs Bristol</Link></li>
+                <li><Link href="/part-time-jobs-london" className="hover:text-indigo-700">Part-Time Jobs London</Link></li>
+                <li><Link href="/part-time-jobs-cambridge" className="hover:text-indigo-700">Part-Time Jobs Cambridge</Link></li>
+                <li><Link href="/part-time-jobs-bristol" className="hover:text-indigo-700">Part-Time Jobs Bristol</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Career Guides</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/guide" className="hover:text-indigo-700">Fractional Work Guide</Link></li>
-                <li><Link href="/fractional-executive-salary-uk" className="hover:text-indigo-700">Salary Guide</Link></li>
+                <li><Link href="/guide" className="hover:text-indigo-700">Part-Time Work Guide</Link></li>
+                <li><Link href="/part-time-executive-salary-uk" className="hover:text-indigo-700">Salary Guide</Link></li>
               </ul>
             </div>
           </div>
@@ -320,10 +320,10 @@ export default async function OxfordPage() {
             Ready to Work in Oxford?
           </h2>
           <p className="text-xl text-indigo-100 mb-10">
-            {stats.totalOxford}+ fractional opportunities in the UK's life sciences capital.
+            {stats.totalOxford}+ part-time opportunities in the UK's life sciences capital.
           </p>
           <Link
-            href="/fractional-jobs?location=Oxford"
+            href="/part-time-jobs?location=Oxford"
             className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-indigo-900 hover:bg-indigo-50 transition-all duration-200"
           >
             Browse Oxford Jobs →

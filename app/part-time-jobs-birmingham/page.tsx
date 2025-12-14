@@ -9,11 +9,11 @@ import { FAQ, BIRMINGHAM_FAQS } from '@/components/FAQ'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs Birmingham - Executive Roles in the West Midlands',
-  description: 'Find fractional executive jobs in Birmingham. CFO, CMO, CTO roles across the West Midlands. £650-£1,100 daily rates. Growing fractional market.',
+  title: 'Part-Time Jobs Birmingham - Executive Roles in the West Midlands',
+  description: 'Find part-time executive jobs in Birmingham. CFO, CMO, CTO roles across the West Midlands. £650-£1,100 daily rates. Growing part-time market.',
   openGraph: {
-    title: 'Fractional Jobs Birmingham - Executive Roles in the West Midlands',
-    description: 'Find fractional executive jobs in Birmingham and the West Midlands region.',
+    title: 'Part-Time Jobs Birmingham - Executive Roles in the West Midlands',
+    description: 'Find part-time executive jobs in Birmingham and the West Midlands region.',
     type: 'website',
   },
 }
@@ -37,9 +37,9 @@ const birminghamIndustries = [
 ]
 
 const relatedSearches = [
-  'Fractional CFO Jobs Birmingham', 'Fractional CMO Jobs Birmingham', 'Fractional CTO Jobs West Midlands',
+  'Part-Time CFO Jobs Birmingham', 'Part-Time CMO Jobs Birmingham', 'Part-Time CTO Jobs West Midlands',
   'Part-Time CFO Birmingham', 'Interim Executive Birmingham', 'Portfolio Career Birmingham',
-  'Fractional Jobs Solihull', 'Fractional Jobs Coventry', 'Fractional Executive Salary Birmingham'
+  'Part-Time Jobs Solihull', 'Part-Time Jobs Coventry', 'Part-Time Executive Salary Birmingham'
 ]
 
 async function getBirminghamStats() {
@@ -85,25 +85,25 @@ export default async function BirminghamPage() {
                   </span>
 
                   <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[0.95] tracking-tight">
-                    Fractional Jobs<br />
+                    Part-Time Jobs<br />
                     <span className="text-white/90">Birmingham</span>
                   </h1>
 
                   <img
-                    src="/images/fractional-jobs-birmingham.svg"
-                    alt="Fractional Jobs Birmingham - Executive recruitment opportunities in the Midlands"
+                    src="/images/part-time-jobs-birmingham.svg"
+                    alt="Part-Time Jobs Birmingham - Executive recruitment opportunities in the Midlands"
                     className="hidden"
                     width={1}
                     height={1}
                   />
 
                   <p className="text-lg text-white/70 mb-8 leading-relaxed max-w-lg">
-                    CFO, CMO, CTO roles across the West Midlands. £650-£1,100 daily rates. The UK's second city for fractional careers.
+                    CFO, CMO, CTO roles across the West Midlands. £650-£1,100 daily rates. The UK's second city for part-time careers.
                   </p>
 
                   <div className="flex flex-wrap gap-4">
                     <Link
-                      href="/fractional-jobs?location=Birmingham"
+                      href="/part-time-jobs?location=Birmingham"
                       className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg bg-white text-black hover:bg-white/90 transition-all duration-200"
                     >
                       Browse Birmingham Jobs →
@@ -151,7 +151,7 @@ export default async function BirminghamPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Opportunities</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Birmingham Fractional Jobs</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Birmingham Part-Time Jobs</h2>
             <p className="text-xl text-gray-500">Browse {stats.total}+ live opportunities in the West Midlands</p>
           </div>
           <EmbeddedJobBoard defaultLocation="Birmingham" />
@@ -164,7 +164,7 @@ export default async function BirminghamPage() {
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">By District</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Jobs by Birmingham Area</h2>
-            <p className="text-xl text-gray-500">Find fractional roles across the West Midlands</p>
+            <p className="text-xl text-gray-500">Find part-time roles across the West Midlands</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {birminghamAreas.map((area) => (
@@ -184,7 +184,7 @@ export default async function BirminghamPage() {
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">By Sector</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Birmingham Industries</h2>
-            <p className="text-xl text-gray-500">Key sectors hiring fractional executives</p>
+            <p className="text-xl text-gray-500">Key sectors hiring part-time executives</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {birminghamIndustries.map((industry) => (
@@ -230,7 +230,7 @@ export default async function BirminghamPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Growing Market</h3>
               <p className="text-gray-600">
-                18% YoY growth in fractional roles. HS2 and city regeneration driving demand for senior talent.
+                18% YoY growth in part-time roles. HS2 and city regeneration driving demand for senior talent.
               </p>
             </div>
           </div>
@@ -243,7 +243,7 @@ export default async function BirminghamPage() {
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Tax Planning</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">IR35 Calculator</h2>
-            <p className="text-xl text-gray-500">Understand your take-home as a fractional executive in Birmingham</p>
+            <p className="text-xl text-gray-500">Understand your take-home as a part-time executive in Birmingham</p>
           </div>
           <IR35Calculator defaultDayRate={850} />
         </div>
@@ -255,7 +255,7 @@ export default async function BirminghamPage() {
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">FAQ</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Common Questions</h2>
-            <p className="text-xl text-gray-500">About fractional work in Birmingham</p>
+            <p className="text-xl text-gray-500">About part-time work in Birmingham</p>
           </div>
           <FAQ items={BIRMINGHAM_FAQS} title="" />
         </div>
@@ -269,7 +269,7 @@ export default async function BirminghamPage() {
             {relatedSearches.map((search) => (
               <Link
                 key={search}
-                href={`/fractional-jobs?q=${encodeURIComponent(search)}`}
+                href={`/part-time-jobs?q=${encodeURIComponent(search)}`}
                 className="px-4 py-2 bg-white rounded-full text-gray-700 hover:bg-purple-100 hover:text-purple-700 transition-colors text-sm border border-gray-200"
               >
                 {search}
@@ -287,11 +287,11 @@ export default async function BirminghamPage() {
             Ready to Work in Birmingham?
           </h2>
           <p className="text-xl text-gray-400 mb-10">
-            {stats.total}+ fractional opportunities in the UK's second city
+            {stats.total}+ part-time opportunities in the UK's second city
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/fractional-jobs?location=Birmingham"
+              href="/part-time-jobs?location=Birmingham"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-gray-900 hover:bg-gray-100 transition-all"
             >
               Browse Birmingham Jobs

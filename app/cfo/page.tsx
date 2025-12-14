@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 
-// Redirect /cfo to the SEO-optimized /fractional-cfo-jobs-uk
+// Redirect /cfo to the SEO-optimized /part-time-cfo-jobs-uk
 export default function CfoRedirect() {
-  redirect('/fractional-cfo-jobs-uk')
+  redirect('/part-time-cfo-jobs-uk')
 }

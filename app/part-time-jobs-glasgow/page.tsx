@@ -7,11 +7,11 @@ import { JobsGraph3D } from '@/components/JobsGraph3D'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs Glasgow - Executive Roles in Scotland\'s Business Capital',
-  description: 'Find fractional executive jobs in Glasgow. CFO, CMO, CTO roles in Scotland\'s largest city. £600-£1,200 daily rates. Growing tech and financial services hub.',
+  title: 'Part-Time Jobs Glasgow - Executive Roles in Scotland\'s Business Capital',
+  description: 'Find part-time executive jobs in Glasgow. CFO, CMO, CTO roles in Scotland\'s largest city. £600-£1,200 daily rates. Growing tech and financial services hub.',
   openGraph: {
-    title: 'Fractional Jobs Glasgow - Executive Roles in Scotland\'s Business Capital',
-    description: 'Find fractional executive jobs in Glasgow. CFO, CMO, CTO roles in Scotland\'s largest city. £600-£1,200 daily rates.',
+    title: 'Part-Time Jobs Glasgow - Executive Roles in Scotland\'s Business Capital',
+    description: 'Find part-time executive jobs in Glasgow. CFO, CMO, CTO roles in Scotland\'s largest city. £600-£1,200 daily rates.',
     type: 'website',
   },
 }
@@ -38,15 +38,15 @@ const successStories = [
   {
     quote: "Glasgow's tech scene is booming. I work with 3 SaaS companies and a fintech startup. The cost of living means my rates go much further than they would in London.",
     name: "James McAllister",
-    role: "Fractional CTO",
+    role: "Part-Time CTO",
     area: "Finnieston",
     clients: 4,
     earnings: "£145k/year"
   },
   {
-    quote: "The life sciences cluster around the university is incredible for fractional CFO work. These companies need financial expertise but can't justify a full-time hire yet.",
+    quote: "The life sciences cluster around the university is incredible for part-time CFO work. These companies need financial expertise but can't justify a full-time hire yet.",
     name: "Claire Robertson",
-    role: "Fractional CFO",
+    role: "Part-Time CFO",
     area: "West End",
     clients: 3,
     earnings: "£135k/year"
@@ -54,7 +54,7 @@ const successStories = [
   {
     quote: "I moved from London and took a small rate cut, but the quality of life is incomparable. Glasgow companies are genuinely innovative and eager to grow.",
     name: "David Thomson",
-    role: "Fractional CMO",
+    role: "Part-Time CMO",
     area: "Merchant City",
     clients: 3,
     earnings: "£125k/year"
@@ -62,9 +62,9 @@ const successStories = [
 ]
 
 const relatedSearches = [
-  'Fractional CFO Jobs Glasgow', 'Fractional CMO Jobs Glasgow', 'Fractional CTO Jobs Glasgow',
+  'Part-Time CFO Jobs Glasgow', 'Part-Time CMO Jobs Glasgow', 'Part-Time CTO Jobs Glasgow',
   'Part-Time CFO Glasgow', 'Interim Executive Glasgow', 'Portfolio Career Glasgow',
-  'Fractional Jobs Scotland', 'Fractional Executive Salary Glasgow', 'Fractional Recruitment Agencies Glasgow'
+  'Part-Time Jobs Scotland', 'Part-Time Executive Salary Glasgow', 'Part-Time Recruitment Agencies Glasgow'
 ]
 
 async function getGlasgowStats() {
@@ -139,14 +139,14 @@ export default async function GlasgowPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Fractional Jobs Glasgow
+            Part-Time Jobs Glasgow
           </h1>
           <p className="max-w-2xl text-xl text-blue-100 mb-10 leading-relaxed">
-            {stats.totalGlasgow}+ fractional executive opportunities in Scotland's largest city. £600-£1,200 daily rates. Work with innovative tech, life sciences, and financial services companies.
+            {stats.totalGlasgow}+ part-time executive opportunities in Scotland's largest city. £600-£1,200 daily rates. Work with innovative tech, life sciences, and financial services companies.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/fractional-jobs?location=Glasgow"
+              href="/part-time-jobs?location=Glasgow"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-blue-900 hover:bg-blue-50 transition-all duration-200"
             >
               Browse All Glasgow Jobs
@@ -167,7 +167,7 @@ export default async function GlasgowPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-4xl font-black text-blue-700">15%</div>
-              <div className="text-gray-600 font-medium">of Scottish fractional roles</div>
+              <div className="text-gray-600 font-medium">of Scottish part-time roles</div>
             </div>
             <div>
               <div className="text-4xl font-black text-blue-700">£{stats.avgDayRate}</div>
@@ -190,14 +190,14 @@ export default async function GlasgowPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Jobs by Glasgow Area</h2>
-            <p className="text-xl text-gray-600">From the City Centre to the West End - find fractional roles across Glasgow</p>
+            <p className="text-xl text-gray-600">From the City Centre to the West End - find part-time roles across Glasgow</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {areaJobEstimates.map((area) => (
               <Link
                 key={area.name}
-                href={`/fractional-jobs?location=${encodeURIComponent(area.name)}`}
+                href={`/part-time-jobs?location=${encodeURIComponent(area.name)}`}
                 className="group"
               >
                 <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 border border-transparent hover:border-blue-200">
@@ -224,18 +224,18 @@ export default async function GlasgowPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { icon: '💰', title: 'Fractional CFO Glasgow', rate: '£700-£1,100/day', role: 'CFO' },
-              { icon: '💻', title: 'Fractional CTO Glasgow', rate: '£750-£1,200/day', role: 'CTO' },
-              { icon: '📢', title: 'Fractional CMO Glasgow', rate: '£600-£1,000/day', role: 'CMO' },
-              { icon: '⚙️', title: 'Fractional COO Glasgow', rate: '£650-£1,050/day', role: 'COO' },
-              { icon: '👥', title: 'Fractional HR Director Glasgow', rate: '£550-£900/day', role: 'HR' },
-              { icon: '📈', title: 'Fractional Sales Director Glasgow', rate: '£600-£1,000/day', role: 'Sales' },
+              { icon: '💰', title: 'Part-Time CFO Glasgow', rate: '£700-£1,100/day', role: 'CFO' },
+              { icon: '💻', title: 'Part-Time CTO Glasgow', rate: '£750-£1,200/day', role: 'CTO' },
+              { icon: '📢', title: 'Part-Time CMO Glasgow', rate: '£600-£1,000/day', role: 'CMO' },
+              { icon: '⚙️', title: 'Part-Time COO Glasgow', rate: '£650-£1,050/day', role: 'COO' },
+              { icon: '👥', title: 'Part-Time HR Director Glasgow', rate: '£550-£900/day', role: 'HR' },
+              { icon: '📈', title: 'Part-Time Sales Director Glasgow', rate: '£600-£1,000/day', role: 'Sales' },
             ].map((item) => {
               const roleCount = stats.roleStats.find(r => r.role_category === item.role)?.count || '0'
               return (
                 <Link
                   key={item.role}
-                  href={`/fractional-jobs?location=Glasgow&role=${item.role}`}
+                  href={`/part-time-jobs?location=Glasgow&role=${item.role}`}
                   className="group"
                 >
                   <div className="bg-gray-50 rounded-xl p-6 hover:bg-blue-50 hover:shadow-lg transition-all duration-200 border border-transparent hover:border-blue-200">
@@ -258,7 +258,7 @@ export default async function GlasgowPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose Glasgow?</h2>
-            <p className="text-xl text-gray-600">Scotland's innovation capital for fractional executive careers</p>
+            <p className="text-xl text-gray-600">Scotland's innovation capital for part-time executive careers</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -288,7 +288,7 @@ export default async function GlasgowPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Life Sciences Cluster</h3>
               <p className="text-gray-600">
-                World-class life sciences and healthcare innovation with university spin-outs and research-led companies seeking fractional leadership.
+                World-class life sciences and healthcare innovation with university spin-outs and research-led companies seeking part-time leadership.
               </p>
             </div>
           </div>
@@ -300,7 +300,7 @@ export default async function GlasgowPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Glasgow Industries</h2>
-            <p className="text-xl text-gray-600">High-growth sectors hiring fractional executives in Glasgow</p>
+            <p className="text-xl text-gray-600">High-growth sectors hiring part-time executives in Glasgow</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -321,7 +321,7 @@ export default async function GlasgowPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Glasgow Opportunities</h2>
-              <p className="text-xl text-gray-600">Hand-picked fractional executive positions in Glasgow</p>
+              <p className="text-xl text-gray-600">Hand-picked part-time executive positions in Glasgow</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {(glasgowJobs as any[]).map((job: any) => {
@@ -331,7 +331,7 @@ export default async function GlasgowPage() {
                   : undefined
 
                 return (
-                  <Link key={job.id} href={`/fractional-job/${job.slug}`}>
+                  <Link key={job.id} href={`/part-time-job/${job.slug}`}>
                     <JobCard
                       title={job.title}
                       company={job.company_name}
@@ -348,7 +348,7 @@ export default async function GlasgowPage() {
             </div>
             <div className="text-center">
               <Link
-                href="/fractional-jobs?location=Glasgow"
+                href="/part-time-jobs?location=Glasgow"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-lg bg-blue-700 text-white hover:bg-blue-800 transition-all duration-200"
               >
                 View All Glasgow Jobs →
@@ -363,7 +363,7 @@ export default async function GlasgowPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">Glasgow Success Stories</h2>
-            <p className="text-xl text-blue-200">Real fractional professionals thriving in Glasgow</p>
+            <p className="text-xl text-blue-200">Real part-time professionals thriving in Glasgow</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -391,37 +391,37 @@ export default async function GlasgowPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-            <p className="text-xl text-gray-600">Everything you need to know about fractional jobs in Glasgow</p>
+            <p className="text-xl text-gray-600">Everything you need to know about part-time jobs in Glasgow</p>
           </div>
 
           <div className="space-y-6">
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                What is a fractional job in Glasgow?
+                What is a part-time job in Glasgow?
                 <span className="text-blue-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                A fractional job in Glasgow is a part-time executive role where you work with Glasgow-based companies for 1-3 days per week. Glasgow has a growing fractional market, particularly in tech, life sciences, and financial services sectors.
+                A part-time job in Glasgow is a part-time executive role where you work with Glasgow-based companies for 1-3 days per week. Glasgow has a growing part-time market, particularly in tech, life sciences, and financial services sectors.
               </p>
             </details>
 
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                How much do fractional executives earn in Glasgow?
+                How much do part-time executives earn in Glasgow?
                 <span className="text-blue-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Glasgow fractional executives typically earn £600-£1,200 per day. While rates are slightly lower than London, the lower cost of living means take-home value is often comparable. Most professionals work with 2-4 clients, earning £120,000-£200,000+ annually.
+                Glasgow part-time executives typically earn £600-£1,200 per day. While rates are slightly lower than London, the lower cost of living means take-home value is often comparable. Most professionals work with 2-4 clients, earning £120,000-£200,000+ annually.
               </p>
             </details>
 
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                Which industries hire fractional executives in Glasgow?
+                Which industries hire part-time executives in Glasgow?
                 <span className="text-blue-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Glasgow's key industries for fractional work include tech/SaaS, life sciences, fintech, energy, and creative industries. The city has a strong university spin-out ecosystem and growing tech scene in areas like Finnieston and Merchant City.
+                Glasgow's key industries for part-time work include tech/SaaS, life sciences, fintech, energy, and creative industries. The city has a strong university spin-out ecosystem and growing tech scene in areas like Finnieston and Merchant City.
               </p>
             </details>
 
@@ -431,27 +431,27 @@ export default async function GlasgowPage() {
                 <span className="text-blue-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Yes, many Glasgow companies offer hybrid or fully remote fractional arrangements. The tech sector is particularly flexible. However, some roles may require occasional on-site presence, especially for strategic meetings and team sessions.
+                Yes, many Glasgow companies offer hybrid or fully remote part-time arrangements. The tech sector is particularly flexible. However, some roles may require occasional on-site presence, especially for strategic meetings and team sessions.
               </p>
             </details>
 
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                How does Glasgow compare to Edinburgh for fractional work?
+                How does Glasgow compare to Edinburgh for part-time work?
                 <span className="text-blue-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Glasgow has a larger tech startup scene and more diverse industry base, while Edinburgh has stronger financial services. Many fractional executives work with companies in both cities. Glasgow offers better value with similar professional opportunities.
+                Glasgow has a larger tech startup scene and more diverse industry base, while Edinburgh has stronger financial services. Many part-time executives work with companies in both cities. Glasgow offers better value with similar professional opportunities.
               </p>
             </details>
 
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                Are there fractional recruitment agencies in Glasgow?
+                Are there part-time recruitment agencies in Glasgow?
                 <span className="text-blue-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Yes, several agencies serve the Scottish fractional market including Glasgow-based recruiters and national agencies with Scottish operations. Networking through tech meetups and business events is also highly effective for finding Glasgow fractional opportunities.
+                Yes, several agencies serve the Scottish part-time market including Glasgow-based recruiters and national agencies with Scottish operations. Networking through tech meetups and business events is also highly effective for finding Glasgow part-time opportunities.
               </p>
             </details>
           </div>
@@ -461,38 +461,38 @@ export default async function GlasgowPage() {
       {/* Internal Links */}
       <section className="py-16 bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Glasgow Fractional Executive Resources</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Glasgow Part-Time Executive Resources</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Glasgow Roles by Function</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/cfo" className="hover:text-blue-700 transition-colors">Fractional CFO Jobs</Link></li>
-                <li><Link href="/cmo" className="hover:text-blue-700 transition-colors">Fractional CMO Jobs</Link></li>
-                <li><Link href="/cto" className="hover:text-blue-700 transition-colors">Fractional CTO Jobs</Link></li>
-                <li><Link href="/coo" className="hover:text-blue-700 transition-colors">Fractional COO Jobs</Link></li>
-                <li><Link href="/hr" className="hover:text-blue-700 transition-colors">Fractional HR Jobs</Link></li>
+                <li><Link href="/cfo" className="hover:text-blue-700 transition-colors">Part-Time CFO Jobs</Link></li>
+                <li><Link href="/cmo" className="hover:text-blue-700 transition-colors">Part-Time CMO Jobs</Link></li>
+                <li><Link href="/cto" className="hover:text-blue-700 transition-colors">Part-Time CTO Jobs</Link></li>
+                <li><Link href="/coo" className="hover:text-blue-700 transition-colors">Part-Time COO Jobs</Link></li>
+                <li><Link href="/hr" className="hover:text-blue-700 transition-colors">Part-Time HR Jobs</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Other UK Locations</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/fractional-jobs" className="hover:text-blue-700 transition-colors">All Fractional Jobs UK</Link></li>
-                <li><Link href="/fractional-jobs-london" className="hover:text-blue-700 transition-colors">Fractional Jobs London</Link></li>
-                <li><Link href="/fractional-jobs-edinburgh" className="hover:text-blue-700 transition-colors">Fractional Jobs Edinburgh</Link></li>
-                <li><Link href="/fractional-jobs-manchester" className="hover:text-blue-700 transition-colors">Fractional Jobs Manchester</Link></li>
-                <li><Link href="/remote" className="hover:text-blue-700 transition-colors">Remote Fractional Jobs UK</Link></li>
+                <li><Link href="/part-time-jobs" className="hover:text-blue-700 transition-colors">All Part-Time Jobs UK</Link></li>
+                <li><Link href="/part-time-jobs-london" className="hover:text-blue-700 transition-colors">Part-Time Jobs London</Link></li>
+                <li><Link href="/part-time-jobs-edinburgh" className="hover:text-blue-700 transition-colors">Part-Time Jobs Edinburgh</Link></li>
+                <li><Link href="/part-time-jobs-manchester" className="hover:text-blue-700 transition-colors">Part-Time Jobs Manchester</Link></li>
+                <li><Link href="/remote" className="hover:text-blue-700 transition-colors">Remote Part-Time Jobs UK</Link></li>
               </ul>
             </div>
 
             <div>
-              <h3 className="font-bold text-gray-900 mb-4">Fractional Career Guides</h3>
+              <h3 className="font-bold text-gray-900 mb-4">Part-Time Career Guides</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/how-to-become-a-fractional-executive" className="hover:text-blue-700 transition-colors">How to Become a Fractional Executive</Link></li>
-                <li><Link href="/fractional-executive-salary-uk" className="hover:text-blue-700 transition-colors">Fractional Executive Salary UK</Link></li>
-                <li><Link href="/fractional-vs-interim" className="hover:text-blue-700 transition-colors">Fractional vs Interim Roles</Link></li>
-                <li><Link href="/guide" className="hover:text-blue-700 transition-colors">Fractional Work Guide</Link></li>
+                <li><Link href="/how-to-become-a-part-time-executive" className="hover:text-blue-700 transition-colors">How to Become a Part-Time Executive</Link></li>
+                <li><Link href="/part-time-executive-salary-uk" className="hover:text-blue-700 transition-colors">Part-Time Executive Salary UK</Link></li>
+                <li><Link href="/part-time-vs-interim" className="hover:text-blue-700 transition-colors">Part-Time vs Interim Roles</Link></li>
+                <li><Link href="/guide" className="hover:text-blue-700 transition-colors">Part-Time Work Guide</Link></li>
                 <li><Link href="/articles" className="hover:text-blue-700 transition-colors">All Career Guides</Link></li>
               </ul>
             </div>
@@ -508,7 +508,7 @@ export default async function GlasgowPage() {
             {relatedSearches.map((search) => (
               <Link
                 key={search}
-                href={`/fractional-jobs?q=${encodeURIComponent(search)}`}
+                href={`/part-time-jobs?q=${encodeURIComponent(search)}`}
                 className="px-4 py-2 bg-white rounded-full text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition-colors text-sm border border-gray-200"
               >
                 {search}
@@ -525,10 +525,10 @@ export default async function GlasgowPage() {
             Ready to Work in Glasgow?
           </h2>
           <p className="text-xl text-blue-100 mb-10">
-            {stats.totalGlasgow}+ fractional executive opportunities in Scotland's largest business hub.
+            {stats.totalGlasgow}+ part-time executive opportunities in Scotland's largest business hub.
           </p>
           <Link
-            href="/fractional-jobs?location=Glasgow"
+            href="/part-time-jobs?location=Glasgow"
             className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-blue-900 hover:bg-blue-50 transition-all duration-200"
           >
             Browse Glasgow Jobs →

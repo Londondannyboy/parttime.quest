@@ -17,12 +17,12 @@ export const metadata: Metadata = {
   description: 'Part-time CFO jobs UK - Find flexible Chief Financial Officer positions paying £800-£1,500/day. Browse live part-time CFO roles for experienced finance leaders. Remote & hybrid available.',
   keywords: 'part time cfo jobs, part-time cfo jobs uk, part time chief financial officer, cfo part time, flexible cfo roles, part time cfo uk, part-time cfo opportunities',
   alternates: {
-    canonical: 'https://fractional.quest/part-time-cfo-jobs-uk',
+    canonical: 'https://parttime.quest/part-time-cfo-jobs-uk',
   },
   openGraph: {
     title: 'Part-Time CFO Jobs UK | Flexible Chief Financial Officer Roles',
     description: 'Part-time CFO jobs UK - Find flexible CFO positions paying £800-£1,500/day. Remote & hybrid available.',
-    url: 'https://fractional.quest/part-time-cfo-jobs-uk',
+    url: 'https://parttime.quest/part-time-cfo-jobs-uk',
   },
 }
 
@@ -103,7 +103,7 @@ export default async function PartTimeCfoJobsUkPage() {
                 <Link href="#jobs" className="px-8 py-4 bg-emerald-500 text-black font-bold uppercase tracking-wider hover:bg-emerald-400 transition-colors">
                   Browse Jobs Now
                 </Link>
-                <Link href="/fractional-cfo-salary" className="px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
+                <Link href="/part-time-cfo-salary" className="px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
                   Salary Guide
                 </Link>
               </div>
@@ -286,9 +286,9 @@ export default async function PartTimeCfoJobsUkPage() {
             </p>
 
             <div className="bg-emerald-50 p-6 border border-emerald-200 rounded-lg my-8 not-prose">
-              <p className="text-emerald-800 font-medium mb-3">Looking for fractional CFO positions?</p>
-              <Link href="/fractional-cfo-jobs-uk" className="inline-flex items-center text-emerald-700 font-bold hover:text-emerald-900">
-                Browse Fractional CFO Jobs UK →
+              <p className="text-emerald-800 font-medium mb-3">Looking for part-time CFO positions?</p>
+              <Link href="/part-time-cfo-jobs-uk" className="inline-flex items-center text-emerald-700 font-bold hover:text-emerald-900">
+                Browse Part-Time CFO Jobs UK →
               </Link>
             </div>
           </article>
@@ -357,7 +357,7 @@ export default async function PartTimeCfoJobsUkPage() {
           <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">Create your profile and get matched with companies seeking part-time finance leadership.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/handler/sign-up" className="px-10 py-5 bg-emerald-500 text-black font-bold uppercase tracking-wider hover:bg-emerald-400 transition-colors">Create Profile</Link>
-            <Link href="/fractional-cfo-salary" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Salary Guide</Link>
+            <Link href="/part-time-cfo-salary" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Salary Guide</Link>
           </div>
         </div>
       </section>
@@ -368,11 +368,11 @@ export default async function PartTimeCfoJobsUkPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <span className="text-sm font-bold uppercase tracking-wider text-gray-400">Related</span>
             <div className="flex flex-wrap gap-4">
-              <Link href="/fractional-cfo-jobs-uk" className="text-gray-600 hover:text-emerald-600 font-medium transition-colors">Fractional CFO Jobs</Link>
-              <Link href="/fractional-cfo-salary" className="text-gray-600 hover:text-emerald-600 font-medium transition-colors">CFO Salary Guide</Link>
+              <Link href="/part-time-cfo-jobs-uk" className="text-gray-600 hover:text-emerald-600 font-medium transition-colors">Part-Time CFO Jobs</Link>
+              <Link href="/part-time-cfo-salary" className="text-gray-600 hover:text-emerald-600 font-medium transition-colors">CFO Salary Guide</Link>
               <Link href="/part-time-cmo-jobs-uk" className="text-gray-600 hover:text-emerald-600 font-medium transition-colors">Part-Time CMO Jobs</Link>
-              <Link href="/fractional-cto-jobs-uk" className="text-gray-600 hover:text-emerald-600 font-medium transition-colors">CTO Jobs UK</Link>
-              <Link href="/fractional-coo-jobs-uk" className="text-gray-600 hover:text-emerald-600 font-medium transition-colors">COO Jobs UK</Link>
+              <Link href="/part-time-cto-jobs-uk" className="text-gray-600 hover:text-emerald-600 font-medium transition-colors">CTO Jobs UK</Link>
+              <Link href="/part-time-coo-jobs-uk" className="text-gray-600 hover:text-emerald-600 font-medium transition-colors">COO Jobs UK</Link>
             </div>
           </div>
         </div>

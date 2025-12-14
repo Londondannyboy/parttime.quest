@@ -59,7 +59,7 @@ class SupermemoryClient {
         containerTag: userId,  // v3 uses containerTag instead of userId
         metadata: {
           ...metadata,
-          source: 'fractional-quest',
+          source: 'part-time-quest',
           timestamp: new Date().toISOString(),
         },
       }),

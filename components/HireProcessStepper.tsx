@@ -16,12 +16,12 @@ const DEFAULT_STEPS: Step[] = [
   {
     number: 1,
     title: 'Brief',
-    description: 'Tell us about your needs, company stage, and what you\'re looking for in a fractional executive.',
+    description: 'Tell us about your needs, company stage, and what you\'re looking for in a part-time executive.',
   },
   {
     number: 2,
     title: 'Match',
-    description: 'We curate a shortlist of pre-vetted fractional executives who match your specific requirements.',
+    description: 'We curate a shortlist of pre-vetted part-time executives who match your specific requirements.',
   },
   {
     number: 3,
@@ -31,7 +31,7 @@ const DEFAULT_STEPS: Step[] = [
   {
     number: 4,
     title: 'Start',
-    description: 'Your fractional executive begins within days. We support onboarding and ongoing success.',
+    description: 'Your part-time executive begins within days. We support onboarding and ongoing success.',
   },
 ]
 

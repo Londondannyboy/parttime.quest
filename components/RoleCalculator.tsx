@@ -149,7 +149,7 @@ export function RoleCalculator({ role, className = '' }: RoleCalculatorProps) {
           /* Candidate View */
           <div>
             <div className="mb-8">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Fractional {roleData.label} Earnings</span>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Part-Time {roleData.label} Earnings</span>
               <h3 className="text-2xl font-black mt-1">Calculate Your Potential Income</h3>
             </div>
 
@@ -255,7 +255,7 @@ export function RoleCalculator({ role, className = '' }: RoleCalculatorProps) {
           /* Employer View */
           <div>
             <div className="mb-8">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Fractional {roleData.label} vs Full-Time</span>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Part-Time {roleData.label} vs Full-Time</span>
               <h3 className="text-2xl font-black mt-1">Calculate Your Savings</h3>
             </div>
 
@@ -327,11 +327,11 @@ export function RoleCalculator({ role, className = '' }: RoleCalculatorProps) {
                   </div>
                 </div>
 
-                {/* Fractional Cost */}
+                {/* Part-Time Cost */}
                 <div className="bg-emerald-900/30 border border-emerald-900/50 p-4">
                   <div className="flex justify-between items-center">
                     <div>
-                      <div className="text-sm text-gray-400">Fractional {roleData.label}</div>
+                      <div className="text-sm text-gray-400">Part-Time {roleData.label}</div>
                       <div className="text-xs text-gray-500">({daysPerWeekNeeded.toFixed(1)} days/week x 48 weeks)</div>
                     </div>
                     <div className="text-2xl font-bold text-emerald-400">

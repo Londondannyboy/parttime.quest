@@ -5,10 +5,10 @@ import { JobsGraph3D } from '@/components/JobsGraph3D'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Hire Finance Consultants UK | Fractional Finance Experts',
-  description: 'Hire experienced finance consultants on a fractional basis. Expert financial professionals for FP&A, fundraising, and financial strategy. Available part-time.',
-  keywords: 'finance consultants, hire finance consultant, fractional finance expert, finance consultant uk, financial strategy consultant',
-  alternates: { canonical: 'https://fractional.quest/finance-consultants' },
+  title: 'Hire Finance Consultants UK | Part-Time Finance Experts',
+  description: 'Hire experienced finance consultants on a part-time basis. Expert financial professionals for FP&A, fundraising, and financial strategy. Available part-time.',
+  keywords: 'finance consultants, hire finance consultant, part-time finance expert, finance consultant uk, financial strategy consultant',
+  alternates: { canonical: 'https://parttime.quest/finance-consultants' },
 }
 
 export default function FinanceConsultantsPage() {
@@ -25,10 +25,10 @@ export default function FinanceConsultantsPage() {
             <div className="max-w-4xl">
               <span className="inline-block bg-emerald-500 text-white px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] mb-6">Popular Roles</span>
               <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-[0.9]">Finance<br /><span className="text-emerald-400">Consultants</span></h1>
-              <p className="text-xl text-white/80 leading-relaxed max-w-2xl mb-8">Hire experienced finance professionals on a fractional basis. Get expert financial strategy, planning, and analysis without the cost of a full finance team.</p>
+              <p className="text-xl text-white/80 leading-relaxed max-w-2xl mb-8">Hire experienced finance professionals on a part-time basis. Get expert financial strategy, planning, and analysis without the cost of a full finance team.</p>
               <div className="flex flex-wrap gap-4">
                 <Link href="#contact" className="px-8 py-4 bg-emerald-500 text-white font-bold uppercase tracking-wider hover:bg-emerald-400 transition-colors">Find a Consultant</Link>
-                <Link href="/fractional-cfo-services" className="px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Fractional CFO</Link>
+                <Link href="/part-time-cfo-services" className="px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Part-Time CFO</Link>
               </div>
             </div>
           </div>
@@ -38,7 +38,7 @@ export default function FinanceConsultantsPage() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <h2 className="text-3xl font-black text-gray-900 mb-6">What Finance Consultants Do</h2>
-          <p className="text-xl text-gray-600 leading-relaxed mb-6">Finance consultants help businesses make better financial decisions, raise capital, and build robust financial operations. On a fractional basis, they bring CFO-level expertise without the full-time commitment.</p>
+          <p className="text-xl text-gray-600 leading-relaxed mb-6">Finance consultants help businesses make better financial decisions, raise capital, and build robust financial operations. On a part-time basis, they bring CFO-level expertise without the full-time commitment.</p>
           <div className="grid md:grid-cols-2 gap-6 mt-10">
             {[
               { title: 'Financial Planning', description: 'Build budgets, forecasts, and financial models for better decision-making.' },
@@ -84,7 +84,7 @@ export default function FinanceConsultantsPage() {
           <p className="text-xl text-gray-400 mb-10">Tell us about your financial needs and we'll match you with experienced finance professionals.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/handler/sign-up" className="px-10 py-5 bg-emerald-500 text-white font-bold uppercase tracking-wider hover:bg-emerald-400 transition-colors">Get Started</Link>
-            <Link href="/fractional-finance" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Explore Finance Leadership</Link>
+            <Link href="/part-time-finance" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">Explore Finance Leadership</Link>
           </div>
         </div>
       </section>

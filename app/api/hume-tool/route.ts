@@ -222,7 +222,7 @@ async function searchJobs(params: {
         salary_min, salary_max, salary_currency
       FROM jobs
       WHERE is_active = true
-        AND (is_fractional = true OR LOWER(title) LIKE '%fractional%')
+        AND (is_fractional = true OR LOWER(title) LIKE '%part-time%')
         AND LOWER(title) LIKE LOWER(${rolePattern})
         AND LOWER(COALESCE(location, '')) LIKE LOWER(${locationPattern})
       ORDER BY posted_date DESC NULLS LAST
@@ -232,7 +232,7 @@ async function searchJobs(params: {
     if (jobs.length === 0) {
       const roleText = params.role_type ? `${params.role_type} ` : ''
       const locationText = params.location ? ` in ${params.location}` : ''
-      return `No ${roleText}fractional roles found${locationText} currently. Try a broader search.`
+      return `No ${roleText}part-time roles found${locationText} currently. Try a broader search.`
     }
 
     const jobDescriptions = jobs.map(j => {
@@ -246,7 +246,7 @@ async function searchJobs(params: {
         }
       }
       // Add link to job (using slug for SEO-friendly URLs)
-      if (j.slug) desc += ` - View at fractional.quest/job/${j.slug}`
+      if (j.slug) desc += ` - View at parttime.quest/job/${j.slug}`
       return desc
     }).join('. ')
 
@@ -365,7 +365,7 @@ async function searchArticles(params: {
     const articleDescriptions = articles.map(a => {
       let desc = a.title
       if (a.category) desc += ` (${a.category})`
-      if (a.slug) desc += ` - Read at fractional.quest/articles/${a.slug}`
+      if (a.slug) desc += ` - Read at parttime.quest/articles/${a.slug}`
       return desc
     }).join('. ')
 

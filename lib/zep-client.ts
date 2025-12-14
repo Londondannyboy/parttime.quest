@@ -53,7 +53,7 @@ export interface ZepEdge {
 // Singleton Zep client
 let zepClient: ZepClient | null = null
 
-const JOBS_GRAPH_ID = 'fractional-jobs-graph'
+const JOBS_GRAPH_ID = 'part-time-jobs-graph'
 
 export function getZepClient(): ZepClient | null {
   const apiKey = process.env.ZEP_API_KEY
@@ -97,7 +97,7 @@ export async function ensureZepUser(
         firstName: metadata?.firstName,
         lastName: metadata?.lastName,
         metadata: {
-          source: 'fractional-quest',
+          source: 'part-time-quest',
           createdAt: new Date().toISOString(),
         },
       })
@@ -319,8 +319,8 @@ export async function ensureJobsGraph(): Promise<boolean> {
     try {
       await client.graph.create({
         graphId: JOBS_GRAPH_ID,
-        name: 'Fractional Jobs Knowledge Graph',
-        description: 'Shared graph containing all fractional job opportunities, their required skills, and company relationships',
+        name: 'Part-Time Jobs Knowledge Graph',
+        description: 'Shared graph containing all part-time job opportunities, their required skills, and company relationships',
       })
       console.log(`Created jobs graph: ${JOBS_GRAPH_ID}`)
       return true
@@ -351,7 +351,7 @@ export async function syncJobToZep(job: {
     await ensureJobsGraph()
 
     const jobData = {
-      type: 'fractional_job',
+      type: 'part_time_job',
       job_id: job.id,
       title: job.title,
       company_name: job.company,
@@ -646,7 +646,7 @@ export async function buildJobsGraph(
       id: `job-${job.id}`,
       type: 'job',
       label: job.title,
-      url: job.slug ? `/fractional-job/${job.slug}` : undefined,
+      url: job.slug ? `/part-time-job/${job.slug}` : undefined,
       data: { company: job.company, location: job.location },
     }
     nodes.push(jobNode)
@@ -678,7 +678,7 @@ export async function buildJobsGraph(
           id: skillId,
           type: 'skill',
           label: skillName,
-          url: `/fractional-jobs?q=${encodeURIComponent(skillName)}`,
+          url: `/part-time-jobs?q=${encodeURIComponent(skillName)}`,
         })
       }
 

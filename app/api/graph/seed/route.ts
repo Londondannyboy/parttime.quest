@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     const skillsData = {
       type: 'professional_profile',
       person: `${firstName || ''} ${lastName || ''}`.trim() || userId,
-      role: 'Fractional Executive & Entrepreneur',
+      role: 'Part-Time Executive & Entrepreneur',
       skills: [
         { name: 'Product Strategy', category: 'leadership', years: 12, proficiency: 'expert' },
         { name: 'Go-to-Market', category: 'strategy', years: 10, proficiency: 'expert' },
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
         { name: 'Next.js', category: 'technical', years: 4, proficiency: 'advanced' },
         { name: 'Python', category: 'technical', years: 8, proficiency: 'advanced' },
       ],
-      summary: 'Seasoned fractional executive with 15+ years of experience in product, strategy, and technology leadership.',
+      summary: 'Seasoned part-time executive with 15+ years of experience in product, strategy, and technology leadership.',
     }
 
     await client.graph.add({
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
       experiences: [
         { company: 'Quest Network', role: 'Founder & CEO', startYear: 2023, isCurrent: true, industry: 'Technology' },
         { company: 'Predeploy', role: 'Co-Founder', startYear: 2024, isCurrent: true, industry: 'AI/Dev Tools' },
-        { company: 'Tech Startup (Series B)', role: 'Fractional CPO', startYear: 2022, endYear: 2023, industry: 'FinTech' },
+        { company: 'Tech Startup (Series B)', role: 'Part-Time CPO', startYear: 2022, endYear: 2023, industry: 'FinTech' },
         { company: 'Enterprise SaaS', role: 'VP Product', startYear: 2019, endYear: 2022, industry: 'SaaS' },
       ],
       summary: 'Founded multiple companies and held senior product/exec roles at high-growth startups.',
@@ -66,12 +66,12 @@ export async function POST(request: NextRequest) {
     // Add preferences
     const preferencesData = {
       type: 'job_preferences',
-      looking_for: ['Fractional CPO', 'Fractional CTO', 'Board Advisor'],
+      looking_for: ['Part-Time CPO', 'Part-Time CTO', 'Board Advisor'],
       industries: ['AI/ML', 'SaaS', 'FinTech', 'Climate Tech'],
       locations: ['London', 'Remote'],
       day_rate_range: '800-1500 GBP',
       availability: '2-3 days per week',
-      summary: 'Open to fractional C-level roles in technology companies, particularly AI-first startups.',
+      summary: 'Open to part-time C-level roles in technology companies, particularly AI-first startups.',
     }
 
     await client.graph.add({
