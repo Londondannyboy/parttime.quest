@@ -170,7 +170,7 @@ export default async function InterimMarketingJobsPage() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Latest Interim Marketing Jobs</h2>
-          <EmbeddedJobBoard defaultRole="CMO" title="Interim Marketing Jobs" jobsPerPage={6} showAllJobsLink={true} allJobsLinkText="View All Marketing Jobs" />
+          <EmbeddedJobBoard defaultDepartment="Marketing" title="Interim Marketing Jobs" jobsPerPage={6} showAllJobsLink={true} allJobsLinkText="View All Marketing Jobs" />
         </div>
       </section>
 

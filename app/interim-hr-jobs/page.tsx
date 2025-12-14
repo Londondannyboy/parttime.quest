@@ -264,7 +264,7 @@ export default async function InterimHRJobsPage() {
             <p className="text-xl text-gray-500">Browse current HR opportunities</p>
           </div>
           <EmbeddedJobBoard
-            defaultRole="CHRO"
+            defaultDepartment="HR"
             title="Interim HR Jobs"
             jobsPerPage={6}
             showAllJobsLink={true}

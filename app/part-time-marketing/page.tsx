@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://part-time.quest/part-time-marketing' },
 }
 
-export default function Part-TimeMarketingPage() {
+export default function PartTimeMarketingPage() {
   return (
     <div className="min-h-screen bg-white">
       <section className="relative min-h-[60vh] flex items-center overflow-hidden">

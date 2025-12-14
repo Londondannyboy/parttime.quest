@@ -195,7 +195,7 @@ export default async function InterimProcurementJobsPage() {
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Latest Interim Procurement Jobs</h2>
           </div>
           <EmbeddedJobBoard
-            defaultRole="COO"
+            defaultDepartment="Operations"
             title="Interim Procurement Jobs"
             jobsPerPage={6}
             showAllJobsLink={true}

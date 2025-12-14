@@ -250,7 +250,7 @@ export default async function InterimFinanceJobsPage() {
             <p className="text-xl text-gray-500">Browse current finance opportunities</p>
           </div>
           <EmbeddedJobBoard
-            defaultRole="CFO"
+            defaultDepartment="Finance"
             title="Interim Finance Jobs"
             jobsPerPage={6}
             showAllJobsLink={true}

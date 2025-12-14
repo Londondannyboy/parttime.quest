@@ -39,10 +39,10 @@ export default function CompanySavingsCalculator() {
     // Part-Time costs
     const daysPerWeek = hoursNeeded / 8 // Assuming 8-hour days
     const weeksPerYear = 48 // Accounting for holidays
-    const part-timeAnnualCost = dayRate * daysPerWeek * weeksPerYear
+    const partTimeAnnualCost = dayRate * daysPerWeek * weeksPerYear
 
     // Savings
-    const annualSavings = fullTimeTotalCost - part-timeAnnualCost
+    const annualSavings = fullTimeTotalCost - partTimeAnnualCost
     const savingsPercentage = Math.round((annualSavings / fullTimeTotalCost) * 100)
 
     return {
@@ -54,11 +54,11 @@ export default function CompanySavingsCalculator() {
         overheads,
         total: Math.round(fullTimeTotalCost)
       },
-      part-time: {
+      partTime: {
         dayRate,
         daysPerWeek: Math.round(daysPerWeek * 10) / 10,
         weeksPerYear,
-        total: Math.round(part-timeAnnualCost)
+        total: Math.round(partTimeAnnualCost)
       },
       savings: {
         annual: Math.round(annualSavings),
@@ -226,12 +226,12 @@ export default function CompanySavingsCalculator() {
                   },
                   {
                     label: 'Part-Time Executive',
-                    value: calculations.part-time.total,
+                    value: calculations.partTime.total,
                     color: 'purple',
                     details: [
-                      { label: 'Day Rate', value: `£${calculations.part-time.dayRate.toLocaleString()}` },
-                      { label: 'Days/Week', value: `${calculations.part-time.daysPerWeek}` },
-                      { label: 'Weeks/Year', value: `${calculations.part-time.weeksPerYear}` },
+                      { label: 'Day Rate', value: `£${calculations.partTime.dayRate.toLocaleString()}` },
+                      { label: 'Days/Week', value: `${calculations.partTime.daysPerWeek}` },
+                      { label: 'Weeks/Year', value: `${calculations.partTime.weeksPerYear}` },
                       { label: 'No Employer NI', value: '£0' },
                       { label: 'No Benefits/Pension', value: '£0' }
                     ]
