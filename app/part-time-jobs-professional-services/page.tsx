@@ -6,11 +6,11 @@ import { JobsGraph3D } from '@/components/JobsGraph3D'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs Professional Services - Executive Roles in Consulting & Advisory',
-  description: 'Find fractional executive jobs in professional services. CFO, COO, CMO roles in consulting, legal tech, and advisory firms. £600-£1,100 daily rates.',
+  title: 'Part-Time Jobs Professional Services - Executive Roles in Consulting & Advisory',
+  description: 'Find part-time executive jobs in professional services. CFO, COO, CMO roles in consulting, legal tech, and advisory firms. £600-£1,100 daily rates.',
   openGraph: {
-    title: 'Fractional Jobs Professional Services - Consulting & Advisory Roles',
-    description: 'Find fractional executive jobs in professional services and consulting.',
+    title: 'Part-Time Jobs Professional Services - Consulting & Advisory Roles',
+    description: 'Find part-time executive jobs in professional services and consulting.',
     type: 'website',
   },
 }
@@ -34,7 +34,7 @@ const successStories = [
     earnings: "£140k/year"
   },
   {
-    quote: "Consulting firms are excellent fractional clients. They understand the value of expertise and have complex financial models. I help boutique consultancies scale from £5m to £20m.",
+    quote: "Consulting firms are excellent part-time clients. They understand the value of expertise and have complex financial models. I help boutique consultancies scale from £5m to £20m.",
     name: "Jennifer Walsh",
     role: "Fractional CFO",
     sector: "Consulting",
@@ -83,14 +83,14 @@ export default async function ProfessionalServicesPage() {
               </span>
             </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-              Fractional Jobs Professional Services
+              Part-Time Jobs Professional Services
             </h1>
             <p className="max-w-2xl text-xl text-white/80 mb-10 leading-relaxed">
-              {stats.totalPS}+ fractional executive opportunities in consulting, legal, and advisory firms. £600-£1,100 daily rates. Help professional services firms digitize and scale.
+              {stats.totalPS}+ part-time executive opportunities in consulting, legal, and advisory firms. £600-£1,100 daily rates. Help professional services firms digitize and scale.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                href="/fractional-jobs?industry=Professional%20Services"
+                href="/part-time-jobs?industry=Professional%20Services"
                 className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-gray-900 hover:bg-gray-50 transition-all duration-200"
               >
                 Browse Professional Services Jobs
@@ -169,14 +169,14 @@ export default async function ProfessionalServicesPage() {
               <span className="text-3xl mb-4 block">🤝</span>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Partnership Model</h3>
               <p className="text-gray-600">
-                PS firms understand the value of expertise - it's their business model. They're willing to pay for senior fractional talent who can drive operational excellence.
+                PS firms understand the value of expertise - it's their business model. They're willing to pay for senior part-time talent who can drive operational excellence.
               </p>
             </div>
             <div className="bg-gray-50 rounded-2xl p-8">
               <span className="text-3xl mb-4 block">📈</span>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Scaling Mid-Market</h3>
               <p className="text-gray-600">
-                Mid-market PS firms (£5m-£50m) need fractional CFOs and COOs to professionalize operations without the cost of full-time C-suite.
+                Mid-market PS firms (£5m-£50m) need part-time CFOs and COOs to professionalize operations without the cost of full-time C-suite.
               </p>
             </div>
           </div>
@@ -247,7 +247,7 @@ export default async function ProfessionalServicesPage() {
           <div className="space-y-6">
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                What experience do I need for PS fractional roles?
+                What experience do I need for PS part-time roles?
                 <span className="text-gray-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
@@ -257,21 +257,21 @@ export default async function ProfessionalServicesPage() {
 
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                How much do PS fractional executives earn?
+                How much do PS part-time executives earn?
                 <span className="text-gray-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Professional services fractional executives earn £600-£1,100 per day. Specialists in digital transformation and legal/accounting tech command premium rates. Most work with 3-4 firms, earning £120,000-£170,000+ annually.
+                Professional services part-time executives earn £600-£1,100 per day. Specialists in digital transformation and legal/accounting tech command premium rates. Most work with 3-4 firms, earning £120,000-£170,000+ annually.
               </p>
             </details>
 
             <details className="group bg-gray-50 rounded-xl p-6 cursor-pointer">
               <summary className="flex justify-between items-center font-bold text-lg text-gray-900 list-none">
-                Which PS firms hire fractional executives?
+                Which PS firms hire part-time executives?
                 <span className="text-gray-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Mid-market firms (£5m-£50m revenue) are the primary market. They've outgrown partner-led operations but can't justify full C-suite. Growing boutiques and firms undergoing digital transformation also hire fractional executives.
+                Mid-market firms (£5m-£50m revenue) are the primary market. They've outgrown partner-led operations but can't justify full C-suite. Growing boutiques and firms undergoing digital transformation also hire part-time executives.
               </p>
             </details>
           </div>
@@ -296,18 +296,18 @@ export default async function ProfessionalServicesPage() {
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Locations</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/fractional-jobs-london" className="hover:text-gray-900">London</Link></li>
-                <li><Link href="/fractional-jobs-manchester" className="hover:text-gray-900">Manchester</Link></li>
-                <li><Link href="/fractional-jobs-birmingham" className="hover:text-gray-900">Birmingham</Link></li>
+                <li><Link href="/part-time-jobs-london" className="hover:text-gray-900">London</Link></li>
+                <li><Link href="/part-time-jobs-manchester" className="hover:text-gray-900">Manchester</Link></li>
+                <li><Link href="/part-time-jobs-birmingham" className="hover:text-gray-900">Birmingham</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-bold text-gray-900 mb-4">Other Industries</h3>
               <ul className="space-y-2 text-gray-600">
-                <li><Link href="/fractional-jobs-finance" className="hover:text-gray-900">Finance</Link></li>
-                <li><Link href="/fractional-jobs-tech" className="hover:text-gray-900">Tech</Link></li>
-                <li><Link href="/fractional-jobs-saas" className="hover:text-gray-900">SaaS</Link></li>
+                <li><Link href="/part-time-jobs-finance" className="hover:text-gray-900">Finance</Link></li>
+                <li><Link href="/part-time-jobs-tech" className="hover:text-gray-900">Tech</Link></li>
+                <li><Link href="/part-time-jobs-saas" className="hover:text-gray-900">SaaS</Link></li>
               </ul>
             </div>
           </div>
@@ -321,10 +321,10 @@ export default async function ProfessionalServicesPage() {
             Ready for Professional Services Leadership?
           </h2>
           <p className="text-xl text-gray-100 mb-10">
-            {stats.totalPS}+ fractional opportunities in consulting and advisory firms.
+            {stats.totalPS}+ part-time opportunities in consulting and advisory firms.
           </p>
           <Link
-            href="/fractional-jobs?industry=Professional%20Services"
+            href="/part-time-jobs?industry=Professional%20Services"
             className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-gray-900 hover:bg-gray-50 transition-all duration-200"
           >
             Browse Professional Services Jobs →

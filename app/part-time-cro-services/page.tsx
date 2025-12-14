@@ -9,43 +9,43 @@ export const revalidate = 3600
 
 const CRO_SERVICE_FAQS = [
   {
-    question: 'What is a Fractional CRO?',
-    answer: 'A Fractional CRO (Chief Revenue Officer) is an experienced revenue leader who works with your company part-time, typically 1-3 days per week. You get strategic revenue leadership across sales, marketing, and customer success without the cost of a full-time executive.',
+    question: 'What is a Part-Time CRO?',
+    answer: 'A Part-Time CRO (Chief Revenue Officer) is an experienced revenue leader who works with your company part-time, typically 1-3 days per week. You get strategic revenue leadership across sales, marketing, and customer success without the cost of a full-time executive.',
   },
   {
-    question: 'When should my company hire a Fractional CRO?',
-    answer: 'Consider hiring a fractional CRO when: sales and marketing are misaligned; you\'re struggling to scale revenue predictably; you need to professionalise your go-to-market; you\'re preparing for fundraising and need revenue credibility; or you\'re transitioning to a new revenue model.',
+    question: 'When should my company hire a Part-Time CRO?',
+    answer: 'Consider hiring a part-time CRO when: sales and marketing are misaligned; you\'re struggling to scale revenue predictably; you need to professionalise your go-to-market; you\'re preparing for fundraising and need revenue credibility; or you\'re transitioning to a new revenue model.',
   },
   {
-    question: 'How much does a Fractional CRO cost?',
-    answer: 'Fractional CROs typically charge £900-£1,500 per day in the UK. At 2 days per week, this translates to roughly £90,000-£150,000 annually—compared to £200,000-£300,000+ for a full-time CRO.',
+    question: 'How much does a Part-Time CRO cost?',
+    answer: 'Part-Time CROs typically charge £900-£1,500 per day in the UK. At 2 days per week, this translates to roughly £90,000-£150,000 annually—compared to £200,000-£300,000+ for a full-time CRO.',
   },
   {
-    question: 'What does a Fractional CRO do?',
-    answer: 'A Fractional CRO aligns sales, marketing, and customer success; develops revenue strategy; builds go-to-market playbooks; implements revenue operations; manages pipeline and forecasting; and drives predictable revenue growth.',
+    question: 'What does a Part-Time CRO do?',
+    answer: 'A Part-Time CRO aligns sales, marketing, and customer success; develops revenue strategy; builds go-to-market playbooks; implements revenue operations; manages pipeline and forecasting; and drives predictable revenue growth.',
   },
   {
     question: 'How is a CRO different from a VP of Sales?',
     answer: 'A VP of Sales focuses on the sales team and closing deals. A CRO has broader responsibility across the entire revenue engine—sales, marketing, customer success, and revenue operations. They optimise the full customer journey, not just the sales process.',
   },
   {
-    question: 'Can a Fractional CRO help with sales and marketing alignment?',
-    answer: 'Yes—alignment is one of the primary reasons to hire a fractional CRO. They create shared metrics, unified processes, and collaborative structures that ensure sales and marketing work together effectively to drive revenue.',
+    question: 'Can a Part-Time CRO help with sales and marketing alignment?',
+    answer: 'Yes—alignment is one of the primary reasons to hire a part-time CRO. They create shared metrics, unified processes, and collaborative structures that ensure sales and marketing work together effectively to drive revenue.',
   },
 ]
 
 export const metadata: Metadata = {
-  title: 'Fractional CRO Services UK | Hire a Part-Time Chief Revenue Officer',
-  description: 'Hire a Fractional CRO for your business. Access senior revenue leadership at a fraction of full-time cost. Expert CROs for go-to-market strategy, sales leadership, and revenue growth. Start within days.',
-  keywords: 'fractional cro, fractional cro services, hire fractional cro, part time cro, fractional chief revenue officer, fractional cro uk, fractional revenue director',
+  title: 'Part-Time CRO Services UK | Hire a Part-Time Chief Revenue Officer',
+  description: 'Hire a Part-Time CRO for your business. Access senior revenue leadership at a fraction of full-time cost. Expert CROs for go-to-market strategy, sales leadership, and revenue growth. Start within days.',
+  keywords: 'part-time cro, part-time cro services, hire part-time cro, part time cro, fractional chief revenue officer, part-time cro uk, fractional revenue director',
   alternates: {
-    canonical: 'https://fractional.quest/fractional-cro-services',
+    canonical: 'https://parttime.quest/part-time-cro-services',
   },
   openGraph: {
-    title: 'Fractional CRO Services UK | Hire a Part-Time Chief Revenue Officer',
-    description: 'Hire a Fractional CRO for your business. Senior revenue leadership at a fraction of full-time cost.',
-    images: ['/images/fractional-cro-services.jpg'],
-    url: 'https://fractional.quest/fractional-cro-services',
+    title: 'Part-Time CRO Services UK | Hire a Part-Time Chief Revenue Officer',
+    description: 'Hire a Part-Time CRO for your business. Senior revenue leadership at a fraction of full-time cost.',
+    images: ['/images/part-time-cro-services.jpg'],
+    url: 'https://parttime.quest/part-time-cro-services',
   },
 }
 
@@ -67,11 +67,11 @@ export default function FractionalCROServicesPage() {
                 Revenue Leadership
               </span>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-[0.9] tracking-tight">
-                Fractional CRO<br />
+                Part-Time CRO<br />
                 <span className="text-green-400">Services UK</span>
               </h1>
               <p className="text-xl md:text-2xl text-white/80 leading-relaxed max-w-2xl mb-8">
-                Hire a <strong className="text-white">Fractional CRO</strong> to accelerate your revenue.
+                Hire a <strong className="text-white">Part-Time CRO</strong> to accelerate your revenue.
                 Senior revenue leadership across sales, marketing, and customer success—at a fraction of full-time cost.
               </p>
               <div className="flex flex-wrap gap-8 mb-10">
@@ -90,7 +90,7 @@ export default function FractionalCROServicesPage() {
               </div>
               <div className="flex flex-wrap gap-4">
                 <Link href="#contact" className="px-8 py-4 bg-green-500 text-black font-bold uppercase tracking-wider hover:bg-green-400 transition-colors">
-                  Hire a Fractional CRO
+                  Hire a Part-Time CRO
                 </Link>
                 <Link href="#responsibilities" className="px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
                   Learn More
@@ -101,28 +101,28 @@ export default function FractionalCROServicesPage() {
         </div>
       </section>
 
-      {/* What is a Fractional CRO */}
+      {/* What is a Part-Time CRO */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Overview</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">What is a Fractional CRO?</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">What is a Part-Time CRO?</h2>
           </div>
           <div className="prose prose-lg prose-gray max-w-none">
             <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8 font-light">
-              A <strong className="font-semibold text-gray-900">Fractional CRO</strong> (Chief Revenue Officer) is an experienced revenue executive who works with your company on a part-time basis—typically 1-3 days per week. You get strategic leadership across your entire revenue engine—sales, marketing, and customer success—without the commitment and cost of a full-time hire.
+              A <strong className="font-semibold text-gray-900">Part-Time CRO</strong> (Chief Revenue Officer) is an experienced revenue executive who works with your company on a part-time basis—typically 1-3 days per week. You get strategic leadership across your entire revenue engine—sales, marketing, and customer success—without the commitment and cost of a full-time hire.
             </p>
             <p>
-              Unlike a VP of Sales who focuses only on selling, a fractional CRO takes a holistic view of revenue. They align all customer-facing functions, optimise the full buyer journey, and build the systems for predictable, scalable revenue growth.
+              Unlike a VP of Sales who focuses only on selling, a part-time CRO takes a holistic view of revenue. They align all customer-facing functions, optimise the full buyer journey, and build the systems for predictable, scalable revenue growth.
             </p>
             <div className="bg-gray-50 p-8 my-10 border-l-4 border-green-500">
               <p className="text-xl font-semibold text-gray-900 mb-0">
-                "A fractional CRO connects the dots between marketing, sales, and customer success to create a true revenue machine."
+                "A part-time CRO connects the dots between marketing, sales, and customer success to create a true revenue machine."
               </p>
             </div>
             <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">Beyond Siloed Sales and Marketing</h3>
             <p>
-              In many companies, sales and marketing operate as separate functions with different goals and metrics. This creates friction, blame games, and leaked revenue. A fractional CRO breaks down these silos, creating unified revenue operations that drive predictable growth.
+              In many companies, sales and marketing operate as separate functions with different goals and metrics. This creates friction, blame games, and leaked revenue. A part-time CRO breaks down these silos, creating unified revenue operations that drive predictable growth.
             </p>
           </div>
         </div>
@@ -133,8 +133,8 @@ export default function FractionalCROServicesPage() {
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Responsibilities</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">What Does a Fractional CRO Do?</h2>
-            <p className="text-xl text-gray-600 mt-4">Core responsibilities your fractional CRO will own</p>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">What Does a Part-Time CRO Do?</h2>
+            <p className="text-xl text-gray-600 mt-4">Core responsibilities your part-time CRO will own</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -189,7 +189,7 @@ export default function FractionalCROServicesPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Benefits</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">Why Hire a Fractional CRO?</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">Why Hire a Part-Time CRO?</h2>
           </div>
           <div className="space-y-8">
             {[
@@ -207,7 +207,7 @@ export default function FractionalCROServicesPage() {
               },
               {
                 title: 'Faster Revenue Growth',
-                description: 'Fractional CROs have scaled revenue before. They know what works, can avoid common mistakes, and accelerate your path to targets.',
+                description: 'Part-Time CROs have scaled revenue before. They know what works, can avoid common mistakes, and accelerate your path to targets.',
                 stat: '2x',
                 statLabel: 'Revenue Growth',
               },
@@ -219,7 +219,7 @@ export default function FractionalCROServicesPage() {
               },
               {
                 title: 'Proven Playbooks',
-                description: 'Fractional CROs bring playbooks from multiple companies. They know what GTM motions work for businesses like yours.',
+                description: 'Part-Time CROs bring playbooks from multiple companies. They know what GTM motions work for businesses like yours.',
                 stat: '10+',
                 statLabel: 'GTM Playbooks',
               },
@@ -244,7 +244,7 @@ export default function FractionalCROServicesPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Timing</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">When Should You Hire a Fractional CRO?</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">When Should You Hire a Part-Time CRO?</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {[
@@ -265,7 +265,7 @@ export default function FractionalCROServicesPage() {
               },
               {
                 scenario: 'Preparing for Fundraising',
-                description: 'Investors want to see strong revenue leadership and predictable growth. A fractional CRO provides credibility and structure.',
+                description: 'Investors want to see strong revenue leadership and predictable growth. A part-time CRO provides credibility and structure.',
                 timing: '3-6 months before raise',
               },
               {
@@ -305,7 +305,7 @@ export default function FractionalCROServicesPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-12 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Process</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">How to Hire a Fractional CRO</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">How to Hire a Part-Time CRO</h2>
           </div>
           <HireProcessStepper accentColor="emerald" />
         </div>
@@ -327,16 +327,16 @@ export default function FractionalCROServicesPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-4 block">Get Started</span>
           <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
-            Ready to Hire a<br /><span className="text-green-400">Fractional CRO?</span>
+            Ready to Hire a<br /><span className="text-green-400">Part-Time CRO?</span>
           </h2>
           <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-            Tell us about your revenue challenges and we'll match you with pre-vetted fractional CROs who have solved them before.
+            Tell us about your revenue challenges and we'll match you with pre-vetted part-time CROs who have solved them before.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/handler/sign-up" className="px-10 py-5 bg-green-500 text-black font-bold uppercase tracking-wider hover:bg-green-400 transition-colors">
-              Find a Fractional CRO
+              Find a Part-Time CRO
             </Link>
-            <Link href="/fractional-cro-jobs-uk" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
+            <Link href="/part-time-cro-jobs-uk" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
               I'm a CRO Looking for Roles
             </Link>
           </div>
@@ -349,9 +349,9 @@ export default function FractionalCROServicesPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <span className="text-sm font-bold uppercase tracking-wider text-gray-400">Related Services</span>
             <div className="flex flex-wrap gap-4">
-              <Link href="/fractional-cmo-services" className="text-gray-600 hover:text-green-600 font-medium transition-colors">Fractional CMO</Link>
-              <Link href="/fractional-coo-services" className="text-gray-600 hover:text-green-600 font-medium transition-colors">Fractional COO</Link>
-              <Link href="/fractional-cfo-services" className="text-gray-600 hover:text-green-600 font-medium transition-colors">Fractional CFO</Link>
+              <Link href="/part-time-cmo-services" className="text-gray-600 hover:text-green-600 font-medium transition-colors">Fractional CMO</Link>
+              <Link href="/part-time-coo-services" className="text-gray-600 hover:text-green-600 font-medium transition-colors">Fractional COO</Link>
+              <Link href="/part-time-cfo-services" className="text-gray-600 hover:text-green-600 font-medium transition-colors">Fractional CFO</Link>
             </div>
           </div>
         </div>

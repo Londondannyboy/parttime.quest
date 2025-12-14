@@ -9,11 +9,11 @@ import { FAQ, STARTUPS_FAQS } from '@/components/FAQ'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs for Startups UK - CFO, CTO, CMO for Scale-ups',
-  description: 'Find fractional executive jobs at startups and scale-ups. Fractional CFO, CTO, CMO for Series A-C companies. £800-£1,300 daily rates. Equity options available.',
+  title: 'Part-Time Jobs for Startups UK - CFO, CTO, CMO for Scale-ups',
+  description: 'Find part-time executive jobs at startups and scale-ups. Part-Time CFO, CTO, CMO for Series A-C companies. £800-£1,300 daily rates. Equity options available.',
   openGraph: {
-    title: 'Fractional Jobs for Startups UK - CFO, CTO, CMO for Scale-ups',
-    description: 'Find fractional executive jobs at UK startups and scale-ups.',
+    title: 'Part-Time Jobs for Startups UK - CFO, CTO, CMO for Scale-ups',
+    description: 'Find part-time executive jobs at UK startups and scale-ups.',
     type: 'website',
   },
 }
@@ -28,7 +28,7 @@ const startupStages = [
 ]
 
 const startupRoles = [
-  { name: 'Fractional CFO', icon: '💰', description: 'Fundraising, board reporting, finance ops' },
+  { name: 'Part-Time CFO', icon: '💰', description: 'Fundraising, board reporting, finance ops' },
   { name: 'Fractional CTO', icon: '💻', description: 'Tech strategy, team building, architecture' },
   { name: 'Fractional CMO', icon: '📢', description: 'Growth marketing, brand, demand gen' },
   { name: 'Fractional COO', icon: '⚙️', description: 'Operations, scaling, process design' },
@@ -46,8 +46,8 @@ const startupSectors = [
 ]
 
 const relatedSearches = [
-  'Fractional CFO Startups', 'Fractional CTO Scale-up', 'Startup CMO Jobs',
-  'Series A Fractional Executive', 'PE Backed Fractional CFO', 'VC Portfolio Fractional',
+  'Part-Time CFO Startups', 'Fractional CTO Scale-up', 'Startup CMO Jobs',
+  'Series A Fractional Executive', 'PE Backed Part-Time CFO', 'VC Portfolio Fractional',
   'Fractional Executive Equity', 'Part-Time CTO Startup', 'Scale-up CFO Jobs'
 ]
 
@@ -94,17 +94,17 @@ export default async function StartupJobsPage() {
                   </span>
 
                   <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[0.95] tracking-tight">
-                    Fractional Jobs<br />
+                    Part-Time Jobs<br />
                     <span className="text-orange-300">Startups</span>
                   </h1>
 
                   <p className="text-lg text-white/70 mb-8 leading-relaxed max-w-lg">
-                    Fractional CFO, CTO, CMO for Series A-C companies. £800-£1,300 daily rates plus potential equity. Join high-growth companies.
+                    Part-Time CFO, CTO, CMO for Series A-C companies. £800-£1,300 daily rates plus potential equity. Join high-growth companies.
                   </p>
 
                   <div className="flex flex-wrap gap-4">
                     <Link
-                      href="/fractional-jobs?industry=Startups"
+                      href="/part-time-jobs?industry=Startups"
                       className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg bg-white text-black hover:bg-white/90 transition-all duration-200"
                     >
                       Browse Startup Jobs →
@@ -152,7 +152,7 @@ export default async function StartupJobsPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Opportunities</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Startup Fractional Jobs</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Startup Part-Time Jobs</h2>
             <p className="text-xl text-gray-500">Browse {stats.total}+ opportunities at startups and scale-ups</p>
           </div>
           <EmbeddedJobBoard />
@@ -234,7 +234,7 @@ export default async function StartupJobsPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Equity Upside</h3>
               <p className="text-gray-600">
-                25% of startup fractional roles include equity. A successful exit could multiply your earnings significantly beyond day rates.
+                25% of startup part-time roles include equity. A successful exit could multiply your earnings significantly beyond day rates.
               </p>
             </div>
             <div className="bg-white rounded-2xl p-8">
@@ -265,7 +265,7 @@ export default async function StartupJobsPage() {
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Tax Planning</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">IR35 Calculator</h2>
-            <p className="text-xl text-gray-500">Understand your take-home as a fractional at a startup</p>
+            <p className="text-xl text-gray-500">Understand your take-home as a part-time at a startup</p>
           </div>
           <IR35Calculator defaultDayRate={950} />
         </div>
@@ -277,7 +277,7 @@ export default async function StartupJobsPage() {
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">FAQ</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Startup Fractional FAQs</h2>
-            <p className="text-xl text-gray-500">Common questions about fractional work at startups</p>
+            <p className="text-xl text-gray-500">Common questions about part-time work at startups</p>
           </div>
           <FAQ items={STARTUPS_FAQS} title="" />
         </div>
@@ -291,7 +291,7 @@ export default async function StartupJobsPage() {
             {relatedSearches.map((search) => (
               <Link
                 key={search}
-                href={`/fractional-jobs?q=${encodeURIComponent(search)}`}
+                href={`/part-time-jobs?q=${encodeURIComponent(search)}`}
                 className="px-4 py-2 bg-gray-50 rounded-full text-gray-700 hover:bg-orange-100 hover:text-orange-700 transition-colors text-sm border border-gray-200"
               >
                 {search}
@@ -309,11 +309,11 @@ export default async function StartupJobsPage() {
             Ready to Join a Startup?
           </h2>
           <p className="text-xl text-gray-400 mb-10">
-            {stats.total}+ fractional opportunities at startups and scale-ups
+            {stats.total}+ part-time opportunities at startups and scale-ups
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/fractional-jobs"
+              href="/part-time-jobs"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-gray-900 hover:bg-gray-100 transition-all"
             >
               Browse Startup Jobs

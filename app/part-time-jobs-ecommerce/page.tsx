@@ -9,11 +9,11 @@ import { FAQ, ECOMMERCE_FAQS } from '@/components/FAQ'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs E-commerce - Executive Roles in Online Retail & DTC',
-  description: 'Find fractional executive jobs in e-commerce. CFO, CMO, CTO roles in online retail, DTC brands, and marketplaces. £600-£1,100 daily rates.',
+  title: 'Part-Time Jobs E-commerce - Executive Roles in Online Retail & DTC',
+  description: 'Find part-time executive jobs in e-commerce. CFO, CMO, CTO roles in online retail, DTC brands, and marketplaces. £600-£1,100 daily rates.',
   openGraph: {
-    title: 'Fractional Jobs E-commerce - Executive Roles in Online Retail',
-    description: 'Find fractional executive jobs in e-commerce and DTC brands.',
+    title: 'Part-Time Jobs E-commerce - Executive Roles in Online Retail',
+    description: 'Find part-time executive jobs in e-commerce and DTC brands.',
     type: 'website',
   },
 }
@@ -88,7 +88,7 @@ export default async function EcommercePage() {
                   </span>
 
                   <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[0.95] tracking-tight">
-                    Fractional Jobs<br />
+                    Part-Time Jobs<br />
                     <span className="text-pink-300">E-commerce</span>
                   </h1>
 
@@ -98,7 +98,7 @@ export default async function EcommercePage() {
 
                   <div className="flex flex-wrap gap-4">
                     <Link
-                      href="/fractional-jobs?industry=E-commerce"
+                      href="/part-time-jobs?industry=E-commerce"
                       className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg bg-white text-black hover:bg-white/90 transition-all duration-200"
                     >
                       Browse E-commerce Jobs →
@@ -146,7 +146,7 @@ export default async function EcommercePage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Opportunities</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">E-commerce Fractional Jobs</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">E-commerce Part-Time Jobs</h2>
             <p className="text-xl text-gray-500">Browse {stats.totalEcommerce}+ opportunities in online retail</p>
           </div>
           <EmbeddedJobBoard />
@@ -159,7 +159,7 @@ export default async function EcommercePage() {
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">By Sector</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">E-commerce Subsectors</h2>
-            <p className="text-xl text-gray-500">High-growth areas hiring fractional executives</p>
+            <p className="text-xl text-gray-500">High-growth areas hiring part-time executives</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {ecommerceSubsectors.map((sector) => (
@@ -180,7 +180,7 @@ export default async function EcommercePage() {
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">By Role</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Top E-commerce Roles</h2>
-            <p className="text-xl text-gray-500">Most in-demand fractional positions</p>
+            <p className="text-xl text-gray-500">Most in-demand part-time positions</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {ecommerceRoles.map((role) => (
@@ -227,7 +227,7 @@ export default async function EcommercePage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Remote-First</h3>
               <p className="text-gray-600">
-                E-commerce companies are digital-native and remote-friendly. Most fractional roles offer flexible working arrangements with minimal travel requirements.
+                E-commerce companies are digital-native and remote-friendly. Most part-time roles offer flexible working arrangements with minimal travel requirements.
               </p>
             </div>
           </div>
@@ -240,7 +240,7 @@ export default async function EcommercePage() {
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Tax Planning</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">IR35 Calculator</h2>
-            <p className="text-xl text-gray-500">Understand your take-home as an e-commerce fractional executive</p>
+            <p className="text-xl text-gray-500">Understand your take-home as an e-commerce part-time executive</p>
           </div>
           <IR35Calculator defaultDayRate={850} />
         </div>
@@ -252,7 +252,7 @@ export default async function EcommercePage() {
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">FAQ</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">E-commerce Fractional FAQs</h2>
-            <p className="text-xl text-gray-500">Common questions about fractional work in e-commerce</p>
+            <p className="text-xl text-gray-500">Common questions about part-time work in e-commerce</p>
           </div>
           <FAQ items={ECOMMERCE_FAQS} title="" />
         </div>
@@ -266,7 +266,7 @@ export default async function EcommercePage() {
             {relatedSearches.map((search) => (
               <Link
                 key={search}
-                href={`/fractional-jobs?q=${encodeURIComponent(search)}`}
+                href={`/part-time-jobs?q=${encodeURIComponent(search)}`}
                 className="px-4 py-2 bg-white rounded-full text-gray-700 hover:bg-pink-100 hover:text-pink-700 transition-colors text-sm border border-gray-200"
               >
                 {search}
@@ -284,11 +284,11 @@ export default async function EcommercePage() {
             Ready for E-commerce Leadership?
           </h2>
           <p className="text-xl text-gray-400 mb-10">
-            {stats.totalEcommerce}+ fractional opportunities in online retail and DTC brands
+            {stats.totalEcommerce}+ part-time opportunities in online retail and DTC brands
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/fractional-jobs?industry=E-commerce"
+              href="/part-time-jobs?industry=E-commerce"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-gray-900 hover:bg-gray-100 transition-all"
             >
               Browse E-commerce Jobs

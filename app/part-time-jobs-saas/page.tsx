@@ -9,11 +9,11 @@ import { FAQ, SAAS_FAQS } from '@/components/FAQ'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs SaaS - Executive Roles in Software & Cloud',
-  description: 'Find fractional executive jobs in SaaS. CFO, CMO, CTO roles in B2B software, cloud platforms, and subscription businesses. £700-£1,300 daily rates.',
+  title: 'Part-Time Jobs SaaS - Executive Roles in Software & Cloud',
+  description: 'Find part-time executive jobs in SaaS. CFO, CMO, CTO roles in B2B software, cloud platforms, and subscription businesses. £700-£1,300 daily rates.',
   openGraph: {
-    title: 'Fractional Jobs SaaS - Executive Roles in Software',
-    description: 'Find fractional executive jobs in SaaS and B2B software.',
+    title: 'Part-Time Jobs SaaS - Executive Roles in Software',
+    description: 'Find part-time executive jobs in SaaS and B2B software.',
     type: 'website',
   },
 }
@@ -88,7 +88,7 @@ export default async function SaasPage() {
                   </span>
 
                   <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[0.95] tracking-tight">
-                    Fractional Jobs<br />
+                    Part-Time Jobs<br />
                     <span className="text-violet-300">SaaS</span>
                   </h1>
 
@@ -98,7 +98,7 @@ export default async function SaasPage() {
 
                   <div className="flex flex-wrap gap-4">
                     <Link
-                      href="/fractional-jobs?industry=SaaS"
+                      href="/part-time-jobs?industry=SaaS"
                       className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg bg-white text-black hover:bg-white/90 transition-all duration-200"
                     >
                       Browse SaaS Jobs →
@@ -146,7 +146,7 @@ export default async function SaasPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Opportunities</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">SaaS Fractional Jobs</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">SaaS Part-Time Jobs</h2>
             <p className="text-xl text-gray-500">Browse {stats.totalSaas}+ opportunities in B2B software</p>
           </div>
           <EmbeddedJobBoard />
@@ -159,7 +159,7 @@ export default async function SaasPage() {
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">By Sector</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">SaaS Subsectors</h2>
-            <p className="text-xl text-gray-500">High-growth areas hiring fractional executives</p>
+            <p className="text-xl text-gray-500">High-growth areas hiring part-time executives</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {saasSubsectors.map((sector) => (
@@ -180,7 +180,7 @@ export default async function SaasPage() {
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">By Role</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Top SaaS Roles</h2>
-            <p className="text-xl text-gray-500">Most in-demand fractional positions</p>
+            <p className="text-xl text-gray-500">Most in-demand part-time positions</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {saasRoles.map((role) => (
@@ -240,7 +240,7 @@ export default async function SaasPage() {
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Tax Planning</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">IR35 Calculator</h2>
-            <p className="text-xl text-gray-500">Understand your take-home as a fractional SaaS executive</p>
+            <p className="text-xl text-gray-500">Understand your take-home as a part-time SaaS executive</p>
           </div>
           <IR35Calculator defaultDayRate={1000} />
         </div>
@@ -252,7 +252,7 @@ export default async function SaasPage() {
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">FAQ</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">SaaS Fractional FAQs</h2>
-            <p className="text-xl text-gray-500">Common questions about fractional work in SaaS</p>
+            <p className="text-xl text-gray-500">Common questions about part-time work in SaaS</p>
           </div>
           <FAQ items={SAAS_FAQS} title="" />
         </div>
@@ -266,7 +266,7 @@ export default async function SaasPage() {
             {relatedSearches.map((search) => (
               <Link
                 key={search}
-                href={`/fractional-jobs?q=${encodeURIComponent(search)}`}
+                href={`/part-time-jobs?q=${encodeURIComponent(search)}`}
                 className="px-4 py-2 bg-white rounded-full text-gray-700 hover:bg-violet-100 hover:text-violet-700 transition-colors text-sm border border-gray-200"
               >
                 {search}
@@ -284,11 +284,11 @@ export default async function SaasPage() {
             Ready for SaaS Leadership?
           </h2>
           <p className="text-xl text-gray-400 mb-10">
-            {stats.totalSaas}+ fractional opportunities in B2B software and subscription businesses
+            {stats.totalSaas}+ part-time opportunities in B2B software and subscription businesses
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/fractional-jobs?industry=SaaS"
+              href="/part-time-jobs?industry=SaaS"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-gray-900 hover:bg-gray-100 transition-all"
             >
               Browse SaaS Jobs

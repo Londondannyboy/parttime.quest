@@ -9,21 +9,21 @@ import { ServiceComparisonTable } from '@/components/ServiceComparisonTable'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional COO Services UK | Hire a Part-Time COO',
-  description: 'Hire a Fractional COO for your business. Access senior operations leadership at a fraction of full-time cost. Expert COOs for scaling, process optimisation, and operational excellence. Start within days.',
-  keywords: 'fractional coo, fractional coo services, hire fractional coo, part time coo, fractional chief operating officer, fractional coo uk, fractional operations director',
+  title: 'Part-Time COO Services UK | Hire a Part-Time COO',
+  description: 'Hire a Part-Time COO for your business. Access senior operations leadership at a fraction of full-time cost. Expert COOs for scaling, process optimisation, and operational excellence. Start within days.',
+  keywords: 'part-time coo, part-time coo services, hire part-time coo, part time coo, fractional chief operating officer, part-time coo uk, fractional operations director',
   alternates: {
-    canonical: 'https://fractional.quest/fractional-coo-services',
+    canonical: 'https://parttime.quest/part-time-coo-services',
   },
   openGraph: {
-    title: 'Fractional COO Services UK | Hire a Part-Time COO',
-    description: 'Hire a Fractional COO for your business. Senior operations leadership at a fraction of full-time cost.',
-    images: ['/images/fractional-coo-services.jpg'],
-    url: 'https://fractional.quest/fractional-coo-services',
+    title: 'Part-Time COO Services UK | Hire a Part-Time COO',
+    description: 'Hire a Part-Time COO for your business. Senior operations leadership at a fraction of full-time cost.',
+    images: ['/images/part-time-coo-services.jpg'],
+    url: 'https://parttime.quest/part-time-coo-services',
   },
 }
 
-export default function FractionalCOOServicesPage() {
+export default function PartTimeCOOServicesPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with 3D Knowledge Graph Background */}
@@ -41,11 +41,11 @@ export default function FractionalCOOServicesPage() {
                 Operations Leadership
               </span>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-[0.9] tracking-tight">
-                Fractional COO<br />
+                Part-Time COO<br />
                 <span className="text-orange-400">Services UK</span>
               </h1>
               <p className="text-xl md:text-2xl text-white/80 leading-relaxed max-w-2xl mb-8">
-                Hire a <strong className="text-white">Fractional COO</strong> to scale your operations.
+                Hire a <strong className="text-white">Part-Time COO</strong> to scale your operations.
                 Senior operational leadership, process excellence, and scaling expertise—at a fraction of full-time cost.
               </p>
               <div className="flex flex-wrap gap-8 mb-10">
@@ -64,7 +64,7 @@ export default function FractionalCOOServicesPage() {
               </div>
               <div className="flex flex-wrap gap-4">
                 <Link href="#contact" className="px-8 py-4 bg-orange-500 text-black font-bold uppercase tracking-wider hover:bg-orange-400 transition-colors">
-                  Hire a Fractional COO
+                  Hire a Part-Time COO
                 </Link>
                 <Link href="#calculator" className="px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
                   Calculate Savings
@@ -75,23 +75,23 @@ export default function FractionalCOOServicesPage() {
         </div>
       </section>
 
-      {/* What is a Fractional COO */}
+      {/* What is a Part-Time COO */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Overview</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">What is a Fractional COO?</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">What is a Part-Time COO?</h2>
           </div>
           <div className="prose prose-lg prose-gray max-w-none">
             <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8 font-light">
-              A <strong className="font-semibold text-gray-900">Fractional COO</strong> is an experienced Chief Operating Officer who works with your company on a part-time basis—typically 1-3 days per week. You get the operational leadership, scaling expertise, and process optimisation skills of a senior COO without the commitment and cost of a full-time hire.
+              A <strong className="font-semibold text-gray-900">Part-Time COO</strong> is an experienced Chief Operating Officer who works with your company on a part-time basis—typically 1-3 days per week. You get the operational leadership, scaling expertise, and process optimisation skills of a senior COO without the commitment and cost of a full-time hire.
             </p>
             <p>
-              Unlike operations consultants who advise from the sidelines, a fractional COO becomes your operational leader. They attend leadership meetings, manage cross-functional initiatives, build operational infrastructure, and take ownership of execution—just not five days a week.
+              Unlike operations consultants who advise from the sidelines, a part-time COO becomes your operational leader. They attend leadership meetings, manage cross-functional initiatives, build operational infrastructure, and take ownership of execution—just not five days a week.
             </p>
             <div className="bg-gray-50 p-8 my-10 border-l-4 border-orange-500">
               <p className="text-xl font-semibold text-gray-900 mb-0">
-                "A fractional COO frees the CEO to focus on strategy and growth while ensuring the business runs smoothly."
+                "A part-time COO frees the CEO to focus on strategy and growth while ensuring the business runs smoothly."
               </p>
             </div>
             <h3 className="text-2xl font-black text-gray-900 mt-12 mb-4">When the CEO is Doing Too Much</h3>
@@ -99,7 +99,7 @@ export default function FractionalCOOServicesPage() {
               In many growing companies, the CEO is handling operations by default—managing projects, solving operational fires, and coordinating between teams. This takes time away from strategy, fundraising, and business development.
             </p>
             <p>
-              A fractional COO takes operational responsibility off the CEO's plate. They bring structure, systems, and accountability so the CEO can focus on what only they can do: leading the company's vision and growth.
+              A part-time COO takes operational responsibility off the CEO's plate. They bring structure, systems, and accountability so the CEO can focus on what only they can do: leading the company's vision and growth.
             </p>
           </div>
         </div>
@@ -110,8 +110,8 @@ export default function FractionalCOOServicesPage() {
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Responsibilities</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">What Does a Fractional COO Do?</h2>
-            <p className="text-xl text-gray-600 mt-4">Core responsibilities your fractional COO will own</p>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">What Does a Part-Time COO Do?</h2>
+            <p className="text-xl text-gray-600 mt-4">Core responsibilities your part-time COO will own</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -166,13 +166,13 @@ export default function FractionalCOOServicesPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Benefits</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">Why Hire a Fractional COO?</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">Why Hire a Part-Time COO?</h2>
           </div>
           <div className="space-y-8">
             {[
               {
                 title: 'Free Your CEO',
-                description: 'Let your CEO focus on strategy, fundraising, and growth instead of day-to-day operations. A fractional COO handles execution so leadership can lead.',
+                description: 'Let your CEO focus on strategy, fundraising, and growth instead of day-to-day operations. A part-time COO handles execution so leadership can lead.',
                 stat: '50%',
                 statLabel: 'CEO Time Freed',
               },
@@ -184,19 +184,19 @@ export default function FractionalCOOServicesPage() {
               },
               {
                 title: 'Scale Faster',
-                description: 'Fractional COOs have scaled companies before. They know what operational infrastructure you need at each stage and can implement it quickly.',
+                description: 'Part-Time COOs have scaled companies before. They know what operational infrastructure you need at each stage and can implement it quickly.',
                 stat: '2x',
                 statLabel: 'Scaling Speed',
               },
               {
                 title: 'Immediate Impact',
-                description: 'Skip months of recruitment. A fractional COO can start within days, diagnose operational issues quickly, and begin implementing improvements.',
+                description: 'Skip months of recruitment. A part-time COO can start within days, diagnose operational issues quickly, and begin implementing improvements.',
                 stat: '7',
                 statLabel: 'Days to Start',
               },
               {
                 title: 'Cross-Company Experience',
-                description: 'Fractional COOs work across multiple businesses. They bring best practices, benchmarks, and proven playbooks from diverse operational challenges.',
+                description: 'Part-Time COOs work across multiple businesses. They bring best practices, benchmarks, and proven playbooks from diverse operational challenges.',
                 stat: '5+',
                 statLabel: 'Companies Seen',
               },
@@ -221,11 +221,11 @@ export default function FractionalCOOServicesPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Timing</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">When Should You Hire a Fractional COO?</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">When Should You Hire a Part-Time COO?</h2>
           </div>
           <div className="prose prose-lg prose-gray max-w-none mb-8">
             <p>
-              The right time to hire a fractional COO depends on your operational challenges. Here are the most common scenarios:
+              The right time to hire a part-time COO depends on your operational challenges. Here are the most common scenarios:
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -252,12 +252,12 @@ export default function FractionalCOOServicesPage() {
               },
               {
                 scenario: 'Preparing for Exit',
-                description: 'M&A buyers and IPO investors want to see operational maturity. A fractional COO can professionalise operations for due diligence.',
+                description: 'M&A buyers and IPO investors want to see operational maturity. A part-time COO can professionalise operations for due diligence.',
                 timing: '12-18 months before',
               },
               {
                 scenario: 'Building Infrastructure',
-                description: 'You need to implement systems, processes, and structures but lack the expertise. A fractional COO can build the foundation.',
+                description: 'You need to implement systems, processes, and structures but lack the expertise. A part-time COO can build the foundation.',
                 timing: 'Before it becomes urgent',
               },
             ].map((item, index) => (
@@ -276,12 +276,12 @@ export default function FractionalCOOServicesPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-8 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Calculator</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">How Much Does a Fractional COO Cost?</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">How Much Does a Part-Time COO Cost?</h2>
             <p className="text-gray-600 mt-4">Compare the cost of fractional vs full-time COO</p>
           </div>
           <RoleCalculator role="coo" />
           <div className="mt-8 prose prose-gray max-w-none">
-            <h3 className="text-xl font-bold text-gray-900">Typical Fractional COO Pricing</h3>
+            <h3 className="text-xl font-bold text-gray-900">Typical Part-Time COO Pricing</h3>
             <ul className="text-gray-600">
               <li><strong>Day Rate:</strong> £750-£1,400 per day (depending on experience and complexity)</li>
               <li><strong>Monthly Retainer:</strong> £3,000-£5,500 for 1-2 days per week</li>
@@ -308,7 +308,7 @@ export default function FractionalCOOServicesPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-12 text-center">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 block">Process</span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900">How to Hire a Fractional COO</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900">How to Hire a Part-Time COO</h2>
             <p className="text-gray-600 mt-4">From first conversation to start date in as little as 7 days</p>
           </div>
           <HireProcessStepper accentColor="orange" />
@@ -331,16 +331,16 @@ export default function FractionalCOOServicesPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-4 block">Get Started</span>
           <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
-            Ready to Hire a<br /><span className="text-orange-400">Fractional COO?</span>
+            Ready to Hire a<br /><span className="text-orange-400">Part-Time COO?</span>
           </h2>
           <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-            Tell us about your operational challenges and we'll match you with pre-vetted fractional COOs who have solved them before.
+            Tell us about your operational challenges and we'll match you with pre-vetted part-time COOs who have solved them before.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/handler/sign-up" className="px-10 py-5 bg-orange-500 text-black font-bold uppercase tracking-wider hover:bg-orange-400 transition-colors">
-              Find a Fractional COO
+              Find a Part-Time COO
             </Link>
-            <Link href="/fractional-coo-jobs-uk" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
+            <Link href="/part-time-coo-jobs-uk" className="px-10 py-5 border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
               I'm a COO Looking for Roles
             </Link>
           </div>
@@ -353,10 +353,10 @@ export default function FractionalCOOServicesPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <span className="text-sm font-bold uppercase tracking-wider text-gray-400">Related Services</span>
             <div className="flex flex-wrap gap-4">
-              <Link href="/fractional-cfo-services" className="text-gray-600 hover:text-orange-600 font-medium transition-colors">Fractional CFO</Link>
-              <Link href="/fractional-cmo-services" className="text-gray-600 hover:text-orange-600 font-medium transition-colors">Fractional CMO</Link>
-              <Link href="/fractional-cto-services" className="text-gray-600 hover:text-orange-600 font-medium transition-colors">Fractional CTO</Link>
-              <Link href="/fractional-coo-jobs-uk" className="text-gray-600 hover:text-orange-600 font-medium transition-colors">COO Jobs</Link>
+              <Link href="/part-time-cfo-services" className="text-gray-600 hover:text-orange-600 font-medium transition-colors">Part-Time CFO</Link>
+              <Link href="/part-time-cmo-services" className="text-gray-600 hover:text-orange-600 font-medium transition-colors">Part-Time CMO</Link>
+              <Link href="/part-time-cto-services" className="text-gray-600 hover:text-orange-600 font-medium transition-colors">Part-Time CTO</Link>
+              <Link href="/part-time-coo-jobs-uk" className="text-gray-600 hover:text-orange-600 font-medium transition-colors">COO Jobs</Link>
             </div>
           </div>
         </div>

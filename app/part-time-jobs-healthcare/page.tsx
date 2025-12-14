@@ -9,11 +9,11 @@ import { FAQ, HEALTHCARE_FAQS } from '@/components/FAQ'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: 'Fractional Jobs Healthcare - Executive Roles in HealthTech & Life Sciences',
-  description: 'Find fractional executive jobs in healthcare. CFO, CMO, CTO roles in HealthTech, MedTech, and Life Sciences. £700-£1,300 daily rates. UK\'s fastest-growing sector.',
+  title: 'Part-Time Jobs Healthcare - Executive Roles in HealthTech & Life Sciences',
+  description: 'Find part-time executive jobs in healthcare. CFO, CMO, CTO roles in HealthTech, MedTech, and Life Sciences. £700-£1,300 daily rates. UK\'s fastest-growing sector.',
   openGraph: {
-    title: 'Fractional Jobs Healthcare - Executive Roles in HealthTech & Life Sciences',
-    description: 'Find fractional executive jobs in healthcare and life sciences UK.',
+    title: 'Part-Time Jobs Healthcare - Executive Roles in HealthTech & Life Sciences',
+    description: 'Find part-time executive jobs in healthcare and life sciences UK.',
     type: 'website',
   },
 }
@@ -46,7 +46,7 @@ const healthcareHubs = [
 const relatedSearches = [
   'Fractional CFO Healthcare', 'Fractional CTO HealthTech', 'MedTech Fractional CMO',
   'BioTech Fractional Executive', 'Life Sciences CFO', 'Digital Health Fractional',
-  'Fractional CSO UK', 'Cambridge Fractional', 'Pharma Fractional Jobs'
+  'Fractional CSO UK', 'Cambridge Fractional', 'Pharma Part-Time Jobs'
 ]
 
 async function getHealthcareStats() {
@@ -95,7 +95,7 @@ export default async function HealthcarePage() {
                   </span>
 
                   <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[0.95] tracking-tight">
-                    Fractional Jobs<br />
+                    Part-Time Jobs<br />
                     <span className="text-teal-300">Healthcare</span>
                   </h1>
 
@@ -105,7 +105,7 @@ export default async function HealthcarePage() {
 
                   <div className="flex flex-wrap gap-4">
                     <Link
-                      href="/fractional-jobs?industry=Healthcare"
+                      href="/part-time-jobs?industry=Healthcare"
                       className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-lg bg-white text-black hover:bg-white/90 transition-all duration-200"
                     >
                       Browse Healthcare Jobs →
@@ -153,7 +153,7 @@ export default async function HealthcarePage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Opportunities</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Healthcare Fractional Jobs</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Healthcare Part-Time Jobs</h2>
             <p className="text-xl text-gray-500">Browse {stats.totalHealthcare}+ opportunities in life sciences</p>
           </div>
           <EmbeddedJobBoard />
@@ -166,7 +166,7 @@ export default async function HealthcarePage() {
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">By Sector</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Healthcare Subsectors</h2>
-            <p className="text-xl text-gray-500">High-growth areas hiring fractional executives</p>
+            <p className="text-xl text-gray-500">High-growth areas hiring part-time executives</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {healthcareSubsectors.map((sector) => (
@@ -187,7 +187,7 @@ export default async function HealthcarePage() {
           <div className="text-center mb-16">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">By Role</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Top Healthcare Roles</h2>
-            <p className="text-xl text-gray-500">Most in-demand fractional positions</p>
+            <p className="text-xl text-gray-500">Most in-demand part-time positions</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {healthcareRoles.map((role) => (
@@ -212,7 +212,7 @@ export default async function HealthcarePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {healthcareHubs.map((hub) => (
-              <Link key={hub.name} href={`/fractional-jobs-${hub.name.toLowerCase()}`} className="group">
+              <Link key={hub.name} href={`/part-time-jobs-${hub.name.toLowerCase()}`} className="group">
                 <div className="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-all">
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-teal-700 transition-colors mb-2">
                     {hub.name}
@@ -249,7 +249,7 @@ export default async function HealthcarePage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Premium Rates</h3>
               <p className="text-gray-600">
-                Healthcare fractional roles command premium rates of £700-£1,400/day due to specialist knowledge requirements in regulatory, clinical, and technical domains.
+                Healthcare part-time roles command premium rates of £700-£1,400/day due to specialist knowledge requirements in regulatory, clinical, and technical domains.
               </p>
             </div>
             <div className="bg-white rounded-2xl p-8">
@@ -258,7 +258,7 @@ export default async function HealthcarePage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Perfect Fit</h3>
               <p className="text-gray-600">
-                Healthcare companies often need senior expertise for specific phases - fundraising, regulatory approval, commercial launch - making fractional arrangements ideal.
+                Healthcare companies often need senior expertise for specific phases - fundraising, regulatory approval, commercial launch - making part-time arrangements ideal.
               </p>
             </div>
           </div>
@@ -271,7 +271,7 @@ export default async function HealthcarePage() {
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">Tax Planning</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">IR35 Calculator</h2>
-            <p className="text-xl text-gray-500">Understand your take-home as a healthcare fractional executive</p>
+            <p className="text-xl text-gray-500">Understand your take-home as a healthcare part-time executive</p>
           </div>
           <IR35Calculator defaultDayRate={1050} />
         </div>
@@ -283,7 +283,7 @@ export default async function HealthcarePage() {
           <div className="text-center mb-12">
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-gray-400 mb-4 block">FAQ</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Healthcare Fractional FAQs</h2>
-            <p className="text-xl text-gray-500">Common questions about fractional work in healthcare</p>
+            <p className="text-xl text-gray-500">Common questions about part-time work in healthcare</p>
           </div>
           <FAQ items={HEALTHCARE_FAQS} title="" />
         </div>
@@ -297,7 +297,7 @@ export default async function HealthcarePage() {
             {relatedSearches.map((search) => (
               <Link
                 key={search}
-                href={`/fractional-jobs?q=${encodeURIComponent(search)}`}
+                href={`/part-time-jobs?q=${encodeURIComponent(search)}`}
                 className="px-4 py-2 bg-gray-50 rounded-full text-gray-700 hover:bg-teal-100 hover:text-teal-700 transition-colors text-sm border border-gray-200"
               >
                 {search}
@@ -315,11 +315,11 @@ export default async function HealthcarePage() {
             Ready for Healthcare Leadership?
           </h2>
           <p className="text-xl text-gray-400 mb-10">
-            {stats.totalHealthcare}+ fractional opportunities in the UK's fastest-growing sector
+            {stats.totalHealthcare}+ part-time opportunities in the UK's fastest-growing sector
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/fractional-jobs?industry=Healthcare"
+              href="/part-time-jobs?industry=Healthcare"
               className="inline-flex items-center justify-center px-10 py-5 text-lg font-semibold rounded-lg bg-white text-gray-900 hover:bg-gray-100 transition-all"
             >
               Browse Healthcare Jobs
