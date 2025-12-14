@@ -65,6 +65,7 @@ export async function GET(request: NextRequest) {
           title,
           slug,
           company_name,
+          company_domain,
           location,
           skills_required,
           role_category
@@ -82,6 +83,7 @@ export async function GET(request: NextRequest) {
           title,
           slug,
           company_name,
+          company_domain,
           location,
           skills_required,
           role_category
@@ -103,6 +105,7 @@ export async function GET(request: NextRequest) {
           title,
           slug,
           company_name,
+          company_domain,
           location,
           skills_required,
           role_category
@@ -120,6 +123,7 @@ export async function GET(request: NextRequest) {
         title: j.title,
         slug: j.slug,
         company: j.company_name || 'Unknown Company',
+        companyDomain: j.company_domain,
         skills: parseSkills(j.skills_required),
         location: j.location || 'UK',
       })),

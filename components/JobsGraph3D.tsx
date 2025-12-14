@@ -147,13 +147,16 @@ export function JobsGraph3D({
     }
   }, [])
 
-  // Generate label for node - companies get big labels
+  // Generate label for node - all are clickable
   const getNodeLabel = useCallback((node: any) => {
     if (node.group === 'company') {
-      return `🏢 ${node.name}`
+      return `🏢 ${node.name}\n👆 View company jobs`
     }
     if (node.group === 'job') {
-      return `${node.name}\n👆 Click to view job`
+      return `💼 ${node.name}\n👆 View job`
+    }
+    if (node.group === 'skill') {
+      return `🔧 ${node.name}\n👆 Find jobs with this skill`
     }
     return node.name || node.id
   }, [])
@@ -226,7 +229,7 @@ export function JobsGraph3D({
               <div className="w-2 h-2 rounded-full bg-emerald-500" />
               <span className="text-slate-400">Skills</span>
             </div>
-            <span className="text-slate-400 border-l border-slate-600 pl-4">Click jobs to explore</span>
+            <span className="text-slate-400 border-l border-slate-600 pl-4">Click any node to explore</span>
           </div>
         </>
       )}

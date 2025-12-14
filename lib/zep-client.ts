@@ -628,6 +628,7 @@ export async function buildJobsGraph(
     title: string
     slug?: string
     company: string
+    companyDomain?: string
     skills: string[]
     location: string
   }>,
@@ -636,7 +637,7 @@ export async function buildJobsGraph(
   const nodes: GraphNode[] = []
   const edges: GraphEdge[] = []
   const skillsMap = new Map<string, string>()
-  const companiesMap = new Map<string, string>()
+  const companiesMap = new Map<string, { id: string; domain?: string }>()
 
   const processedJobs = jobs.slice(0, limit)
 
@@ -653,17 +654,18 @@ export async function buildJobsGraph(
     // Add or reference company node
     if (!companiesMap.has(job.company)) {
       const companyId = `company-${job.company.toLowerCase().replace(/\s+/g, '-')}`
-      companiesMap.set(job.company, companyId)
+      companiesMap.set(job.company, { id: companyId, domain: job.companyDomain })
       nodes.push({
         id: companyId,
         type: 'company',
         label: job.company,
+        url: job.companyDomain ? `/company/${job.companyDomain}` : undefined,
       })
     }
 
     edges.push({
       source: `job-${job.id}`,
-      target: companiesMap.get(job.company)!,
+      target: companiesMap.get(job.company)!.id,
       type: 'at_company',
     })
 
@@ -676,6 +678,7 @@ export async function buildJobsGraph(
           id: skillId,
           type: 'skill',
           label: skillName,
+          url: `/fractional-jobs?q=${encodeURIComponent(skillName)}`,
         })
       }
 
