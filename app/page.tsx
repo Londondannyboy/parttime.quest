@@ -518,7 +518,7 @@ export default async function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="bg-white/10 backdrop-blur rounded-xl p-8 border border-white/20 text-center">
+            <div className="bg-gray-800 rounded-xl p-8 border border-gray-700 text-center">
               <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black text-black">1</div>
               <h3 className="text-xl font-bold text-white mb-3">Brief</h3>
               <p className="text-gray-400">
@@ -526,7 +526,7 @@ export default async function Home() {
               </p>
             </div>
 
-            <div className="bg-white/10 backdrop-blur rounded-xl p-8 border border-white/20 text-center">
+            <div className="bg-gray-800 rounded-xl p-8 border border-gray-700 text-center">
               <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black text-black">2</div>
               <h3 className="text-xl font-bold text-white mb-3">Match</h3>
               <p className="text-gray-400">
@@ -534,7 +534,7 @@ export default async function Home() {
               </p>
             </div>
 
-            <div className="bg-white/10 backdrop-blur rounded-xl p-8 border border-white/20 text-center">
+            <div className="bg-gray-800 rounded-xl p-8 border border-gray-700 text-center">
               <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black text-black">3</div>
               <h3 className="text-xl font-bold text-white mb-3">Meet</h3>
               <p className="text-gray-400">
@@ -542,7 +542,7 @@ export default async function Home() {
               </p>
             </div>
 
-            <div className="bg-white/10 backdrop-blur rounded-xl p-8 border border-white/20 text-center">
+            <div className="bg-gray-800 rounded-xl p-8 border border-gray-700 text-center">
               <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-black text-black">4</div>
               <h3 className="text-xl font-bold text-white mb-3">Start</h3>
               <p className="text-gray-400">
