@@ -702,7 +702,7 @@ export default async function Home() {
                 <span className="text-gray-700 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-gray-600 leading-relaxed">
-                Interim roles are typically full-time positions for a fixed period (3-12 months) to cover gaps or manage transitions. Part-time executive roles are ongoing positions where you work 1-3 days per week indefinitely. Part-time work offers more flexibility and the ability to work with multiple clients, while interim work provides deeper immersion in a single company.
+                <a href="https://interim.quest" className="text-emerald-600 hover:underline">Interim roles</a> are typically full-time positions for a fixed period (3-12 months) to cover gaps or manage transitions. Part-time executive roles are ongoing positions where you work 1-3 days per week indefinitely. Part-time work offers more flexibility and the ability to work with multiple clients, while interim work provides deeper immersion in a single company. For ongoing part-time advisory, <a href="https://fractional.quest" className="text-emerald-600 hover:underline">fractional executive roles</a> offer a similar model with strategic focus.
               </p>
             </details>
 
