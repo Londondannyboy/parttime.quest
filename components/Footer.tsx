@@ -190,6 +190,24 @@ export function Footer() {
         </div>
       </div>
 
+      {/* Partner Sites */}
+      <div className="border-t border-gray-800 bg-gray-900/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex flex-wrap justify-center gap-6 text-sm">
+            <span className="text-gray-500">Part of Quest Network:</span>
+            <a href="https://fractional.quest" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+              Fractional Recruitment Agency
+            </a>
+            <a href="https://interim.quest" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+              Interim Executive Jobs
+            </a>
+            <a href="https://chiefofstaff.quest" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+              Chief of Staff Recruitment
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Bottom Bar */}
       <div className="border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
